@@ -2,6 +2,7 @@
 // .html realmente presentes em public/. Sem lista fixa: qualquer página nova
 // (destino, artigo de blog, etc.) criada em public/ entra sozinha na próxima
 // execução. Rodar antes de cada deploy: node scripts/generate-sitemap.js
+// (teste de pipeline CI: confirma que o build automático do Cloudflare Pages roda este script)
 const fs = require('fs');
 const path = require('path');
 
