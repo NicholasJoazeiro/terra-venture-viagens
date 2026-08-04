@@ -5,7 +5,7 @@ const publicDir = path.join(__dirname, '..');
 
 const legacyData = [
   {
-    file: "patagonia.html", country: "Argentina & Chile", name: "Patagônia", subtitle: "O fim do mundo onde glaciares imensos colidem com montanhas afiadas.", heroImage: "Patagonia.jpg",
+    file: "patagonia.html", country: "Argentina & Chile", name: "Patagônia", subtitle: "O fim do mundo onde glaciares imensos colidem com montanhas afiadas.", heroImage: "patagonia-torres-del-paine.jpg",
     intro1: "A vastidão indomável do extremo sul das Américas repele as amarras da civilização. Aqui, os ventos puros moldam torres de granito e o gelo azul cerúleo rompe o silêncio atemporal dos majestosos lagos patagônicos.",
     intro2: "Nesta natureza bruta, abrimos acesso aos 'luxury lodges' e estâncias de elite. A glória é explorar a crueza selvagem durante o dia e descansar com taças de Malbec envelhecido aquecido por lareiras acesas à noite.",
     sections: [

@@ -206,7 +206,7 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; letter-spacing: -0
 
 /* ======================= QUIZ (dark, cinematográfico) ======================= */
 .quiz-section { position: relative; padding: 120px 0; color: #fff; overflow: hidden; isolation: isolate;
-    background: linear-gradient(rgba(11, 18, 14, 0.86), rgba(11, 18, 14, 0.95)), url('Patagonia.jpg') center/cover no-repeat; }
+    background: linear-gradient(rgba(11, 18, 14, 0.86), rgba(11, 18, 14, 0.95)), url('patagonia-torres-del-paine.jpg') center/cover no-repeat; }
 .quiz-section .section-title { color: #fff; }
 .quiz-section .section-desc { color: rgba(255, 255, 255, 0.72); }
 .quiz-glow { position: absolute; top: -8%; right: -4%; width: 480px; height: 480px; z-index: -1; pointer-events: none;

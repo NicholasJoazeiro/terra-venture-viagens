@@ -168,14 +168,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 name: "Patagônia",
                 coords: [-51.3411, -72.6936],
                 url: "patagonia.html",
-                image: "Patagonia.jpg",
+                image: "patagonia-torres-del-paine.jpg",
                 countryIds: ["CHL", "ARG"]
             },
             {
                 name: "Santiago",
                 coords: [-33.4489, -70.6693],
                 url: "santiago.html",
-                image: "Santiago, Chile.jpg",
+                image: "dest_santiago_skycostanera.jpg",
                 countryIds: ["CHL"]
             },
             {
@@ -499,10 +499,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (quizBox) {
         // Curadoria de destinos. vibes: sossego|aventura|cultura|romance|praia
         const QUIZ_DESTINOS = [
-            { name: 'Patagônia', tag: 'Argentina & Chile', url: 'patagonia.html', img: 'Patagonia.jpg', cont: 'america', vibes: ['aventura'], ritmo: 'intenso' },
+            { name: 'Patagônia', tag: 'Argentina & Chile', url: 'patagonia.html', img: 'patagonia-torres-del-paine.jpg', cont: 'america', vibes: ['aventura'], ritmo: 'intenso' },
             { name: 'Machu Picchu', tag: 'Peru', url: 'machu-picchu.html', img: 'machu_picchu.png', cont: 'america', vibes: ['aventura', 'cultura'], ritmo: 'intenso' },
             { name: 'Deserto do Atacama', tag: 'Chile', url: 'atacama.html', img: 'blog_atacama.png', cont: 'america', vibes: ['aventura'], ritmo: 'intenso' },
-            { name: 'Santiago', tag: 'Chile', url: 'santiago.html', img: 'Santiago, Chile.jpg', cont: 'america', vibes: ['cultura'], ritmo: 'equilibrado' },
+            { name: 'Santiago', tag: 'Chile', url: 'santiago.html', img: 'dest_santiago_skycostanera.jpg', cont: 'america', vibes: ['cultura'], ritmo: 'equilibrado' },
             { name: 'Fernando de Noronha', tag: 'Brasil', url: 'noronha.html', img: 'blog_noronha.png', cont: 'america', vibes: ['praia', 'sossego'], ritmo: 'relax' },
             { name: 'Paris Secreta', tag: 'França', url: 'paris.html', img: 'https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg?auto=compress&cs=tinysrgb&w=800', cont: 'europa', vibes: ['cultura', 'romance'], ritmo: 'equilibrado' },
             { name: 'Costa Amalfitana', tag: 'Itália', url: 'costa-amalfitana.html', img: 'costa_amalfitana.png', cont: 'europa', vibes: ['praia', 'romance'], ritmo: 'relax' },
