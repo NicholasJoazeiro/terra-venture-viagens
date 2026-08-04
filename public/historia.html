@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nossa História | Terra Venture Viagens</title>
+    <meta name="description" content="Conheça a origem da Terra Venture e a história por trás da nossa paixão por viagens transformadoras.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="terra.css">
+    <style>
+        .historia-hero {
+            height: 55vh;
+            min-height: 400px;
+            background: linear-gradient(135deg, var(--color-moss) 0%, #2a3f2e 60%, var(--color-dark) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--color-offwhite);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .historia-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 70%, rgba(200, 107, 77, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 30%, rgba(234, 227, 202, 0.08) 0%, transparent 50%);
+            animation: subtleShift 15s ease-in-out infinite alternate;
+        }
+
+        @keyframes subtleShift {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(30px, -20px); }
+        }
+
+        .historia-hero .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .historia-hero .hero-title {
+            font-size: 3.5rem;
+        }
+
+        .historia-hero .hero-subtitle {
+            font-size: 1.15rem;
+            opacity: 0.85;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        .historia-page-content {
+            padding: 80px 0 100px;
+            background: linear-gradient(175deg, var(--color-offwhite) 0%, var(--color-sand) 100%);
+        }
+
+        /* Founder card */
+        .founder-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-top: 2rem;
+            padding: 2.5rem 2rem;
+        }
+
+        .founder-photo {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--color-moss);
+            box-shadow: 0 8px 30px rgba(62, 90, 68, 0.2);
+            margin-bottom: 1.2rem;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .founder-photo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 40px rgba(62, 90, 68, 0.3);
+        }
+
+        .founder-name {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--color-moss);
+            margin-bottom: 0.3rem;
+        }
+
+        .founder-title {
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--color-terra);
+            font-weight: 500;
+        }
+    </style>
+    <!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1383241600338162');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1383241600338162&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body class="subpage">
+
+    <!-- Sticky Navigation (Simplified) -->
+        <header class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">Terra Venture</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html#quem-somos">A Terra Venture</a></li>
+                    <li><a href="destinos.html">Destinos</a></li>
+                    <li><a href="index.html#quiz">Descubra</a></li>
+                    <li><a href="blog.html">Diário</a></li>
+                    <li><a href="https://wa.me/5551994596233?text=Olá! Gostaria de uma consultoria de viagem." class="btn-primary nav-btn" target="_blank">Conversar</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="historia-hero">
+        <div class="container hero-content scroll-reveal fade-up">
+            <span class="eyebrow" style="color: var(--color-terra);">Nossa Origem</span>
+            <h1 class="hero-title">O que nos trouxe até aqui</h1>
+            <p class="hero-subtitle">Uma história de família, propósito e a liberdade de explorar o mundo.</p>
+        </div>
+    </section>
+
+    <!-- Conteúdo da História -->
+    <section class="historia-page-content">
+        <div class="container">
+            <a href="index.html#diferenciais" class="back-link" style="display: inline-block; margin-bottom: 30px; color: var(--color-terra); font-weight: 500; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem;"><i class="fas fa-arrow-left"></i> Voltar</a>
+
+            <div class="historia-layout scroll-reveal fade-up">
+                <!-- Decorative vertical line -->
+                <div class="historia-timeline-line"></div>
+
+                <div class="historia-content">
+                    <div class="historia-block">
+                        <div class="historia-icon"><i class="fas fa-seedling"></i></div>
+                        <p class="historia-lead">A Terra Venture nasceu de um encontro entre a cabeça e o coração.</p>
+                        <p>De um lado, minha trajetória na administração e tecnologia, que me deu o gosto pelo planejamento minucioso e pela busca por soluções inteligentes. Do outro, uma paixão antiga por liberdade, por pesquisar novas culturas e por viver realidades diferentes da minha.</p>
+                    </div>
+
+                    <div class="historia-block">
+                        <div class="historia-icon"><i class="fas fa-compass"></i></div>
+                        <p>Mas, se eu olhar bem de perto, a semente da Terra Venture foi plantada muito antes da minha carreira começar.</p>
+                        <p>Fui criado observando homens que são minha maior bússola de conduta: meu pai e meu avô, o <strong>Sr. Moacir Joazeiro</strong>. Meu avô trabalhou por décadas com turismo e transporte, e mais do que me ensinar sobre destinos, ele e meu pai me ensinaram sobre <em>postura</em>. Com eles, aprendi como agir, como respeitar o próximo e como manter a serenidade em qualquer situação.</p>
+                    </div>
+
+                    <div class="historia-block historia-destaque">
+                        <div class="historia-icon"><i class="fas fa-heart"></i></div>
+                        <h3>Minha Motivação</h3>
+                        <p>Não criei a Terra Venture para simplesmente "seguir um legado", meu avô foi um ser único e sua história é só dele. O que eu faço é me inspirar no jeito que ele lidava com as pessoas e com o mundo para construir a minha própria jornada.</p>
+                    </div>
+
+                    <div class="historia-block">
+                        <div class="historia-icon"><i class="fas fa-mountain"></i></div>
+                        <p>Escolhi me jogar de cabeça nessa área porque sou fascinado pelo processo:</p>
+                        <ul class="historia-valores">
+                            <li><i class="fas fa-search"></i> Adoro a pesquisa que descobre o lugar que ninguém conhece.</li>
+                            <li><i class="fas fa-clipboard-check"></i> Prezo pelo planejamento que garante que você viaje tranquilo.</li>
+                            <li><i class="fas fa-handshake"></i> Valorizo a integridade em cada combinação que fazemos.</li>
+                        </ul>
+                    </div>
+
+                    <div class="historia-fecho scroll-reveal fade-up">
+                        <p>A Terra Venture é o resultado dessa mistura. É a técnica da gestão unida à sensibilidade de quem aprendeu, com os melhores, que <strong>viajar é uma das formas mais bonitas de se sentir livre.</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fundador -->
+            <div class="founder-card scroll-reveal fade-up">
+                <img src="nicholas.jpeg" alt="Nícholas Joazeiro - Fundador da Terra Venture" class="founder-photo">
+                <h4 class="founder-name">Nícholas Joazeiro</h4>
+                <span class="founder-title">Fundador da Terra Venture</span>
+            </div>
+
+            <div class="text-center mt-5 scroll-reveal fade-up">
+                <a href="index.html#contato" class="btn-primary btn-large">Iniciar Minha Jornada</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Simples -->
+        <footer class="footer">
+        <div class="footer-main">
+            <div class="container footer-grid">
+                <div class="footer-brand">
+                    <h3 class="logo-text">Terra Venture</h3>
+                    <p>A essência da aventura com o conforto da exclusividade. Do sonho ao retorno.</p>
+                    <div class="footer-social" style="margin-top:16px;"><a href="https://www.instagram.com/terraventureviagens/" target="_blank" style="display:inline-flex;align-items:center;gap:8px;color:var(--bone-dim);font-size:.95rem;"><i class="fab fa-instagram" style="font-size:1.3rem;"></i> @terraventureviagens</a></div>
+                </div>
+                <div class="footer-links"><h4>Navegação</h4><ul>
+                    <li><a href="index.html#quem-somos">A Agência</a></li>
+                    <li><a href="destinos.html">Destinos</a></li>
+                    <li><a href="index.html#quiz">Descubra seu destino</a></li>
+                    <li><a href="index.html#contato">Contato</a></li>
+                </ul></div>
+                <div class="footer-links"><h4>Contato</h4><ul>
+                    <li><a href="https://wa.me/5551994596233" target="_blank">WhatsApp</a></li>
+                    <li><a href="mailto:contato@terraventureviagens.com.br">Email</a></li>
+                    <li><a href="transfer-executivo.html">Transfer Executivo</a></li>
+                </ul></div>
+            </div>
+        </div>
+        <div class="footer-bottom"><div class="container"><p>&copy; 2026 Terra Venture Viagens. Todos os direitos reservados.</p></div></div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/5551994596233" class="whatsapp-float pulse" target="_blank" aria-label="Fale conosco no WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Custom Script for Animations -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.scroll-reveal');
+            const revealOnScroll = () => {
+                const windowHeight = window.innerHeight;
+                reveals.forEach(reveal => {
+                    const elementTop = reveal.getBoundingClientRect().top;
+                    const revealPoint = windowHeight - 100;
+                    if (elementTop < revealPoint) reveal.classList.add('active');
+                });
+            };
+            window.addEventListener('scroll', revealOnScroll);
+            setTimeout(revealOnScroll, 100);
+        });
+    </script>
+<script src="script.js"></script>
+</body>
+</html>
+

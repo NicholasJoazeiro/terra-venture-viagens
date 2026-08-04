@@ -1,0 +1,12 @@
+.firebase/
+.tmp.driveupload/
+.wrangler/
+node_modules/
+.DS_Store
+*.log
+.claude/settings.local.json
+
+# Assets de vídeo legados, não usados pelo site atual (sem video-background)
+public/aurora_bg.mp4
+public/aurora_dark.mp4
+public/test_speed.mp4

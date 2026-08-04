@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terra Venture Viagens | Consultoria de Viagem Sob Medida</title>
+    <link rel="icon" type="image/jpeg" href="Icon.jpg">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+    <!-- Estilo Terra Venture -->
+    <link rel="stylesheet" href="terra.css">
+
+    <meta name="description" content="Terra Venture Viagens: consultoria de viagem sob medida e roteiros exclusivos desenhados à mão, do primeiro sonho ao retorno pra casa.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.terraventureviagens.com.br/">
+    <meta property="og:title" content="Terra Venture Viagens | Consultoria de Viagem Sob Medida">
+    <meta property="og:description" content="Roteiros exclusivos desenhados à mão. Você vive cada instante, a gente cuida de todo o resto.">
+    <meta property="og:image" content="Patagonia.jpg">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org", "@type": "TravelAgency",
+      "name": "Terra Venture Viagens", "image": "Icon.jpg",
+      "@id": "https://www.terraventureviagens.com.br/", "url": "https://www.terraventureviagens.com.br/",
+      "telephone": "+5551994596233",
+      "address": { "@type": "PostalAddress", "addressCountry": "BR" },
+      "description": "Viagens boutique e roteiros exclusivos desenhados à mão. Do sonho ao retorno.",
+      "sameAs": ["https://www.instagram.com/terraventureviagens/"]
+    }
+    </script>
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1383241600338162');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1383241600338162&ev=PageView&noscript=1"/></noscript>
+    <!-- End Meta Pixel Code -->
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <header class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#home" class="logo">Terra Venture</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#quem-somos">A Terra Venture</a></li>
+                    <li><a href="destinos.html">Destinos</a></li>
+                    <li><a href="#quiz">Descubra</a></li>
+                    <li><a href="blog.html">Diário</a></li>
+                    <li><a href="https://wa.me/5551994596233?text=Olá! Gostaria de uma consultoria de viagem." class="btn-primary nav-btn" target="_blank">Conversar</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-bg-image">
+            <img src="https://images.pexels.com/photos/2356045/pexels-photo-2356045.jpeg?auto=compress&cs=tinysrgb&w=1920"
+                alt="Amanhecer em montanhas" loading="eager" fetchpriority="high">
+        </div>
+        <div class="hero-content">
+            <span class="eyebrow">Consultoria de viagem · Do sonho ao retorno</span>
+            <h1 class="hero-title">Tem lugar no mundo que <em>muda</em> quem volta.</h1>
+            <p class="hero-subtitle">A gente desenha à mão a viagem inteira, roteiro, hospedagem, cada detalhe. Você só se preocupa em viver o instante.</p>
+            <div class="hero-cta">
+                <a class="btn-primary btn-large" href="https://wa.me/5551994596233?text=Olá, gostaria de uma consultoria de viagem!" target="_blank">Começar minha viagem</a>
+                <a class="link-plain" href="#destinos">Explorar destinos</a>
+            </div>
+        </div>
+        <div class="scroll-cue"><span></span></div>
+    </section>
+
+    <!-- FAIXA DIFERENCIAL -->
+    <section class="diferencial-banner">
+        <div class="container">
+            <p><strong>Consultoria de viagem sob medida.</strong> Da sua primeira inspiração ao retorno seguro pra casa.</p>
+        </div>
+    </section>
+
+    <!-- COMO FUNCIONA -->
+    <section class="como-funciona" id="como-funciona">
+        <div class="container">
+            <div class="section-header">
+                <span class="eyebrow">O Processo</span>
+                <h2 class="section-title">Simples pra você. Uma paixão pra gente.</h2>
+                <p class="section-desc">Três passos para transformar um sonho vago numa viagem inesquecível.</p>
+            </div>
+            <div class="como-funciona-grid">
+                <div class="como-card">
+                    <h3>Conversa</h3>
+                    <p>Você nos conta o sonho, destino, data, orçamento, o que faz seu coração bater. A gente escuta cada detalhe.</p>
+                </div>
+                <div class="como-card">
+                    <h3>Curadoria</h3>
+                    <p>Desenhamos o roteiro à mão. Hospedagem, experiências, logística, tudo pensado no seu ritmo e no seu estilo.</p>
+                </div>
+                <div class="como-card">
+                    <h3>Você só vive</h3>
+                    <p>Transfer executivo, suporte 24h durante a viagem, volta segura. Zero preocupação, do embarque ao sofá de casa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DESTINOS: DOSSIÊ -->
+    <section class="destinos-editorial" id="destinos">
+        <div class="container">
+            <div class="de-head">
+                <div>
+                    <span class="eyebrow">Curadoria Terra Venture</span>
+                    <h2 class="de-title">Alguns lugares que<br>desenhamos pra viver.</h2>
+                </div>
+                <div class="vibe-filter" role="tablist" aria-label="Filtrar por vibe da viagem">
+                    <button class="vibe-chip active" data-vibe="todos" type="button">Todos</button>
+                    <button class="vibe-chip" data-vibe="aventura" type="button">Aventura</button>
+                    <button class="vibe-chip" data-vibe="cultura" type="button">Cultura</button>
+                    <button class="vibe-chip" data-vibe="romance" type="button">Romance</button>
+                </div>
+            </div>
+            <div class="dossie-list">
+                <a class="dossie-row" href="patagonia.html" data-vibe="aventura">
+                    <div class="dossie-media"><img loading="lazy" decoding="async" src="Patagonia.jpg" alt="Patagônia"></div>
+                    <div class="dossie-body">
+                        <span class="eyebrow">América do Sul</span>
+                        <h3>Patagônia</h3>
+                        <p class="dossie-line">O fim do mundo, onde o silêncio tem o tamanho de uma geleira.</p>
+                        <div class="dossie-meta">
+                            <span>Vibe<b>Aventura & natureza</b></span>
+                            <span>Melhor época<b>Out a Mar</b></span>
+                            <span>Intensidade<b>3 de 5</b></span>
+                        </div>
+                        <span class="dossie-link">Ver o dossiê <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a class="dossie-row flip" href="santiago.html" data-vibe="cultura">
+                    <div class="dossie-media"><img loading="lazy" decoding="async" src="dest_santiago_skycostanera.jpg" alt="Santiago"></div>
+                    <div class="dossie-body">
+                        <span class="eyebrow">América do Sul</span>
+                        <h3>Santiago</h3>
+                        <p class="dossie-line">A Cordilheira dos Andes sobre a cidade, e o vinho que nasce no vale ao lado.</p>
+                        <div class="dossie-meta">
+                            <span>Vibe<b>Cultura & cidade</b></span>
+                            <span>Melhor época<b>Set, Abr</b></span>
+                            <span>Intensidade<b>1 de 5</b></span>
+                        </div>
+                        <span class="dossie-link">Ver o dossiê <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a class="dossie-row" href="paris.html" data-vibe="cultura romance">
+                    <div class="dossie-media"><img loading="lazy" decoding="async" src="https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Paris"></div>
+                    <div class="dossie-body">
+                        <span class="eyebrow">Europa</span>
+                        <h3>Paris Secreta</h3>
+                        <p class="dossie-line">A Cidade Luz por trás da cortina de veludo, longe do óbvio dos cartões-postais.</p>
+                        <div class="dossie-meta">
+                            <span>Vibe<b>Cultura & romance</b></span>
+                            <span>Melhor época<b>O ano todo</b></span>
+                            <span>Intensidade<b>1 de 5</b></span>
+                        </div>
+                        <span class="dossie-link">Ver o dossiê <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a class="dossie-row flip" href="japao.html" data-vibe="cultura">
+                    <div class="dossie-media"><img loading="lazy" decoding="async" src="https://images.pexels.com/photos/3408353/pexels-photo-3408353.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Japão"></div>
+                    <div class="dossie-body">
+                        <span class="eyebrow">Ásia</span>
+                        <h3>Japão Clássico</h3>
+                        <p class="dossie-line">Tradição milenar e hospitalidade que beira o sagrado, do templo ao trem-bala.</p>
+                        <div class="dossie-meta">
+                            <span>Vibe<b>Cultura & tradição</b></span>
+                            <span>Melhor época<b>Mar, Mai</b></span>
+                            <span>Intensidade<b>2 de 5</b></span>
+                        </div>
+                        <span class="dossie-link">Ver o dossiê <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+            </div>
+            <div class="de-cta">
+                <a href="destinos.html" class="btn-primary">Ver todos os destinos</a>
+                <a href="#contato" class="btn-outline-white">Monte seu roteiro ideal</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section class="quiz-section" id="quiz">
+        <div class="quiz-glow"></div>
+        <div class="container">
+            <div class="section-header">
+                <span class="eyebrow">Feito pra você</span>
+                <h2 class="section-title">Descubra seu próximo destino</h2>
+                <p class="section-desc">Três perguntas. A gente revela o destino perfeito pro seu momento.</p>
+            </div>
+            <div class="quiz-box">
+                <div class="quiz-progress"><span class="quiz-bar" id="quiz-bar"></span></div>
+                <div class="quiz-step active" data-step="1">
+                    <h3 class="quiz-q">Qual a vibe da viagem?</h3>
+                    <div class="quiz-options">
+                        <button class="quiz-opt" data-key="vibe" data-value="sossego" type="button"><i class="fas fa-spa"></i><span>Sossego</span></button>
+                        <button class="quiz-opt" data-key="vibe" data-value="aventura" type="button"><i class="fas fa-mountain"></i><span>Aventura</span></button>
+                        <button class="quiz-opt" data-key="vibe" data-value="cultura" type="button"><i class="fas fa-landmark"></i><span>Cultura</span></button>
+                        <button class="quiz-opt" data-key="vibe" data-value="romance" type="button"><i class="fas fa-heart"></i><span>Romance</span></button>
+                        <button class="quiz-opt" data-key="vibe" data-value="praia" type="button"><i class="fas fa-umbrella-beach"></i><span>Praia</span></button>
+                    </div>
+                </div>
+                <div class="quiz-step" data-step="2">
+                    <h3 class="quiz-q">Pra onde o coração aponta?</h3>
+                    <div class="quiz-options">
+                        <button class="quiz-opt" data-key="cont" data-value="america" type="button"><i class="fas fa-mountain-sun"></i><span>Américas</span></button>
+                        <button class="quiz-opt" data-key="cont" data-value="europa" type="button"><i class="fas fa-archway"></i><span>Europa</span></button>
+                        <button class="quiz-opt" data-key="cont" data-value="asia" type="button"><i class="fas fa-torii-gate"></i><span>Ásia</span></button>
+                        <button class="quiz-opt" data-key="cont" data-value="africa" type="button"><i class="fas fa-hippo"></i><span>África</span></button>
+                        <button class="quiz-opt" data-key="cont" data-value="oceania" type="button"><i class="fas fa-water"></i><span>Oceania</span></button>
+                        <button class="quiz-opt" data-key="cont" data-value="qualquer" type="button"><i class="fas fa-globe"></i><span>Tanto faz</span></button>
+                    </div>
+                </div>
+                <div class="quiz-step" data-step="3">
+                    <h3 class="quiz-q">Qual o ritmo ideal?</h3>
+                    <div class="quiz-options">
+                        <button class="quiz-opt" data-key="ritmo" data-value="relax" type="button"><i class="fas fa-mug-hot"></i><span>Relax total</span></button>
+                        <button class="quiz-opt" data-key="ritmo" data-value="equilibrado" type="button"><i class="fas fa-scale-balanced"></i><span>Equilibrado</span></button>
+                        <button class="quiz-opt" data-key="ritmo" data-value="intenso" type="button"><i class="fas fa-bolt"></i><span>Intenso</span></button>
+                    </div>
+                </div>
+                <div class="quiz-step quiz-result" data-step="result">
+                    <h3 class="quiz-q">Seu momento combina com:</h3>
+                    <div class="quiz-matches" id="quiz-matches"></div>
+                    <div class="quiz-result-cta">
+                        <a class="btn-primary btn-large" id="quiz-cta" href="#" target="_blank" rel="noopener">Quero um roteiro assim</a>
+                        <button class="quiz-restart" id="quiz-restart" type="button"><i class="fas fa-rotate-left"></i> Refazer o teste</button>
+                    </div>
+                </div>
+                <div class="quiz-nav">
+                    <button class="quiz-back" id="quiz-back" type="button" style="visibility:hidden;"><i class="fas fa-arrow-left"></i> Voltar</button>
+                    <span class="quiz-count"><span id="quiz-cur">1</span> de 3</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAPA -->
+    <section class="map-explorer-section" id="explorador">
+        <div class="container">
+            <div class="section-header">
+                <span class="eyebrow">O mundo te espera</span>
+                <h2 class="section-title">De onde virá sua próxima inspiração?</h2>
+                <p class="section-desc">Passeie pelo mapa e espie os destinos que já desenhamos.</p>
+            </div>
+            <div class="map-wrapper">
+                <div id="map-main"></div>
+                <div class="map-controls">
+                    <button id="zoom-in" aria-label="Aproximar"><i class="fas fa-plus"></i></button>
+                    <button id="zoom-out" aria-label="Afastar"><i class="fas fa-minus"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- O QUE INCLUÍMOS -->
+    <section class="sectionenciais" id="o-que-incluimos">
+        <div class="container">
+            <div class="section-header">
+                <span class="eyebrow">Você merece mais</span>
+                <h2 class="section-title">O que está incluído</h2>
+                <p class="section-desc">Consultoria completa. Sem surpresas. Transparência do começo ao fim.</p>
+            </div>
+            <div class="diferenciais-grid">
+                <div class="diferencial-card">
+                    <h3>Planejamento Completo</h3>
+                    <ul>
+                        <li>Roteiro personalizado</li>
+                        <li>Hotéis selecionados</li>
+                        <li>Ingressos e atividades</li>
+                        <li>Documentos e seguro</li>
+                    </ul>
+                </div>
+                <div class="diferencial-card">
+                    <h3>Transfer Executivo</h3>
+                    <ul>
+                        <li>Ida ao aeroporto</li>
+                        <li>Volta do aeroporto</li>
+                        <li>Serviço profissional</li>
+                        <li>Opcional ou incluído</li>
+                    </ul>
+                </div>
+                <div class="diferencial-card">
+                    <h3>Suporte Total</h3>
+                    <ul>
+                        <li>Durante toda a viagem</li>
+                        <li>Em caso de emergências</li>
+                        <li>Dúvidas e ajustes</li>
+                        <li>Até você chegar em casa</li>
+                    </ul>
+                </div>
+                <div class="diferencial-card">
+                    <h3>Transparência</h3>
+                    <ul>
+                        <li>Consulta gratuita</li>
+                        <li>Sem surpresas</li>
+                        <li>Preço justo</li>
+                        <li>Orçamento personalizado</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUEM SOMOS -->
+    <section class="quem-somos" id="quem-somos">
+        <div class="container">
+            <div class="quem-somos-wrapper">
+                <div class="quem-somos-img">
+                    <img loading="lazy" decoding="async" src="nicholas e giovana.jpg" alt="Nicholas Joazeiro e Giovana Konrath">
+                </div>
+                <div class="quem-somos-content">
+                    <span class="eyebrow">Quem cuida da sua viagem</span>
+                    <h2 class="section-title">Somos Nicholas e Giovana.</h2>
+                    <p class="lead-text">Apaixonados por viagens e por criar experiências que ficam pra vida toda.</p>
+                    <p>Acreditamos que planejar uma viagem deveria ser tão prazeroso quanto vivê-la. Por isso assumimos toda a complexidade, a logística, as reservas, os imprevistos, pra que sua única preocupação seja colecionar memórias.</p>
+                    <p>Cada roteiro nasce de uma conversa, não de um catálogo. É desenhado à mão, com a precisão de um arquiteto e a alma de quem também ama partir.</p>
+                    <p class="signature">Nicholas &amp; Giovana, Terra Venture</p>
+                    <a href="https://wa.me/5551994596233?text=Olá Nicholas e Giovana! Gostaria de conversar sobre minha próxima viagem." class="btn-primary" target="_blank" style="margin-top:20px;">Conversar com a gente</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEPOIMENTOS -->
+    <section class="testimonials" id="depoimentos">
+        <div class="container">
+            <div class="section-header">
+                <span class="eyebrow">Experiências reais</span>
+                <h2 class="section-title">Quem viajou, conta.</h2>
+                <p class="section-desc">Histórias de clientes que confiaram seus sonhos à nossa curadoria.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card testimonial-featured">
+                    <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
+                    <p class="testimonial-text">"Procurar a Terra Venture foi a melhor coisa que fiz. Quando decidi conhecer a Itália não tinha ideia de por onde começar, e o Nicholas não só montou o roteiro como cuidou de hospedagem e seguro, sempre à disposição pra tudo. Recomendo 100%, superou minha expectativa!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-img"><img loading="lazy" src="Zoraia Joazeiro.jpg" alt="Zoraia Joazeiro"></div>
+                        <div class="author-info">
+                            <h4 class="author-name">Zoraia Joazeiro</h4>
+                            <p class="author-destination">Itália</p>
+                            <div class="author-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
+                    <p class="testimonial-text">"Passando pra agradecer a organização da viagem, a hospedagem, os ingressos e o suporte quando ficamos sem o celular com o endereço do Airbnb. Sem sua ajuda não teria sido tão tranquilo. Até a próxima, com certeza!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-img"><img loading="lazy" src="marcia Italia.jpeg" alt="Márcia Reis"></div>
+                        <div class="author-info">
+                            <h4 class="author-name">Márcia Reis</h4>
+                            <p class="author-destination">Itália</p>
+                            <div class="author-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
+                    <p class="testimonial-text">"Viajar pro Rio com a Terra Venture foi uma experiência sem igual. Recebemos auxílio do planejamento até a volta pra casa, dicas ótimas do que fazer e ajuda com toda a burocracia do aeroporto. Foi tudo muito tranquilo."</p>
+                    <div class="testimonial-author">
+                        <div class="author-img"><img loading="lazy" src="gabriel dilly.jpg" alt="Gabriel Dilly"></div>
+                        <div class="author-info">
+                            <h4 class="author-name">Gabriel Dilly</h4>
+                            <p class="author-destination">Rio de Janeiro</p>
+                            <div class="author-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
+                    <p class="testimonial-text">"Nossa experiência foi ótima! Atendimento super atencioso e o processo pra contratar o seguro viagem foi fácil e rápido, tudo bem detalhado. Com certeza fez diferença viajar com mais segurança e suporte."</p>
+                    <div class="testimonial-author">
+                        <div class="author-img"><img loading="lazy" src="julia e manuela.png" alt="Júlia & Manuela"></div>
+                        <div class="author-info">
+                            <h4 class="author-name">Júlia &amp; Manuela</h4>
+                            <p class="author-destination">Buenos Aires</p>
+                            <div class="author-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
+                    <p class="testimonial-text">"A experiência do passeio pra Bonito/MS foi extremamente positiva. Bem organizado, passeios ótimos com contato único com a natureza. Hotel, refeições, receptivo e transfers de qualidade. Atendimento acolhedor e eficiente, do início ao pós-venda. Recomendamos!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-img"><img loading="lazy" src="rui bartmer.jpeg" alt="Joice & Rui"></div>
+                        <div class="author-info">
+                            <h4 class="author-name">Joice &amp; Rui</h4>
+                            <p class="author-destination">Bonito / MS</p>
+                            <div class="author-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMUNIDADE -->
+    <section class="comunidade" id="comunidade">
+        <div class="container">
+            <div class="section-header">
+                <span class="eyebrow">#ViajeComATerra</span>
+                <h2 class="section-title">Quem já foi com a Terra Venture</h2>
+                <p class="section-desc">Momentos reais de quem confiou suas viagens à nossa curadoria.</p>
+            </div>
+            <div class="comunidade-grid">
+                <div class="comunidade-item">
+                    <img loading="lazy" decoding="async" src="Zoraia Joazeiro.jpg" alt="Zoraia, cliente na Itália">
+                    <div class="com-quote"><p class="com-text">"Superou minha expectativa! Recomendo 100%."</p><span class="com-name">Zoraia · Itália</span></div>
+                </div>
+                <div class="comunidade-item">
+                    <img loading="lazy" decoding="async" src="rui bartmer.jpeg" alt="Joice e Rui em Bonito/MS">
+                    <div class="com-quote"><p class="com-text">"Passeios ótimos e atendimento acolhedor. Recomendamos!"</p><span class="com-name">Joice & Rui · Bonito/MS</span></div>
+                </div>
+                <div class="comunidade-item">
+                    <img loading="lazy" decoding="async" src="gabriel dilly.jpg" alt="Gabriel no Rio de Janeiro">
+                    <div class="com-quote"><p class="com-text">"Uma experiência sem igual, do planejamento até a volta."</p><span class="com-name">Gabriel · Rio de Janeiro</span></div>
+                </div>
+                <div class="comunidade-item">
+                    <img loading="lazy" decoding="async" src="julia e manuela.png" alt="Júlia e Manuela em Buenos Aires">
+                    <div class="com-quote"><p class="com-text">"Atendimento atencioso. Viajamos com muito mais segurança."</p><span class="com-name">Júlia & Manuela · Buenos Aires</span></div>
+                </div>
+                <div class="comunidade-item">
+                    <img loading="lazy" decoding="async" src="marcia Italia.jpeg" alt="Márcia na Itália">
+                    <div class="com-quote"><p class="com-text">"Suporte impecável. Até a próxima com certeza!"</p><span class="com-name">Márcia · Itália</span></div>
+                </div>
+                <div class="comunidade-item">
+                    <img loading="lazy" decoding="async" src="nicholas e giovana.jpg" alt="Nicholas e Giovana, Terra Venture">
+                    <div class="com-quote"><p class="com-text">"Cuidamos de cada detalhe, do seu sonho até a sua volta."</p><span class="com-name">Nicholas & Giovana · Fundadores</span></div>
+                </div>
+            </div>
+            <div class="comunidade-cta">
+                <a href="https://instagram.com/terraventureviagens" target="_blank" rel="noopener" class="btn-outline-white"><i class="fab fa-instagram"></i>&nbsp; @terraventureviagens</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <span class="eyebrow">Dúvidas?</span>
+                <h2 class="section-title">Perguntas frequentes</h2>
+                <p class="section-desc">As principais dúvidas sobre nossa consultoria.</p>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <button class="faq-button"><span class="faq-title">Quanto custa uma consultoria?</span><i class="fas fa-chevron-down"></i></button>
+                    <div class="faq-content"><p>Os preços variam de acordo com destino, duração e suas preferências. O transfer executivo é opcional ou pode ser incluído no pacote. Na consulta inicial entendemos seu orçamento e criamos uma proposta personalizada, sem surpresas.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-button"><span class="faq-title">Vocês trabalham com quais destinos?</span><i class="fas fa-chevron-down"></i></button>
+                    <div class="faq-content"><p>Com qualquer destino que você sonhe! Itália, Buenos Aires, Rio, Europa, América Latina, Ásia... Se existe um lugar que você quer conhecer, a gente organiza. Nossa rede global dá acesso a propriedades exclusivas e experiências autênticas em qualquer canto do mundo.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-button"><span class="faq-title">Como funciona o transfer executivo?</span><i class="fas fa-chevron-down"></i></button>
+                    <div class="faq-content"><p>Você é buscado em casa e levado ao aeroporto. Na volta, o mesmo: buscamos você no aeroporto e deixamos em casa. Serviço profissional, confortável e confiável, perfeito pra sair tranquilo, sem se preocupar com estacionamento ou trânsito.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-button"><span class="faq-title">E se eu não souber para onde ir?</span><i class="fas fa-chevron-down"></i></button>
+                    <div class="faq-content"><p>Ótimo! Essa é a nossa especialidade. Na consulta inicial entendemos seus interesses, orçamento e época ideal, e sugerimos o destino perfeito pra você. Isso é parte do valor que entregamos, não é só planejamento, é consultoria de verdade.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-button"><span class="faq-title">Qual é o próximo passo?</span><i class="fas fa-chevron-down"></i></button>
+                    <div class="faq-content"><p>Manda uma mensagem no WhatsApp! Você conta um pouco sobre você e sua viagem dos sonhos. Sem compromisso, a conversa inicial é gratuita, e a gente entende se consegue realizar seu sonho da melhor forma possível.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-button"><span class="faq-title">Vocês vendem pacotes prontos?</span><i class="fas fa-chevron-down"></i></button>
+                    <div class="faq-content"><p>Não. Só fazemos consultoria personalizada. Cada viagem é desenhada à mão, refletindo seus interesses, ritmo, orçamento e desejos. Por isso cada experiência Terra Venture é única.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section class="contato" id="contato">
+        <div class="container">
+            <div class="contato-wrapper">
+                <div class="contato-info">
+                    <span class="eyebrow">Seu próximo capítulo</span>
+                    <h2 class="section-title">Bora tirar do papel?</h2>
+                    <p><strong>Conversa gratuita, sem compromisso.</strong> A gente entende o seu sonho de viagem e cria algo único pra você.</p>
+                    <p>Ou preenche o formulário, nossa equipe responde em até 24 horas.</p>
+                    <div class="contact-details">
+                        <div class="detail-item">
+                            <i class="fab fa-whatsapp"></i>
+                            <div><h5>WhatsApp</h5><a href="https://wa.me/5551994596233" target="_blank">+55 51 99459-6233</a></div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="far fa-envelope"></i>
+                            <div><h5>Email</h5><p>contato@terraventureviagens.com.br</p></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contato-form">
+                    <form id="briefingForm">
+                        <div class="form-group">
+                            <label for="name">Nome completo</label>
+                            <input type="text" id="name" placeholder="Como gosta de ser chamado" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">WhatsApp</label>
+                            <input type="tel" id="phone" placeholder="(00) 00000-0000" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="destination">Destino dos sonhos (ou deixe a gente sugerir)</label>
+                            <input type="text" id="destination" placeholder="Ex: Safári na África, Costa Amalfitana...">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Conte um pouco sobre a ocasião</label>
+                            <textarea id="message" rows="4" placeholder="Ex: Lua de mel, aniversário, viagem em família..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary w-100 mt-2">Enviar solicitação</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-main">
+            <div class="container footer-grid">
+                <div class="footer-brand">
+                    <h3 class="logo-text">Terra Venture</h3>
+                    <p>A essência da aventura com o conforto da exclusividade. Do sonho ao retorno.</p>
+                    <div class="footer-social" style="margin-top:16px;">
+                        <a href="https://www.instagram.com/terraventureviagens/" target="_blank" aria-label="Instagram" style="display:inline-flex;align-items:center;gap:8px;color:var(--bone-dim);font-size:0.95rem;"><i class="fab fa-instagram" style="font-size:1.3rem;"></i> @terraventureviagens</a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="#quem-somos">A Agência</a></li>
+                        <li><a href="destinos.html">Destinos</a></li>
+                        <li><a href="#quiz">Descubra seu destino</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                        <li><a href="transfer-executivo.html">Transfer Executivo</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><a href="https://wa.me/5551994596233" target="_blank">WhatsApp</a></li>
+                        <li><a href="mailto:contato@terraventureviagens.com.br">Email</a></li>
+                        <li><a href="https://www.instagram.com/terraventureviagens/" target="_blank">Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container"><p>&copy; 2026 Terra Venture Viagens. Todos os direitos reservados.</p></div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/5551994596233" class="whatsapp-float pulse" target="_blank" aria-label="Falar com um Guia Especialista" data-tooltip="Falar com um Guia Especialista">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Map Preview Card -->
+    <div id="map-preview" class="map-preview-card">
+        <h3 id="preview-title" class="preview-title">Destino</h3>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

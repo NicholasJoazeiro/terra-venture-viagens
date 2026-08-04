@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nossos Destinos | Terra Venture Viagens</title>
+    <link rel="icon" type="image/jpeg" href="Icon.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="terra.css">
+    <meta name="description" content="Todos os destinos da Terra Venture: da Patagônia ao Egito, roteiros exclusivos desenhados à mão.">
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','1383241600338162');fbq('track','PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1383241600338162&ev=PageView&noscript=1"/></noscript>
+</head>
+<body>
+    <header class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">Terra Venture</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html#quem-somos">A Terra Venture</a></li>
+                    <li><a href="destinos.html">Destinos</a></li>
+                    <li><a href="index.html#quiz">Descubra</a></li>
+                    <li><a href="blog.html">Diário</a></li>
+                    <li><a href="https://wa.me/5551994596233?text=Olá! Gostaria de uma consultoria de viagem." class="btn-primary nav-btn" target="_blank">Conversar</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="page-hero-bg"><img src="https://images.pexels.com/photos/2356045/pexels-photo-2356045.jpeg?auto=compress&cs=tinysrgb&w=1920" alt="" loading="eager"></div>
+        <div class="container">
+            <span class="eyebrow">Curadoria Terra Venture</span>
+            <h1>Nossas Curadorias</h1>
+            <p>Uma seleção dos lugares mais extraordinários do planeta, desenhada para quem busca autenticidade e conforto.</p>
+        </div>
+    </section>
+
+    <section class="dest-section">
+        <div class="container">
+            <div class="dest-filters">
+                <div>
+                    <div class="dest-filter-label" style="text-align:center;margin-bottom:10px;">Continente</div>
+                    <div class="dest-filter-row" id="filter-continent">
+                        <button class="dest-chip active" data-group="cont" data-filter="all" type="button">Todos</button>
+                        <button class="dest-chip" data-group="cont" data-filter="america" type="button">América</button>
+                        <button class="dest-chip" data-group="cont" data-filter="europa" type="button">Europa</button>
+                        <button class="dest-chip" data-group="cont" data-filter="asia" type="button">Ásia</button>
+                        <button class="dest-chip" data-group="cont" data-filter="africa" type="button">África</button>
+                        <button class="dest-chip" data-group="cont" data-filter="oceania" type="button">Oceania</button>
+                        <button class="dest-chip" data-group="cont" data-filter="artico" type="button">Ártico</button>
+                        <button class="dest-chip" data-group="cont" data-filter="antartida" type="button">Antártida</button>
+                    </div>
+                </div>
+                <div>
+                    <div class="dest-filter-label" style="text-align:center;margin:14px 0 10px;">Estilo de viagem</div>
+                    <div class="dest-filter-row" id="filter-style">
+                        <button class="dest-chip active" data-group="style" data-filter="all" type="button">Todos</button>
+                        <button class="dest-chip" data-group="style" data-filter="montanha" type="button">Montanha</button>
+                        <button class="dest-chip" data-group="style" data-filter="urbano" type="button">Urbano</button>
+                        <button class="dest-chip" data-group="style" data-filter="praia" type="button">Praia</button>
+                        <button class="dest-chip" data-group="style" data-filter="vida-selvagem" type="button">Vida Selvagem</button>
+                        <button class="dest-chip" data-group="style" data-filter="historia" type="button">História</button>
+                    </div>
+                </div>
+            </div>
+            <div class="dest-grid" id="dest-grid">
+                <a class="dest-card" href="patagonia.html" data-continent="america" data-style="montanha">
+                    <div class="dest-img" style="background-image:url('Patagonia.jpg');"></div>
+                    <div class="dest-ov">
+                        <span class="dest-eyebrow">América</span>
+                        <h3 class="dest-name">Patagônia</h3>
+                        <p class="dest-desc">Argentina & Chile</p>
+                        <span class="dest-go">Explorar <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a class="dest-card" href="santiago.html" data-continent="america" data-style="urbano">
+                    <div class="dest-img" style="background-image:url('dest_santiago_skycostanera.jpg');"></div>
+                    <div class="dest-ov">
+                        <span class="dest-eyebrow">América</span>
+                        <h3 class="dest-name">Santiago</h3>
+                        <p class="dest-desc">Chile</p>
+                        <span class="dest-go">Explorar <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a class="dest-card" href="paris.html" data-continent="europa" data-style="urbano">
+                    <div class="dest-img" style="background-image:url('https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg?auto=compress&cs=tinysrgb&w=800');"></div>
+                    <div class="dest-ov">
+                        <span class="dest-eyebrow">Europa</span>
+                        <h3 class="dest-name">Paris Secreta</h3>
+                        <p class="dest-desc">França</p>
+                        <span class="dest-go">Explorar <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a class="dest-card" href="japao.html" data-continent="asia" data-style="historia">
+                    <div class="dest-img" style="background-image:url('https://images.pexels.com/photos/2187605/pexels-photo-2187605.jpeg?auto=compress&cs=tinysrgb&w=800');"></div>
+                    <div class="dest-ov">
+                        <span class="dest-eyebrow">Ásia</span>
+                        <h3 class="dest-name">Japão Clássico</h3>
+                        <p class="dest-desc">Japão</p>
+                        <span class="dest-go">Explorar <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a class="dest-card" href="islandia.html" data-continent="artico" data-style="montanha">
+                    <div class="dest-img" style="background-image:url('islandia.png');"></div>
+                    <div class="dest-ov">
+                        <span class="dest-eyebrow">Ártico</span>
+                        <h3 class="dest-name">Islândia</h3>
+                        <p class="dest-desc">Terra do Gelo e Fogo</p>
+                        <span class="dest-go">Explorar <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a class="dest-card" href="tanzania.html" data-continent="africa" data-style="vida-selvagem">
+                    <div class="dest-img" style="background-image:url('tanzania.png');"></div>
+                    <div class="dest-ov">
+                        <span class="dest-eyebrow">África</span>
+                        <h3 class="dest-name">Safari na Tanzânia</h3>
+                        <p class="dest-desc">Vida Selvagem</p>
+                        <span class="dest-go">Explorar <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a class="dest-card" href="machu-picchu.html" data-continent="america" data-style="historia">
+                    <div class="dest-img" style="background-image:url('machu_picchu.png');"></div>
+                    <div class="dest-ov">
+                        <span class="dest-eyebrow">América</span>
+                        <h3 class="dest-name">Machu Picchu</h3>
+                        <p class="dest-desc">Peru Sagrado</p>
+                        <span class="dest-go">Explorar <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a class="dest-card" href="costa-amalfitana.html" data-continent="europa" data-style="praia">
+                    <div class="dest-img" style="background-image:url('costa_amalfitana.png');"></div>
+                    <div class="dest-ov">
+                        <span class="dest-eyebrow">Europa</span>
+                        <h3 class="dest-name">Costa Amalfitana</h3>
+                        <p class="dest-desc">Itália Charmosa</p>
+                        <span class="dest-go">Explorar <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a class="dest-card" href="nova-zelandia.html" data-continent="oceania" data-style="montanha">
+                    <div class="dest-img" style="background-image:url('nova_zelandia.png');"></div>
+                    <div class="dest-ov">
+                        <span class="dest-eyebrow">Oceania</span>
+                        <h3 class="dest-name">Nova Zelândia</h3>
+                        <p class="dest-desc">Aventura Pura</p>
+                        <span class="dest-go">Explorar <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a class="dest-card" href="egito.html" data-continent="africa" data-style="historia">
+                    <div class="dest-img" style="background-image:url('egito.png');"></div>
+                    <div class="dest-ov">
+                        <span class="dest-eyebrow">África</span>
+                        <h3 class="dest-name">Egito Histórico</h3>
+                        <p class="dest-desc">O Berço da Civilização</p>
+                        <span class="dest-go">Explorar <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a class="dest-card" href="bali.html" data-continent="asia" data-style="praia">
+                    <div class="dest-img" style="background-image:url('blog_bali.png');"></div>
+                    <div class="dest-ov">
+                        <span class="dest-eyebrow">Ásia</span>
+                        <h3 class="dest-name">Bali</h3>
+                        <p class="dest-desc">A Ilha dos Deuses com foco puramente espiritual.</p>
+                        <span class="dest-go">Explorar <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a class="dest-card" href="santorini.html" data-continent="europa" data-style="praia">
+                    <div class="dest-img" style="background-image:url('blog_santorini.png');"></div>
+                    <div class="dest-ov">
+                        <span class="dest-eyebrow">Europa</span>
+                        <h3 class="dest-name">Santorini</h3>
+                        <p class="dest-desc">Cúpulas azuis e a caldera mais famosa das Cíclades.</p>
+                        <span class="dest-go">Explorar <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a class="dest-card" href="alpes-suicos.html" data-continent="europa" data-style="montanha">
+                    <div class="dest-img" style="background-image:url('dest_alpes.jpg');"></div>
+                    <div class="dest-ov">
+                        <span class="dest-eyebrow">Europa</span>
+                        <h3 class="dest-name">Alpes Suíços</h3>
+                        <p class="dest-desc">O pico de Zermatt e lagos alpinos impecáveis.</p>
+                        <span class="dest-go">Explorar <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a class="dest-card" href="bora-bora.html" data-continent="oceania" data-style="praia">
+                    <div class="dest-img" style="background-image:url('blog_bora_bora.png');"></div>
+                    <div class="dest-ov">
+                        <span class="dest-eyebrow">Oceania</span>
+                        <h3 class="dest-name">Bora Bora</h3>
+                        <p class="dest-desc">A joia cristalina do Pacífico Sul.</p>
+                        <span class="dest-go">Explorar <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a class="dest-card" href="marrakech.html" data-continent="africa" data-style="urbano">
+                    <div class="dest-img" style="background-image:url('dest_marrakech.jpg');"></div>
+                    <div class="dest-ov">
+                        <span class="dest-eyebrow">África</span>
+                        <h3 class="dest-name">Marrakech</h3>
+                        <p class="dest-desc">A Cidade Vermelha e os Riads majestosos.</p>
+                        <span class="dest-go">Explorar <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a class="dest-card" href="banff.html" data-continent="america" data-style="montanha">
+                    <div class="dest-img" style="background-image:url('patagonia_torres.png');"></div>
+                    <div class="dest-ov">
+                        <span class="dest-eyebrow">América</span>
+                        <h3 class="dest-name">Banff</h3>
+                        <p class="dest-desc">Beleza rochosa brutal recortada por lagos de esmeralda.</p>
+                        <span class="dest-go">Explorar <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a class="dest-card" href="petra.html" data-continent="asia" data-style="historia">
+                    <div class="dest-img" style="background-image:url('dest_petra.jpg');"></div>
+                    <div class="dest-ov">
+                        <span class="dest-eyebrow">Ásia</span>
+                        <h3 class="dest-name">Petra</h3>
+                        <p class="dest-desc">A Cidade Rosa escondida nas areias do deserto.</p>
+                        <span class="dest-go">Explorar <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a class="dest-card" href="atacama.html" data-continent="america" data-style="montanha">
+                    <div class="dest-img" style="background-image:url('blog_atacama.png');"></div>
+                    <div class="dest-ov">
+                        <span class="dest-eyebrow">América</span>
+                        <h3 class="dest-name">Deserto do Atacama</h3>
+                        <p class="dest-desc">O céu mais limpo da Terra num cenário marciano.</p>
+                        <span class="dest-go">Explorar <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a class="dest-card" href="courchevel.html" data-continent="europa" data-style="montanha">
+                    <div class="dest-img" style="background-image:url('blog_courchevel.png');"></div>
+                    <div class="dest-ov">
+                        <span class="dest-eyebrow">Europa</span>
+                        <h3 class="dest-name">Courchevel</h3>
+                        <p class="dest-desc">O epicentro do esqui de luxo mundial.</p>
+                        <span class="dest-go">Explorar <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a class="dest-card" href="maldivas.html" data-continent="asia" data-style="praia">
+                    <div class="dest-img" style="background-image:url('blog_maldivas.png');"></div>
+                    <div class="dest-ov">
+                        <span class="dest-eyebrow">Ásia</span>
+                        <h3 class="dest-name">Ilhas Maldivas</h3>
+                        <p class="dest-desc">Um santuário atemporal sobre os atóis indianos.</p>
+                        <span class="dest-go">Explorar <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a class="dest-card" href="capadocia.html" data-continent="europa" data-style="historia">
+                    <div class="dest-img" style="background-image:url('blog_capadocia.png');"></div>
+                    <div class="dest-ov">
+                        <span class="dest-eyebrow">Europa</span>
+                        <h3 class="dest-name">Capadócia</h3>
+                        <p class="dest-desc">Revoada de balões nas fantásticas chaminés de fada.</p>
+                        <span class="dest-go">Explorar <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a class="dest-card" href="uzbequistao.html" data-continent="asia" data-style="historia">
+                    <div class="dest-img" style="background-image:url('blog_uzbequistao.png');"></div>
+                    <div class="dest-ov">
+                        <span class="dest-eyebrow">Ásia</span>
+                        <h3 class="dest-name">Uzbequistão</h3>
+                        <p class="dest-desc">O coração azul cintilante da antiga Rota da Seda.</p>
+                        <span class="dest-go">Explorar <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a class="dest-card" href="ilha-de-pascoa.html" data-continent="oceania" data-style="historia">
+                    <div class="dest-img" style="background-image:url('dest_pascoa.jpg');"></div>
+                    <div class="dest-ov">
+                        <span class="dest-eyebrow">Oceania</span>
+                        <h3 class="dest-name">Ilha de Páscoa</h3>
+                        <p class="dest-desc">Os misteriosos Moais em isolamento no Pacífico.</p>
+                        <span class="dest-go">Explorar <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a class="dest-card" href="noronha.html" data-continent="america" data-style="praia">
+                    <div class="dest-img" style="background-image:url('blog_noronha.png');"></div>
+                    <div class="dest-ov">
+                        <span class="dest-eyebrow">América</span>
+                        <h3 class="dest-name">Fernando de Noronha</h3>
+                        <p class="dest-desc">O paraíso intocado e protegido da costa brasileira.</p>
+                        <span class="dest-go">Explorar <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a class="dest-card" href="dolomitas.html" data-continent="europa" data-style="montanha">
+                    <div class="dest-img" style="background-image:url('dest_dolomitas.jpg');"></div>
+                    <div class="dest-ov">
+                        <span class="dest-eyebrow">Europa</span>
+                        <h3 class="dest-name">Dolomitas</h3>
+                        <p class="dest-desc">Os cumes dramáticos que definem o esplendor italiano.</p>
+                        <span class="dest-go">Explorar <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a class="dest-card" href="seychelles.html" data-continent="africa" data-style="praia">
+                    <div class="dest-img" style="background-image:url('dest_seychelles.jpg');"></div>
+                    <div class="dest-ov">
+                        <span class="dest-eyebrow">África</span>
+                        <h3 class="dest-name">Seychelles</h3>
+                        <p class="dest-desc">O arquipélago mais exclusivo do Oceano Índico.</p>
+                        <span class="dest-go">Explorar <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a class="dest-card" href="cidade-do-cabo.html" data-continent="africa" data-style="urbano">
+                    <div class="dest-img" style="background-image:url('dest_capetown.jpg');"></div>
+                    <div class="dest-ov">
+                        <span class="dest-eyebrow">África</span>
+                        <h3 class="dest-name">Cidade do Cabo</h3>
+                        <p class="dest-desc">Onde dois oceanos se encontram aos pés da Table Mountain.</p>
+                        <span class="dest-go">Explorar <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a class="dest-card" href="ruanda.html" data-continent="africa" data-style="vida-selvagem">
+                    <div class="dest-img" style="background-image:url('dest_ruanda.jpg');"></div>
+                    <div class="dest-ov">
+                        <span class="dest-eyebrow">África</span>
+                        <h3 class="dest-name">Ruanda</h3>
+                        <p class="dest-desc">O encontro com os gorilas-das-montanhas do Volcanoes National Park.</p>
+                        <span class="dest-go">Explorar <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a class="dest-card" href="namibia.html" data-continent="africa" data-style="montanha">
+                    <div class="dest-img" style="background-image:url('dest_namibia.jpg');"></div>
+                    <div class="dest-ov">
+                        <span class="dest-eyebrow">África</span>
+                        <h3 class="dest-name">Namíbia</h3>
+                        <p class="dest-desc">O deserto do Namibe e as dunas vermelhas de Sossusvlei.</p>
+                        <span class="dest-go">Explorar <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a class="dest-card" href="vietna.html" data-continent="asia" data-style="praia">
+                    <div class="dest-img" style="background-image:url('dest_halong.jpg');"></div>
+                    <div class="dest-ov">
+                        <span class="dest-eyebrow">Ásia</span>
+                        <h3 class="dest-name">Vietnã</h3>
+                        <p class="dest-desc">Baía de Ha Long e a cidade antiga de Hoi An.</p>
+                        <span class="dest-go">Explorar <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a class="dest-card" href="india.html" data-continent="asia" data-style="historia">
+                    <div class="dest-img" style="background-image:url('dest_india.jpg');"></div>
+                    <div class="dest-ov">
+                        <span class="dest-eyebrow">Ásia</span>
+                        <h3 class="dest-name">Índia</h3>
+                        <p class="dest-desc">O Triângulo Dourado e os palácios do Rajastão.</p>
+                        <span class="dest-go">Explorar <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a class="dest-card" href="sri-lanka.html" data-continent="asia" data-style="vida-selvagem">
+                    <div class="dest-img" style="background-image:url('dest_srilanka.jpg');"></div>
+                    <div class="dest-ov">
+                        <span class="dest-eyebrow">Ásia</span>
+                        <h3 class="dest-name">Sri Lanka</h3>
+                        <p class="dest-desc">Elefantes, plantações de chá e a fortaleza de Sigiriya.</p>
+                        <span class="dest-go">Explorar <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a class="dest-card" href="laponia.html" data-continent="artico" data-style="montanha">
+                    <div class="dest-img" style="background-image:url('dest_laponia.jpg');"></div>
+                    <div class="dest-ov">
+                        <span class="dest-eyebrow">Ártico</span>
+                        <h3 class="dest-name">Lapônia Finlandesa</h3>
+                        <p class="dest-desc">Auroras boreais, iglus de vidro e trenós puxados por huskies.</p>
+                        <span class="dest-go">Explorar <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a class="dest-card" href="antartida.html" data-continent="antartida" data-style="vida-selvagem">
+                    <div class="dest-img" style="background-image:url('dest_antartida.jpg');"></div>
+                    <div class="dest-ov">
+                        <span class="dest-eyebrow">Antártida</span>
+                        <h3 class="dest-name">Antártida</h3>
+                        <p class="dest-desc">Expedição de cruzeiro pela Península Antártica.</p>
+                        <span class="dest-go">Explorar <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a class="dest-card" href="grande-barreira-de-coral.html" data-continent="oceania" data-style="praia">
+                    <div class="dest-img" style="background-image:url('dest_australia.jpg');"></div>
+                    <div class="dest-ov">
+                        <span class="dest-eyebrow">Oceania</span>
+                        <h3 class="dest-name">Grande Barreira de Coral</h3>
+                        <p class="dest-desc">Whitsundays e o maior sistema de recifes do mundo.</p>
+                        <span class="dest-go">Explorar <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-main">
+            <div class="container footer-grid">
+                <div class="footer-brand">
+                    <h3 class="logo-text">Terra Venture</h3>
+                    <p>A essência da aventura com o conforto da exclusividade. Do sonho ao retorno.</p>
+                    <div class="footer-social" style="margin-top:16px;"><a href="https://www.instagram.com/terraventureviagens/" target="_blank" style="display:inline-flex;align-items:center;gap:8px;color:var(--bone-dim);font-size:.95rem;"><i class="fab fa-instagram" style="font-size:1.3rem;"></i> @terraventureviagens</a></div>
+                </div>
+                <div class="footer-links"><h4>Navegação</h4><ul>
+                    <li><a href="index.html#quem-somos">A Agência</a></li>
+                    <li><a href="destinos.html">Destinos</a></li>
+                    <li><a href="index.html#quiz">Descubra seu destino</a></li>
+                    <li><a href="index.html#contato">Contato</a></li>
+                </ul></div>
+                <div class="footer-links"><h4>Contato</h4><ul>
+                    <li><a href="https://wa.me/5551994596233" target="_blank">WhatsApp</a></li>
+                    <li><a href="mailto:contato@terraventureviagens.com.br">Email</a></li>
+                    <li><a href="transfer-executivo.html">Transfer Executivo</a></li>
+                </ul></div>
+            </div>
+        </div>
+        <div class="footer-bottom"><div class="container"><p>&copy; 2026 Terra Venture Viagens. Todos os direitos reservados.</p></div></div>
+    </footer>
+
+    <a href="https://wa.me/5551994596233" class="whatsapp-float pulse" target="_blank" aria-label="Falar com um Guia Especialista" data-tooltip="Falar com um Guia Especialista"><i class="fab fa-whatsapp"></i></a>
+
+    <script>
+    (function(){
+        var f={cont:"all",style:"all"};
+        var chips=document.querySelectorAll(".dest-chip");
+        var cards=document.querySelectorAll("#dest-grid .dest-card");
+        function apply(){
+            cards.forEach(function(c){
+                var ok=(f.cont==="all"||c.dataset.continent===f.cont)&&(f.style==="all"||c.dataset.style===f.style);
+                c.classList.toggle("dest-hidden",!ok);
+            });
+        }
+        chips.forEach(function(ch){
+            ch.addEventListener("click",function(){
+                var g=ch.dataset.group;
+                document.querySelectorAll('.dest-chip[data-group="'+g+'"]').forEach(function(x){x.classList.remove("active");});
+                ch.classList.add("active");
+                f[g]=ch.dataset.filter;
+                apply();
+            });
+        });
+    })();
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

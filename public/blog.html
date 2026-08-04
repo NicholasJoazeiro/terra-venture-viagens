@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diário de Bordo | Terra Venture Viagens</title>
+    <link rel="icon" type="image/jpeg" href="Icon.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="terra.css">
+    <meta name="description" content="Diário de Bordo da Terra Venture: histórias, guias e inspiração para a sua próxima grande viagem.">
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','1383241600338162');fbq('track','PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1383241600338162&ev=PageView&noscript=1"/></noscript>
+</head>
+<body>
+    <header class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">Terra Venture</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html#quem-somos">A Terra Venture</a></li>
+                    <li><a href="destinos.html">Destinos</a></li>
+                    <li><a href="index.html#quiz">Descubra</a></li>
+                    <li><a href="blog.html">Diário</a></li>
+                    <li><a href="https://wa.me/5551994596233?text=Olá! Gostaria de uma consultoria de viagem." class="btn-primary nav-btn" target="_blank">Conversar</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="page-hero-bg"><img src="https://images.pexels.com/photos/3155666/pexels-photo-3155666.jpeg?auto=compress&cs=tinysrgb&w=1920" alt="" loading="eager"></div>
+        <div class="container">
+            <span class="eyebrow">Diário de Bordo</span>
+            <h1>Histórias que inspiram partidas</h1>
+            <p>Guias, bastidores e inspiração para transformar vontade de viajar em próxima viagem.</p>
+        </div>
+    </section>
+
+    <section class="blog-section">
+        <div class="container">
+            <div class="dest-filters blog-filter">
+                <div class="dest-filter-row">
+                    <button class="dest-chip active" data-filter="all" type="button">Todos</button>
+                    <button class="dest-chip" data-filter="destinos" type="button">Destinos</button>
+                    <button class="dest-chip" data-filter="incriveis" type="button">Incríveis</button>
+                    <button class="dest-chip" data-filter="viajantes" type="button">Para Viajantes</button>
+                </div>
+            </div>
+            <div class="blog-grid" id="blog-grid">
+                <a href="blog-glamping-atacama.html" class="blog-card blog-featured" data-category="destinos">
+                    <div class="blog-card-img">
+                        <img loading="lazy" decoding="async" src="blog_atacama.png" alt="Glamping no Deserto de Atacama: Luxo sob o Céu Estrelado">
+                        <span class="blog-tag">Dicas em Destinos</span>
+                    </div>
+                    <div class="blog-card-body">
+                        <span class="blog-card-date"><i class="far fa-calendar-alt"></i> 24 de Março, 2026</span>
+                        <h3>Glamping no Deserto de Atacama: Luxo sob o Céu Estrelado</h3>
+                        <p>A experiência transformadora de dormir em lodges exclusivas no deserto mais árido do planeta.</p>
+                        <span class="blog-read-more">Leia mais <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="blog-patagonia-quando-ir.html" class="blog-card" data-category="destinos">
+                    <div class="blog-card-img">
+                        <img loading="lazy" decoding="async" src="blog_patagonia_roteiro.jpg" alt="Patagônia: Quando Ir e Como Montar o Roteiro Perfeito">
+                        <span class="blog-tag">Dicas em Destinos</span>
+                    </div>
+                    <div class="blog-card-body">
+                        <span class="blog-card-date"><i class="far fa-calendar-alt"></i> 27 de Julho, 2026</span>
+                        <h3>Patagônia: Quando Ir e Como Montar o Roteiro Perfeito</h3>
+                        <p>A janela certa, quantos dias reservar e a decisão entre lado chileno e argentino.</p>
+                        <span class="blog-read-more">Leia mais <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="blog-petra-amanhecer.html" class="blog-card" data-category="incriveis">
+                    <div class="blog-card-img">
+                        <img loading="lazy" decoding="async" src="blog_petra_amanhecer.jpg" alt="Petra ao Amanhecer: A Cidade Rosa Sem Multidões">
+                        <span class="blog-tag">Destinos Incríveis</span>
+                    </div>
+                    <div class="blog-card-body">
+                        <span class="blog-card-date"><i class="far fa-calendar-alt"></i> 24 de Julho, 2026</span>
+                        <h3>Petra ao Amanhecer: A Cidade Rosa Sem Multidões</h3>
+                        <p>Como atravessar o Siq no silêncio e ver o Tesouro antes que o dia comece.</p>
+                        <span class="blog-read-more">Leia mais <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="blog-amalfitana-de-barco.html" class="blog-card" data-category="incriveis">
+                    <div class="blog-card-img">
+                        <img loading="lazy" decoding="async" src="blog_amalfitana_barco.jpg" alt="Costa Amalfitana de Barco: A Itália que Poucos Veem">
+                        <span class="blog-tag">Experiências Únicas</span>
+                    </div>
+                    <div class="blog-card-body">
+                        <span class="blog-card-date"><i class="far fa-calendar-alt"></i> 20 de Julho, 2026</span>
+                        <h3>Costa Amalfitana de Barco: A Itália que Poucos Veem</h3>
+                        <p>Por que trocar a estrada pelo mar muda completamente a experiência na Campânia.</p>
+                        <span class="blog-read-more">Leia mais <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="blog-marrocos-alem-marrakech.html" class="blog-card" data-category="destinos">
+                    <div class="blog-card-img">
+                        <img loading="lazy" decoding="async" src="blog_marrocos_deserto.jpg" alt="Marrocos Além de Marrakech: Deserto, Atlas e Riads">
+                        <span class="blog-tag">Dicas em Destinos</span>
+                    </div>
+                    <div class="blog-card-body">
+                        <span class="blog-card-date"><i class="far fa-calendar-alt"></i> 16 de Julho, 2026</span>
+                        <h3>Marrocos Além de Marrakech: Deserto, Atlas e Riads</h3>
+                        <p>O país inteiro cabe em dez dias, e a medina é só o começo da história.</p>
+                        <span class="blog-read-more">Leia mais <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="blog-seguro-viagem.html" class="blog-card" data-category="viajantes">
+                    <div class="blog-card-img">
+                        <img loading="lazy" decoding="async" src="blog_seguro_viagem.jpg" alt="Seguro Viagem: O Que Realmente Importa na Hora de Escolher">
+                        <span class="blog-tag">Dicas para Viajantes</span>
+                    </div>
+                    <div class="blog-card-body">
+                        <span class="blog-card-date"><i class="far fa-calendar-alt"></i> 13 de Julho, 2026</span>
+                        <h3>Seguro Viagem: O Que Realmente Importa na Hora de Escolher</h3>
+                        <p>Cobertura mínima, letras miúdas e os erros que só aparecem quando você precisa acionar.</p>
+                        <span class="blog-read-more">Leia mais <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="blog-melhor-epoca-viajar.html" class="blog-card" data-category="viajantes">
+                    <div class="blog-card-img">
+                        <img loading="lazy" decoding="async" src="blog_melhor_epoca.jpg" alt="Melhor Época para Viajar: Um Guia por Estação e Continente">
+                        <span class="blog-tag">Dicas para Viajantes</span>
+                    </div>
+                    <div class="blog-card-body">
+                        <span class="blog-card-date"><i class="far fa-calendar-alt"></i> 9 de Julho, 2026</span>
+                        <h3>Melhor Época para Viajar: Um Guia por Estação e Continente</h3>
+                        <p>Alta, baixa e a temporada de ombro, o segredo de quem viaja bem gastando menos.</p>
+                        <span class="blog-read-more">Leia mais <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="blog-esqui-courchevel.html" class="blog-card" data-category="incriveis">
+                    <div class="blog-card-img">
+                        <img loading="lazy" decoding="async" src="blog_courchevel.png" alt="Esqui em Courchevel: O Refúgio Europeu de Inverno Definitivo">
+                        <span class="blog-tag">Destinos Incríveis</span>
+                    </div>
+                    <div class="blog-card-body">
+                        <span class="blog-card-date"><i class="far fa-calendar-alt"></i> 24 de Março, 2026</span>
+                        <h3>Esqui em Courchevel: O Refúgio Europeu de Inverno Definitivo</h3>
+                        <p>Pistas imaculadas, gastronomia estrelada e chalés aconchegantes no coração pulsante dos Alpes Franceses.</p>
+                        <span class="blog-read-more">Leia mais <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="blog-viagem-multigeracional.html" class="blog-card" data-category="viajantes">
+                    <div class="blog-card-img">
+                        <img loading="lazy" decoding="async" src="blog_trilha.png" alt="Como Organizar uma Viagem Multigeracional Inesquecível">
+                        <span class="blog-tag">Dicas para Viajantes</span>
+                    </div>
+                    <div class="blog-card-body">
+                        <span class="blog-card-date"><i class="far fa-calendar-alt"></i> 24 de Março, 2026</span>
+                        <h3>Como Organizar uma Viagem Multigeracional Inesquecível</h3>
+                        <p>Equilibrando descanso, aventura e logística para avós, pais e netos sem perder o fôlego ou o encanto.</p>
+                        <span class="blog-read-more">Leia mais <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="blog-maldivas-vs-seychelles.html" class="blog-card" data-category="destinos">
+                    <div class="blog-card-img">
+                        <img loading="lazy" decoding="async" src="blog_maldivas.png" alt="Maldivas vs. Seychelles: Qual Paraíso Escolher?">
+                        <span class="blog-tag">Destinos Incríveis</span>
+                    </div>
+                    <div class="blog-card-body">
+                        <span class="blog-card-date"><i class="far fa-calendar-alt"></i> 24 de Março, 2026</span>
+                        <h3>Maldivas vs. Seychelles: Qual Paraíso Escolher?</h3>
+                        <p>A eterna dúvida do Oceano Índico: bangalôs sobre as águas ou enormes rochas de granito cercadas por tartarugas.</p>
+                        <span class="blog-read-more">Leia mais <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="blog-expresso-do-oriente.html" class="blog-card" data-category="incriveis">
+                    <div class="blog-card-img">
+                        <img loading="lazy" decoding="async" src="blog_orient_express.png" alt="A Magia dos Trens de Luxo: A Bordo do Expresso do Oriente">
+                        <span class="blog-tag">Experiências Únicas</span>
+                    </div>
+                    <div class="blog-card-body">
+                        <span class="blog-card-date"><i class="far fa-calendar-alt"></i> 24 de Março, 2026</span>
+                        <h3>A Magia dos Trens de Luxo: A Bordo do Expresso do Oriente</h3>
+                        <p>O charme da Era Dourada das viagens ressurge sobre trilhos através da Europa em cabines de laca e cristal.</p>
+                        <span class="blog-read-more">Leia mais <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="blog-malas-safari.html" class="blog-card" data-category="viajantes">
+                    <div class="blog-card-img">
+                        <img loading="lazy" decoding="async" src="tanzania.png" alt="O Guia Definitivo para Fazer as Malas para um Safári de Luxo">
+                        <span class="blog-tag">Dicas para Viajantes</span>
+                    </div>
+                    <div class="blog-card-body">
+                        <span class="blog-card-date"><i class="far fa-calendar-alt"></i> 24 de Março, 2026</span>
+                        <h3>O Guia Definitivo para Fazer as Malas para um Safári de Luxo</h3>
+                        <p>Entenda por que tons neutros e tecidos tecnológicos são seus melhores amigos na África.</p>
+                        <span class="blog-read-more">Leia mais <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="blog-gastronomia-san-sebastian.html" class="blog-card" data-category="destinos">
+                    <div class="blog-card-img">
+                        <img loading="lazy" decoding="async" src="santiago_mercado.png" alt="Estrelas Michelin e Pintxos Mágicos em San Sebastián">
+                        <span class="blog-tag">Dicas em Destinos</span>
+                    </div>
+                    <div class="blog-card-body">
+                        <span class="blog-card-date"><i class="far fa-calendar-alt"></i> 24 de Março, 2026</span>
+                        <h3>Estrelas Michelin e Pintxos Mágicos em San Sebastián</h3>
+                        <p>Descubra como uma pequena cidade litorânea no País Basco concentra a maior densidade de estrelas Michelin do mundo.</p>
+                        <span class="blog-read-more">Leia mais <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="blog-retiros-wellness-suica.html" class="blog-card" data-category="viajantes">
+                    <div class="blog-card-img">
+                        <img loading="lazy" decoding="async" src="santiago_vinicola.png" alt="Retiros de Wellness na Suíça: Reiniciando Corpo e Mente">
+                        <span class="blog-tag">Bem-estar</span>
+                    </div>
+                    <div class="blog-card-body">
+                        <span class="blog-card-date"><i class="far fa-calendar-alt"></i> 24 de Março, 2026</span>
+                        <h3>Retiros de Wellness na Suíça: Reiniciando Corpo e Mente</h3>
+                        <p>A medicina alpina do futuro aliada à pureza das paisagens lacustres forma o verdadeiro epítome do luxo em saúde.</p>
+                        <span class="blog-read-more">Leia mais <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="blog-balao-capadocia.html" class="blog-card" data-category="incriveis">
+                    <div class="blog-card-img">
+                        <img loading="lazy" decoding="async" src="blog_capadocia.png" alt="Passeio de Balão na Capadócia: Sinfonia de Cores ao Amanhecer">
+                        <span class="blog-tag">Destinos Incríveis</span>
+                    </div>
+                    <div class="blog-card-body">
+                        <span class="blog-card-date"><i class="far fa-calendar-alt"></i> 24 de Março, 2026</span>
+                        <h3>Passeio de Balão na Capadócia: Sinfonia de Cores ao Amanhecer</h3>
+                        <p>Flutue serenamente entre as fadas de chaminé na Turquia num dos cartões postais alados mais belos do mundo.</p>
+                        <span class="blog-read-more">Leia mais <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="blog-rota-da-seda-uzbequistao.html" class="blog-card" data-category="destinos">
+                    <div class="blog-card-img">
+                        <img loading="lazy" decoding="async" src="blog_uzbequistao.png" alt="Explorando a Rota da Seda: Mistério e Azulejos no Uzbequistão">
+                        <span class="blog-tag">Destinos Incríveis</span>
+                    </div>
+                    <div class="blog-card-body">
+                        <span class="blog-card-date"><i class="far fa-calendar-alt"></i> 24 de Março, 2026</span>
+                        <h3>Explorando a Rota da Seda: Mistério e Azulejos no Uzbequistão</h3>
+                        <p>A reabertura suntuosa do coração da Eurásia atrai viajantes experientes em busca das madrasas com mosaicos.</p>
+                        <span class="blog-read-more">Leia mais <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="blog-aurora-boreal-islandia.html" class="blog-card" data-category="destinos">
+                    <div class="blog-card-img">
+                        <img loading="lazy" decoding="async" src="islandia.png" alt="A Magia da Aurora Boreal na Islândia">
+                        <span class="blog-tag">Dicas em Destinos</span>
+                    </div>
+                    <div class="blog-card-body">
+                        <span class="blog-card-date"><i class="far fa-calendar-alt"></i> 20 de Março, 2026</span>
+                        <h3>A Magia da Aurora Boreal na Islândia</h3>
+                        <p>Planeje a viagem perfeita para ver o maior espetáculo de luzes da natureza no ártico islandês.</p>
+                        <span class="blog-read-more">Leia mais <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="blog-turismo-sustentavel.html" class="blog-card" data-category="viajantes">
+                    <div class="blog-card-img">
+                        <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1587595431973-160d0d94add1?auto=format&fit=crop&w=500" alt="Turismo Sustentável: Como Viajar Deixando Apenas Pegadas Boas">
+                        <span class="blog-tag">Dicas para Viajantes</span>
+                    </div>
+                    <div class="blog-card-body">
+                        <span class="blog-card-date"><i class="far fa-calendar-alt"></i> 20 de Março, 2026</span>
+                        <h3>Turismo Sustentável: Como Viajar Deixando Apenas Pegadas Boas</h3>
+                        <p>Entenda as práticas que fazem da sua viagem uma força de proteção cultural e ambiental ao redor do planeta.</p>
+                        <span class="blog-read-more">Leia mais <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="blog-rota-do-vinho-mendocina.html" class="blog-card" data-category="destinos">
+                    <div class="blog-card-img">
+                        <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=500" alt="Rota do Vinho: As 5 Vinícolas Imperdíveis em Mendoza">
+                        <span class="blog-tag">Dicas em Destinos</span>
+                    </div>
+                    <div class="blog-card-body">
+                        <span class="blog-card-date"><i class="far fa-calendar-alt"></i> 20 de Março, 2026</span>
+                        <h3>Rota do Vinho: As 5 Vinícolas Imperdíveis em Mendoza</h3>
+                        <p>Um roteiro hedonista pelo melhor do enoturismo aos pés da majestosa Cordilheira dos Andes.</p>
+                        <span class="blog-read-more">Leia mais <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="blog-arrumar-mala-inverno.html" class="blog-card" data-category="viajantes">
+                    <div class="blog-card-img">
+                        <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1498805983167-a523078d762c?auto=format&fit=crop&w=500" alt="O Segredo das Camadas: Como Arrumar a Mala para a Neve">
+                        <span class="blog-tag">Dicas para Viajantes</span>
+                    </div>
+                    <div class="blog-card-body">
+                        <span class="blog-card-date"><i class="far fa-calendar-alt"></i> 20 de Março, 2026</span>
+                        <h3>O Segredo das Camadas: Como Arrumar a Mala para a Neve</h3>
+                        <p>Não leve peso morto. Aprenda a técnica das três camadas para se manter aquecido nos climas mais gelados do planeta.</p>
+                        <span class="blog-read-more">Leia mais <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="blog-japao-tradicao-futuro.html" class="blog-card" data-category="incriveis">
+                    <div class="blog-card-img">
+                        <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=500" alt="Japão: Onde Tradição Milenar Encontra o Futuro Tecnológico">
+                        <span class="blog-tag">Destinos Incríveis</span>
+                    </div>
+                    <div class="blog-card-body">
+                        <span class="blog-card-date"><i class="far fa-calendar-alt"></i> 20 de Março, 2026</span>
+                        <h3>Japão: Onde Tradição Milenar Encontra o Futuro Tecnológico</h3>
+                        <p>Tóquio de néon, pacíficos templos xintoístas em Kyoto e a majestade do Monte Fuji nesta imersão absoluta do Japão.</p>
+                        <span class="blog-read-more">Leia mais <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="blog-slow-travel-europa.html" class="blog-card" data-category="incriveis">
+                    <div class="blog-card-img">
+                        <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=500" alt="Slow Travel na Europa: Por Que Menos Países Significam Mais Viagem">
+                        <span class="blog-tag">Destinos Incríveis</span>
+                    </div>
+                    <div class="blog-card-body">
+                        <span class="blog-card-date"><i class="far fa-calendar-alt"></i> 20 de Março, 2026</span>
+                        <h3>Slow Travel na Europa: Por Que Menos Países Significam Mais Viagem</h3>
+                        <p>Saia do ritmo mecânico das maratonas turísticas e passe a viver a Europa e suas pequenas vilas no compasso que elas requerem.</p>
+                        <span class="blog-read-more">Leia mais <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="blog-lua-de-mel-exclusiva.html" class="blog-card" data-category="incriveis">
+                    <div class="blog-card-img">
+                        <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1543731068-7e0f5beff43a?auto=format&fit=crop&w=500" alt="Os 5 Destinos Mais Exclusivos para a Lua de Mel em 2026">
+                        <span class="blog-tag">Destinos Incríveis</span>
+                    </div>
+                    <div class="blog-card-body">
+                        <span class="blog-card-date"><i class="far fa-calendar-alt"></i> 20 de Março, 2026</span>
+                        <h3>Os 5 Destinos Mais Exclusivos para a Lua de Mel em 2026</h3>
+                        <p>Pensando na lua de mel perfeita? Descubra propriedades de ultraluxo nas Maldivas, Seychelles, Polinésia Francesa e mais.</p>
+                        <span class="blog-read-more">Leia mais <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="blog-safari-fotografico.html" class="blog-card" data-category="viajantes">
+                    <div class="blog-card-img">
+                        <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=500" alt="Como Planejar um Safári Fotográfico na África">
+                        <span class="blog-tag">Dicas para Viajantes</span>
+                    </div>
+                    <div class="blog-card-body">
+                        <span class="blog-card-date"><i class="far fa-calendar-alt"></i> 20 de Março, 2026</span>
+                        <h3>Como Planejar um Safári Fotográfico na África</h3>
+                        <p>Guia completo de planejamento para fotografia de vida selvagem. Equipamentos, destinos ideais e dicas de profissionais.</p>
+                        <span class="blog-read-more">Leia mais <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="blog-chapada-dos-veadeiros.html" class="blog-card" data-category="destinos">
+                    <div class="blog-card-img">
+                        <img loading="lazy" decoding="async" src="blog_chapada.png" alt="O Que Levar Para a Chapada dos Veadeiros">
+                        <span class="blog-tag">Dicas em Destinos</span>
+                    </div>
+                    <div class="blog-card-body">
+                        <span class="blog-card-date"><i class="far fa-calendar-alt"></i> 20 de Março, 2026</span>
+                        <h3>O Que Levar Para a Chapada dos Veadeiros</h3>
+                        <p>Um checklist completo com tudo que você precisa colocar na mala para aproveitar ao máximo esse paraíso do cerrado brasileiro.</p>
+                        <span class="blog-read-more">Leia mais <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="blog-primeira-trilha.html" class="blog-card" data-category="viajantes">
+                    <div class="blog-card-img">
+                        <img loading="lazy" decoding="async" src="blog_trilha.png" alt="5 Dicas Para Sua Primeira Trilha">
+                        <span class="blog-tag">Dicas para Viajantes</span>
+                    </div>
+                    <div class="blog-card-body">
+                        <span class="blog-card-date"><i class="far fa-calendar-alt"></i> 20 de Março, 2026</span>
+                        <h3>5 Dicas Para Sua Primeira Trilha</h3>
+                        <p>Está pensando em fazer sua primeira trilha? Confira nossas dicas essenciais para uma experiência segura e prazerosa.</p>
+                        <span class="blog-read-more">Leia mais <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="blog-mala-viagem-internacional.html" class="blog-card" data-category="viajantes">
+                    <div class="blog-card-img">
+                        <img loading="lazy" decoding="async" src="blog_mala.png" alt="Como Fazer a Mala Perfeita Para Viagens Internacionais">
+                        <span class="blog-tag">Dicas para Viajantes</span>
+                    </div>
+                    <div class="blog-card-body">
+                        <span class="blog-card-date"><i class="far fa-calendar-alt"></i> 20 de Março, 2026</span>
+                        <h3>Como Fazer a Mala Perfeita Para Viagens Internacionais</h3>
+                        <p>Técnicas de organização, lista de essenciais e dicas de quem viaja o mundo para otimizar cada centímetro da sua mala.</p>
+                        <span class="blog-read-more">Leia mais <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-main">
+            <div class="container footer-grid">
+                <div class="footer-brand">
+                    <h3 class="logo-text">Terra Venture</h3>
+                    <p>A essência da aventura com o conforto da exclusividade. Do sonho ao retorno.</p>
+                    <div class="footer-social" style="margin-top:16px;"><a href="https://www.instagram.com/terraventureviagens/" target="_blank" style="display:inline-flex;align-items:center;gap:8px;color:var(--bone-dim);font-size:.95rem;"><i class="fab fa-instagram" style="font-size:1.3rem;"></i> @terraventureviagens</a></div>
+                </div>
+                <div class="footer-links"><h4>Navegação</h4><ul>
+                    <li><a href="index.html#quem-somos">A Agência</a></li>
+                    <li><a href="destinos.html">Destinos</a></li>
+                    <li><a href="index.html#quiz">Descubra seu destino</a></li>
+                    <li><a href="index.html#contato">Contato</a></li>
+                </ul></div>
+                <div class="footer-links"><h4>Contato</h4><ul>
+                    <li><a href="https://wa.me/5551994596233" target="_blank">WhatsApp</a></li>
+                    <li><a href="mailto:contato@terraventureviagens.com.br">Email</a></li>
+                    <li><a href="transfer-executivo.html">Transfer Executivo</a></li>
+                </ul></div>
+            </div>
+        </div>
+        <div class="footer-bottom"><div class="container"><p>&copy; 2026 Terra Venture Viagens. Todos os direitos reservados.</p></div></div>
+    </footer>
+
+    <a href="https://wa.me/5551994596233" class="whatsapp-float pulse" target="_blank" aria-label="Falar com um Guia Especialista" data-tooltip="Falar com um Guia Especialista"><i class="fab fa-whatsapp"></i></a>
+
+    <script>
+    (function(){
+        var chips=document.querySelectorAll(".blog-filter .dest-chip");
+        var cards=document.querySelectorAll("#blog-grid .blog-card");
+        chips.forEach(function(ch){
+            ch.addEventListener("click",function(){
+                chips.forEach(function(x){x.classList.remove("active");});
+                ch.classList.add("active");
+                var f=ch.dataset.filter;
+                cards.forEach(function(c){
+                    var show=(f==="all"||c.dataset.category===f);
+                    c.classList.toggle("blog-hidden",!show);
+                });
+            });
+        });
+    })();
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

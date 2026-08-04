@@ -1,0 +1,10 @@
+{
+  "name": "terra-venture-viagens",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Site estático da Terra Venture Viagens (HTML/CSS/JS, sem framework).",
+  "scripts": {
+    "build": "node scripts/generate-sitemap.js",
+    "deploy": "npm run build && wrangler pages deploy public --project-name=terra-venture-viagens"
+  }
+}
