@@ -11,12 +11,13 @@ const base = 'https://terraventureviagens.com.br';
 const EXCLUDE = new Set(['404.html']);
 
 function classify(file) {
+    const slug = file.replace(/\.html$/, '');
     if (file === 'index.html') return { loc: '/', priority: '1.0', freq: 'weekly' };
-    if (file === 'destinos.html' || file === 'blog.html') return { loc: '/' + file, priority: '0.9', freq: 'weekly' };
-    if (file === 'transfer-executivo.html') return { loc: '/' + file, priority: '0.7', freq: 'monthly' };
-    if (file === 'historia.html') return { loc: '/' + file, priority: '0.5', freq: 'monthly' };
-    if (file.startsWith('blog-')) return { loc: '/' + file, priority: '0.6', freq: 'monthly' };
-    return { loc: '/' + file, priority: '0.8', freq: 'monthly' }; // páginas de destino
+    if (file === 'destinos.html' || file === 'blog.html') return { loc: '/' + slug, priority: '0.9', freq: 'weekly' };
+    if (file === 'transfer-executivo.html') return { loc: '/' + slug, priority: '0.7', freq: 'monthly' };
+    if (file === 'historia.html') return { loc: '/' + slug, priority: '0.5', freq: 'monthly' };
+    if (file.startsWith('blog-')) return { loc: '/' + slug, priority: '0.6', freq: 'monthly' };
+    return { loc: '/' + slug, priority: '0.8', freq: 'monthly' }; // páginas de destino
 }
 
 const files = fs.readdirSync(publicDir)
