@@ -3898,7 +3898,7 @@ textarea:focus {
     padding: 120px 0;
     background:
         linear-gradient(rgba(12, 20, 16, 0.94), rgba(12, 20, 16, 0.97)),
-        url('patagonia-torres-del-paine.jpg') center/cover fixed no-repeat;
+        url('patagonia-torres-del-paine.webp') center/cover fixed no-repeat;
     color: var(--color-text-light);
 }
 

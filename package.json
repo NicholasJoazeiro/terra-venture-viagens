@@ -6,5 +6,8 @@
   "scripts": {
     "build": "node scripts/generate-sitemap.js",
     "deploy": "npm run build && wrangler pages deploy public --project-name=terra-venture-viagens"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.4"
   }
 }

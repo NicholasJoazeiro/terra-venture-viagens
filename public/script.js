@@ -168,14 +168,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 name: "Patagônia",
                 coords: [-51.3411, -72.6936],
                 url: "/patagonia",
-                image: "patagonia-torres-del-paine.jpg",
+                image: "patagonia-torres-del-paine.webp",
                 countryIds: ["CHL", "ARG"]
             },
             {
                 name: "Santiago",
                 coords: [-33.4489, -70.6693],
                 url: "/santiago",
-                image: "dest_santiago_skycostanera.jpg",
+                image: "dest_santiago_skycostanera.webp",
                 countryIds: ["CHL"]
             },
             {
@@ -196,146 +196,146 @@ document.addEventListener('DOMContentLoaded', () => {
                 name: "Islândia",
                 coords: [64.9631, -19.0208],
                 url: "/islandia",
-                image: "islandia.png",
+                image: "islandia.webp",
                 countryIds: ["ISL"]
             },
             {
                 name: "Safari na Tanzânia",
                 coords: [-6.3690, 34.8888],
                 url: "/tanzania",
-                image: "tanzania.png",
+                image: "tanzania.webp",
                 countryIds: ["TZA"]
             },
             {
                 name: "Machu Picchu",
                 coords: [-13.1631, -72.5450],
                 url: "/machu-picchu",
-                image: "machu_picchu.png",
+                image: "machu_picchu.webp",
                 countryIds: ["PER"]
             },
             {
                 name: "Costa Amalfitana",
                 coords: [40.6333, 14.6000],
                 url: "/costa-amalfitana",
-                image: "costa_amalfitana.png",
+                image: "costa_amalfitana.webp",
                 countryIds: ["ITA"]
             },
             {
                 name: "Nova Zelândia",
                 coords: [-43.8967, 170.5222],
                 url: "/nova-zelandia",
-                image: "nova_zelandia.png",
+                image: "nova_zelandia.webp",
                 countryIds: ["NZL"]
             },
             {
                 name: "Egito Histórico",
                 coords: [26.8206, 30.8025],
                 url: "/egito",
-                image: "egito.png",
+                image: "egito.webp",
                 countryIds: ["EGY"]
             }            ,{
                 name: "Bali",
                 coords: [-8.4095, 115.1889],
                 url: "/bali",
-                image: "blog_bali.png",
+                image: "blog_bali.webp",
                 countryIds: ["IDN"]
             }
             ,{
                 name: "Santorini",
                 coords: [36.3932, 25.4615],
                 url: "/santorini",
-                image: "blog_santorini.png",
+                image: "blog_santorini.webp",
                 countryIds: ["GRC"]
             }
             ,{
                 name: "Alpes Suíços",
                 coords: [46.8182, 8.2275],
                 url: "/alpes-suicos",
-                image: "dest_alpes.jpg",
+                image: "dest_alpes.webp",
                 countryIds: ["CHE"]
             }
             ,{
                 name: "Bora Bora",
                 coords: [-16.5004, -151.7415],
                 url: "/bora-bora",
-                image: "blog_bora_bora.png",
+                image: "blog_bora_bora.webp",
                 countryIds: ["PYF"]
             }
             ,{
                 name: "Marrakech",
                 coords: [31.6295, -7.9811],
                 url: "/marrakech",
-                image: "dest_marrakech.jpg",
+                image: "dest_marrakech.webp",
                 countryIds: ["MAR"]
             }
             ,{
                 name: "Banff",
                 coords: [51.1784, -115.5708],
                 url: "/banff",
-                image: "patagonia_glaciar.png",
+                image: "patagonia_glaciar.webp",
                 countryIds: ["CAN"]
             }
             ,{
                 name: "Petra",
                 coords: [30.3285, 35.4444],
                 url: "/petra",
-                image: "dest_petra.jpg",
+                image: "dest_petra.webp",
                 countryIds: ["JOR"]
             }
             ,{
                 name: "Deserto do Atacama",
                 coords: [-23.8634, -69.1328],
                 url: "/atacama",
-                image: "blog_atacama.png",
+                image: "blog_atacama.webp",
                 countryIds: ["CHL"]
             }
             ,{
                 name: "Courchevel",
                 coords: [45.4146, 6.6338],
                 url: "/courchevel",
-                image: "blog_courchevel.png",
+                image: "blog_courchevel.webp",
                 countryIds: ["FRA"]
             }
             ,{
                 name: "Ilhas Maldivas",
                 coords: [3.2028, 73.2207],
                 url: "/maldivas",
-                image: "blog_maldivas.png",
+                image: "blog_maldivas.webp",
                 countryIds: ["MDV"]
             }
             ,{
                 name: "Capadócia",
                 coords: [38.6431, 34.828],
                 url: "/capadocia",
-                image: "blog_capadocia.png",
+                image: "blog_capadocia.webp",
                 countryIds: ["TUR"]
             }
             ,{
                 name: "Uzbequistão",
                 coords: [41.3775, 64.5853],
                 url: "/uzbequistao",
-                image: "blog_uzbequistao.png",
+                image: "blog_uzbequistao.webp",
                 countryIds: ["UZB"]
             }
             ,{
                 name: "Ilha de Páscoa",
                 coords: [-27.1127, -109.3667],
                 url: "/ilha-de-pascoa",
-                image: "dest_pascoa.jpg",
+                image: "dest_pascoa.webp",
                 countryIds: ["CHL"]
             }
             ,{
                 name: "Fernando de Noronha",
                 coords: [-3.8403, -32.4297],
                 url: "/noronha",
-                image: "blog_noronha.png",
+                image: "blog_noronha.webp",
                 countryIds: ["BRA"]
             }
             ,{
                 name: "Dolomitas",
                 coords: [46.4333, 11.8333],
                 url: "/dolomitas",
-                image: "dest_dolomitas.jpg",
+                image: "dest_dolomitas.webp",
                 countryIds: ["ITA"]
             }
 
@@ -499,33 +499,33 @@ document.addEventListener('DOMContentLoaded', () => {
     if (quizBox) {
         // Curadoria de destinos. vibes: sossego|aventura|cultura|romance|praia
         const QUIZ_DESTINOS = [
-            { name: 'Patagônia', tag: 'Argentina & Chile', url: '/patagonia', img: 'patagonia-torres-del-paine.jpg', cont: 'america', vibes: ['aventura'], ritmo: 'intenso' },
-            { name: 'Machu Picchu', tag: 'Peru', url: '/machu-picchu', img: 'machu_picchu.png', cont: 'america', vibes: ['aventura', 'cultura'], ritmo: 'intenso' },
-            { name: 'Deserto do Atacama', tag: 'Chile', url: '/atacama', img: 'blog_atacama.png', cont: 'america', vibes: ['aventura'], ritmo: 'intenso' },
-            { name: 'Santiago', tag: 'Chile', url: '/santiago', img: 'dest_santiago_skycostanera.jpg', cont: 'america', vibes: ['cultura'], ritmo: 'equilibrado' },
-            { name: 'Fernando de Noronha', tag: 'Brasil', url: '/noronha', img: 'blog_noronha.png', cont: 'america', vibes: ['praia', 'sossego'], ritmo: 'relax' },
+            { name: 'Patagônia', tag: 'Argentina & Chile', url: '/patagonia', img: 'patagonia-torres-del-paine.webp', cont: 'america', vibes: ['aventura'], ritmo: 'intenso' },
+            { name: 'Machu Picchu', tag: 'Peru', url: '/machu-picchu', img: 'machu_picchu.webp', cont: 'america', vibes: ['aventura', 'cultura'], ritmo: 'intenso' },
+            { name: 'Deserto do Atacama', tag: 'Chile', url: '/atacama', img: 'blog_atacama.webp', cont: 'america', vibes: ['aventura'], ritmo: 'intenso' },
+            { name: 'Santiago', tag: 'Chile', url: '/santiago', img: 'dest_santiago_skycostanera.webp', cont: 'america', vibes: ['cultura'], ritmo: 'equilibrado' },
+            { name: 'Fernando de Noronha', tag: 'Brasil', url: '/noronha', img: 'blog_noronha.webp', cont: 'america', vibes: ['praia', 'sossego'], ritmo: 'relax' },
             { name: 'Paris Secreta', tag: 'França', url: '/paris', img: 'https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg?auto=compress&cs=tinysrgb&w=800', cont: 'europa', vibes: ['cultura', 'romance'], ritmo: 'equilibrado' },
-            { name: 'Costa Amalfitana', tag: 'Itália', url: '/costa-amalfitana', img: 'costa_amalfitana.png', cont: 'europa', vibes: ['praia', 'romance'], ritmo: 'relax' },
-            { name: 'Santorini', tag: 'Grécia', url: '/santorini', img: 'blog_santorini.png', cont: 'europa', vibes: ['praia', 'romance', 'sossego'], ritmo: 'relax' },
-            { name: 'Islândia', tag: 'Terra do Gelo e Fogo', url: '/islandia', img: 'islandia.png', cont: 'europa', vibes: ['aventura'], ritmo: 'intenso' },
+            { name: 'Costa Amalfitana', tag: 'Itália', url: '/costa-amalfitana', img: 'costa_amalfitana.webp', cont: 'europa', vibes: ['praia', 'romance'], ritmo: 'relax' },
+            { name: 'Santorini', tag: 'Grécia', url: '/santorini', img: 'blog_santorini.webp', cont: 'europa', vibes: ['praia', 'romance', 'sossego'], ritmo: 'relax' },
+            { name: 'Islândia', tag: 'Terra do Gelo e Fogo', url: '/islandia', img: 'islandia.webp', cont: 'europa', vibes: ['aventura'], ritmo: 'intenso' },
             { name: 'Japão Clássico', tag: 'Japão', url: '/japao', img: 'https://images.pexels.com/photos/3408353/pexels-photo-3408353.jpeg?auto=compress&cs=tinysrgb&w=800', cont: 'asia', vibes: ['cultura'], ritmo: 'equilibrado' },
-            { name: 'Bali', tag: 'Indonésia', url: '/bali', img: 'blog_bali.png', cont: 'asia', vibes: ['praia', 'sossego', 'romance'], ritmo: 'relax' },
-            { name: 'Ilhas Maldivas', tag: 'Maldivas', url: '/maldivas', img: 'blog_maldivas.png', cont: 'asia', vibes: ['praia', 'sossego', 'romance'], ritmo: 'relax' },
-            { name: 'Capadócia', tag: 'Turquia', url: '/capadocia', img: 'blog_capadocia.png', cont: 'asia', vibes: ['aventura', 'cultura', 'romance'], ritmo: 'equilibrado' },
-            { name: 'Safari na Tanzânia', tag: 'Tanzânia', url: '/tanzania', img: 'tanzania.png', cont: 'africa', vibes: ['aventura'], ritmo: 'intenso' },
-            { name: 'Egito Histórico', tag: 'Egito', url: '/egito', img: 'egito.png', cont: 'africa', vibes: ['cultura'], ritmo: 'equilibrado' },
-            { name: 'Nova Zelândia', tag: 'Nova Zelândia', url: '/nova-zelandia', img: 'nova_zelandia.png', cont: 'oceania', vibes: ['aventura'], ritmo: 'intenso' },
-            { name: 'Bora Bora', tag: 'Polinésia Francesa', url: '/bora-bora', img: 'blog_bora_bora.png', cont: 'oceania', vibes: ['praia', 'sossego', 'romance'], ritmo: 'relax' },
-            { name: 'Seychelles', tag: 'Seychelles', url: '/seychelles', img: 'dest_seychelles.jpg', cont: 'africa', vibes: ['praia', 'sossego', 'romance'], ritmo: 'relax' },
-            { name: 'Cidade do Cabo', tag: 'África do Sul', url: '/cidade-do-cabo', img: 'dest_capetown.jpg', cont: 'africa', vibes: ['cultura', 'aventura'], ritmo: 'equilibrado' },
-            { name: 'Ruanda', tag: 'Ruanda', url: '/ruanda', img: 'dest_ruanda.jpg', cont: 'africa', vibes: ['aventura'], ritmo: 'intenso' },
-            { name: 'Namíbia', tag: 'Namíbia', url: '/namibia', img: 'dest_namibia.jpg', cont: 'africa', vibes: ['aventura', 'sossego'], ritmo: 'intenso' },
-            { name: 'Vietnã', tag: 'Vietnã', url: '/vietna', img: 'dest_halong.jpg', cont: 'asia', vibes: ['romance', 'cultura', 'sossego'], ritmo: 'equilibrado' },
-            { name: 'Índia', tag: 'Índia', url: '/india', img: 'dest_india.jpg', cont: 'asia', vibes: ['cultura'], ritmo: 'intenso' },
-            { name: 'Sri Lanka', tag: 'Sri Lanka', url: '/sri-lanka', img: 'dest_srilanka.jpg', cont: 'asia', vibes: ['aventura', 'sossego'], ritmo: 'equilibrado' },
-            { name: 'Lapônia Finlandesa', tag: 'Finlândia', url: '/laponia', img: 'dest_laponia.jpg', cont: 'europa', vibes: ['aventura', 'sossego', 'romance'], ritmo: 'equilibrado' },
-            { name: 'Antártida', tag: 'Antártida', url: '/antartida', img: 'dest_antartida.jpg', cont: 'oceania', vibes: ['aventura'], ritmo: 'intenso' },
-            { name: 'Grande Barreira de Coral', tag: 'Austrália', url: '/grande-barreira-de-coral', img: 'dest_australia.jpg', cont: 'oceania', vibes: ['praia', 'sossego', 'aventura'], ritmo: 'relax' }
+            { name: 'Bali', tag: 'Indonésia', url: '/bali', img: 'blog_bali.webp', cont: 'asia', vibes: ['praia', 'sossego', 'romance'], ritmo: 'relax' },
+            { name: 'Ilhas Maldivas', tag: 'Maldivas', url: '/maldivas', img: 'blog_maldivas.webp', cont: 'asia', vibes: ['praia', 'sossego', 'romance'], ritmo: 'relax' },
+            { name: 'Capadócia', tag: 'Turquia', url: '/capadocia', img: 'blog_capadocia.webp', cont: 'asia', vibes: ['aventura', 'cultura', 'romance'], ritmo: 'equilibrado' },
+            { name: 'Safari na Tanzânia', tag: 'Tanzânia', url: '/tanzania', img: 'tanzania.webp', cont: 'africa', vibes: ['aventura'], ritmo: 'intenso' },
+            { name: 'Egito Histórico', tag: 'Egito', url: '/egito', img: 'egito.webp', cont: 'africa', vibes: ['cultura'], ritmo: 'equilibrado' },
+            { name: 'Nova Zelândia', tag: 'Nova Zelândia', url: '/nova-zelandia', img: 'nova_zelandia.webp', cont: 'oceania', vibes: ['aventura'], ritmo: 'intenso' },
+            { name: 'Bora Bora', tag: 'Polinésia Francesa', url: '/bora-bora', img: 'blog_bora_bora.webp', cont: 'oceania', vibes: ['praia', 'sossego', 'romance'], ritmo: 'relax' },
+            { name: 'Seychelles', tag: 'Seychelles', url: '/seychelles', img: 'dest_seychelles.webp', cont: 'africa', vibes: ['praia', 'sossego', 'romance'], ritmo: 'relax' },
+            { name: 'Cidade do Cabo', tag: 'África do Sul', url: '/cidade-do-cabo', img: 'dest_capetown.webp', cont: 'africa', vibes: ['cultura', 'aventura'], ritmo: 'equilibrado' },
+            { name: 'Ruanda', tag: 'Ruanda', url: '/ruanda', img: 'dest_ruanda.webp', cont: 'africa', vibes: ['aventura'], ritmo: 'intenso' },
+            { name: 'Namíbia', tag: 'Namíbia', url: '/namibia', img: 'dest_namibia.webp', cont: 'africa', vibes: ['aventura', 'sossego'], ritmo: 'intenso' },
+            { name: 'Vietnã', tag: 'Vietnã', url: '/vietna', img: 'dest_halong.webp', cont: 'asia', vibes: ['romance', 'cultura', 'sossego'], ritmo: 'equilibrado' },
+            { name: 'Índia', tag: 'Índia', url: '/india', img: 'dest_india.webp', cont: 'asia', vibes: ['cultura'], ritmo: 'intenso' },
+            { name: 'Sri Lanka', tag: 'Sri Lanka', url: '/sri-lanka', img: 'dest_srilanka.webp', cont: 'asia', vibes: ['aventura', 'sossego'], ritmo: 'equilibrado' },
+            { name: 'Lapônia Finlandesa', tag: 'Finlândia', url: '/laponia', img: 'dest_laponia.webp', cont: 'europa', vibes: ['aventura', 'sossego', 'romance'], ritmo: 'equilibrado' },
+            { name: 'Antártida', tag: 'Antártida', url: '/antartida', img: 'dest_antartida.webp', cont: 'oceania', vibes: ['aventura'], ritmo: 'intenso' },
+            { name: 'Grande Barreira de Coral', tag: 'Austrália', url: '/grande-barreira-de-coral', img: 'dest_australia.webp', cont: 'oceania', vibes: ['praia', 'sossego', 'aventura'], ritmo: 'relax' }
         ];
 
         const answers = { vibe: null, cont: null, ritmo: null };
