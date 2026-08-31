@@ -848,3 +848,124 @@ button:focus-visible {
     .subpage .storytelling.chapter,
     .subpage .gallery-item img { transition: none; }
 }
+
+/* =========================================================================
+   MELHOR ÉPOCA PARA VIAJAR (guia mês a mês)
+   ========================================================================= */
+.epoca-hero {
+    background: var(--ink);
+    color: var(--bone);
+    padding: 170px 0 70px;
+    text-align: center;
+}
+.epoca-hero .eyebrow { color: var(--gold); }
+.epoca-hero h1 {
+    font-family: var(--serif);
+    font-weight: 400;
+    color: #fff;
+    font-size: clamp(2.3rem, 5.4vw, 4rem);
+    line-height: 1.04;
+    letter-spacing: -0.025em;
+    margin: 16px 0 18px;
+    text-wrap: balance;
+}
+.epoca-hero p {
+    color: var(--bone-dim);
+    font-size: 1.1rem;
+    max-width: 52ch;
+    margin: 0 auto;
+    text-wrap: pretty;
+}
+
+.epoca-section { background: var(--cream); padding: 56px 0 110px; }
+
+.epoca-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+.epoca-chip {
+    min-height: 44px;
+    padding: 0 20px;
+    border-radius: 100px;
+    border: 1.5px solid var(--line-light);
+    background: #fff;
+    color: var(--espresso-soft);
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.3s var(--ease);
+}
+.epoca-chip:hover { border-color: var(--terra); color: var(--terra); transform: translateY(-2px); }
+.epoca-chip.active {
+    background: var(--terra);
+    border-color: var(--terra);
+    color: #fff;
+    box-shadow: 0 10px 24px rgba(217, 116, 78, 0.3);
+}
+
+.epoca-status {
+    text-align: center;
+    margin: 26px 0 40px;
+    color: var(--espresso-soft);
+    font-size: 0.95rem;
+}
+
+.epoca-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+.epoca-card {
+    background: #fff;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s var(--ease), box-shadow 0.4s ease;
+}
+.epoca-card[hidden] { display: none; }
+.epoca-card:hover { transform: translateY(-5px); box-shadow: 0 30px 70px rgba(14, 23, 18, 0.18); }
+.epoca-card-img { aspect-ratio: 3 / 2; overflow: hidden; }
+.epoca-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.9s var(--ease); }
+.epoca-card:hover .epoca-card-img img { transform: scale(1.06); }
+.epoca-card-body { padding: 22px 24px 26px; display: flex; flex-direction: column; gap: 8px; }
+.epoca-card-pais {
+    font-size: 0.66rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--terra);
+}
+.epoca-card h3 { font-family: var(--serif); font-weight: 400; font-size: 1.5rem; color: var(--moss); line-height: 1.1; }
+.epoca-card h3 a { transition: color 0.3s ease; }
+.epoca-card h3 a:hover { color: var(--terra); }
+.epoca-card p { font-size: 0.95rem; line-height: 1.6; color: var(--espresso-soft); text-wrap: pretty; }
+
+.epoca-cta {
+    margin-top: 80px;
+    padding: 66px 34px;
+    border-radius: 24px;
+    background: var(--ink);
+    color: var(--bone);
+    text-align: center;
+}
+.epoca-cta h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    color: #fff;
+    font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+    margin-bottom: 12px;
+}
+.epoca-cta p { color: var(--bone-dim); max-width: 46ch; margin: 0 auto 28px; text-wrap: pretty; }
+
+@media (max-width: 980px) { .epoca-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 620px) {
+    .epoca-hero { padding: 140px 0 54px; }
+    .epoca-grid { grid-template-columns: 1fr; }
+    .epoca-chip { font-size: 0.82rem; padding: 0 16px; }
+    .epoca-cta { margin-top: 56px; padding: 48px 22px; }
+}
