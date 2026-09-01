@@ -1,56 +1,166 @@
-// Gera public/melhor-epoca.html: escolha um mês, veja quais destinos estão
-// na melhor janela. É o tipo de página que atrai link e compartilhamento,
-// e joga link interno para as 35 páginas de destino.
-// Nome e imagem são lidos das próprias páginas de destino para não dessincronizar.
+// Gera public/melhor-epoca.html
+//
+// MODELO: cada destino tem TEMPORADAS, não uma nota única.
+// Um destino pode estar na melhor janela por motivos opostos em épocas
+// opostas (Santiago: vinhedos no verão, esqui no inverno). A nota exibida
+// muda conforme o mês escolhido.
+//
+// REGRA DE CONTEÚDO: só entra mês que é de fato boa janela, e a nota diz
+// POR QUE aquele mês. Nada de texto genérico, nada de mês incluído "pra
+// encher". Quando existe ressalva relevante (estrada fechada, hotel
+// fechado, temporada de água-viva), ela aparece.
 const fs = require('fs');
 const path = require('path');
 
 const dir = path.join(__dirname, '..', 'public');
 const base = 'https://terraventureviagens.com.br';
 
-// Sazonalidade por destino. Consistente com o que já está escrito no
-// parágrafo de abertura de cada página.
 const SEASONS = {
-    'alpes-suicos':             { m: [1,2,3,6,7,8,9,12], nota: 'Esqui de dezembro a março, trilhas e lagos de junho a setembro.' },
-    'antartida':                { m: [11,12,1,2,3], nota: 'Única janela do ano: verão austral, quando o gelo abre passagem.' },
-    'atacama':                  { m: [1,2,3,4,5,6,7,8,9,10,11,12], nota: 'Funciona o ano inteiro. Inverno tem noites mais frias e céu igualmente limpo.' },
-    'bali':                     { m: [4,5,6,7,8,9,10], nota: 'Estação seca, a janela certa para Ubud e praia no mesmo roteiro.' },
-    'banff':                    { m: [6,7,8,9], nota: 'Lagos degelam e as trilhas abrem por completo.' },
-    'bora-bora':                { m: [5,6,7,8,9,10], nota: 'Estação seca, com lagoa calma e céu aberto.' },
-    'capadocia':                { m: [4,5,6,9,10,11], nota: 'Balões sobem o ano todo, mas primavera e outono trazem o melhor clima.' },
-    'cidade-do-cabo':           { m: [11,12,1,2,3], nota: 'Verão do hemisfério sul, com dias longos e vinhedos em cheio.' },
-    'costa-amalfitana':         { m: [5,6,7,8,9], nota: 'Maio, junho e setembro entregam o mesmo mar com metade da lotação.' },
-    'courchevel':               { m: [12,1,2,3,4], nota: 'Temporada de esqui nos Alpes franceses.' },
-    'dolomitas':                { m: [1,2,3,6,7,8,9,12], nota: 'Verão para trilhas em Tre Cime, inverno para esqui com vista.' },
-    'egito':                    { m: [10,11,12,1,2,3,4], nota: 'Calor no ponto certo para Gizé e o Vale dos Reis.' },
-    'grande-barreira-de-coral': { m: [6,7,8,9,10], nota: 'Estação seca, com a melhor visibilidade para mergulho.' },
-    'ilha-de-pascoa':           { m: [10,11,12,1,2,3], nota: 'Meses mais quentes, com o mar mais calmo para a travessia.' },
-    'india':                    { m: [10,11,12,1,2,3], nota: 'Estação fresca, a única confortável para o Rajastão.' },
-    'islandia':                 { m: [1,2,3,4,5,6,7,8,9,10,11,12], nota: 'Verão para a Ring Road inteira, inverno para aurora boreal.' },
-    'japao':                    { m: [3,4,11], nota: 'Cerejeiras em março e abril, folhas vermelhas em novembro.' },
-    'laponia':                  { m: [12,1,2,3], nota: 'Inverno profundo: auroras, trenó de huskies e iglus de vidro.' },
-    'machu-picchu':             { m: [5,6,7,8,9], nota: 'Estação seca, com céu aberto sobre a citadela.' },
-    'maldivas':                 { m: [11,12,1,2,3,4], nota: 'Estação seca, com mar transparente e sol firme.' },
-    'marrakech':                { m: [3,4,5,9,10,11], nota: 'Calor no ponto certo para a medina a pé e o deserto próximo.' },
-    'namibia':                  { m: [5,6,7,8,9,10], nota: 'Estação seca, com dunas nítidas e céu absurdamente azul.' },
-    'noronha':                  { m: [1,2,3,4,5,6,7,8,9,10,11,12], nota: 'Agosto a dezembro para mergulho, janeiro a junho para surfe.' },
-    'nova-zelandia':            { m: [12,1,2,3], nota: 'Verão abre todas as trilhas dos fiordes.' },
-    'paris':                    { m: [4,5,6,9,10], nota: 'Melhor clima do ano, sem o calor nem a lotação do verão europeu.' },
-    'patagonia':                { m: [10,11,12,1,2,3,4], nota: 'Alta de novembro a março. Abril e outubro: mesma paisagem, metade das pessoas.' },
-    'petra':                    { m: [10,11,12,1,2,3,4], nota: 'Temperatura que permite caminhar o Siq inteiro.' },
-    'ruanda':                   { m: [12,1,2,6,7,8,9], nota: 'Estações secas, quando as trilhas até os gorilas ficam firmes.' },
-    'santiago':                 { m: [9,10,11,12,1,2,3,4], nota: 'Céu limpo para ver a cordilheira e janela das vinícolas do Maipo.' },
-    'santorini':                { m: [5,6,7,8,9], nota: 'Maio, junho e setembro têm o mesmo pôr do sol com menos gente.' },
-    'seychelles':               { m: [4,5,10,11], nota: 'Meses de transição, com mar calmo e vento fraco.' },
-    'sri-lanka':                { m: [12,1,2,3,7,8,9], nota: 'Sul e oeste de dezembro a março, leste de julho a setembro.' },
-    'tanzania':                 { m: [12,1,2,3,6,7,8,9,10], nota: 'Seca de junho a outubro concentra os animais. Dezembro a março é temporada de filhotes.' },
-    'uzbequistao':              { m: [4,5,6,9,10], nota: 'Primavera e outono, sem o sol a pino do verão do deserto.' },
-    'vietna':                   { m: [11,12,1,2,3,4], nota: 'Estação seca no norte, ideal para Ha Long e Hoi An.' },
+    'patagonia': [
+        { m: [11, 12, 1, 2, 3], n: 'Verão austral: trilhas de Torres del Paine abertas, dias que esticam até quase meia-noite e navegação liberada nos glaciares.' },
+        { m: [4, 10], n: 'Temporada de ombro. Mesma paisagem com metade das pessoas, em troca de mais frio e alguns acessos ainda fechados.' },
+    ],
+    'santiago': [
+        { m: [9, 10, 11, 12, 1, 2], n: 'Céu limpo para ver a cordilheira do alto do Sky Costanera e dias longos nas vinícolas do Vale do Maipo.' },
+        { m: [3, 4], n: 'Vindima no Maipo e no Colchagua: colheita, pisa da uva e almoços entre os vinhedos.' },
+        { m: [6, 7, 8], n: 'Temporada de esqui em Valle Nevado, La Parva e Portillo, a cerca de uma hora do centro.' },
+    ],
+    'atacama': [
+        { m: [3, 4, 5, 9, 10, 11], n: 'Meses mais equilibrados do deserto: dias amenos, noites frias e céu limpo para os salares e o Valle de la Luna.' },
+        { m: [6, 7, 8], n: 'Inverno: as noites mais frias do ano e também as mais limpas, o melhor período para astronomia.' },
+        { m: [12], n: 'Dias longos e quentes antes das chuvas de altiplano de janeiro e fevereiro.' },
+    ],
+    'machu-picchu': [
+        { m: [5, 6, 7, 8, 9], n: 'Estação seca: céu aberto sobre a citadela e trilhas em boas condições. É preciso reservar ingresso com meses de antecedência.' },
+        { m: [4, 10], n: 'Ombro da estação seca: vegetação ainda verde das chuvas e bem menos gente nas ruínas.' },
+    ],
+    'noronha': [
+        { m: [8, 9, 10, 11, 12], n: 'Mar mais transparente do ano, a melhor janela para mergulho na Baía do Sancho e no Porto de Santo Antônio.' },
+        { m: [1, 2, 3, 4, 5, 6], n: 'Temporada de ondas na Cacimba do Padre, quando a ilha vira ponto de surfe.' },
+    ],
+    'ilha-de-pascoa': [
+        { m: [10, 11, 12, 1, 3], n: 'Meses mais quentes, com mar calmo para chegar aos campos de moais da costa.' },
+        { m: [2], n: 'Tapati Rapa Nui: o festival cultural da ilha, com competições e danças tradicionais rapanui.' },
+    ],
+    'banff': [
+        { m: [6, 7, 8, 9], n: 'Lagos degelados no azul turquesa que dá fama a Louise e Moraine, com todas as trilhas abertas.' },
+        { m: [12, 1, 2, 3], n: 'Temporada de esqui em Lake Louise e Sunshine Village. A estrada de Moraine Lake fecha no inverno.' },
+    ],
+    'paris': [
+        { m: [4, 5, 6, 9, 10], n: 'Melhor clima do ano, sem o calor nem a lotação do verão europeu. Dias longos para caminhar bairro a bairro.' },
+        { m: [12], n: 'Vitrines de Natal, luzes nos bulevares e museus vazios nas manhãs frias.' },
+    ],
+    'santorini': [
+        { m: [5, 6, 9, 10], n: 'Ombro da temporada: o mesmo pôr do sol de Oia com bem menos gente e hotéis com vista ainda disponíveis.' },
+        { m: [7, 8], n: 'Auge do verão grego. Ilha cheia e quente, mas com a caldeira no seu azul mais intenso.' },
+    ],
+    'costa-amalfitana': [
+        { m: [5, 6, 9], n: 'A costa no ponto: mar quente, limoeiros carregados e as ruelas de Positano sem os ônibus de julho.' },
+        { m: [7, 8], n: 'Alta temporada italiana. Mais calor e mais gente, com a costa na sua energia máxima.' },
+        { m: [4, 10], n: 'Bordas da temporada: dias amenos e preços mais baixos, com parte dos hotéis já abrindo ou encerrando.' },
+    ],
+    'alpes-suicos': [
+        { m: [12, 1, 2, 3], n: 'Temporada de esqui em Zermatt, com o Matterhorn como pano de fundo e vilarejos sem carro.' },
+        { m: [6, 7, 8, 9], n: 'Verão alpino: trilhas abertas, lagos de degelo e o Glacier Express cruzando os vales.' },
+    ],
+    'dolomitas': [
+        { m: [6, 7, 8, 9], n: 'Trilhas e vias ferratas abertas em torno das Tre Cime, com refúgios de montanha funcionando.' },
+        { m: [12, 1, 2, 3], n: 'Esqui no circuito Dolomiti Superski, com os picos rosados cobertos de neve.' },
+    ],
+    'courchevel': [
+        { m: [12, 1, 2, 3, 4], n: 'Temporada de esqui nos Trois Vallées. Fora do inverno, boa parte dos chalés e restaurantes fecha.' },
+    ],
+    'islandia': [
+        { m: [6, 7, 8], n: 'Sol da meia-noite: Ring Road inteira aberta, incluindo as estradas de terras altas que só existem no verão.' },
+        { m: [9, 10, 11, 12, 1, 2, 3], n: 'Temporada de aurora boreal, com noites longas e escuras. As terras altas ficam fechadas.' },
+    ],
+    'laponia': [
+        { m: [12, 1, 2, 3], n: 'Inverno ártico: auroras, trenó puxado por huskies e cabanas de teto de vidro sobre a neve.' },
+        { m: [6, 7], n: 'Sol da meia-noite: o dia não termina, e a floresta fica aberta para caminhada e canoa.' },
+    ],
+    'uzbequistao': [
+        { m: [4, 5, 9, 10], n: 'Primavera e outono: temperatura para caminhar entre as madraças de Samarcanda sem o sol a pino do deserto.' },
+    ],
+    'marrakech': [
+        { m: [3, 4, 5, 9, 10, 11], n: 'Calor no ponto certo para percorrer a medina a pé e escapar para o deserto ou para o Atlas.' },
+        { m: [12, 1, 2], n: 'Dias amenos e noites frias, com o Alto Atlas coberto de neve a poucas horas da cidade.' },
+    ],
+    'egito': [
+        { m: [10, 11, 12, 1, 2, 3, 4], n: 'Única janela confortável: temperatura que permite explorar Gizé e o Vale dos Reis sem exaustão.' },
+    ],
+    'petra': [
+        { m: [3, 4, 5, 9, 10, 11], n: 'Primavera e outono: dá para caminhar o Siq inteiro até o Mosteiro sem o calor extremo do verão jordaniano.' },
+        { m: [12, 1, 2], n: 'Baixa temporada: frio seco e sítio bem mais vazio. Pode chover e, raramente, nevar sobre o Tesouro.' },
+    ],
+    'tanzania': [
+        { m: [6, 7, 8, 9, 10], n: 'Estação seca: a vegetação abre e os animais se concentram nos pontos de água, o melhor período para safári.' },
+        { m: [7, 8, 9], n: 'A Grande Migração cruza o rio Mara, o momento mais disputado do calendário de safári.' },
+        { m: [1, 2, 3], n: 'Temporada de parto no Ndutu: milhares de filhotes de gnu nascem em poucas semanas, atraindo predadores.' },
+    ],
+    'ruanda': [
+        { m: [6, 7, 8, 9], n: 'Estação seca longa: as trilhas de barro até os gorilas ficam firmes, o que torna o trekking bem menos duro.' },
+        { m: [12, 1, 2], n: 'Estação seca curta: mesma condição de trilha, com florestas mais verdes das chuvas recentes.' },
+    ],
+    'namibia': [
+        { m: [5, 6, 7, 8, 9, 10], n: 'Estação seca: dunas de Sossusvlei nítidas ao amanhecer e animais reunidos nos poços do Etosha.' },
+    ],
+    'cidade-do-cabo': [
+        { m: [11, 12, 1, 2, 3], n: 'Verão do hemisfério sul: praias, dias longos e vinhedos de Stellenbosch em plena atividade.' },
+        { m: [7, 8, 9, 10], n: 'Temporada de baleias-francas em Hermanus, a duas horas da cidade, com avistamento a partir da própria costa.' },
+    ],
+    'seychelles': [
+        { m: [4, 5, 10, 11], n: 'Meses de transição entre as monções: vento fraco, mar calmo e a melhor visibilidade do ano para mergulho.' },
+    ],
+    'japao': [
+        { m: [3, 4], n: 'Floração das cerejeiras. A janela é curta e muda a cada ano, então exige reserva com meses de antecedência.' },
+        { m: [11], n: 'Momiji: os bordos ficam vermelhos e os templos de Kyoto entram no seu período mais fotografado.' },
+        { m: [1, 2], n: 'Neve em Hokkaido e nos Alpes japoneses, temporada de onsen ao ar livre e de esqui em pó.' },
+    ],
+    'bali': [
+        { m: [4, 5, 6, 7, 8, 9, 10], n: 'Estação seca: a janela para combinar arrozais de Ubud e dias de praia no mesmo roteiro.' },
+    ],
+    'maldivas': [
+        { m: [11, 12, 1, 2, 3, 4], n: 'Estação seca: mar transparente, sol firme e a melhor visibilidade para mergulho nos atóis.' },
+        { m: [6, 7, 8], n: 'Monção do sudoeste traz plâncton e, com ele, arraias-manta e tubarões-baleia em Hanifaru. Chove mais, em pancadas curtas.' },
+    ],
+    'vietna': [
+        { m: [10, 11, 12, 1, 2, 3], n: 'Norte no seco: melhor período para navegar a Baía de Ha Long com céu aberto e menos neblina.' },
+        { m: [2, 3, 4, 5, 6, 7], n: 'Centro do país no seco: Hoi An e as praias de Da Nang na sua melhor fase, antes das chuvas de outubro.' },
+    ],
+    'india': [
+        { m: [10, 11, 12, 1, 2], n: 'Estação fresca: a única realmente confortável para percorrer o Rajastão e ver o Taj Mahal ao amanhecer.' },
+        { m: [3], n: 'Holi, o festival das cores, ainda dentro da janela de clima ameno no norte do país.' },
+    ],
+    'sri-lanka': [
+        { m: [12, 1, 2, 3, 4], n: 'Sul e oeste no seco: praias de Mirissa e Galle, e temporada de baleias-azuis na costa sul.' },
+        { m: [5, 6, 7, 8, 9], n: 'Costa leste no seco: Trincomalee e Arugam Bay, enquanto o oeste recebe a monção.' },
+    ],
+    'capadocia': [
+        { m: [4, 5, 6, 9, 10, 11], n: 'Melhor clima para o voo de balão ao amanhecer, com menos cancelamento por vento.' },
+        { m: [12, 1, 2], n: 'Neve sobre as chaminés de fada. A paisagem fica única, mas o balão cancela com mais frequência.' },
+    ],
+    'nova-zelandia': [
+        { m: [12, 1, 2, 3], n: 'Verão: todas as trilhas abertas, incluindo Milford Track e Tongariro, com dias longos para dirigir as duas ilhas.' },
+        { m: [7, 8, 9], n: 'Temporada de esqui em Queenstown e Wanaka, nos campos dos Alpes do Sul.' },
+    ],
+    'bora-bora': [
+        { m: [5, 6, 8, 9, 10], n: 'Estação seca: lagoa calma e transparente, o período certo para os bangalôs sobre a água.' },
+        { m: [7], n: 'Heiva: o maior festival da Polinésia Francesa, com dança, canto e competições tradicionais.' },
+    ],
+    'grande-barreira-de-coral': [
+        { m: [6, 7, 8, 9, 10], n: 'Estação seca, com a melhor visibilidade do ano e fora da temporada de águas-vivas, que vai de novembro a maio.' },
+        { m: [6, 7], n: 'Baleias jubarte passam pelas Whitsundays na rota de migração.' },
+    ],
+    'antartida': [
+        { m: [11], n: 'Começo da janela: gelo ainda intacto, paisagem mais branca e pinguins em pleno cortejo.' },
+        { m: [12, 1], n: 'Auge do verão austral: filhotes de pinguim nascendo e até vinte horas de luz por dia.' },
+        { m: [2, 3], n: 'Fim da temporada: melhor período para avistamento de baleias e desembarques com menos gelo no caminho.' },
+    ],
 };
 
-const MESES = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+const MESES = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
 
-// Lê nome e imagem de cada página de destino, para não dessincronizar
+// Lê nome/país/imagem das próprias páginas de destino, para não dessincronizar
 const destinos = [];
 for (const slug of Object.keys(SEASONS)) {
     const fp = path.join(dir, slug + '.html');
@@ -66,22 +176,40 @@ for (const slug of Object.keys(SEASONS)) {
         nome: h1.replace(/<[^>]*>/g, '').trim(),
         pais: (eyebrow || '').trim(),
         img,
-        meses: SEASONS[slug].m,
-        nota: SEASONS[slug].nota,
+        temporadas: SEASONS[slug],
     });
 }
 destinos.sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR'));
 
-const cards = destinos.map(d => `                <article class="epoca-card" data-meses="${d.meses.join(',')}">
+// checagem de sanidade do dataset
+let erros = [];
+for (const d of destinos) {
+    const todos = new Set();
+    d.temporadas.forEach(t => t.m.forEach(m => {
+        if (m < 1 || m > 12) erros.push(d.slug + ': mes invalido ' + m);
+        todos.add(m);
+    }));
+    if (!todos.size) erros.push(d.slug + ': sem nenhum mes');
+    d.temporadas.forEach(t => { if (!t.n || t.n.length < 30) erros.push(d.slug + ': nota curta demais'); });
+}
+if (erros.length) { console.error('ERROS NO DATASET:\n' + erros.join('\n')); process.exit(1); }
+
+const esc = t => String(t).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+const cards = destinos.map(d => {
+    const todosMeses = [...new Set(d.temporadas.flatMap(t => t.m))].sort((a, b) => a - b);
+    const dados = esc(JSON.stringify(d.temporadas));
+    return `                <article class="epoca-card" data-meses="${todosMeses.join(',')}" data-temporadas="${dados}">
                     <div class="epoca-card-img"><img loading="lazy" decoding="async" src="${d.img}" alt="${d.nome}"></div>
                     <div class="epoca-card-body">
                         <span class="epoca-card-pais">${d.pais}</span>
                         <h3><a href="/${d.slug}">${d.nome}</a></h3>
-                        <p>${d.nota}</p>
+                        <p class="epoca-card-nota">${d.temporadas[0].n}</p>
                     </div>
-                </article>`).join('\n');
+                </article>`;
+}).join('\n');
 
-const chips = MESES.map((m, i) => `                    <button class="epoca-chip" data-mes="${i + 1}" type="button">${m}</button>`).join('\n');
+const chips = MESES.map((m, i) => `                    <button class="epoca-chip" data-mes="${i + 1}" type="button" aria-pressed="false">${m}</button>`).join('\n');
 
 const html = `<!DOCTYPE html>
 <html lang="pt-BR">
@@ -136,10 +264,10 @@ const html = `<!DOCTYPE html>
             <a href="/" class="logo">Terra Venture</a>
             <nav>
                 <ul class="nav-links">
-                    <li><a href="/#quem-somos">A Terra Venture</a></li>
                     <li><a href="/destinos">Destinos</a></li>
-                    <li><a href="/#quiz">Descubra</a></li>
+                    <li><a href="/melhor-epoca">Melhor Época</a></li>
                     <li><a href="/blog">Diário</a></li>
+                    <li><a href="/#quem-somos">A Terra Venture</a></li>
                     <li><a href="https://wa.me/5551994596233?text=Olá! Gostaria de uma consultoria de viagem." class="btn-primary nav-btn" target="_blank">Conversar</a></li>
                 </ul>
             </nav>
@@ -151,13 +279,13 @@ const html = `<!DOCTYPE html>
         <div class="container">
             <span class="eyebrow">Guia mês a mês</span>
             <h1>Todo lugar tem a sua hora.</h1>
-            <p>Escolha o mês em que você consegue viajar. A gente mostra onde o mundo está no melhor momento.</p>
+            <p>Escolha o mês em que você consegue viajar. A gente mostra onde o mundo está no melhor momento, e por quê.</p>
         </div>
     </section>
 
     <section class="epoca-section">
         <div class="container">
-            <div class="epoca-chips" role="tablist" aria-label="Escolha o mês">
+            <div class="epoca-chips" role="group" aria-label="Escolha o mês">
 ${chips}
             </div>
             <p class="epoca-status" id="epoca-status" role="status">Mostrando os ${destinos.length} destinos. Escolha um mês para filtrar.</p>
@@ -184,8 +312,8 @@ ${cards}
                 <div class="footer-links"><h4>Navegação</h4><ul>
                     <li><a href="/#quem-somos">A Agência</a></li>
                     <li><a href="/destinos">Destinos</a></li>
-                    <li><a href="/blog">Diário de Bordo</a></li>
                     <li><a href="/melhor-epoca">Melhor época para viajar</a></li>
+                    <li><a href="/blog">Diário de Bordo</a></li>
                     <li><a href="/#contato">Contato</a></li>
                 </ul></div>
                 <div class="footer-links"><h4>Contato</h4><ul>
@@ -203,10 +331,25 @@ ${cards}
     <script>
     (function(){
         var MESES=${JSON.stringify(MESES)};
-        var chips=document.querySelectorAll('.epoca-chip');
-        var cards=document.querySelectorAll('.epoca-card');
+        var chips=[].slice.call(document.querySelectorAll('.epoca-chip'));
+        var cards=[].slice.call(document.querySelectorAll('.epoca-card'));
         var status=document.getElementById('epoca-status');
         var ativo=null;
+
+        cards.forEach(function(c){
+            try{ c._temporadas=JSON.parse(c.dataset.temporadas); }
+            catch(e){ c._temporadas=[]; }
+            c._notaPadrao=c._temporadas.length?c._temporadas[0].n:'';
+        });
+
+        function notaDoMes(card,mes){
+            // Se o destino tem mais de uma temporada no mesmo mês (ex: seca e
+            // migração na Tanzânia), vence a mais específica: a de menos meses.
+            var candidatas=card._temporadas.filter(function(t){return t.m.indexOf(mes)!==-1;});
+            if(!candidatas.length) return card._notaPadrao;
+            candidatas.sort(function(a,b){return a.m.length-b.m.length;});
+            return candidatas[0].n;
+        }
 
         function aplicar(mes){
             var n=0;
@@ -214,33 +357,34 @@ ${cards}
                 var meses=c.dataset.meses.split(',').map(Number);
                 var ok=!mes||meses.indexOf(mes)!==-1;
                 c.hidden=!ok;
-                if(ok)n++;
+                if(ok){
+                    n++;
+                    var p=c.querySelector('.epoca-card-nota');
+                    if(p) p.textContent=mes?notaDoMes(c,mes):c._notaPadrao;
+                }
             });
-            if(mes){
-                status.textContent=n+(n===1?' destino está':' destinos estão')+' na melhor janela em '+MESES[mes-1]+'.';
-            }else{
-                status.textContent='Mostrando os '+cards.length+' destinos. Escolha um mês para filtrar.';
-            }
+            status.textContent=mes
+                ? n+(n===1?' destino está':' destinos estão')+' na melhor janela em '+MESES[mes-1]+'.'
+                : 'Mostrando os '+cards.length+' destinos. Escolha um mês para filtrar.';
         }
 
         chips.forEach(function(ch){
             ch.addEventListener('click',function(){
                 var mes=Number(ch.dataset.mes);
-                if(ativo===mes){ ativo=null; ch.classList.remove('active'); ch.setAttribute('aria-pressed','false'); }
-                else{
+                if(ativo===mes){
+                    ativo=null; ch.classList.remove('active'); ch.setAttribute('aria-pressed','false');
+                }else{
                     chips.forEach(function(x){x.classList.remove('active');x.setAttribute('aria-pressed','false');});
                     ch.classList.add('active'); ch.setAttribute('aria-pressed','true'); ativo=mes;
                 }
                 aplicar(ativo);
                 if(typeof fbq==='function'){fbq('trackCustom','MelhorEpocaFiltro',{mes:ativo?MESES[ativo-1]:'todos'});}
             });
-            ch.setAttribute('aria-pressed','false');
         });
 
-        // pre-seleciona o mes atual, para a pagina ja abrir util
-        var hoje=new Date().getMonth()+1;
-        var alvo=document.querySelector('.epoca-chip[data-mes="'+hoje+'"]');
-        if(alvo){alvo.click();}
+        // abre já filtrada pelo mês corrente
+        var alvo=document.querySelector('.epoca-chip[data-mes="'+(new Date().getMonth()+1)+'"]');
+        if(alvo) alvo.click();
     })();
     </script>
 </body>
@@ -248,6 +392,11 @@ ${cards}
 `;
 
 fs.writeFileSync(path.join(dir, 'melhor-epoca.html'), html, 'utf8');
+
+// relatório de cobertura por mês
+const porMes = {};
+for (let m = 1; m <= 12; m++) porMes[m] = destinos.filter(d => d.temporadas.some(t => t.m.indexOf(m) !== -1)).length;
 console.log('melhor-epoca.html gerado com', destinos.length, 'destinos');
-const semMes = destinos.filter(d => d.meses.length === 12).map(d => d.slug);
-console.log('destinos marcados como ano inteiro:', semMes.join(', ') || 'nenhum');
+console.log('temporadas totais:', destinos.reduce((s, d) => s + d.temporadas.length, 0));
+console.log('--- destinos por mes ---');
+MESES.forEach((nome, i) => console.log('  ' + nome.padEnd(10) + porMes[i + 1]));

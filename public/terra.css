@@ -880,11 +880,13 @@ button:focus-visible {
 
 .epoca-section { background: var(--cream); padding: 56px 0 110px; }
 
+/* grade fixa: 6 meses em cima, 6 embaixo. Com flex-wrap dava 11+1, feio. */
 .epoca-chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+    max-width: 860px;
+    margin: 0 auto;
 }
 .epoca-chip {
     min-height: 44px;
@@ -963,10 +965,14 @@ button:focus-visible {
 }
 .epoca-cta p { color: var(--bone-dim); max-width: 46ch; margin: 0 auto 28px; text-wrap: pretty; }
 
-@media (max-width: 980px) { .epoca-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 980px) {
+    .epoca-grid { grid-template-columns: repeat(2, 1fr); }
+    .epoca-chips { grid-template-columns: repeat(4, 1fr); max-width: 620px; }
+}
 @media (max-width: 620px) {
     .epoca-hero { padding: 140px 0 54px; }
     .epoca-grid { grid-template-columns: 1fr; }
-    .epoca-chip { font-size: 0.82rem; padding: 0 16px; }
+    .epoca-chips { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .epoca-chip { font-size: 0.82rem; padding: 0 10px; }
     .epoca-cta { margin-top: 56px; padding: 48px 22px; }
 }
