@@ -371,13 +371,16 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; letter-spacing: -0
     .testimonials-grid { grid-template-columns: 1fr; }
     .testimonial-featured { grid-column: span 1; }
 }
-@media (max-width: 768px) {
-    .wrap, .container, .hero-content { padding: 0 20px; }
+/* nav vira hamburguer antes do menu desktop apertar (precisa de ~995px) */
+@media (max-width: 1000px) {
     .nav-links { position: fixed; top: 0; right: -100%; width: 78%; max-width: 320px; height: 100vh; background: var(--ink); flex-direction: column; justify-content: center; gap: 30px; padding: 40px; transition: right 0.4s var(--ease); z-index: 999; }
     .nav-links.active { right: 0; }
     .nav-links a { font-size: 1.1rem; }
     .nav-btn { display: none !important; }
     .menu-toggle { display: block; z-index: 1001; }
+}
+@media (max-width: 768px) {
+    .wrap, .container, .hero-content { padding: 0 20px; }
     .dossie-row { grid-template-columns: 1fr; grid-auto-rows: auto; }
     .dossie-row.flip .dossie-media { order: 0; }
     .dossie-media { height: 240px; }
@@ -547,7 +550,7 @@ h1, h2, h3, h4, .hero-title, .section-title, .de-title, .quiz-q, .faq-title, .qu
 .article-hero-content .article-meta i { color: var(--terra); }
 
 /* ======================= MENU MOBILE NAS INTERNAS (vence o style.css antigo) ======================= */
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
     .subpage .nav-links {
         position: fixed !important; top: 0 !important; right: -100% !important; left: auto !important; bottom: auto !important;
         width: 80% !important; max-width: 330px !important; height: 100vh !important;
