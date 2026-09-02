@@ -976,3 +976,89 @@ button:focus-visible {
     .epoca-chip { font-size: 0.82rem; padding: 0 10px; }
     .epoca-cta { margin-top: 56px; padding: 48px 22px; }
 }
+
+/* =========================================================================
+   PÁGINA DE SERVIÇOS
+   ========================================================================= */
+.serv-intro { background: var(--cream); padding: 76px 0 10px; }
+.serv-intro p {
+    max-width: 62ch; margin: 0 auto; text-align: center;
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(1.2rem, 2.2vw, 1.55rem); line-height: 1.5;
+    color: var(--moss); text-wrap: pretty;
+}
+
+.serv-section { background: var(--cream); padding: 60px 0 100px; }
+.serv-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.serv-card {
+    position: relative; background: #fff; border: 1px solid var(--line-light);
+    border-radius: 24px; padding: 44px 38px 38px;
+    display: flex; flex-direction: column; gap: 14px;
+    transition: transform 0.45s var(--ease), box-shadow 0.45s ease;
+}
+.serv-card:hover { transform: translateY(-4px); box-shadow: 0 30px 70px rgba(26, 38, 33, 0.13); }
+.serv-num {
+    font-family: var(--serif); font-size: 2.5rem; line-height: 1;
+    color: var(--terra); opacity: 0.5;
+}
+.serv-card h3 { font-family: var(--serif); font-weight: 400; font-size: 1.65rem; color: var(--moss); line-height: 1.15; }
+.serv-card > p { color: var(--espresso-soft); line-height: 1.7; text-wrap: pretty; }
+.serv-list { list-style: none; display: flex; flex-direction: column; gap: 9px; margin-top: 4px; }
+.serv-list li {
+    position: relative; padding-left: 24px;
+    font-size: 0.94rem; color: var(--espresso-soft);
+}
+.serv-list li::before {
+    content: ''; position: absolute; left: 4px; top: 0.62em;
+    width: 7px; height: 7px; border-radius: 50%; background: var(--terra);
+}
+.serv-link {
+    margin-top: auto; padding-top: 14px;
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 0.9rem; font-weight: 600; color: var(--terra);
+    transition: gap 0.3s var(--ease);
+}
+.serv-link:hover { gap: 14px; }
+
+.serv-nao { background: var(--ink); color: var(--bone); padding: 96px 0; }
+.serv-nao-inner { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 60px; align-items: start; }
+.serv-nao-head h2 { font-family: var(--serif); font-weight: 400; color: #fff; font-size: clamp(1.9rem, 3.4vw, 2.7rem); margin: 14px 0 12px; line-height: 1.1; }
+.serv-nao-head p { color: var(--bone-dim); text-wrap: pretty; }
+.serv-nao-list { list-style: none; display: flex; flex-direction: column; gap: 22px; }
+.serv-nao-list li {
+    padding: 24px 26px; border: 1px solid var(--line-dark); border-radius: 22px;
+    background: rgba(255, 255, 255, 0.03); color: var(--bone-dim); line-height: 1.65;
+}
+.serv-nao-list strong { color: #fff; font-weight: 600; }
+
+.serv-como { background: var(--bone); padding: 96px 0; }
+.serv-passos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 10px; }
+.serv-passo { background: #fff; border: 1px solid var(--line-light); border-radius: 24px; padding: 38px 32px; display: flex; flex-direction: column; gap: 12px; }
+.serv-passo h3 { font-family: var(--serif); font-weight: 400; font-size: 1.5rem; color: var(--moss); }
+.serv-passo p { color: var(--espresso-soft); line-height: 1.68; text-wrap: pretty; }
+.serv-nota {
+    max-width: 68ch; margin: 40px auto 0; text-align: center;
+    font-size: 0.95rem; color: var(--espresso-soft); line-height: 1.7; text-wrap: pretty;
+}
+
+.serv-cta { background: var(--cream); padding: 0 0 110px; }
+.serv-cta .container { background: var(--ink); border-radius: 30px; padding: 76px 34px; text-align: center; color: var(--bone); }
+.serv-cta h2 { font-family: var(--serif); font-weight: 400; color: #fff; font-size: clamp(1.9rem, 3.8vw, 2.8rem); margin-bottom: 14px; }
+.serv-cta p { color: var(--bone-dim); max-width: 50ch; margin: 0 auto 30px; text-wrap: pretty; }
+
+@media (max-width: 900px) {
+    .serv-grid { grid-template-columns: 1fr; }
+    .serv-nao-inner { grid-template-columns: 1fr; gap: 34px; }
+    .serv-passos { grid-template-columns: 1fr; }
+}
+@media (max-width: 620px) {
+    .serv-intro { padding: 56px 0 6px; }
+    .serv-section { padding: 48px 0 76px; }
+    .serv-card { padding: 34px 26px 30px; }
+    .serv-nao, .serv-como { padding: 70px 0; }
+    .serv-cta { padding: 0 0 76px; }
+    .serv-cta .container { padding: 54px 22px; }
+}
+
+/* link da home para a página de serviços */
+.incl-cta { margin-top: 44px; text-align: center; }
