@@ -84,20 +84,37 @@ document.addEventListener('DOMContentLoaded', () => {
     // HTML, entao o observer pega esses elementos por seletor. Escalonar o
     // atraso dentro de cada grupo faz os cards entrarem em cascata.
     const ALVOS_REVEAL = '.section-header, .como-card, .diferencial-card, .dossie-row, .serv-card, .serv-passo, .epoca-card, .testimonial-card, .comunidade-item, .faq-item, .blog-card, .dest-card, .quem-somos-img, .quem-somos-text';
+    // Observer proprio, que marca .revelado em vez de .active. A .active ja tem
+    // dono em outros componentes: o acordeao do FAQ a usa para "pergunta aberta"
+    // e remove de todos os itens ao fechar, o que apagava os itens da tela.
+    const autoObserver = new IntersectionObserver((entries, o) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revelado');
+                o.unobserve(entry.target);
+            }
+        });
+    }, revealOptions);
+
     document.querySelectorAll(ALVOS_REVEAL).forEach(el => {
         const irmaos = el.parentElement ? [...el.parentElement.children].filter(x => x.matches(ALVOS_REVEAL)) : [];
         const i = irmaos.indexOf(el);
         if (i > 0) el.style.transitionDelay = Math.min(i, 5) * 80 + 'ms';
-        revealObserver.observe(el);
+        autoObserver.observe(el);
     });
 
     // Rede de seguranca: esconder conteudo e depender do observer para mostra-lo
     // significa que uma falha dele deixaria a pagina em branco. Se em 2,5s nada
     // tiver sido revelado, revela tudo. Perde-se a animacao, nunca o conteudo.
     const redeDeSeguranca = setTimeout(() => {
-        const tudo = document.querySelectorAll(ALVOS_REVEAL + ', .scroll-reveal');
-        const algumRevelado = [...tudo].some(el => el.classList.contains('active'));
-        if (!algumRevelado) tudo.forEach(el => el.classList.add('active'));
+        const auto = document.querySelectorAll(ALVOS_REVEAL);
+        const legado = document.querySelectorAll('.scroll-reveal');
+        const algumRevelado = [...auto].some(el => el.classList.contains('revelado'))
+            || [...legado].some(el => el.classList.contains('active'));
+        if (!algumRevelado) {
+            auto.forEach(el => el.classList.add('revelado'));
+            legado.forEach(el => el.classList.add('active'));
+        }
     }, 2500);
 
     /* =========================================================================
