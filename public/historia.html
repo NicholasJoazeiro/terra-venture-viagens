@@ -28,51 +28,17 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="terra.css">
     <style>
-        .historia-hero {
-            height: 55vh;
-            min-height: 400px;
-            background: linear-gradient(135deg, var(--moss) 0%, #2a3f2e 60%, var(--espresso) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: var(--cream);
-            position: relative;
-            overflow: hidden;
-        }
+        
 
-        .historia-hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 30% 70%, rgba(200, 107, 77, 0.15) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 30%, rgba(234, 227, 202, 0.08) 0%, transparent 50%);
-            animation: subtleShift 15s ease-in-out infinite alternate;
-        }
+        
 
-        @keyframes subtleShift {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(30px, -20px); }
-        }
+        
 
-        .historia-hero .hero-content {
-            position: relative;
-            z-index: 2;
-        }
+        
 
-        .historia-hero .hero-title {
-            font-size: 3.5rem;
-        }
+        
 
-        .historia-hero .hero-subtitle {
-            font-size: 1.15rem;
-            opacity: 0.85;
-            max-width: 550px;
-            margin: 0 auto;
-        }
+        
 
         .historia-page-content {
             padding: 80px 0 100px;
@@ -161,18 +127,20 @@ src="https://www.facebook.com/tr?id=1383241600338162&ev=PageView&noscript=1"
     </header>
 
     <!-- Hero -->
-    <section class="historia-hero">
-        <div class="container hero-content scroll-reveal fade-up">
-            <span class="eyebrow" style="color: var(--terra);">Nossa Origem</span>
-            <h1 class="hero-title">O que nos trouxe até aqui</h1>
-            <p class="hero-subtitle">Uma história de família, propósito e a liberdade de explorar o mundo.</p>
+    <section class="page-hero page-hero-tipografico">
+        <div class="container">
+            <span class="eyebrow">Nossa origem</span>
+            <h1>O que nos trouxe até aqui</h1>
+            <p>Uma história de família, propósito e a liberdade de explorar o mundo.</p>
         </div>
     </section>
 
     <!-- Conteúdo da História -->
     <section class="historia-page-content">
         <div class="container">
-            <a href="/#diferenciais" class="back-link" style="display: inline-block; margin-bottom: 30px; color: var(--terra); font-weight: 500; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem;"><i class="fas fa-arrow-left"></i> Voltar</a>
+            <div class="historia-topo">
+                <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> Voltar para a home</a>
+            </div>
 
             <div class="historia-layout scroll-reveal fade-up">
                 <!-- Decorative vertical line -->

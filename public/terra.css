@@ -1542,3 +1542,24 @@ p, li, .hero-subtitle, .section-desc, .lead, .lead-text, .testimonial-text, .sto
     border-color: rgba(236, 229, 212, 0.18) !important;
 }
 .leaflet-control-zoom a:hover { background: var(--terra) !important; color: #fff !important; }
+
+/* Hero sem foto, para páginas onde nenhuma imagem de destino faria sentido
+   (a história é sobre a origem da agência, não sobre um lugar). */
+.page-hero-tipografico { background: var(--ink); }
+.page-hero-tipografico::after {
+    background:
+        radial-gradient(ellipse at 28% 72%, rgba(217, 116, 78, 0.16) 0%, transparent 58%),
+        radial-gradient(ellipse at 74% 26%, rgba(236, 229, 212, 0.07) 0%, transparent 56%);
+}
+.page-hero-tipografico .eyebrow { color: var(--gold); }
+
+/* O "Voltar" ficava na borda do container de 1240px enquanto o texto é uma
+   coluna de 680px centralizada, parecendo solto. Agora acompanha a coluna. */
+.historia-topo { max-width: 680px; margin: 0 auto 30px; }
+.historia-topo .back-link {
+    display: inline-flex; align-items: center; gap: 9px;
+    color: var(--terra); font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.78rem;
+    transition: gap 0.3s var(--ease);
+}
+.historia-topo .back-link:hover { gap: 15px; }
