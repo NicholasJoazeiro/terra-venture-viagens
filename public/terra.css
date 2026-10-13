@@ -1115,7 +1115,7 @@ button:focus-visible {
 }
 .historia-layout {
     position: relative;
-    max-width: 760px;
+    max-width: 680px;  /* 760px dava 84 caracteres por linha; 680 traz para ~75 */
     margin: 0 auto;
 }
 .historia-timeline-line {
