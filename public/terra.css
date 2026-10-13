@@ -58,7 +58,20 @@ ul { list-style: none; }
 h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; letter-spacing: -0.02em; line-height: 1.05; text-wrap: balance; }
 
 /* Reveals antigos: sempre visíveis (scroll normal, sem sumiço) */
-.scroll-reveal { opacity: 1 !important; visibility: visible !important; transform: none !important; }
+/* Revelação no scroll. Sem JS a classe .js nunca entra e nada fica escondido. */
+.scroll-reveal { opacity: 1; visibility: visible; transform: none; }
+html.js .scroll-reveal,
+html.js :is(.section-header, .como-card, .diferencial-card, .dossie-row, .serv-card, .serv-passo, .epoca-card, .testimonial-card, .comunidade-item, .faq-item, .blog-card, .dest-card, .quem-somos-img, .quem-somos-text) {
+    opacity: 0;
+    transform: translateY(26px);
+    transition: opacity 0.75s var(--ease), transform 0.75s var(--ease);
+}
+html.js .scroll-reveal.active,
+html.js :is(.section-header, .como-card, .diferencial-card, .dossie-row, .serv-card, .serv-passo, .epoca-card, .testimonial-card, .comunidade-item, .faq-item, .blog-card, .dest-card, .quem-somos-img, .quem-somos-text).active { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+    html.js .scroll-reveal,
+    html.js :is(.section-header, .como-card, .diferencial-card, .dossie-row, .serv-card, .serv-passo, .epoca-card, .testimonial-card, .comunidade-item, .faq-item, .blog-card, .dest-card, .quem-somos-img, .quem-somos-text) { opacity: 1; transform: none; transition: none; }
+}
 
 /* ======================= BOTÕES ======================= */
 .btn-primary, .btn-ghost, .btn-outline, .btn-outline-white {

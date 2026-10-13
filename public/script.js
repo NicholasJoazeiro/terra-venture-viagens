@@ -80,6 +80,17 @@ document.addEventListener('DOMContentLoaded', () => {
         revealObserver.observe(el);
     });
 
+    // Mesma lista do terra.css: as paginas novas nao marcam .scroll-reveal no
+    // HTML, entao o observer pega esses elementos por seletor. Escalonar o
+    // atraso dentro de cada grupo faz os cards entrarem em cascata.
+    const ALVOS_REVEAL = '.section-header, .como-card, .diferencial-card, .dossie-row, .serv-card, .serv-passo, .epoca-card, .testimonial-card, .comunidade-item, .faq-item, .blog-card, .dest-card, .quem-somos-img, .quem-somos-text';
+    document.querySelectorAll(ALVOS_REVEAL).forEach(el => {
+        const irmaos = el.parentElement ? [...el.parentElement.children].filter(x => x.matches(ALVOS_REVEAL)) : [];
+        const i = irmaos.indexOf(el);
+        if (i > 0) el.style.transitionDelay = Math.min(i, 5) * 80 + 'ms';
+        revealObserver.observe(el);
+    });
+
     /* =========================================================================
        4. PARALLAX EFFECT
        ========================================================================= */
