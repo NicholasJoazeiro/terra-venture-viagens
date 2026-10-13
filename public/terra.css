@@ -410,9 +410,11 @@ html.js :is(.section-header, .como-card, .diferencial-card, .dossie-row, .serv-c
 }
 /* nav vira hamburguer antes do menu desktop apertar (precisa de ~995px) */
 @media (max-width: 1000px) {
-    .nav-links { position: fixed; top: 0; right: -100%; width: 78%; max-width: 320px; height: 100vh; background: var(--ink); flex-direction: column; justify-content: center; gap: 30px; padding: 40px; transition: right 0.4s var(--ease); z-index: 999; }
+    /* align-items: center estava só na versão .subpage; sem ele, na home os itens
+       esticavam e ficavam à esquerda, diferente do resto do site */
+    .nav-links { position: fixed; top: 0; right: -100%; width: 78%; max-width: 320px; height: 100vh; background: var(--ink); flex-direction: column; justify-content: center; align-items: center; gap: 26px; padding: 40px 28px; transition: right 0.4s var(--ease); z-index: 999; }
     .nav-links.active { right: 0; }
-    .nav-links a { font-size: 1.1rem; display: block; padding: 10px 4px; }  /* alvo de toque de 44px */
+    .nav-links a { font-size: 1.1rem; display: block; padding: 10px 14px; text-align: center; }  /* alvo de toque de 44px */
     /* o CTA aparecia no menu mobile das internas e sumia na home; agora e igual */
     .nav-links .nav-btn { display: inline-flex !important; margin-top: 10px !important; color: #fff !important; }
     .menu-toggle { display: block; z-index: 1001; }
