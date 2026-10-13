@@ -170,21 +170,44 @@ html.js :is(.section-header, .como-card, .diferencial-card, .dossie-row, .serv-c
 .sec-dark .section-desc { color: var(--bone-dim); }
 
 /* ======================= COMO FUNCIONA ======================= */
-.como-funciona { padding: 120px 0; background: var(--cream); }
-.como-funciona-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
-.como-card {
-    background: #fff; border: 1px solid var(--line-light); border-radius: 26px; padding: 44px 34px;
-    position: relative; counter-increment: passo; transition: transform 0.45s var(--ease), box-shadow 0.45s ease;
+/* Os três passos como percurso, não como três caixas soltas: paradas
+   numeradas ligadas por uma linha. Antes eram cartões brancos com muito
+   vazio, a seção mais chapada da home. */
+.como-funciona { padding: 124px 0; background: var(--cream); }
+.como-funciona-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;
+    counter-reset: passo; position: relative;
 }
-.como-funciona-grid { counter-reset: passo; }
+.como-funciona-grid::before {
+    content: ''; position: absolute; top: 43px; left: 16%; right: 16%; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--terra) 18%, var(--terra) 82%, transparent);
+    opacity: 0.35;
+}
+.como-card {
+    position: relative; counter-increment: passo; text-align: center;
+    background: none; border: 0; padding: 0;
+}
 .como-card::before {
-    content: counter(passo, decimal-leading-zero); font-family: var(--serif); font-size: 2.4rem;
-    color: var(--terra); opacity: 0.5; font-weight: 500; display: block; margin-bottom: 14px;
+    content: counter(passo, decimal-leading-zero);
+    display: grid; place-items: center;
+    width: 86px; height: 86px; margin: 0 auto 28px;
+    border-radius: 50%;
+    background: var(--cream);
+    border: 1px solid rgba(217, 116, 78, 0.38);
+    font-family: var(--serif); font-size: 1.55rem; font-weight: 500;
+    color: var(--terra);
+    position: relative; z-index: 1;
+    transition: background 0.45s var(--ease), color 0.45s var(--ease),
+                border-color 0.45s var(--ease), transform 0.45s var(--ease);
+}
+.como-card:hover::before {
+    background: var(--terra); color: #fff;
+    border-color: var(--terra); transform: scale(1.07);
+    box-shadow: 0 14px 32px rgba(217, 116, 78, 0.28);
 }
 .como-card .como-icon { display: none; }
-.como-card:hover { transform: translateY(-8px); box-shadow: var(--shadow); }
-.como-card h3 { font-size: 1.5rem; color: var(--moss); margin-bottom: 12px; }
-.como-card p { color: var(--espresso-soft); font-size: 0.98rem; }
+.como-card h3 { font-family: var(--serif); font-weight: 400; font-size: 1.55rem; color: var(--moss); margin-bottom: 12px; }
+.como-card p { color: var(--espresso-soft); font-size: 1rem; line-height: 1.7; max-width: 32ch; margin: 0 auto; text-wrap: pretty; }
 
 /* ======================= DESTINOS DOSSIÊ (dark) ======================= */
 .destinos-editorial { padding: 120px 0; background: var(--ink); color: var(--bone); }
@@ -377,7 +400,8 @@ html.js :is(.section-header, .como-card, .diferencial-card, .dossie-row, .serv-c
 
 /* ======================= RESPONSIVO ======================= */
 @media (max-width: 980px) {
-    .como-funciona-grid { grid-template-columns: 1fr; gap: 18px; }
+    .como-funciona-grid { grid-template-columns: 1fr; gap: 44px; }
+    .como-funciona-grid::before { display: none; }  /* a linha do percurso so faz sentido na horizontal */
     .diferenciais-grid { grid-template-columns: repeat(2, 1fr); }
     .quem-somos-wrapper, .contato-wrapper { grid-template-columns: 1fr; gap: 40px; }
     .footer-grid { grid-template-columns: 1fr 1fr; }

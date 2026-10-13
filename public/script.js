@@ -91,6 +91,15 @@ document.addEventListener('DOMContentLoaded', () => {
         revealObserver.observe(el);
     });
 
+    // Rede de seguranca: esconder conteudo e depender do observer para mostra-lo
+    // significa que uma falha dele deixaria a pagina em branco. Se em 2,5s nada
+    // tiver sido revelado, revela tudo. Perde-se a animacao, nunca o conteudo.
+    const redeDeSeguranca = setTimeout(() => {
+        const tudo = document.querySelectorAll(ALVOS_REVEAL + ', .scroll-reveal');
+        const algumRevelado = [...tudo].some(el => el.classList.contains('active'));
+        if (!algumRevelado) tudo.forEach(el => el.classList.add('active'));
+    }, 2500);
+
     /* =========================================================================
        4. PARALLAX EFFECT
        ========================================================================= */
