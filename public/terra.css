@@ -412,7 +412,7 @@ html.js :is(.section-header, .como-card, .diferencial-card, .dossie-row, .serv-c
 @media (max-width: 1000px) {
     .nav-links { position: fixed; top: 0; right: -100%; width: 78%; max-width: 320px; height: 100vh; background: var(--ink); flex-direction: column; justify-content: center; gap: 30px; padding: 40px; transition: right 0.4s var(--ease); z-index: 999; }
     .nav-links.active { right: 0; }
-    .nav-links a { font-size: 1.1rem; }
+    .nav-links a { font-size: 1.1rem; display: block; padding: 10px 4px; }  /* alvo de toque de 44px */
     .nav-btn { display: none !important; }
     .menu-toggle { display: block; z-index: 1001; }
 }
@@ -607,7 +607,7 @@ h1, h2, h3, h4, .hero-title, .section-title, .de-title, .quiz-q, .faq-title, .qu
     .comunidade-item { aspect-ratio: 3 / 4; }
     .com-quote { padding: 14px; }
     .com-text { font-size: 0.82rem; line-height: 1.38; margin-bottom: 8px; }
-    .com-name { font-size: 0.62rem; letter-spacing: 0.09em; }
+    .com-name { font-size: 0.78rem; letter-spacing: 0.08em; }  /* era 0.62rem = 9.9px, pequeno demais para ler */
 }
 
 /* =========================================================================
