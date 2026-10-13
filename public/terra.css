@@ -1496,3 +1496,24 @@ button:focus-visible {
     }
 }
 p, li, .hero-subtitle, .section-desc, .lead, .lead-text, .testimonial-text, .storytelling p, .timeline-body p, .trip-box li { text-wrap: pretty; }
+
+/* Mapa escuro sem depender de provedor pago.
+   Os tiles do OpenStreetMap são claros; inverter e girar o matiz em 180graus
+   escurece o mapa mantendo as cores coerentes (água azulada, terra neutra).
+   Os marcadores ficam fora do filtro porque vivem em outro pane do Leaflet. */
+.leaflet-tile-pane {
+    filter: invert(1) hue-rotate(180deg) brightness(0.92) contrast(0.92) saturate(0.75);
+}
+.leaflet-container { background: var(--ink); }
+.leaflet-control-attribution {
+    background: rgba(26, 38, 33, 0.78) !important;
+    color: var(--bone-dim) !important;
+    font-size: 0.68rem !important;
+}
+.leaflet-control-attribution a { color: var(--sage) !important; }
+.leaflet-control-zoom a {
+    background: rgba(26, 38, 33, 0.9) !important;
+    color: var(--bone) !important;
+    border-color: rgba(236, 229, 212, 0.18) !important;
+}
+.leaflet-control-zoom a:hover { background: var(--terra) !important; color: #fff !important; }

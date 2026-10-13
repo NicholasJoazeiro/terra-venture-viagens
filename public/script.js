@@ -168,9 +168,13 @@ document.addEventListener('DOMContentLoaded', () => {
             attributionControl: true
         });
 
-        // Camada de Tiles (CartoDB Dark Matter para visual mais escuro)
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/dark_nolabels/{z}/{x}/{y}{r}.png', {
-            attribution: '&copy; OpenStreetMap contributors &copy; CARTO'
+        // Tiles do OpenStreetMap: livres e sem chave de API. A CARTO passou a
+        // exigir chave nos basemaps dela e as telas vinham com marca d'agua
+        // 'API KEY REQUIRED'. O visual escuro da marca volta por filtro CSS
+        // em .leaflet-tile-pane, nao pelo provedor.
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: '&copy; colaboradores do OpenStreetMap'
         }).addTo(map);
 
         // Dados dos Destinos
