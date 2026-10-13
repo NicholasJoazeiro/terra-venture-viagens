@@ -1238,7 +1238,7 @@ button:focus-visible {
     position: relative;
 }
 .historia-fecho::before {
-    content: 'â€”';
+    content: '—';  /* travessao; vinha corrompido do style.css antigo */
     display: block;
     font-size: 1.5rem;
     color: var(--terra);
