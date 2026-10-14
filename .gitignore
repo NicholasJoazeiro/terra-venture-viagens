@@ -10,3 +10,8 @@ node_modules/
 public/aurora_bg.mp4
 public/aurora_dark.mp4
 public/test_speed.mp4
+
+# originais das imagens, fora do site publico
+public/*.jpg
+!public/og-image.jpg
+public/vaiajr com crianca
