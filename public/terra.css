@@ -129,11 +129,15 @@ html.js :is(.section-header, .como-card, .diferencial-card, .dossie-row, .serv-c
     justify-content: flex-end; isolation: isolate; overflow: hidden; padding-bottom: 8vh;
 }
 .hero-bg-image { position: absolute; inset: 0; z-index: -2; }
-.hero-bg-image img { width: 100%; height: 100%; object-fit: cover; animation: kenBurns 30s ease-in-out infinite alternate; }
-@keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.13); } }
+.hero-bg-image img { width: 100%; height: 100%; object-fit: cover; animation: kenBurns 46s ease-in-out infinite alternate; }
+@keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.05); } }
+/* dois eixos: escurece embaixo e à esquerda, onde o texto vive, e deixa a
+   foto respirar à direita. É isso que dispensa sombra em cada elemento. */
 .hero-overlay, .hero::after {
     content: ''; position: absolute; inset: 0; z-index: -1;
-    background: linear-gradient(180deg, rgba(26, 38, 33, 0.55) 0%, rgba(26, 38, 33, 0.12) 34%, rgba(26, 38, 33, 0.74) 82%, rgba(26, 38, 33, 0.97) 100%);
+    background:
+        linear-gradient(100deg, rgba(20, 30, 26, 0.80) 0%, rgba(20, 30, 26, 0.46) 38%, rgba(20, 30, 26, 0.06) 70%),
+        linear-gradient(180deg, rgba(20, 30, 26, 0.42) 0%, rgba(20, 30, 26, 0) 28%, rgba(20, 30, 26, 0.58) 78%, rgba(20, 30, 26, 0.92) 100%);
 }
 .hero-content { position: relative; width: 100%; max-width: var(--wrap); margin: 0 auto; padding: 0 32px; color: var(--bone); }
 .hero-content .eyebrow { color: var(--gold); opacity: 0; animation: rise 0.9s 0.15s var(--ease) forwards; }
@@ -142,7 +146,7 @@ html.js :is(.section-header, .como-card, .diferencial-card, .dossie-row, .serv-c
     font-size: clamp(2.9rem, 7.4vw, 6.6rem); line-height: 1.0; letter-spacing: -0.025em;
     margin: 20px 0 22px; max-width: 16ch; opacity: 0; animation: rise 1s 0.3s var(--ease) forwards;
 }
-.hero-title em { font-style: italic; color: var(--terra); }
+.hero-title em { font-style: italic; color: inherit; }  /* a palavra colorida em itálico era a assinatura mais tipica de landing gerada */
 .hero-subtitle {
     font-size: 1.14rem; color: var(--bone-dim); max-width: 48ch; margin-bottom: 34px;
     opacity: 0; animation: rise 1s 0.5s var(--ease) forwards;
@@ -151,9 +155,23 @@ html.js :is(.section-header, .como-card, .diferencial-card, .dossie-row, .serv-c
 .hero-cta .link-plain { color: var(--bone); font-size: 0.9rem; letter-spacing: 0.03em; border-bottom: 1px solid var(--line-dark); padding-bottom: 4px; transition: border-color 0.3s; }
 .hero-cta .link-plain:hover { border-color: var(--terra); }
 @keyframes rise { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
-.scroll-cue { position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%); z-index: 2; opacity: 0.7; }
-.scroll-cue span { display: block; width: 24px; height: 38px; border: 2px solid rgba(255, 255, 255, 0.6); border-radius: 26px; position: relative; }
-.scroll-cue span::after { content: ''; position: absolute; top: 7px; left: 50%; transform: translateX(-50%); width: 3px; height: 7px; background: #fff; border-radius: 3px; animation: wheel 1.8s infinite; }
+/* rodapé do hero: no lugar do mouse animado, uma linha discreta e o crédito
+   da foto. Nomear o lugar é o que um site editorial faz, e sinaliza foto real. */
+.hero-rodape {
+    position: relative; width: 100%; max-width: var(--wrap); margin: 44px auto 0;
+    padding: 0 32px; display: flex; justify-content: space-between; align-items: center;
+    opacity: 0; animation: rise 1s 0.9s var(--ease) forwards;
+}
+.hero-role, .hero-credito {
+    font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(236, 229, 212, 0.52);
+}
+.hero-role { display: inline-flex; align-items: center; gap: 12px; }
+.hero-role::after {
+    content: ''; width: 1px; height: 34px; background: linear-gradient(rgba(236,229,212,0.5), transparent);
+    animation: desce 2.4s ease-in-out infinite;
+}
+@keyframes desce { 0%,100% { opacity: 0.25; transform: scaleY(0.6); } 50% { opacity: 0.8; transform: scaleY(1); } }
 @keyframes wheel { 0% { opacity: 1; top: 7px; } 100% { opacity: 0; top: 18px; } }
 
 /* ======================= FAIXA DIFERENCIAL ======================= */
@@ -446,10 +464,17 @@ html.js :is(.section-header, .como-card, .diferencial-card, .dossie-row, .serv-c
 }
 
 /* ======================= AJUSTE DE CONTRASTE (hero sobre foto clara) ======================= */
-.hero-content .eyebrow { color: #EBCE92; text-shadow: 0 1px 14px rgba(0, 0, 0, 0.9), 0 2px 30px rgba(0,0,0,0.8); background: rgba(14,23,18,0.42); padding: 5px 14px; border-radius: 100px; backdrop-filter: blur(6px); }
-.hero-title { text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5), 0 1px 3px rgba(0, 0, 0, 0.35); }
-.hero-subtitle { color: rgba(240, 235, 224, 0.94); text-shadow: 0 2px 16px rgba(0, 0, 0, 0.7); }
-.hero-cta .link-plain { text-shadow: 0 1px 10px rgba(0, 0, 0, 0.6); }
+/* filete no lugar da pílula: o badge sobre foto era o elemento mais datado */
+.hero-content .eyebrow {
+    color: #E4CFA4; background: none; padding: 0; border-radius: 0; backdrop-filter: none;
+    display: inline-flex; align-items: center; gap: 14px; text-shadow: none;
+}
+.hero-content .eyebrow::before {
+    content: ''; width: 44px; height: 1px; background: var(--terra); flex: none;
+}
+.hero-title { text-shadow: 0 2px 24px rgba(12, 20, 16, 0.4); }  /* uma só, discreta; o scrim faz o resto */
+.hero-subtitle { color: rgba(238, 233, 222, 0.92); text-shadow: none; }
+.hero-cta .link-plain { text-shadow: none; }
 .navbar:not(.scrolled) .logo,
 .navbar:not(.scrolled) .nav-links a { text-shadow: 0 1px 10px rgba(0, 0, 0, 0.45); }
 
@@ -1025,6 +1050,11 @@ button:focus-visible {
     .epoca-chips { grid-template-columns: repeat(4, 1fr); max-width: 620px; }
 }
 @media (max-width: 620px) {
+    /* no celular ninguem precisa de aviso para rolar; fica so o credito da foto,
+       e em tamanho legivel (0.68rem dava 10.9px) */
+    .hero-role { display: none; }
+    .hero-rodape { justify-content: flex-start; margin-top: 28px; }
+    .hero-credito { font-size: 0.78rem; letter-spacing: 0.16em; }
     .epoca-hero { padding: 140px 0 54px; }
     .epoca-grid { grid-template-columns: 1fr; }
     .epoca-chips { grid-template-columns: repeat(3, 1fr); gap: 8px; }
