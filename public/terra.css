@@ -136,8 +136,12 @@ html.js :is(.section-header, .como-card, .diferencial-card, .dossie-row, .serv-c
 .hero-overlay, .hero::after {
     content: ''; position: absolute; inset: 0; z-index: -1;
     background:
-        linear-gradient(100deg, rgba(20, 30, 26, 0.80) 0%, rgba(20, 30, 26, 0.46) 38%, rgba(20, 30, 26, 0.06) 70%),
-        linear-gradient(180deg, rgba(20, 30, 26, 0.42) 0%, rgba(20, 30, 26, 0) 28%, rgba(20, 30, 26, 0.58) 78%, rgba(20, 30, 26, 0.92) 100%);
+        /* o scrim horizontal e azulado de proposito: em verde ele reforcava o
+           tom que a foto nova veio justamente equilibrar */
+        linear-gradient(100deg, rgba(13, 24, 32, 0.74) 0%, rgba(13, 24, 32, 0.40) 38%, rgba(13, 24, 32, 0.04) 70%),
+        /* o vertical segue no verde da marca, para emendar sem degrau com a
+           faixa escura logo abaixo do hero */
+        linear-gradient(180deg, rgba(20, 30, 26, 0.38) 0%, rgba(20, 30, 26, 0) 30%, rgba(20, 30, 26, 0.55) 78%, rgba(26, 38, 33, 0.95) 100%);
 }
 .hero-content { position: relative; width: 100%; max-width: var(--wrap); margin: 0 auto; padding: 0 32px; color: var(--bone); }
 .hero-content .eyebrow { color: var(--gold); opacity: 0; animation: rise 0.9s 0.15s var(--ease) forwards; }
@@ -1053,8 +1057,12 @@ button:focus-visible {
     /* no celular ninguem precisa de aviso para rolar; fica so o credito da foto,
        e em tamanho legivel (0.68rem dava 10.9px) */
     .hero-role { display: none; }
-    .hero-rodape { justify-content: flex-start; margin-top: 28px; }
-    .hero-credito { font-size: 0.78rem; letter-spacing: 0.16em; }
+    /* o padding da direita evita que o credito corra por baixo do botao do WhatsApp */
+    .hero-rodape { justify-content: flex-start; margin-top: 28px; padding-right: 86px; }
+    .hero-credito { font-size: 0.76rem; letter-spacing: 0.12em; }
+    /* retrato corta a foto em 75%: puxa o enquadramento para o lado do lago,
+       senao no celular sobra so a encosta verde */
+    .hero-bg-image img { object-position: 72% 50%; }
     .epoca-hero { padding: 140px 0 54px; }
     .epoca-grid { grid-template-columns: 1fr; }
     .epoca-chips { grid-template-columns: repeat(3, 1fr); gap: 8px; }
