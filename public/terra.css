@@ -343,10 +343,12 @@ html.js :is(.section-header, .como-card, .diferencial-card, .dossie-row, .serv-c
 .testimonials { padding: 120px 0; background: var(--ink); color: var(--bone); }
 .testimonials .section-title { color: #fff; }
 .testimonials .section-desc { color: var(--bone-dim); }
-.testimonials-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 50px; }
+/* 3 colunas: o destaque ocupa a linha toda e os cinco cards restantes ficam
+   em 3 e 2. Em 2 colunas sobraria sempre um orfao. */
+.testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 50px; }
 .testimonial-card { background: rgba(255, 255, 255, 0.04); border: 1px solid var(--line-dark); border-radius: 26px; padding: 38px; transition: transform 0.4s var(--ease), border-color 0.4s; }
 .testimonial-card:hover { transform: translateY(-6px); border-color: rgba(217, 116, 78, 0.4); }
-.testimonial-featured { grid-column: span 2; background: linear-gradient(135deg, rgba(62, 90, 68, 0.25), rgba(217, 116, 78, 0.14)); border-color: rgba(236, 229, 212, 0.2); }
+.testimonial-featured { grid-column: 1 / -1; background: linear-gradient(135deg, rgba(62, 90, 68, 0.25), rgba(217, 116, 78, 0.14)); border-color: rgba(236, 229, 212, 0.2); }
 .testimonial-quote i { color: var(--terra); font-size: 1.4rem; margin-bottom: 14px; }
 .testimonial-text { font-family: var(--serif); font-size: 1.1rem; line-height: 1.55; color: var(--bone); margin-bottom: 24px; font-style: italic; }
 .testimonial-author { display: flex; align-items: center; gap: 14px; }
