@@ -343,9 +343,14 @@ html.js :is(.section-header, .como-card, .diferencial-card, .dossie-row, .serv-c
 .testimonials { padding: 120px 0; background: var(--ink); color: var(--bone); }
 .testimonials .section-title { color: #fff; }
 .testimonials .section-desc { color: var(--bone-dim); }
-/* 3 colunas: o destaque ocupa a linha toda e os cinco cards restantes ficam
-   em 3 e 2. Em 2 colunas sobraria sempre um orfao. */
-.testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 50px; }
+/* 6 colunas com cada card ocupando 2: da a mesma largura que 3 colunas, mas
+   permite deslocar o par da ultima linha para o meio em vez de deixa-lo
+   encostado na esquerda com a terceira coluna vazia. */
+.testimonials-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 24px; margin-top: 50px; }
+.testimonial-card { grid-column: span 2; }
+/* so vale quando ha exatamente 6 cards: o 5o tambem sendo o penultimo. Se um
+   depoimento for adicionado, a regra para de valer sozinha. */
+.testimonial-card:nth-child(5):nth-last-child(2) { grid-column: 2 / span 2; }
 .testimonial-card { background: rgba(255, 255, 255, 0.04); border: 1px solid var(--line-dark); border-radius: 26px; padding: 38px; transition: transform 0.4s var(--ease), border-color 0.4s; }
 .testimonial-card:hover { transform: translateY(-6px); border-color: rgba(217, 116, 78, 0.4); }
 .testimonial-featured { grid-column: 1 / -1; background: linear-gradient(135deg, rgba(62, 90, 68, 0.25), rgba(217, 116, 78, 0.14)); border-color: rgba(236, 229, 212, 0.2); }
@@ -431,7 +436,8 @@ html.js :is(.section-header, .como-card, .diferencial-card, .dossie-row, .serv-c
     .quem-somos-wrapper, .contato-wrapper { grid-template-columns: 1fr; gap: 40px; }
     .footer-grid { grid-template-columns: 1fr 1fr; }
     .testimonials-grid { grid-template-columns: 1fr; }
-    .testimonial-featured { grid-column: span 1; }
+    .testimonial-card, .testimonial-featured,
+    .testimonial-card:nth-child(5):nth-last-child(2) { grid-column: 1 / -1; }
 }
 /* nav vira hamburguer antes do menu desktop apertar (precisa de ~995px) */
 @media (max-width: 1000px) {
