@@ -28,7 +28,7 @@
     <!-- Leaflet -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
     <!-- Estilo Terra Venture -->
-    <link rel="stylesheet" href="terra.css?v=cfb59fe7">
+    <link rel="stylesheet" href="terra.css?v=d0cabe90">
 
     <meta name="description" content="Terra Venture Viagens: consultoria de viagem sob medida e roteiros exclusivos desenhados à mão, do primeiro sonho ao retorno pra casa.">
 
@@ -86,16 +86,22 @@
     <!-- HERO -->
     <section class="hero" id="home">
         <div class="hero-bg-image">
-            <img src="hero-lago-molveno.webp"
-                alt="Lago Molveno visto do alto, com água turquesa entre encostas de floresta e os picos das Dolomitas ao fundo" loading="eager" fetchpriority="high">
+            <picture>
+                <!-- TODO(nicholas): a foto de origem tem 1800px de largura. Para o tamanho
+                     2400 e um recorte vertical proprio, mandar um arquivo de 2400px ou mais. -->
+                <source media="(max-width: 700px)" srcset="hero-lago-molveno-vertical.webp" width="809" height="1011">
+                <source srcset="hero-lago-molveno-800.webp 800w, hero-lago-molveno-1600.webp 1600w, hero-lago-molveno.webp 1800w" sizes="100vw">
+                <img src="hero-lago-molveno-1600.webp" width="1800" height="1011"
+                    alt="Vista aérea do Lago Molveno, com água turquesa entre encostas de floresta e os picos do Brenta ao fundo, nas Dolomitas italianas"
+                    loading="eager" fetchpriority="high" decoding="async">
+            </picture>
         </div>
         <div class="hero-content">
-            <span class="eyebrow">Consultoria de viagem · Do sonho ao retorno</span>
-            <h1 class="hero-title">Tem lugar no mundo que <em>muda</em> quem volta.</h1>
-            <p class="hero-subtitle">A gente desenha à mão a viagem inteira, roteiro, hospedagem, cada detalhe. Você só se preocupa em viver o instante.</p>
+            <h1 class="hero-title">Nicholas e Giovana montam a sua viagem e cuidam dela até você chegar em casa.</h1>
+            <p class="hero-subtitle">Roteiros sob medida, cruzeiros e saídas em grupo. A gente resolve reservas, documentos e seguro, e fica no WhatsApp com você durante a viagem inteira.</p>
             <div class="hero-cta">
-                <a class="btn-primary btn-large" href="https://wa.me/5551994596233?text=Olá, gostaria de uma consultoria de viagem!" target="_blank">Começar minha viagem</a>
-                <a class="link-plain" href="#destinos">Explorar destinos</a>
+                <a class="btn-primary btn-large" href="https://wa.me/5551994596233?text=Olá Nicholas e Giovana! Quero conversar sobre uma viagem." target="_blank" rel="noopener">Falar com Nicholas e Giovana</a>
+                <a class="link-plain" href="#briefing">Prefiro contar o básico primeiro</a>
             </div>
         </div>
         <div class="hero-rodape">
@@ -150,7 +156,7 @@
             </div>
             <div class="dossie-list">
                 <a class="dossie-row" href="/patagonia" data-vibe="aventura">
-                    <div class="dossie-media"><img loading="lazy" decoding="async" src="patagonia-torres-del-paine.webp" alt="Patagônia"></div>
+                    <div class="dossie-media"><img width="1000" height="1500" loading="lazy" decoding="async" src="patagonia-torres-del-paine.webp" alt="Patagônia"></div>
                     <div class="dossie-body">
                         <span class="eyebrow">América do Sul</span>
                         <h3>Patagônia</h3>
@@ -164,7 +170,7 @@
                     </div>
                 </a>
                 <a class="dossie-row flip" href="/santiago" data-vibe="cultura">
-                    <div class="dossie-media"><img loading="lazy" decoding="async" src="dest_santiago_skycostanera.webp" alt="Santiago"></div>
+                    <div class="dossie-media"><img width="1000" height="1500" loading="lazy" decoding="async" src="dest_santiago_skycostanera.webp" alt="Santiago"></div>
                     <div class="dossie-body">
                         <span class="eyebrow">América do Sul</span>
                         <h3>Santiago</h3>
@@ -217,7 +223,7 @@
         <div class="container">
             <div class="quem-somos-wrapper">
                 <div class="quem-somos-img">
-                    <img loading="lazy" decoding="async" src="nicholas-e-giovana-fundadores-terra-venture.webp" alt="Nicholas Joazeiro e Giovana Konrath, fundadores da Terra Venture">
+                    <img width="800" height="800" loading="lazy" decoding="async" src="nicholas-e-giovana-fundadores-terra-venture.webp" alt="Nicholas Joazeiro e Giovana Konrath, fundadores da Terra Venture">
                 </div>
                 <div class="quem-somos-content">
                     <span class="eyebrow">Quem cuida da sua viagem</span>
@@ -368,7 +374,7 @@
                     <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
                     <p class="testimonial-text">"Paris e Londres foram mais do que esperávamos. Foi uma alegria imensa vivenciar uma experiência tão mágica e, com ela, ter toda a segurança que você nos passou. Merci beaucoup por ter feito parte da escrita das páginas dos nossos sonhos. Com certeza faremos mais projetos com você."</p>
                     <div class="testimonial-author">
-                        <div class="author-img"><img loading="lazy" src="michele-e-daniel-clientes-paris-londres-avatar.webp" alt="Michele e Daniel, clientes da Terra Venture"></div>
+                        <div class="author-img"><img decoding="async" width="200" height="200" loading="lazy" src="michele-e-daniel-clientes-paris-londres-avatar.webp" alt="Michele e Daniel, clientes da Terra Venture"></div>
                         <div class="author-info">
                             <h4 class="author-name">Michele e Daniel</h4>
                             <p class="author-destination">Paris e Londres</p>
@@ -380,7 +386,7 @@
                     <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
                     <p class="testimonial-text">"Procurar a Terra Venture foi a melhor coisa que fiz. Quando decidi conhecer a Itália não tinha ideia de por onde começar, e o Nicholas não só montou o roteiro como cuidou de hospedagem e seguro, sempre à disposição pra tudo. Recomendo 100%, superou minha expectativa!"</p>
                     <div class="testimonial-author">
-                        <div class="author-img"><img loading="lazy" src="zoraia-joazeiro-depoimento-italia-avatar.webp" alt="Zoraia Joazeiro, cliente da Terra Venture"></div>
+                        <div class="author-img"><img decoding="async" width="200" height="200" loading="lazy" src="zoraia-joazeiro-depoimento-italia-avatar.webp" alt="Zoraia Joazeiro, cliente da Terra Venture"></div>
                         <div class="author-info">
                             <h4 class="author-name">Zoraia Joazeiro</h4>
                             <p class="author-destination">Itália</p>
@@ -392,7 +398,7 @@
                     <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
                     <p class="testimonial-text">"Passando pra agradecer a organização da viagem, a hospedagem, os ingressos e o suporte quando ficamos sem o celular com o endereço do Airbnb. Sem sua ajuda não teria sido tão tranquilo. Até a próxima, com certeza!"</p>
                     <div class="testimonial-author">
-                        <div class="author-img"><img loading="lazy" src="marcia-reis-cliente-italia-avatar.webp" alt="Márcia Reis, cliente da Terra Venture"></div>
+                        <div class="author-img"><img decoding="async" width="200" height="200" loading="lazy" src="marcia-reis-cliente-italia-avatar.webp" alt="Márcia Reis, cliente da Terra Venture"></div>
                         <div class="author-info">
                             <h4 class="author-name">Márcia Reis</h4>
                             <p class="author-destination">Itália</p>
@@ -404,7 +410,7 @@
                     <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
                     <p class="testimonial-text">"Viajar pro Rio com a Terra Venture foi uma experiência sem igual. Recebemos auxílio do planejamento até a volta pra casa, dicas ótimas do que fazer e ajuda com toda a burocracia do aeroporto. Foi tudo muito tranquilo."</p>
                     <div class="testimonial-author">
-                        <div class="author-img"><img loading="lazy" src="gabriel-dilly-cliente-rio-de-janeiro-avatar.webp" alt="Gabriel Dilly, cliente da Terra Venture"></div>
+                        <div class="author-img"><img decoding="async" width="200" height="200" loading="lazy" src="gabriel-dilly-cliente-rio-de-janeiro-avatar.webp" alt="Gabriel Dilly, cliente da Terra Venture"></div>
                         <div class="author-info">
                             <h4 class="author-name">Gabriel Dilly</h4>
                             <p class="author-destination">Rio de Janeiro</p>
@@ -416,7 +422,7 @@
                     <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
                     <p class="testimonial-text">"Nossa experiência foi ótima! Atendimento super atencioso e o processo pra contratar o seguro viagem foi fácil e rápido, tudo bem detalhado. Com certeza fez diferença viajar com mais segurança e suporte."</p>
                     <div class="testimonial-author">
-                        <div class="author-img"><img loading="lazy" src="julia-e-manuela-clientes-buenos-aires-avatar.webp" alt="Júlia e Manuela, clientes da Terra Venture"></div>
+                        <div class="author-img"><img decoding="async" width="200" height="200" loading="lazy" src="julia-e-manuela-clientes-buenos-aires-avatar.webp" alt="Júlia e Manuela, clientes da Terra Venture"></div>
                         <div class="author-info">
                             <h4 class="author-name">Júlia &amp; Manuela</h4>
                             <p class="author-destination">Buenos Aires</p>
@@ -428,7 +434,7 @@
                     <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
                     <p class="testimonial-text">"A experiência do passeio pra Bonito/MS foi extremamente positiva. Bem organizado, passeios ótimos com contato único com a natureza. Hotel, refeições, receptivo e transfers de qualidade. Atendimento acolhedor e eficiente, do início ao pós-venda. Recomendamos!"</p>
                     <div class="testimonial-author">
-                        <div class="author-img"><img loading="lazy" src="joice-e-rui-clientes-bonito-ms-avatar.webp" alt="Joice e Rui, clientes da Terra Venture"></div>
+                        <div class="author-img"><img decoding="async" width="200" height="200" loading="lazy" src="joice-e-rui-clientes-bonito-ms-avatar.webp" alt="Joice e Rui, clientes da Terra Venture"></div>
                         <div class="author-info">
                             <h4 class="author-name">Joice &amp; Rui</h4>
                             <p class="author-destination">Bonito / MS</p>
@@ -449,27 +455,27 @@
             </div>
             <div class="comunidade-grid">
                 <div class="comunidade-item">
-                    <img loading="lazy" decoding="async" src="zoraia-joazeiro-depoimento-italia.webp" alt="Zoraia, cliente na Itália">
+                    <img width="800" height="800" loading="lazy" decoding="async" src="zoraia-joazeiro-depoimento-italia.webp" alt="Zoraia, cliente na Itália">
                     <div class="com-quote"><p class="com-text">"Superou minha expectativa! Recomendo 100%."</p><span class="com-name">Zoraia · Itália</span></div>
                 </div>
                 <div class="comunidade-item">
-                    <img loading="lazy" decoding="async" src="joice-e-rui-clientes-bonito-ms.webp" alt="Joice e Rui em Bonito/MS">
+                    <img width="800" height="800" loading="lazy" decoding="async" src="joice-e-rui-clientes-bonito-ms.webp" alt="Joice e Rui em Bonito/MS">
                     <div class="com-quote"><p class="com-text">"Passeios ótimos e atendimento acolhedor. Recomendamos!"</p><span class="com-name">Joice & Rui · Bonito/MS</span></div>
                 </div>
                 <div class="comunidade-item">
-                    <img loading="lazy" decoding="async" src="gabriel-dilly-cliente-rio-de-janeiro.webp" alt="Gabriel no Rio de Janeiro">
+                    <img width="800" height="800" loading="lazy" decoding="async" src="gabriel-dilly-cliente-rio-de-janeiro.webp" alt="Gabriel no Rio de Janeiro">
                     <div class="com-quote"><p class="com-text">"Uma experiência sem igual, do planejamento até a volta."</p><span class="com-name">Gabriel · Rio de Janeiro</span></div>
                 </div>
                 <div class="comunidade-item">
-                    <img loading="lazy" decoding="async" src="julia-e-manuela-clientes-buenos-aires.webp" alt="Júlia e Manuela em Buenos Aires">
+                    <img width="800" height="800" loading="lazy" decoding="async" src="julia-e-manuela-clientes-buenos-aires.webp" alt="Júlia e Manuela em Buenos Aires">
                     <div class="com-quote"><p class="com-text">"Atendimento atencioso. Viajamos com muito mais segurança."</p><span class="com-name">Júlia & Manuela · Buenos Aires</span></div>
                 </div>
                 <div class="comunidade-item">
-                    <img loading="lazy" decoding="async" src="marcia-reis-cliente-italia.webp" alt="Márcia na Itália">
+                    <img width="800" height="800" loading="lazy" decoding="async" src="marcia-reis-cliente-italia.webp" alt="Márcia na Itália">
                     <div class="com-quote"><p class="com-text">"Suporte impecável. Até a próxima com certeza!"</p><span class="com-name">Márcia · Itália</span></div>
                 </div>
                 <div class="comunidade-item">
-                    <img loading="lazy" decoding="async" src="michele-e-daniel-clientes-paris-londres.webp" alt="Michele e Daniel em frente ao Moulin Rouge, em Paris">
+                    <img width="800" height="800" loading="lazy" decoding="async" src="michele-e-daniel-clientes-paris-londres.webp" alt="Michele e Daniel em frente ao Moulin Rouge, em Paris">
                     <div class="com-quote"><p class="com-text">"Paris e Londres foram mais do que esperávamos. Merci beaucoup!"</p><span class="com-name">Michele &amp; Daniel · Paris e Londres</span></div>
                 </div>
             </div>

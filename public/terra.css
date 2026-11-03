@@ -131,26 +131,35 @@ html.js :is(.section-header, .como-card, .diferencial-card, .dossie-row, .serv-c
 .hero-bg-image { position: absolute; inset: 0; z-index: -2; }
 .hero-bg-image img { width: 100%; height: 100%; object-fit: cover; animation: kenBurns 46s ease-in-out infinite alternate; }
 @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.05); } }
-/* dois eixos: escurece embaixo e à esquerda, onde o texto vive, e deixa a
-   foto respirar à direita. É isso que dispensa sombra em cada elemento. */
+/* O escurecimento nao cobre mais a foto inteira. Sao tres camadas: uma mancha
+   no canto de baixo a esquerda, onde o texto vive; um fio no topo, so para a
+   navbar ter contraste; e um pe, para emendar sem degrau com a faixa escura
+   logo abaixo. O miolo e a direita da foto ficam limpos. */
 .hero-overlay, .hero::after {
     content: ''; position: absolute; inset: 0; z-index: -1;
     background:
-        /* o scrim horizontal e azulado de proposito: em verde ele reforcava o
-           tom que a foto nova veio justamente equilibrar */
-        linear-gradient(100deg, rgba(13, 24, 32, 0.74) 0%, rgba(13, 24, 32, 0.40) 38%, rgba(13, 24, 32, 0.04) 70%),
-        /* o vertical segue no verde da marca, para emendar sem degrau com a
-           faixa escura logo abaixo do hero */
-        linear-gradient(180deg, rgba(20, 30, 26, 0.38) 0%, rgba(20, 30, 26, 0) 30%, rgba(20, 30, 26, 0.55) 78%, rgba(26, 38, 33, 0.95) 100%);
+        /* a mancha cobre o canto de baixo a esquerda com forca suficiente para o
+           texto branco bater AA sobre o paredao claro da foto, e zera antes dos
+           80% do raio, deixando o miolo e a direita da imagem sem veu */
+        radial-gradient(118% 150% at -10% 108%,
+            rgba(13, 24, 32, 0.90) 0%,
+            rgba(13, 24, 32, 0.62) 35%,
+            rgba(13, 24, 32, 0.30) 70%,
+            rgba(13, 24, 32, 0) 92%),
+        linear-gradient(180deg,
+            rgba(13, 24, 32, 0.30) 0%,
+            rgba(13, 24, 32, 0) 22%,
+            rgba(13, 24, 32, 0) 58%,
+            rgba(20, 30, 26, 0.34) 84%,
+            rgba(26, 38, 33, 0.92) 100%);
 }
 .hero-content { position: relative; width: 100%; max-width: var(--wrap); margin: 0 auto; padding: 0 32px; color: var(--bone); }
 .hero-content .eyebrow { color: var(--gold); opacity: 0; animation: rise 0.9s 0.15s var(--ease) forwards; }
 .hero-title {
     font-family: var(--serif); font-weight: 400; color: #fff;
-    font-size: clamp(2.9rem, 7.4vw, 6.6rem); line-height: 1.0; letter-spacing: -0.025em;
-    margin: 20px 0 22px; max-width: 16ch; opacity: 0; animation: rise 1s 0.3s var(--ease) forwards;
+    font-size: clamp(2.05rem, 4.5vw, 3.9rem); line-height: 1.1; letter-spacing: -0.02em;
+    margin: 0 0 22px; max-width: 19ch; opacity: 0; animation: rise 1s 0.3s var(--ease) forwards;
 }
-.hero-title em { font-style: italic; color: inherit; }  /* a palavra colorida em itálico era a assinatura mais tipica de landing gerada */
 .hero-subtitle {
     font-size: 1.14rem; color: var(--bone-dim); max-width: 48ch; margin-bottom: 34px;
     opacity: 0; animation: rise 1s 0.5s var(--ease) forwards;
@@ -177,6 +186,13 @@ html.js :is(.section-header, .como-card, .diferencial-card, .dossie-row, .serv-c
 }
 @keyframes desce { 0%,100% { opacity: 0.25; transform: scaleY(0.6); } 50% { opacity: 0.8; transform: scaleY(1); } }
 @keyframes wheel { 0% { opacity: 1; top: 7px; } 100% { opacity: 0; top: 18px; } }
+
+/* Normalizacao de cor das fotos de destino: elas vem de bancos diferentes,
+   cada uma com sua saturacao. Um filtro unico faz o conjunto parecer uma
+   curadoria so, sem reprocessar arquivo nenhum. */
+.dossie-media img, .dest-card img, .comunidade-item img {
+    filter: saturate(0.93) contrast(1.05) brightness(0.99);
+}
 
 /* ======================= FAIXA DIFERENCIAL ======================= */
 .diferencial-banner { background: var(--ink-soft); color: var(--bone); padding: 30px 0; }
@@ -484,8 +500,8 @@ html.js :is(.section-header, .como-card, .diferencial-card, .dossie-row, .serv-c
 .hero-content .eyebrow::before {
     content: ''; width: 44px; height: 1px; background: var(--terra); flex: none;
 }
-.hero-title { text-shadow: 0 2px 24px rgba(12, 20, 16, 0.4); }  /* uma só, discreta; o scrim faz o resto */
-.hero-subtitle { color: rgba(238, 233, 222, 0.92); text-shadow: none; }
+.hero-title { text-shadow: 0 2px 22px rgba(10, 18, 15, 0.62); }  /* o scrim encolheu, a sombra compensa */
+.hero-subtitle { color: rgba(242, 238, 229, 0.95); text-shadow: 0 1px 14px rgba(10, 18, 15, 0.55); }
 .hero-cta .link-plain { text-shadow: none; }
 .navbar:not(.scrolled) .logo,
 .navbar:not(.scrolled) .nav-links a { text-shadow: 0 1px 10px rgba(0, 0, 0, 0.45); }

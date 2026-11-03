@@ -2,6 +2,12 @@
   "version": "0.0.1",
   "configurations": [
     {
+      "name": "terra-venture",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["-y", "serve@14", "public", "-l", "4173", "--no-clipboard"],
+      "port": 4173
+    },
+    {
       "name": "web",
       "runtimeExecutable": "python",
       "runtimeArgs": ["-m", "http.server", "8000", "--directory", "public"],
