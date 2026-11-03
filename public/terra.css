@@ -330,45 +330,6 @@ html.js :is(.section-header, .como-card, .diferencial-card, .dossie-row, .serv-c
 .vibe-chip:hover { background: rgba(255, 255, 255, 0.08); }
 .vibe-chip.active { background: var(--terra); border-color: var(--terra); color: #fff; }
 
-/* ======================= QUIZ (dark, cinematográfico) ======================= */
-.quiz-section { position: relative; padding: 120px 0; color: #fff; overflow: hidden; isolation: isolate;
-    background: linear-gradient(rgba(22, 33, 28, 0.86), rgba(22, 33, 28, 0.95)), url('patagonia-torres-del-paine.webp') center/cover no-repeat; }
-.quiz-section .section-title { color: #fff; }
-.quiz-section .section-desc { color: rgba(255, 255, 255, 0.72); }
-.quiz-glow { position: absolute; top: -8%; right: -4%; width: 480px; height: 480px; z-index: -1; pointer-events: none;
-    background: radial-gradient(circle, rgba(217, 116, 78, 0.22) 0%, transparent 68%); filter: blur(30px); }
-.quiz-box { max-width: 760px; margin: 50px auto 0; background: rgba(26, 38, 33, 0.55); border: 1px solid rgba(236, 229, 212, 0.16);
-    border-radius: 28px; padding: 44px; box-shadow: 0 40px 90px rgba(0, 0, 0, 0.5); min-height: 360px; backdrop-filter: blur(6px); }
-.quiz-progress { height: 4px; width: 100%; background: rgba(255, 255, 255, 0.13); border-radius: 4px; overflow: hidden; margin-bottom: 32px; }
-.quiz-bar { display: block; height: 100%; width: 33%; background: linear-gradient(90deg, var(--terra), #e8a684); border-radius: 4px; transition: width 0.5s var(--ease); }
-.quiz-step { display: none; animation: rise 0.5s var(--ease); }
-.quiz-step.active { display: block; }
-.quiz-q { font-family: var(--serif); font-weight: 500; font-size: clamp(1.5rem, 3vw, 2.1rem); color: #fff; text-align: center; margin-bottom: 28px; }
-.quiz-options { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
-.quiz-opt { flex: 0 1 calc(33.333% - 10px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; min-height: 112px;
-    padding: 20px 14px; border-radius: 22px; border: 1.5px solid rgba(255, 255, 255, 0.14); background: rgba(255, 255, 255, 0.03);
-    color: #fff; font-family: var(--sans); font-size: 0.95rem; font-weight: 500; cursor: pointer; transition: all 0.28s var(--ease); }
-.quiz-opt i { font-size: 1.6rem; color: var(--gold); transition: all 0.28s ease; }
-.quiz-opt:hover { transform: translateY(-4px); border-color: var(--terra); background: rgba(217, 116, 78, 0.14); box-shadow: 0 14px 32px rgba(0, 0, 0, 0.35); }
-.quiz-opt:hover i { color: var(--terra); transform: scale(1.12); }
-.quiz-opt.selected { border-color: var(--terra); background: rgba(217, 116, 78, 0.2); }
-.quiz-nav { display: flex; align-items: center; justify-content: space-between; margin-top: 30px; }
-.quiz-back { background: none; border: none; color: rgba(255, 255, 255, 0.7); font-family: var(--sans); font-size: 0.9rem; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; }
-.quiz-back:hover { color: #fff; }
-.quiz-count { font-size: 0.82rem; letter-spacing: 0.1em; color: rgba(255, 255, 255, 0.5); text-transform: uppercase; }
-.quiz-matches { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; margin-bottom: 30px; }
-.quiz-match { position: relative; height: 210px; border-radius: 22px; overflow: hidden; box-shadow: 0 14px 34px rgba(0, 0, 0, 0.4); animation: rise 0.5s var(--ease) both; }
-.quiz-match img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
-.quiz-match:hover img { transform: scale(1.1); }
-.quiz-match-ov { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 16px; background: linear-gradient(to top, rgba(22, 33, 28, 0.94), transparent 65%); }
-.quiz-match-name { font-family: var(--serif); font-size: 1.2rem; color: #fff; line-height: 1.1; }
-.quiz-match-tag { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); margin-top: 4px; }
-.quiz-result-cta { text-align: center; }
-.quiz-restart { margin: 20px auto 0; background: transparent; border: 1.5px solid rgba(255, 255, 255, 0.22); border-radius: 100px; padding: 11px 24px; color: rgba(255, 255, 255, 0.75); font-family: var(--sans); font-weight: 500; font-size: 0.85rem; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; transition: all 0.3s ease; }
-.quiz-restart:hover { color: #fff; border-color: var(--terra); background: rgba(217, 116, 78, 0.14); transform: translateY(-2px); }
-.quiz-restart i { transition: transform 0.4s ease; }
-.quiz-restart:hover i { transform: rotate(-180deg); }
-
 /* ======================= MAPA ======================= */
 .map-explorer-section { padding: 120px 0; background: var(--cream-deep); }
 .map-wrapper { position: relative; border-radius: 30px; overflow: hidden; box-shadow: var(--shadow); }
@@ -571,12 +532,10 @@ html.js :is(.section-header, .como-card, .diferencial-card, .dossie-row, .serv-c
     .dossie-media { height: 240px; }
     .dossie-body { padding: 34px 22px; }
     .de-head { margin-bottom: 40px; }
-    .quiz-opt { flex: 0 1 calc(50% - 7px); }
-    .quiz-box { padding: 28px 20px; }
     .comunidade-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
     .contato-wrapper { padding: 34px 22px; }
     #map-main { height: 420px; }
-    .processo, .destinos-editorial, .quiz-section, .map-explorer-section, .diferenciais, .quem-somos, .testimonials, .comunidade, .faq-section, .contato { padding: 70px 0; }
+    .processo, .destinos-editorial, .briefing, .map-explorer-section, .diferenciais, .quem-somos, .testimonials, .comunidade, .faq-section, .contato { padding: 70px 0; }
     .whatsapp-float::after { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -607,7 +566,7 @@ p, li, figcaption, blockquote,
 .contato-info p, .detail-item p, .footer-brand p {
     text-wrap: pretty;
 }
-h1, h2, h3, h4, .hero-title, .section-title, .de-title, .quiz-q, .faq-title, .quem-somos-content .lead-text {
+h1, h2, h3, h4, .hero-title, .section-title, .de-title, .faq-title, .quem-somos-content .lead-text {
     text-wrap: balance;
 }
 
@@ -1786,3 +1745,77 @@ p, li, .hero-subtitle, .section-desc, .lead, .lead-text, .testimonial-text, .sto
 .depoimento-do-destino-quem { display: flex; flex-direction: column; gap: 2px; }
 .depoimento-do-destino-quem strong { font-family: var(--serif); font-weight: 400; font-size: 1.05rem; color: var(--espresso); }
 .depoimento-do-destino-quem span { font-size: 0.85rem; color: var(--terra-deep); }
+
+
+/* ======================= BRIEFING ======================= */
+/* Cinco perguntas, uma por tela. Fundo chapado de proposito: a faixa de foto
+   vem logo antes, e duas imagens grandes seguidas cansam. */
+.briefing { padding: 118px 0; background: var(--ink); color: var(--bone); }
+.briefing .section-title { color: #fff; }
+.briefing .section-desc { color: var(--bone-dim); }
+.briefing-intro { max-width: 46ch; margin-bottom: 46px; }
+.briefing-intro .section-title, .briefing-intro .section-desc { text-align: left; }
+
+.briefing-caixa {
+    max-width: 720px; border: 1px solid var(--line-dark); border-radius: 10px;
+    padding: 40px; background: rgba(255, 255, 255, 0.03);
+}
+.briefing-progresso { height: 3px; background: rgba(236, 229, 212, 0.16); border-radius: 2px; overflow: hidden; }
+.briefing-barra { display: block; height: 100%; width: 20%; background: var(--terra); transition: width 0.4s var(--ease); }
+.briefing-contador { margin-top: 12px; font-size: 0.76rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(236, 229, 212, 0.78); }
+
+.briefing-passo { border: 0; padding: 0; margin: 28px 0 0; min-height: 200px; }
+.briefing-passo[hidden] { display: none; }
+.briefing-pergunta {
+    font-family: var(--serif); font-weight: 400; font-size: clamp(1.3rem, 2.6vw, 1.85rem);
+    color: #fff; padding: 0; margin-bottom: 22px;
+}
+.briefing-pergunta:focus { outline: none; }
+.briefing-pergunta:focus-visible { outline: 2px solid var(--terra); outline-offset: 4px; }
+
+.briefing-opcoes { display: flex; flex-wrap: wrap; gap: 10px; }
+.briefing-opcao {
+    display: inline-flex; align-items: center; gap: 10px; cursor: pointer;
+    min-height: 48px; padding: 0 18px; border-radius: 6px;
+    border: 1px solid rgba(236, 229, 212, 0.26); background: transparent;
+    color: var(--bone); font-size: 0.95rem;
+    transition: border-color 0.25s ease, background 0.25s ease;
+}
+.briefing-opcao-larga { margin-top: 16px; }
+.briefing-opcao:hover { border-color: rgba(236, 229, 212, 0.6); background: rgba(255, 255, 255, 0.05); }
+/* o input continua no fluxo e focavel: esconde-lo com display:none tiraria o
+   elemento da navegacao por teclado e do leitor de tela */
+.briefing-opcao input { width: 16px; height: 16px; accent-color: var(--terra); flex: none; }
+.briefing-opcao:has(input:checked) { border-color: var(--terra); background: rgba(188, 90, 56, 0.2); }
+.briefing-opcao:has(input:focus-visible) { outline: 2px solid var(--terra); outline-offset: 3px; }
+
+.briefing-quando { display: flex; flex-wrap: wrap; gap: 18px; }
+.briefing-campo { display: flex; flex-direction: column; gap: 7px; flex: 1 1 190px; }
+.briefing-campo label { font-size: 0.82rem; letter-spacing: 0.04em; color: rgba(236, 229, 212, 0.72); }
+.briefing-campo select, .briefing-campo input {
+    min-height: 48px; padding: 0 14px; border-radius: 6px;
+    border: 1px solid rgba(236, 229, 212, 0.26); background: rgba(13, 24, 32, 0.4);
+    color: var(--bone); font-family: var(--sans); font-size: 0.95rem;
+}
+.briefing-campo select option { color: #15201c; background: #fff; }
+.briefing-campo-livre { margin-top: 22px; flex-basis: 100%; }
+
+.briefing-nav { display: flex; align-items: center; gap: 16px; margin-top: 30px; flex-wrap: wrap; }
+.briefing-voltar {
+    background: none; border: 0; cursor: pointer; min-height: 44px; padding: 0 4px;
+    color: rgba(236, 229, 212, 0.74); font-family: var(--sans); font-size: 0.9rem;
+    border-bottom: 1px solid rgba(236, 229, 212, 0.3);
+}
+.briefing-voltar:hover { color: #fff; border-color: #fff; }
+.briefing-voltar[hidden], .btn-primary[hidden] { display: none; }
+
+.briefing-alternativa { margin-top: 28px; max-width: 720px; font-size: 0.92rem; color: var(--bone-dim); }
+.briefing-alternativa a { color: var(--bone); border-bottom: 1px solid rgba(236, 229, 212, 0.4); }
+.briefing-alternativa a:hover { border-color: var(--terra); }
+
+@media (max-width: 640px) {
+    .briefing-caixa { padding: 26px 20px; }
+    .briefing-opcao { width: 100%; }
+    .briefing-nav { gap: 12px; }
+    .briefing-nav .btn-primary { width: 100%; }
+}

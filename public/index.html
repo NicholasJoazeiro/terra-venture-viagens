@@ -28,7 +28,7 @@
     <!-- Leaflet -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
     <!-- Estilo Terra Venture -->
-    <link rel="stylesheet" href="terra.css?v=29ff7d15">
+    <link rel="stylesheet" href="terra.css?v=801f8dbf">
 
     <meta name="description" content="Terra Venture Viagens: consultoria de viagem sob medida e roteiros exclusivos desenhados à mão, do primeiro sonho ao retorno pra casa.">
 
@@ -266,7 +266,7 @@
             </div>
             <div class="de-cta">
                 <a href="/destinos" class="btn-primary">Ver todos os destinos</a>
-                <a href="#contato" class="btn-outline-white">Monte seu roteiro ideal</a>
+                <a href="#briefing" class="btn-outline-white">Contar o que eu quero</a>
             </div>
         </div>
     </section>
@@ -383,57 +383,105 @@
         </div>
     </section>
 
-    <section class="quiz-section" id="quiz">
-        <div class="quiz-glow"></div>
+    <section class="briefing" id="briefing">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Descubra seu próximo destino</h2>
-                <p class="section-desc">Três perguntas. A gente revela o destino perfeito pro seu momento.</p>
+            <div class="briefing-intro">
+                <h2 class="section-title">Conte o básico em 30 segundos</h2>
+                <p class="section-desc">Cinco perguntas. No fim abre o WhatsApp com as respostas já escritas e você só aperta enviar.</p>
             </div>
-            <div class="quiz-box">
-                <div class="quiz-progress"><span class="quiz-bar" id="quiz-bar"></span></div>
-                <div class="quiz-step active" data-step="1">
-                    <h3 class="quiz-q">Qual a vibe da viagem?</h3>
-                    <div class="quiz-options">
-                        <button class="quiz-opt" data-key="vibe" data-value="sossego" type="button"><i class="fas fa-spa"></i><span>Sossego</span></button>
-                        <button class="quiz-opt" data-key="vibe" data-value="aventura" type="button"><i class="fas fa-mountain"></i><span>Aventura</span></button>
-                        <button class="quiz-opt" data-key="vibe" data-value="cultura" type="button"><i class="fas fa-landmark"></i><span>Cultura</span></button>
-                        <button class="quiz-opt" data-key="vibe" data-value="romance" type="button"><i class="fas fa-heart"></i><span>Romance</span></button>
-                        <button class="quiz-opt" data-key="vibe" data-value="praia" type="button"><i class="fas fa-umbrella-beach"></i><span>Praia</span></button>
+
+            <form class="briefing-caixa" id="briefing-caixa" novalidate>
+                <div class="briefing-progresso" role="presentation">
+                    <span class="briefing-barra" id="briefing-barra"></span>
+                </div>
+                <p class="briefing-contador" id="briefing-contador" aria-live="polite">Pergunta 1 de 5</p>
+
+                <fieldset class="briefing-passo" data-passo="1">
+                    <legend class="briefing-pergunta" tabindex="-1">Quem viaja?</legend>
+                    <div class="briefing-opcoes">
+                        <label class="briefing-opcao"><input type="radio" name="quem" value="Sozinho"><span>Sozinho</span></label>
+                        <label class="briefing-opcao"><input type="radio" name="quem" value="Casal"><span>Casal</span></label>
+                        <label class="briefing-opcao"><input type="radio" name="quem" value="Família"><span>Família</span></label>
+                        <label class="briefing-opcao"><input type="radio" name="quem" value="Grupo de amigos"><span>Grupo de amigos</span></label>
                     </div>
-                </div>
-                <div class="quiz-step" data-step="2">
-                    <h3 class="quiz-q">Pra onde o coração aponta?</h3>
-                    <div class="quiz-options">
-                        <button class="quiz-opt" data-key="cont" data-value="america" type="button"><i class="fas fa-mountain-sun"></i><span>Américas</span></button>
-                        <button class="quiz-opt" data-key="cont" data-value="europa" type="button"><i class="fas fa-archway"></i><span>Europa</span></button>
-                        <button class="quiz-opt" data-key="cont" data-value="asia" type="button"><i class="fas fa-torii-gate"></i><span>Ásia</span></button>
-                        <button class="quiz-opt" data-key="cont" data-value="africa" type="button"><i class="fas fa-hippo"></i><span>África</span></button>
-                        <button class="quiz-opt" data-key="cont" data-value="oceania" type="button"><i class="fas fa-water"></i><span>Oceania</span></button>
-                        <button class="quiz-opt" data-key="cont" data-value="qualquer" type="button"><i class="fas fa-globe"></i><span>Tanto faz</span></button>
+                </fieldset>
+
+                <fieldset class="briefing-passo" data-passo="2" hidden>
+                    <legend class="briefing-pergunta" tabindex="-1">Quando você quer viajar?</legend>
+                    <div class="briefing-quando">
+                        <p class="briefing-campo">
+                            <label for="brief-mes">Mês</label>
+                            <select id="brief-mes" name="mes">
+                                <option value="">Escolha o mês</option>
+                            </select>
+                        </p>
+                        <p class="briefing-campo">
+                            <label for="brief-ano">Ano</label>
+                            <select id="brief-ano" name="ano">
+                                <option value="">Escolha o ano</option>
+                            </select>
+                        </p>
                     </div>
-                </div>
-                <div class="quiz-step" data-step="3">
-                    <h3 class="quiz-q">Qual o ritmo ideal?</h3>
-                    <div class="quiz-options">
-                        <button class="quiz-opt" data-key="ritmo" data-value="relax" type="button"><i class="fas fa-mug-hot"></i><span>Relax total</span></button>
-                        <button class="quiz-opt" data-key="ritmo" data-value="equilibrado" type="button"><i class="fas fa-scale-balanced"></i><span>Equilibrado</span></button>
-                        <button class="quiz-opt" data-key="ritmo" data-value="intenso" type="button"><i class="fas fa-bolt"></i><span>Intenso</span></button>
+                    <label class="briefing-opcao briefing-opcao-larga">
+                        <input type="checkbox" id="brief-flexivel" name="flexivel" value="Ainda flexível">
+                        <span>Ainda estou flexível com a data</span>
+                    </label>
+                </fieldset>
+
+                <fieldset class="briefing-passo" data-passo="3" hidden>
+                    <legend class="briefing-pergunta" tabindex="-1">Quantos dias de viagem?</legend>
+                    <div class="briefing-opcoes">
+                        <label class="briefing-opcao"><input type="radio" name="dias" value="Até 4 dias"><span>Até 4 dias</span></label>
+                        <label class="briefing-opcao"><input type="radio" name="dias" value="5 a 7 dias"><span>5 a 7 dias</span></label>
+                        <label class="briefing-opcao"><input type="radio" name="dias" value="8 a 14 dias"><span>8 a 14 dias</span></label>
+                        <label class="briefing-opcao"><input type="radio" name="dias" value="Mais de 14 dias"><span>Mais de 14 dias</span></label>
+                        <label class="briefing-opcao"><input type="radio" name="dias" value="Ainda não sei"><span>Ainda não sei</span></label>
                     </div>
-                </div>
-                <div class="quiz-step quiz-result" data-step="result">
-                    <h3 class="quiz-q">Seu momento combina com:</h3>
-                    <div class="quiz-matches" id="quiz-matches"></div>
-                    <div class="quiz-result-cta">
-                        <a class="btn-primary btn-large" id="quiz-cta" href="#" target="_blank" rel="noopener">Quero um roteiro assim</a>
-                        <button class="quiz-restart" id="quiz-restart" type="button"><i class="fas fa-rotate-left"></i> Refazer o teste</button>
+                </fieldset>
+
+                <!-- TODO(nicholas): confira se estas faixas batem com o que voce
+                     costuma atender. Eu escolhi valores redondos de degrau, nao
+                     valores tirados de venda nenhuma. -->
+                <fieldset class="briefing-passo" data-passo="4" hidden>
+                    <legend class="briefing-pergunta" tabindex="-1">Quanto você pensa em investir por pessoa?</legend>
+                    <div class="briefing-opcoes">
+                        <label class="briefing-opcao"><input type="radio" name="investimento" value="Até R$ 5 mil"><span>Até R$ 5 mil</span></label>
+                        <label class="briefing-opcao"><input type="radio" name="investimento" value="R$ 5 mil a R$ 10 mil"><span>R$ 5 mil a R$ 10 mil</span></label>
+                        <label class="briefing-opcao"><input type="radio" name="investimento" value="R$ 10 mil a R$ 20 mil"><span>R$ 10 mil a R$ 20 mil</span></label>
+                        <label class="briefing-opcao"><input type="radio" name="investimento" value="Acima de R$ 20 mil"><span>Acima de R$ 20 mil</span></label>
+                        <label class="briefing-opcao"><input type="radio" name="investimento" value="Prefiro conversar sobre isso"><span>Prefiro conversar sobre isso</span></label>
                     </div>
+                </fieldset>
+
+                <fieldset class="briefing-passo" data-passo="5" hidden>
+                    <legend class="briefing-pergunta" tabindex="-1">O que não pode faltar?</legend>
+                    <div class="briefing-opcoes briefing-chips">
+                        <label class="briefing-opcao"><input type="checkbox" name="essencial" value="Praia"><span>Praia</span></label>
+                        <label class="briefing-opcao"><input type="checkbox" name="essencial" value="Montanha"><span>Montanha</span></label>
+                        <label class="briefing-opcao"><input type="checkbox" name="essencial" value="Gastronomia"><span>Gastronomia</span></label>
+                        <label class="briefing-opcao"><input type="checkbox" name="essencial" value="Museus e história"><span>Museus e história</span></label>
+                        <label class="briefing-opcao"><input type="checkbox" name="essencial" value="Natureza e trilhas"><span>Natureza e trilhas</span></label>
+                        <label class="briefing-opcao"><input type="checkbox" name="essencial" value="Vida noturna"><span>Vida noturna</span></label>
+                        <label class="briefing-opcao"><input type="checkbox" name="essencial" value="Compras"><span>Compras</span></label>
+                        <label class="briefing-opcao"><input type="checkbox" name="essencial" value="Descanso, sem correria"><span>Descanso, sem correria</span></label>
+                    </div>
+                    <p class="briefing-campo briefing-campo-livre">
+                        <label for="brief-livre">Quer acrescentar alguma coisa? (opcional)</label>
+                        <input type="text" id="brief-livre" name="livre" maxlength="140" placeholder="Ex: é aniversário de casamento, viajamos com uma criança de 3 anos">
+                    </p>
+                </fieldset>
+
+                <div class="briefing-nav">
+                    <button type="button" class="briefing-voltar" id="briefing-voltar" hidden>Voltar</button>
+                    <button type="button" class="btn-primary" id="briefing-avancar">Continuar</button>
+                    <a class="btn-primary" id="briefing-enviar" href="https://wa.me/5551994596233" target="_blank" rel="noopener" hidden>Abrir o WhatsApp com minhas respostas</a>
                 </div>
-                <div class="quiz-nav">
-                    <button class="quiz-back" id="quiz-back" type="button" style="visibility:hidden;"><i class="fas fa-arrow-left"></i> Voltar</button>
-                    <span class="quiz-count"><span id="quiz-cur">1</span> de 3</span>
-                </div>
-            </div>
+            </form>
+
+            <p class="briefing-alternativa">
+                Prefere escrever com calma? <a href="#contato">Use o formulário no fim da página</a>.
+                Prefere falar agora? <a href="https://wa.me/5551994596233?text=Olá Nicholas e Giovana! Quero conversar sobre uma viagem." target="_blank" rel="noopener">Chame no WhatsApp</a>.
+            </p>
         </div>
     </section>
 
@@ -593,9 +641,9 @@
         <div class="container">
             <div class="contato-wrapper">
                 <div class="contato-info">
-                    <h2 class="section-title">Bora tirar do papel?</h2>
-                    <p><strong>Conversa gratuita, sem compromisso.</strong> A gente entende o seu sonho de viagem e cria algo único pra você.</p>
-                    <p>Ou preenche o formulário, nossa equipe responde em até 24 horas.</p>
+                    <h2 class="section-title">Prefiro escrever</h2>
+                    <p>Se você quer contar a sua ideia com mais calma, escreva aqui. A gente responde em até 24 horas, no WhatsApp que você deixar.</p>
+                    <p>Se der para resumir em cinco cliques, <a href="#briefing">o briefing é mais rápido</a>.</p>
                     <div class="contact-details">
                         <div class="detail-item">
                             <i class="fab fa-whatsapp"></i>
@@ -652,7 +700,6 @@
                     <li><a href="https://app.onertravel.com/terraventureviagens/home" target="_blank" rel="noopener">Monte sua cotação</a></li>
                     <li><a href="/destinos">Destinos</a></li>
                     <li><a href="/melhor-epoca">Melhor época para viajar</a></li>
-                        <li><a href="#quiz">Descubra seu destino</a></li>
                         <li><a href="#contato">Contato</a></li>
                         <li><a href="/transfer-executivo">Transfer Executivo</a></li>
                     </ul>
@@ -684,7 +731,7 @@
 
     <!-- Scripts -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
-    <script src="script.js?v=efbc2b90"></script>
+    <script src="script.js?v=dd97f922"></script>
 </body>
 
 </html>
