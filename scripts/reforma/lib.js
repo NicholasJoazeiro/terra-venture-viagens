@@ -52,7 +52,9 @@ function removerSecao(texto, classe) {
 
 // contagem de tags: primeira peneira apenas. Nao prova aninhamento.
 function conferir(f) {
-    const t = ler(f);
+    // comentarios saem antes da contagem: um <figure> citado dentro de um
+    // TODO contava como tag aberta e gerava alarme falso.
+    const t = ler(f).replace(/<!--[\s\S]*?-->/g, '');
     const c = (s) => t.split(s).length - 1;
     const problemas = [];
     const pares = [['<div', '</div>'], ['<section', '</section>'], ['<ol', '</ol>'],
