@@ -75,33 +75,43 @@ html.js :is(.section-header, .como-card, .diferencial-card, .dossie-row, .serv-c
 }
 
 /* ======================= BOTÕES ======================= */
+/* Pilula com gradiente, brilho e seta era a receita de botao de landing
+   gerada. Agora e um retangulo de cantos quase retos, cor chapada, sem seta.
+   O tom e o --terra-deep: o claro nao batia 4,5:1 com texto branco. */
 .btn-primary, .btn-ghost, .btn-outline, .btn-outline-white {
     display: inline-flex; align-items: center; justify-content: center; gap: 11px;
     font-family: var(--sans); font-weight: 600; font-size: 0.95rem; letter-spacing: 0.01em;
-    border-radius: 100px; cursor: pointer; border: none;
-    transition: transform 0.4s var(--ease), box-shadow 0.4s ease, background 0.35s ease, color 0.35s ease;
+    border-radius: 6px; cursor: pointer; border: none;
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 .btn-primary {
-    background: linear-gradient(135deg, #DE7B52, var(--terra-deep));
-    color: #fff; padding: 16px 32px;
-    box-shadow: 0 12px 30px rgba(217, 116, 78, 0.32);
+    background: var(--terra-deep);
+    color: #fff; padding: 17px 30px;
 }
-.btn-primary::after { content: '\2192'; font-size: 1.05em; line-height: 1; transition: transform 0.4s var(--ease); }
-.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 20px 44px rgba(217, 116, 78, 0.46); }
-.btn-primary:hover::after { transform: translateX(5px); }
-.btn-primary.btn-large { padding: 19px 40px; font-size: 1.05rem; }
+.btn-primary:hover { background: #A64B2C; }
+.btn-primary.btn-large { padding: 20px 38px; font-size: 1.02rem; }
+
+/* foco visivel em tudo que e clicavel, nos dois fundos */
+:is(a, button, input, textarea, select, [tabindex]):focus-visible {
+    outline: 2px solid var(--terra);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+.destinos-editorial :is(a, button):focus-visible,
+.navbar :is(a, button):focus-visible,
+.hero :is(a, button):focus-visible { outline-color: #F0A98B; }
 
 .btn-outline {
-    background: transparent; color: var(--espresso); padding: 15px 30px;
-    border: 1.5px solid var(--espresso);
+    background: transparent; color: var(--espresso); padding: 16px 28px;
+    border: 1.5px solid rgba(42, 35, 27, 0.4);
 }
-.btn-outline:hover { background: var(--espresso); color: var(--cream); transform: translateY(-3px); }
+.btn-outline:hover { background: var(--espresso); color: var(--cream); border-color: var(--espresso); }
 
 .btn-outline-white {
-    background: rgba(255, 255, 255, 0.06); color: var(--bone); padding: 15px 30px;
-    border: 1.5px solid rgba(236, 229, 212, 0.4); backdrop-filter: blur(4px);
+    background: transparent; color: var(--bone); padding: 16px 28px;
+    border: 1.5px solid rgba(236, 229, 212, 0.42);
 }
-.btn-outline-white:hover { background: var(--bone); color: var(--ink); transform: translateY(-3px); }
+.btn-outline-white:hover { background: var(--bone); color: var(--ink); border-color: var(--bone); }
 
 /* ======================= NAVBAR ======================= */
 .navbar {
@@ -120,7 +130,14 @@ html.js :is(.section-header, .como-card, .diferencial-card, .dossie-row, .serv-c
 .nav-links a::after { content: ''; position: absolute; left: 0; bottom: -6px; width: 0; height: 1.5px; background: var(--terra); transition: width 0.3s var(--ease); }
 .nav-links a:hover { color: #fff; }
 .nav-links a:hover::after { width: 100%; }
-.nav-btn { color: #fff !important; padding: 11px 24px !important; font-size: 0.92rem !important; }
+/* na primeira tela so pode haver um botao de destaque, e ele e o do hero */
+.nav-btn {
+    background: transparent !important; color: #fff !important;
+    border: 1px solid rgba(255, 255, 255, 0.42) !important;
+    padding: 10px 20px !important; font-size: 0.92rem !important; font-weight: 500 !important;
+}
+.nav-btn:hover { background: rgba(255, 255, 255, 0.12) !important; border-color: #fff !important; }
+.nav-links .nav-btn::after { display: none; }
 .menu-toggle { display: none; font-size: 1.4rem; color: #fff; cursor: pointer; }
 
 /* ======================= HERO ======================= */
@@ -212,16 +229,36 @@ html.js :is(.section-header, .como-card, .diferencial-card, .dossie-row, .serv-c
 /* Os três passos como percurso, não como três caixas soltas: paradas
    numeradas ligadas por uma linha. Antes eram cartões brancos com muito
    vazio, a seção mais chapada da home. */
-.como-funciona { padding: 124px 0; background: var(--cream); }
-.como-funciona-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;
-    counter-reset: passo; position: relative;
+/* Tres circulos numerados, centralizados, de altura igual: era a ilustracao
+   mais reconhecivel de secao "como funciona" gerada. No lugar, tres blocos
+   alinhados a esquerda, em alturas diferentes, com o numero em tipografia
+   grande em vez de dentro de uma bolinha. */
+.processo { padding: 118px 0 124px; background: var(--cream); }
+.processo-intro { max-width: 52ch; margin-bottom: 64px; }
+.processo-intro .section-title { max-width: 18ch; }
+.processo-intro .section-desc { max-width: 44ch; }
+.processo-intro .section-title { text-align: left; }
+.processo-intro .section-desc { text-align: left; margin: 14px 0 0; }
+.processo-lista {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px;
+    list-style: none; margin: 0; padding: 0; align-items: start;
 }
-.como-funciona-grid::before {
-    content: ''; position: absolute; top: 43px; left: 16%; right: 16%; height: 1px;
-    background: linear-gradient(90deg, transparent, var(--terra) 18%, var(--terra) 82%, transparent);
-    opacity: 0.35;
+.processo-passo { border-top: 1px solid rgba(42, 35, 27, 0.18); padding-top: 22px; }
+/* as alturas diferentes vem do desnivel, nao de preencher com texto a mais */
+.processo-passo:nth-child(2) { margin-top: 54px; }
+.processo-passo:nth-child(3) { margin-top: 108px; }
+.passo-num {
+    display: block; font-family: var(--serif); font-weight: 400;
+    font-size: clamp(2.6rem, 5vw, 4.1rem); line-height: 1;
+    color: rgba(188, 90, 56, 0.34); margin-bottom: 14px;
 }
+.processo-passo h3 { font-family: var(--serif); font-weight: 400; font-size: 1.5rem; color: var(--moss); margin-bottom: 12px; }
+.processo-passo p { color: var(--espresso-soft); font-size: 1rem; line-height: 1.7; text-wrap: pretty; }
+
+/* assinatura discreta: uma rota tracejada a mao. No maximo tres na pagina. */
+.rota { display: flex; justify-content: center; color: rgba(188, 90, 56, 0.5); margin: 0 0 58px; }
+.rota svg { width: 320px; max-width: 64%; height: auto; }
+
 .como-card {
     position: relative; counter-increment: passo; text-align: center;
     background: none; border: 0; padding: 0;
@@ -253,7 +290,20 @@ html.js :is(.section-header, .como-card, .diferencial-card, .dossie-row, .serv-c
 .de-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 30px; margin-bottom: 56px; flex-wrap: wrap; }
 .de-title { color: #fff; font-size: clamp(1.9rem, 4vw, 3.2rem); margin-top: 12px; }
 .dossie-list { display: flex; flex-direction: column; }
-.dossie-row { display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: 460px; align-items: stretch; border-top: 1px solid var(--line-dark); color: inherit; }
+/* colunas e alturas variam de linha para linha: quatro cards identicos
+   empilhados sao a marca registrada de grade gerada */
+.dossie-row { display: grid; grid-template-columns: 1.12fr 0.88fr; grid-auto-rows: 520px; align-items: stretch; border-top: 1px solid var(--line-dark); color: inherit; }
+.dossie-row:nth-child(2) { grid-template-columns: 0.9fr 1.1fr; grid-auto-rows: 430px; }
+.dossie-row:nth-child(3) { grid-template-columns: 1.2fr 0.8fr; grid-auto-rows: 560px; }
+.dossie-row:nth-child(4) { grid-template-columns: 0.95fr 1.05fr; grid-auto-rows: 470px; }
+.de-sub { color: var(--bone-dim); font-size: 1.05rem; max-width: 46ch; margin-top: 14px; }
+.dossie-regiao { font-family: var(--serif); font-style: normal; font-size: 0.95rem; color: rgba(236, 229, 212, 0.58); }
+.dossie-media { display: block; }
+.dossie-legenda {
+    position: absolute; left: 18px; bottom: 16px; z-index: 2;
+    font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.82); text-shadow: 0 1px 10px rgba(0, 0, 0, 0.7);
+}
 .dossie-row:last-child { border-bottom: 1px solid var(--line-dark); }
 .dossie-row.flip .dossie-media { order: 2; }
 /* imagem do dossiê era o maior bloco quadrado da home: arredonda e dá respiro */
@@ -273,7 +323,7 @@ html.js :is(.section-header, .como-card, .diferencial-card, .dossie-row, .serv-c
 /* filtro vibe */
 .vibe-filter { display: flex; flex-wrap: wrap; gap: 12px; }
 .vibe-chip {
-    min-height: 46px; padding: 0 22px; border-radius: 100px; cursor: pointer;
+    min-height: 46px; padding: 0 22px; border-radius: 6px; cursor: pointer;
     border: 1.5px solid rgba(255, 255, 255, 0.25); background: transparent; color: rgba(255, 255, 255, 0.85);
     font-family: var(--sans); font-weight: 500; font-size: 0.88rem; letter-spacing: 0.02em; transition: all 0.3s ease;
 }
@@ -333,15 +383,34 @@ html.js :is(.section-header, .como-card, .diferencial-card, .dossie-row, .serv-c
 .map-preview-card .preview-title { position: absolute; bottom: 0; left: 0; width: 100%; padding: 16px; color: #fff; font-family: var(--serif); font-size: 1.3rem; background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent); margin: 0; }
 
 /* ======================= O QUE INCLUÍMOS ======================= */
-.sectionenciais { padding: 120px 0; background: var(--cream); }
-.diferenciais-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 56px; counter-reset: incl; }
-.diferencial-card { position: relative; counter-increment: incl; background: #fff; border: 1px solid var(--line-light); border-radius: 24px; padding: 38px 30px; overflow: hidden; transition: transform 0.45s var(--ease), box-shadow 0.45s ease; }
-.diferencial-card::before { content: counter(incl, decimal-leading-zero); position: absolute; top: 18px; right: 24px; font-family: var(--serif); font-weight: 500; font-size: 2.6rem; color: rgba(217, 116, 78, 0.16); }
-.diferencial-card::after { content: ''; position: absolute; left: 0; top: 0; width: 4px; height: 100%; background: linear-gradient(var(--terra), var(--terra-deep)); transform: scaleY(0); transform-origin: top; transition: transform 0.45s var(--ease); }
-.diferencial-card:hover { transform: translateY(-8px); box-shadow: var(--shadow); }
-.diferencial-card:hover::after { transform: scaleY(1); }
-.diferencial-card h3 { color: var(--moss); font-size: 1.3rem; margin-bottom: 18px; padding-right: 40px; }
-.diferencial-card ul li { padding: 7px 0; color: var(--espresso-soft); font-size: 0.92rem; }
+/* Quatro cartoes brancos iguais com listas de check e numero d'agua no canto
+   era o bloco mais generico da pagina. Agora sao tres, cada um com a frase de
+   um cliente como prova do que esta escrito logo acima. */
+.diferenciais { padding: 118px 0; background: var(--cream); }
+.diferenciais-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 54px; }
+.diferencial-card {
+    display: flex; flex-direction: column; gap: 14px;
+    background: none; border: 0; border-top: 1px solid rgba(42, 35, 27, 0.2);
+    border-radius: 0; padding: 26px 0 0;
+}
+.diferencial-card h3 { color: var(--moss); font-size: 1.3rem; font-weight: 400; }
+.diferencial-card > p { color: var(--espresso-soft); font-size: 1rem; line-height: 1.7; text-wrap: pretty; }
+.prova { margin: 6px 0 0; padding: 20px 22px; background: var(--bone); border-left: 3px solid var(--terra-deep); border-radius: 0 8px 8px 0; }
+.prova p { font-family: var(--serif); font-size: 1rem; line-height: 1.55; color: var(--espresso); text-wrap: pretty; }
+.prova cite { display: block; margin-top: 10px; font-style: normal; font-size: 0.8rem; letter-spacing: 0.04em; color: var(--espresso-soft); }
+.incl-cta { margin-top: 48px; }
+
+/* Faixa de foto em tela cheia entre duas secoes de texto. Serve para quebrar
+   a cadencia de blocos centralizados de mesma altura. */
+.faixa-foto { position: relative; isolation: isolate; min-height: 62vh; display: flex; align-items: flex-end; }
+.faixa-foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+.faixa-foto::after {
+    content: ''; position: absolute; inset: 0; z-index: -1;
+    background: linear-gradient(180deg, rgba(13, 24, 32, 0.12) 0%, rgba(13, 24, 32, 0) 34%, rgba(13, 24, 32, 0.72) 82%, rgba(13, 24, 32, 0.9) 100%);
+}
+.faixa-foto-texto { width: 100%; padding: 0 0 64px; color: var(--bone); }
+.faixa-foto-texto h2 { font-family: var(--serif); font-weight: 400; color: #fff; font-size: clamp(1.8rem, 3.6vw, 3rem); max-width: 20ch; }
+.faixa-foto-texto p { margin-top: 16px; max-width: 48ch; color: rgba(242, 238, 229, 0.94); font-size: 1.08rem; }
 
 /* ======================= QUEM SOMOS ======================= */
 .quem-somos { padding: 120px 0; background: var(--cream-deep); }
@@ -482,7 +551,7 @@ html.js :is(.section-header, .como-card, .diferencial-card, .dossie-row, .serv-c
     .comunidade-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
     .contato-wrapper { padding: 34px 22px; }
     #map-main { height: 420px; }
-    .como-funciona, .destinos-editorial, .quiz-section, .map-explorer-section, .sectionenciais, .quem-somos, .testimonials, .comunidade, .faq-section, .contato { padding: 70px 0; }
+    .processo, .destinos-editorial, .quiz-section, .map-explorer-section, .diferenciais, .quem-somos, .testimonials, .comunidade, .faq-section, .contato { padding: 70px 0; }
     .whatsapp-float::after { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -1653,4 +1722,19 @@ p, li, .hero-subtitle, .section-desc, .lead, .lead-text, .testimonial-text, .sto
 @media (max-width: 620px) {
     .serv-cotacao { padding: 0 0 70px; }
     .cotacao-caixa .btn-primary { width: 100%; }
+}
+
+
+/* ======================= FASE 2: RESPONSIVO DO QUE ENTROU ======================= */
+@media (max-width: 1000px) {
+    .processo-lista { grid-template-columns: 1fr; gap: 34px; }
+    .processo-passo:nth-child(2), .processo-passo:nth-child(3) { margin-top: 0; }
+    .diferenciais-grid { grid-template-columns: 1fr; gap: 26px; }
+    .faixa-foto { min-height: 54vh; }
+}
+@media (max-width: 760px) {
+    .rota svg { width: 220px; }
+    .rota { margin-bottom: 40px; }
+    .faixa-foto-texto { padding-bottom: 44px; }
+    .dossie-legenda { left: 14px; bottom: 12px; }
 }
