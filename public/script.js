@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
        ========================================================================= */
     // Lista unica de alvos. Ela tambem existe no terra.css, nas duas regras que
     // escondem e revelam; se mudar aqui, mudar la.
-    const ALVOS_REVEAL = '.section-header, .processo-passo, .diferencial-card, .dossie-row, .serv-card, .serv-passo, .epoca-card, .testimonial-card, .depo-destaque, .comunidade-item, .faq-item, .blog-card, .dest-card, .saida-card, .cruz-temporada, .cruz-roteiro, .quem-somos-img, .quem-somos-text';
+    const ALVOS_REVEAL = '.section-header, .processo-passo, .diferencial-card, .dossie-row, .serv-card, .serv-passo, .epoca-card, .testimonial-card, .depo-destaque, .comunidade-item, .faq-item, .blog-card, .dest-card, .cruz-temporada, .quem-somos-img, .quem-somos-text';
     const LEGADO = '.scroll-reveal';
     const semMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
