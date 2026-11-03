@@ -28,7 +28,7 @@
     <!-- Leaflet -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
     <!-- Estilo Terra Venture -->
-    <link rel="stylesheet" href="terra.css?v=abfae261">
+    <link rel="stylesheet" href="terra.css?v=cff284c5">
 
     <meta name="description" content="Terra Venture Viagens: consultoria de viagem sob medida e roteiros exclusivos desenhados à mão, do primeiro sonho ao retorno pra casa.">
 
@@ -193,6 +193,46 @@
                 </div>
             </div>
             <div class="dossie-list">
+                <!-- TODO(nicholas): Rio de Janeiro, Bonito e Buenos Aires tem
+                     depoimento de cliente mas nao tem pagina de destino nem foto do
+                     lugar, so foto de cliente. Enquanto nao tiverem, nao da para
+                     coloca-los aqui na frente. Vale criar as tres paginas. -->
+                <a class="dossie-row" href="/paris" data-vibe="cultura romance">
+                    <figure class="dossie-media">
+                        <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg?auto=compress&cs=tinysrgb&w=800" alt="A Torre Eiffel vista dos jardins do Trocadéro, num dia de céu azul com nuvens altas">
+                        <figcaption class="dossie-legenda">Torre Eiffel, Paris <!-- TODO(nicholas): ano da foto, se souber --></figcaption>
+                    </figure>
+                    <div class="dossie-body">
+                        <span class="dossie-regiao">Europa</span>
+                        <h3>Paris Secreta</h3>
+                        <p class="dossie-line">A Cidade Luz por trás da cortina de veludo, longe do óbvio dos cartões-postais.</p>
+                        <div class="dossie-meta">
+                            <span>Vibe<b>Cultura & romance</b></span>
+                            <span>Melhor época<b>O ano todo</b></span>
+                            <span>Dias ideais<b>[__ dias]</b></span>
+                            <span>A partir de<b>[R$ ___]</b></span>
+                        </div>
+                        <span class="dossie-link">Ver o dossiê <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a class="dossie-row flip" href="/costa-amalfitana" data-vibe="cultura romance">
+                    <figure class="dossie-media">
+                        <img width="1200" height="909" loading="lazy" decoding="async" src="costa-amalfitana-encosta-casas.webp" alt="Casas em tons de rosa, ocre e branco empilhadas na encosta de Positano, com buganvílias em primeiro plano">
+                        <figcaption class="dossie-legenda">Positano, Costa Amalfitana <!-- TODO(nicholas): ano da foto, se souber --></figcaption>
+                    </figure>
+                    <div class="dossie-body">
+                        <span class="dossie-regiao">Europa</span>
+                        <h3>Costa Amalfitana</h3>
+                        <p class="dossie-line">A Itália que a Zoraia e a Márcia conheceram com a gente: limão, encosta e almoço longo.</p>
+                        <div class="dossie-meta">
+                            <span>Vibe<b>Cultura &amp; romance</b></span>
+                            <span>Melhor época<b>Mai a Set</b></span>
+                            <span>Dias ideais<b>[__ dias]</b></span>
+                            <span>A partir de<b>[R$ ___]</b></span>
+                        </div>
+                        <span class="dossie-link">Ver o dossiê <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
                 <a class="dossie-row" href="/patagonia" data-vibe="aventura">
                     <figure class="dossie-media">
                         <img width="1000" height="1500" loading="lazy" decoding="async" src="patagonia-torres-del-paine.webp" alt="As três torres de granito do Paine erguidas acima de um lago glacial turquesa, no sul do Chile">
@@ -229,25 +269,7 @@
                         <span class="dossie-link">Ver o dossiê <i class="fas fa-arrow-right"></i></span>
                     </div>
                 </a>
-                <a class="dossie-row" href="/paris" data-vibe="cultura romance">
-                    <figure class="dossie-media">
-                        <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg?auto=compress&cs=tinysrgb&w=800" alt="A Torre Eiffel vista dos jardins do Trocadéro, num dia de céu azul com nuvens altas">
-                        <figcaption class="dossie-legenda">Torre Eiffel, Paris <!-- TODO(nicholas): ano da foto, se souber --></figcaption>
-                    </figure>
-                    <div class="dossie-body">
-                        <span class="dossie-regiao">Europa</span>
-                        <h3>Paris Secreta</h3>
-                        <p class="dossie-line">A Cidade Luz por trás da cortina de veludo, longe do óbvio dos cartões-postais.</p>
-                        <div class="dossie-meta">
-                            <span>Vibe<b>Cultura & romance</b></span>
-                            <span>Melhor época<b>O ano todo</b></span>
-                            <span>Dias ideais<b>[__ dias]</b></span>
-                            <span>A partir de<b>[R$ ___]</b></span>
-                        </div>
-                        <span class="dossie-link">Ver o dossiê <i class="fas fa-arrow-right"></i></span>
-                    </div>
-                </a>
-                <a class="dossie-row flip" href="/japao" data-vibe="cultura">
+                <a class="dossie-row" href="/japao" data-vibe="cultura">
                     <figure class="dossie-media">
                         <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/3408353/pexels-photo-3408353.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Pagode vermelho de cinco andares em primeiro plano e o monte Fuji coberto de neve ao fundo">
                         <figcaption class="dossie-legenda">Monte Fuji, Japão <!-- TODO(nicholas): ano da foto, se souber --></figcaption>
@@ -423,6 +445,23 @@
             <div class="quem-somos-wrapper">
                 <div class="quem-somos-img">
                     <img width="800" height="800" loading="lazy" decoding="async" src="nicholas-e-giovana-fundadores-terra-venture.webp" alt="Nicholas Joazeiro e Giovana Konrath, fundadores da Terra Venture">
+                    <!-- TODO(nicholas): uma foto de voces dois VIAJANDO vale mais do
+                         que a foto posada. Salve como
+                         nicholas-e-giovana-em-viagem.webp (800x1000 serve) e
+                         descomente o bloco abaixo.
+                    <img class="quem-somos-img-viagem" width="800" height="1000" loading="lazy" decoding="async"
+                         src="nicholas-e-giovana-em-viagem.webp"
+                         alt="Nicholas e Giovana em viagem, [descreva o lugar]">
+                    -->
+                    <!-- TODO(nicholas): video curto de voces se apresentando, ate 40
+                         segundos, vertical. Precisa do poster, senao o navegador
+                         baixa parte do video so para mostrar o primeiro quadro.
+                    <video class="quem-somos-video" controls preload="none" width="800" height="1000"
+                           poster="nicholas-e-giovana-video-poster.webp">
+                        <source src="nicholas-e-giovana.mp4" type="video/mp4">
+                        Seu navegador não abre vídeo. <a href="nicholas-e-giovana.mp4">Baixe o arquivo</a>.
+                    </video>
+                    -->
                 </div>
                 <div class="quem-somos-content">
                     <span class="eyebrow">Quem cuida da sua viagem</span>
@@ -702,6 +741,15 @@
                     <div class="faq-content"><p>Manda uma mensagem no WhatsApp! Você conta um pouco sobre você e sua viagem dos sonhos. Sem compromisso, a conversa inicial é gratuita, e a gente entende se consegue realizar seu sonho da melhor forma possível.</p></div>
                 </div>
                 <div class="faq-item">
+                    <button class="faq-button"><span class="faq-title">Como a Terra Venture é remunerada?</span><i class="fas fa-chevron-down"></i></button>
+                    <!-- TODO(nicholas): escreva aqui, com suas palavras, como voce
+                         cobra. Comissao das operadoras? Taxa de consultoria? Os
+                         dois? Esta e a pergunta que mais trava fechamento e a
+                         unica resposta deste site que eu nao posso escrever por
+                         voce, porque so voce sabe a resposta. -->
+                    <div class="faq-content"><p>[__]</p></div>
+                </div>
+                <div class="faq-item">
                     <button class="faq-button"><span class="faq-title">Vocês vendem pacotes prontos?</span><i class="fas fa-chevron-down"></i></button>
                     <div class="faq-content"><p>Fazemos roteiros sob medida e também cruzeiros e saídas em grupo com data marcada. Em todos os casos, a gente cuida do planejamento e do suporte.</p></div>
                 </div>
@@ -767,7 +815,7 @@
                 <div class="footer-links">
                     <h4>Navegação</h4>
                     <ul>
-                        <li><a href="#quem-somos">A Agência</a></li>
+                        <li><a href="/historia">A Terra Venture</a></li>
                         <li><a href="/servicos">Serviços</a></li>
                     <li><a href="/cruzeiros">Cruzeiros</a></li>
                     <li><a href="https://app.onertravel.com/terraventureviagens/home" target="_blank" rel="noopener">Monte sua cotação</a></li>
@@ -785,7 +833,21 @@
                         <li><a href="https://www.instagram.com/terraventureviagens/" target="_blank">Instagram</a></li>
                     </ul>
                 </div>
-            </div>
+                            <div class="footer-confianca">
+                    <h4>A empresa</h4>
+                    <ul>
+                        <li><span>Sede</span> Ivoti, RS, no Vale dos Sinos</li>
+                        <!-- TODO(nicholas): descomente cada linha abaixo assim que
+                             tiver o dado. Deixei comentado de proposito: marcador
+                             no rodape de 76 paginas pega pior do que linha nenhuma.
+                        <li><span>Cadastur</span> [numero]</li>
+                        <li><span>CNPJ</span> [numero]</li>
+                        <li><span>Atuacao</span> desde novembro de 2025</li>
+                        <li><span>Parcerias</span> [operadoras e representacoes]</li>
+                        -->
+                    </ul>
+                </div>
+</div>
         </div>
         <div class="footer-bottom">
             <div class="container"><p>&copy; 2026 Terra Venture Viagens. Todos os direitos reservados.</p></div>
