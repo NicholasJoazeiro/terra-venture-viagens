@@ -22,13 +22,23 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all';this.onload=null">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
     <!-- Leaflet -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" media="print" onload="this.media='all';this.onload=null" />
+    <noscript><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" /></noscript>
+    <!-- O hero e o LCP da home. Dois preloads com media, para o navegador pedir
+         o recorte certo antes de descobrir a tag <picture>. -->
+    <link rel="preload" as="image" media="(max-width: 700px)" href="hero-lago-molveno-vertical.webp" fetchpriority="high">
+    <link rel="preload" as="image" media="(min-width: 701px)"
+          imagesrcset="hero-lago-molveno-800.webp 800w, hero-lago-molveno-1600.webp 1600w, hero-lago-molveno.webp 1800w"
+          imagesizes="100vw" href="hero-lago-molveno-1600.webp" fetchpriority="high">
+
     <!-- Estilo Terra Venture -->
-    <link rel="stylesheet" href="terra.css?v=cff284c5">
+    <link rel="stylesheet" href="terra.css?v=bd9bc5bc">
 
     <meta name="description" content="Terra Venture Viagens: consultoria de viagem sob medida e roteiros exclusivos desenhados à mão, do primeiro sonho ao retorno pra casa.">
 
@@ -41,7 +51,7 @@
       "foundingDate": "2025-11",
       "address": { "@type": "PostalAddress", "addressLocality": "Ivoti", "addressRegion": "RS", "addressCountry": "BR" },
       "areaServed": "BR",
-      "description": "Viagens boutique e roteiros exclusivos desenhados à mão. Do sonho ao retorno.",
+      "description": "Consultoria de viagem sob medida, cruzeiros e saídas em grupo, de Ivoti, RS, para clientes de todo o Brasil.",
       "sameAs": ["https://www.instagram.com/terraventureviagens/"]
     }
     </script>
@@ -92,7 +102,7 @@
                      2400 e um recorte vertical proprio, mandar um arquivo de 2400px ou mais. -->
                 <source media="(max-width: 700px)" srcset="hero-lago-molveno-vertical.webp" width="809" height="1011">
                 <source srcset="hero-lago-molveno-800.webp 800w, hero-lago-molveno-1600.webp 1600w, hero-lago-molveno.webp 1800w" sizes="100vw">
-                <img src="hero-lago-molveno-1600.webp" width="1800" height="1011"
+                <img src="hero-lago-molveno-1600.webp" width="1600" height="899"
                     alt="Vista aérea do Lago Molveno, com água turquesa entre encostas de floresta e os picos do Brenta ao fundo, nas Dolomitas italianas"
                     loading="eager" fetchpriority="high" decoding="async">
             </picture>
@@ -184,12 +194,12 @@
                     <h2 class="de-title">Quatro destinos com dossiê pronto</h2>
                     <p class="de-sub">Cada um tem página própria, com melhor época, o que ver e quanto tempo faz sentido ficar.</p>
                 </div>
-                <div class="vibe-filter" role="tablist" aria-label="Filtrar por vibe da viagem">
-                    <button class="vibe-chip active" data-vibe="todos" type="button">Todos</button>
-                    <button class="vibe-chip" data-vibe="aventura" type="button">Aventura</button>
-                    <button class="vibe-chip" data-vibe="cultura" type="button">Cultura</button>
-                    <button class="vibe-chip" data-vibe="romance" type="button">Romance</button>
-                    <button class="vibe-chip" data-vibe="cruzeiros" type="button">Cruzeiros</button>
+                <div class="vibe-filter" role="group" aria-label="Filtrar os destinos por vibe">
+                    <button class="vibe-chip active" data-vibe="todos" type="button" aria-pressed="true">Todos</button>
+                    <button class="vibe-chip" data-vibe="aventura" type="button" aria-pressed="false">Aventura</button>
+                    <button class="vibe-chip" data-vibe="cultura" type="button" aria-pressed="false">Cultura</button>
+                    <button class="vibe-chip" data-vibe="romance" type="button" aria-pressed="false">Romance</button>
+                    <button class="vibe-chip" data-vibe="cruzeiros" type="button" aria-pressed="false">Cruzeiros</button>
                 </div>
             </div>
             <div class="dossie-list">
@@ -669,7 +679,7 @@
                     <img width="800" height="800" loading="lazy" decoding="async" src="julia-e-manuela-clientes-buenos-aires.webp" alt="Júlia e Manuela em Buenos Aires">
                 </figure>
                 <figure class="comunidade-item">
-                    <img width="800" height="800" loading="lazy" decoding="async" src="marcia-reis-cliente-italia.webp" alt="Márcia na Itália">
+                    <img width="800" height="800" loading="lazy" decoding="async" src="marcia-reis-cliente-italia.webp" alt="Márcia Reis sorrindo na neve, em frente a um prédio histórico de cúpula, durante a viagem à Itália">
                 </figure>
                 <figure class="comunidade-item">
                     <img width="800" height="800" loading="lazy" decoding="async" src="michele-e-daniel-clientes-paris-londres.webp" alt="Michele e Daniel em frente ao Moulin Rouge, em Paris">
@@ -767,11 +777,11 @@
                     <div class="contact-details">
                         <div class="detail-item">
                             <i class="fab fa-whatsapp"></i>
-                            <div><h5>WhatsApp</h5><a href="https://wa.me/5551994596233" target="_blank">+55 51 99459-6233</a></div>
+                            <div><h3 class="detail-titulo">WhatsApp</h3><a href="https://wa.me/5551994596233" target="_blank">+55 51 99459-6233</a></div>
                         </div>
                         <div class="detail-item">
                             <i class="far fa-envelope"></i>
-                            <div><h5>Email</h5><p>contato@terraventureviagens.com.br</p></div>
+                            <div><h3 class="detail-titulo">Email</h3><p>contato@terraventureviagens.com.br</p></div>
                         </div>
                     </div>
                 </div>
@@ -809,7 +819,7 @@
                     <p>Consultoria de viagem sob medida, cruzeiros e saídas em grupo.</p>
                     <p>Com sede em Ivoti, no Vale dos Sinos, atendemos clientes de todo o Brasil.</p>
                     <div class="footer-social" style="margin-top:16px;">
-                        <a href="https://www.instagram.com/terraventureviagens/" target="_blank" aria-label="Instagram" style="display:inline-flex;align-items:center;gap:8px;color:var(--bone-dim);font-size:0.95rem;"><i class="fab fa-instagram" style="font-size:1.3rem;"></i> @terraventureviagens</a>
+                        <a href="https://www.instagram.com/terraventureviagens/" target="_blank" style="display:inline-flex;align-items:center;gap:8px;color:var(--bone-dim);font-size:0.95rem;"><i class="fab fa-instagram" style="font-size:1.3rem;"></i> @terraventureviagens</a>
                     </div>
                 </div>
                 <div class="footer-links">
@@ -865,8 +875,8 @@
     </div>
 
     <!-- Scripts -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
-    <script src="script.js?v=dd97f922"></script>
+    <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+    <script src="script.js?v=8d29e29a"></script>
 </body>
 
 </html>

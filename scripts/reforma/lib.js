@@ -51,7 +51,7 @@ function removerSecao(texto, classe) {
 }
 
 // contagem de tags: primeira peneira apenas. Nao prova aninhamento.
-function conferir(f) {
+function conferir(f, calado) {
     // comentarios saem antes da contagem: um <figure> citado dentro de um
     // TODO contava como tag aberta e gerava alarme falso.
     const t = ler(f).replace(/<!--[\s\S]*?-->/g, '');
@@ -62,8 +62,9 @@ function conferir(f) {
         ['<svg', '</svg>'], ['<form', '</form>']];
     for (const [a, b] of pares) if (c(a) !== c(b)) problemas.push(a + ' ' + c(a) + ' vs ' + c(b));
     if (problemas.length) console.error('ESTRUTURA', f, problemas.join(' | '));
-    else console.log('estrutura ok:', f);
+    else if (!calado) console.log('estrutura ok:', f);
     return problemas.length === 0;
 }
+function conferirSilencioso(f) { return conferir(f, true); }
 
-module.exports = { DIR, ler, gravar, quebra, crlf, bloco, secao, trocarSecao, removerSecao, conferir };
+module.exports = { DIR, ler, gravar, quebra, crlf, bloco, secao, trocarSecao, removerSecao, conferir, conferirSilencioso };

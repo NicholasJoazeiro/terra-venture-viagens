@@ -57,65 +57,69 @@ document.addEventListener('DOMContentLoaded', () => {
     /* =========================================================================
        3. SCROLL REVEAL (INTERSECTION OBSERVER)
        ========================================================================= */
-    const revealElements = document.querySelectorAll('.scroll-reveal');
+    // Lista unica de alvos. Ela tambem existe no terra.css, nas duas regras que
+    // escondem e revelam; se mudar aqui, mudar la.
+    const ALVOS_REVEAL = '.section-header, .processo-passo, .diferencial-card, .dossie-row, .serv-card, .serv-passo, .epoca-card, .testimonial-card, .depo-destaque, .comunidade-item, .faq-item, .blog-card, .dest-card, .saida-card, .cruz-temporada, .cruz-roteiro, .quem-somos-img, .quem-somos-text';
+    const LEGADO = '.scroll-reveal';
+    const semMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    const revealCallback = (entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-                observer.unobserve(entry.target);
-            }
+    function revelar(el) {
+        el.classList.add(el.matches(LEGADO) ? 'active' : 'revelado');
+    }
+    function aindaEscondidos() {
+        return [
+            ...document.querySelectorAll(ALVOS_REVEAL + ':not(.revelado)'),
+            ...document.querySelectorAll(LEGADO + ':not(.active)'),
+        ];
+    }
+
+    if (semMovimento) {
+        // quem pediu menos movimento ve a pagina inteira de uma vez
+        aindaEscondidos().forEach(revelar);
+    } else {
+        // escalona o atraso dentro de cada grupo, para os cards entrarem em cascata
+        document.querySelectorAll(ALVOS_REVEAL).forEach(el => {
+            const irmaos = el.parentElement
+                ? [...el.parentElement.children].filter(x => x.matches(ALVOS_REVEAL)) : [];
+            const i = irmaos.indexOf(el);
+            if (i > 0) el.style.transitionDelay = Math.min(i, 5) * 80 + 'ms';
         });
-    };
 
-    const revealOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.15 // Trigger when 15% visible
-    };
+        const observador = new IntersectionObserver((entradas, o) => {
+            entradas.forEach(e => {
+                if (!e.isIntersecting) return;
+                revelar(e.target);
+                o.unobserve(e.target);
+            });
+        }, { root: null, rootMargin: '0px 0px -6% 0px', threshold: 0 });
+        aindaEscondidos().forEach(el => observador.observe(el));
 
-    const revealObserver = new IntersectionObserver(revealCallback, revealOptions);
-
-    revealElements.forEach(el => {
-        revealObserver.observe(el);
-    });
-
-    // Mesma lista do terra.css: as paginas novas nao marcam .scroll-reveal no
-    // HTML, entao o observer pega esses elementos por seletor. Escalonar o
-    // atraso dentro de cada grupo faz os cards entrarem em cascata.
-    const ALVOS_REVEAL = '.section-header, .como-card, .diferencial-card, .dossie-row, .serv-card, .serv-passo, .epoca-card, .testimonial-card, .comunidade-item, .faq-item, .blog-card, .dest-card, .quem-somos-img, .quem-somos-text';
-    // Observer proprio, que marca .revelado em vez de .active. A .active ja tem
-    // dono em outros componentes: o acordeao do FAQ a usa para "pergunta aberta"
-    // e remove de todos os itens ao fechar, o que apagava os itens da tela.
-    const autoObserver = new IntersectionObserver((entries, o) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('revelado');
-                o.unobserve(entry.target);
+        // Varredura: revela tudo que ja cruzou a linha de baixo da tela. E ela
+        // que garante que rolagem rapida nao deixe buraco, porque nao depende
+        // do lote do observer chegar a tempo.
+        let agendado = false;
+        function varrer() {
+            agendado = false;
+            const limite = window.innerHeight + 120;
+            for (const el of aindaEscondidos()) {
+                if (el.getBoundingClientRect().top < limite) revelar(el);
             }
-        });
-    }, revealOptions);
-
-    document.querySelectorAll(ALVOS_REVEAL).forEach(el => {
-        const irmaos = el.parentElement ? [...el.parentElement.children].filter(x => x.matches(ALVOS_REVEAL)) : [];
-        const i = irmaos.indexOf(el);
-        if (i > 0) el.style.transitionDelay = Math.min(i, 5) * 80 + 'ms';
-        autoObserver.observe(el);
-    });
-
-    // Rede de seguranca: esconder conteudo e depender do observer para mostra-lo
-    // significa que uma falha dele deixaria a pagina em branco. Se em 2,5s nada
-    // tiver sido revelado, revela tudo. Perde-se a animacao, nunca o conteudo.
-    const redeDeSeguranca = setTimeout(() => {
-        const auto = document.querySelectorAll(ALVOS_REVEAL);
-        const legado = document.querySelectorAll('.scroll-reveal');
-        const algumRevelado = [...auto].some(el => el.classList.contains('revelado'))
-            || [...legado].some(el => el.classList.contains('active'));
-        if (!algumRevelado) {
-            auto.forEach(el => el.classList.add('revelado'));
-            legado.forEach(el => el.classList.add('active'));
         }
-    }, 2500);
+        function agendarVarredura() {
+            if (agendado) return;
+            agendado = true;
+            requestAnimationFrame(varrer);
+        }
+        window.addEventListener('scroll', agendarVarredura, { passive: true });
+        window.addEventListener('resize', agendarVarredura, { passive: true });
+        varrer();
+
+        // Rede de seguranca: se em 2,5s ainda houver algo escondido acima do fim
+        // da pagina, revela. Perde-se a animacao, nunca o conteudo.
+        setTimeout(() => {
+            if (aindaEscondidos().length) varrer();
+        }, 2500);
+    }
 
     /* =========================================================================
        4. PARALLAX EFFECT
@@ -391,13 +395,22 @@ document.addEventListener('DOMContentLoaded', () => {
         // Ícone Customizado (Círculo Minimalista)
         const customIcon = L.divIcon({
             className: 'custom-marker',
-            iconSize: [14, 14],
+            iconSize: [26, 26],
             iconAnchor: [7, 7]
         });
 
         // Adiciona Marcadores
         destinations.forEach(dest => {
-            const marker = L.marker(dest.coords, { icon: customIcon }).addTo(map);
+            // o marcador e clicavel e navegavel por teclado, entao precisa de nome.
+            // Sem isso o leitor de tela anuncia 25 botoes chamados "botao".
+            const marker = L.marker(dest.coords, {
+                icon: customIcon,
+                alt: dest.name,
+                keyboard: true,
+                title: dest.name,
+            }).addTo(map);
+            const el = marker.getElement();
+            if (el) el.setAttribute('aria-label', 'Abrir o dossiê de ' + dest.name);
 
             marker.on('mouseover', (e) => showPreview(dest, e.originalEvent));
             marker.on('mousemove', (e) => movePreview(e.originalEvent));
@@ -513,7 +526,11 @@ document.addEventListener('DOMContentLoaded', () => {
             chip.addEventListener('click', () => {
                 const vibe = chip.dataset.vibe;
 
-                vibeChips.forEach(c => c.classList.remove('active'));
+                vibeChips.forEach(c => {
+                    c.classList.remove('active');
+                    c.setAttribute('aria-pressed', 'false');
+                });
+                chip.setAttribute('aria-pressed', 'true');
                 chip.classList.add('active');
 
                 vibeCards.forEach(card => {
@@ -567,7 +584,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const anoAtual = new Date().getFullYear();
         for (let a = anoAtual; a <= anoAtual + 3; a++) selAno.add(new Option(a, a, false, false));
 
-        function mostrar(n) {
+        function mostrar(n, mexerNoFoco) {
             atual = Math.max(0, Math.min(n, passos.length - 1));
             passos.forEach((p, k) => { p.hidden = k !== atual; });
             const pct = ((atual + 1) / passos.length) * 100;
@@ -578,9 +595,13 @@ document.addEventListener('DOMContentLoaded', () => {
             btnAvancar.hidden = ultimo;
             linkEnviar.hidden = !ultimo;
             if (ultimo) linkEnviar.href = montarLink();
-            // leva o foco para a pergunta, senao quem usa teclado fica para tras
-            const legenda = passos[atual].querySelector('.briefing-pergunta');
-            if (legenda) legenda.focus();
+            // Leva o foco para a pergunta, senao quem usa teclado fica para tras.
+            // Nao na primeira chamada: focar um elemento no meio da pagina faz o
+            // navegador rolar ate ele, e a home abria direto no briefing.
+            if (mexerNoFoco) {
+                const legenda = passos[atual].querySelector('.briefing-pergunta');
+                if (legenda) legenda.focus();
+            }
         }
 
         function respostaDe(nome) {
@@ -616,8 +637,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         function campo(rotulo, valor) { return valor ? rotulo + ': ' + valor : ''; }
 
-        btnAvancar.addEventListener('click', () => mostrar(atual + 1));
-        btnVoltar.addEventListener('click', () => mostrar(atual - 1));
+        btnAvancar.addEventListener('click', () => mostrar(atual + 1, true));
+        btnVoltar.addEventListener('click', () => mostrar(atual - 1, true));
 
         // Escolher uma opcao de radio ja avanca: um clique a menos por pergunta.
         // O gatilho e o click, nao o change, de proposito. As setas do teclado
@@ -626,7 +647,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // acontece no mouse, no toque e no Espaco, que sao escolhas de verdade.
         briefingCaixa.addEventListener('click', (e) => {
             if (e.target.matches('input[type="radio"]') && atual < passos.length - 1) {
-                setTimeout(() => mostrar(atual + 1), 220);
+                setTimeout(() => mostrar(atual + 1, true), 220);
             }
         });
         briefingCaixa.addEventListener('change', () => {
@@ -642,7 +663,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (typeof fbq === 'function') fbq('track', 'Lead');
         });
 
-        mostrar(0);
+        mostrar(0, false);   // sem foco: so montar o primeiro passo
     }
 
     /* =========================================================================
