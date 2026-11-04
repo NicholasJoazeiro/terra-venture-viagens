@@ -77,11 +77,6 @@ html.js :is(.section-header, .processo-passo, .diferencial-card, .dossie-row, .s
     html.js :is(.section-header, .processo-passo, .diferencial-card, .dossie-row, .serv-card, .serv-passo, .epoca-card, .testimonial-card, .depo-destaque, .comunidade-item, .faq-item, .blog-card, .dest-card, .cruz-temporada, .quem-somos-img, .quem-somos-text) { opacity: 1; transform: none; transition: none; }
 }
 
-/* Imagem com width e height no HTML e largura fluida no CSS: sem height:auto
-   a altura fica presa no valor do atributo e a foto estica. Aconteceu com a
-   foto dos fundadores (800x800 renderizando 527x800). */
-img[width][height]:not([class]) { height: auto; }
-
 /* ======================= BOTÕES ======================= */
 /* Pilula com gradiente, brilho e seta era a receita de botao de landing
    gerada. Agora e um retangulo de cantos quase retos, cor chapada, sem seta.
@@ -464,16 +459,13 @@ img[width][height]:not([class]) { height: auto; }
 .comunidade .section-desc { color: var(--bone-dim); }
 /* Colagem de proporcoes diferentes. Antes eram seis quadrados iguais com a
    frase do cliente por cima, repetindo o que a secao de depoimentos ja diz. */
-.comunidade-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 152px; gap: 14px; margin-top: 50px; }
-.comunidade-item { position: relative; margin: 0; border-radius: 10px; overflow: hidden; }
+/* Celas de formatos diferentes cortavam cabeca: as fotos de cliente sao todas
+   quadradas e ja enquadradas no rosto, entao qualquer cela que nao fosse
+   quadrada comia alguem. Cela quadrada e foto quadrada: nada a cortar. */
+.comunidade-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 50px; }
+.comunidade-item { position: relative; margin: 0; border-radius: 10px; overflow: hidden; aspect-ratio: 1 / 1; }
 .comunidade-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease); }
 .comunidade-item:hover img { transform: scale(1.06); }
-.comunidade-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
-.comunidade-item:nth-child(2) { grid-column: span 1; grid-row: span 2; }
-.comunidade-item:nth-child(3) { grid-column: span 1; grid-row: span 1; }
-.comunidade-item:nth-child(4) { grid-column: span 1; grid-row: span 1; }
-.comunidade-item:nth-child(5) { grid-column: span 2; grid-row: span 2; }
-.comunidade-item:nth-child(6) { grid-column: span 2; grid-row: span 2; }
 .comunidade-cta { text-align: center; margin-top: 40px; }
 
 /* ======================= FAQ ======================= */
@@ -1021,12 +1013,22 @@ button:focus-visible {
    MELHOR ÉPOCA PARA VIAJAR (guia mês a mês)
    ========================================================================= */
 .epoca-hero {
+    position: relative; isolation: isolate; overflow: hidden;
     background: var(--ink);
     color: var(--bone);
     padding: 170px 0 70px;
     text-align: center;
 }
-.epoca-hero .eyebrow { color: var(--gold); }
+.epoca-hero-bg { position: absolute; inset: 0; z-index: -2; }
+.epoca-hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 58%; }
+.epoca-hero::after {
+    content: ''; position: absolute; inset: 0; z-index: -1;
+    background:
+        radial-gradient(64% 82% at 50% 46%, rgba(13, 24, 32, 0.72) 0%, rgba(13, 24, 32, 0.34) 56%, rgba(13, 24, 32, 0.06) 90%),
+        linear-gradient(180deg, rgba(13, 24, 32, 0.46) 0%, rgba(13, 24, 32, 0.08) 30%, rgba(13, 24, 32, 0.08) 68%, rgba(26, 38, 33, 0.72) 100%);
+}
+/* o --gold dava 2,61:1 sobre a foto nova; este tom claro da 4,6 */
+.epoca-hero .eyebrow { color: #F3E3B8; }
 .epoca-hero h1 {
     font-family: var(--serif);
     font-weight: 400;
@@ -1763,15 +1765,7 @@ p, li, .hero-subtitle, .section-desc, .lead, .lead-text, .testimonial-text, .sto
 @media (max-width: 640px) {
     .faixa-prova-grid { grid-template-columns: 1fr; gap: 20px; }
     .testimonials-grid { grid-template-columns: 1fr; }
-    /* Em duas colunas os spans 2x2 nao fecham e sobram buracos. No celular as
-       seis fotos viram seis quadrados iguais, tres linhas cheias. */
-    .comunidade-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: auto; }
-    .comunidade-item,
-    .comunidade-item:nth-child(1), .comunidade-item:nth-child(2),
-    .comunidade-item:nth-child(3), .comunidade-item:nth-child(4),
-    .comunidade-item:nth-child(5), .comunidade-item:nth-child(6) {
-        grid-column: span 1; grid-row: span 1; aspect-ratio: 1 / 1;
-    }
+    .comunidade-grid { grid-template-columns: repeat(2, 1fr); }
     .prints-grid { grid-template-columns: 1fr; }
 }
 
@@ -1987,9 +1981,11 @@ p, li, .hero-subtitle, .section-desc, .lead, .lead-text, .testimonial-text, .sto
    justamente o que a pagina precisa mostrar. Aqui a mancha fica atras do
    texto, centralizada, e as bordas da foto aparecem. */
 /* a abertura e baixa: centralizado, o cover mostrava o teto do conves */
-.hero-cruzeiros .page-hero-bg img { object-position: 50% 66%; }
+/* o texto e centralizado e caia em cima do casco branco: 2,8:1. Descendo o
+   enquadramento, ele fica sobre a agua e o navio continua a vista. */
+.hero-cruzeiros .page-hero-bg img { object-position: 50% 74%; }
 .hero-cruzeiros::after {
     background:
-        radial-gradient(60% 80% at 50% 48%, rgba(13, 24, 32, 0.62) 0%, rgba(13, 24, 32, 0.26) 56%, rgba(13, 24, 32, 0.02) 90%),
-        linear-gradient(180deg, rgba(13, 24, 32, 0.42) 0%, rgba(13, 24, 32, 0.05) 30%, rgba(13, 24, 32, 0.05) 70%, rgba(26, 38, 33, 0.48) 100%);
+        radial-gradient(62% 82% at 50% 48%, rgba(13, 24, 32, 0.72) 0%, rgba(13, 24, 32, 0.38) 56%, rgba(13, 24, 32, 0.06) 90%),
+        linear-gradient(180deg, rgba(13, 24, 32, 0.44) 0%, rgba(13, 24, 32, 0.08) 30%, rgba(13, 24, 32, 0.08) 70%, rgba(26, 38, 33, 0.52) 100%);
 }
