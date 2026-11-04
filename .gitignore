@@ -19,3 +19,6 @@ public/*.jpeg
 
 # capturas da entrega, nao fazem parte do site
 capturas/
+
+# originais das fotos e videos legados: nao sao servidos nem versionados
+originais/

@@ -7,7 +7,7 @@ const sharp = require('sharp');
 const fs = require('fs');
 const path = require('path');
 const dir = path.resolve(__dirname, '../../public');
-const SRC = path.join(dir, 'MicheleeDaniel.jpeg');
+const SRC = path.resolve(__dirname, '../../originais/MicheleeDaniel.jpeg');
 const OUT = path.join(dir, 'michele-e-daniel-clientes-paris-londres-destaque.webp');
 
 (async () => {
