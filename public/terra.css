@@ -77,6 +77,11 @@ html.js :is(.section-header, .processo-passo, .diferencial-card, .dossie-row, .s
     html.js :is(.section-header, .processo-passo, .diferencial-card, .dossie-row, .serv-card, .serv-passo, .epoca-card, .testimonial-card, .depo-destaque, .comunidade-item, .faq-item, .blog-card, .dest-card, .cruz-temporada, .quem-somos-img, .quem-somos-text) { opacity: 1; transform: none; transition: none; }
 }
 
+/* Imagem com width e height no HTML e largura fluida no CSS: sem height:auto
+   a altura fica presa no valor do atributo e a foto estica. Aconteceu com a
+   foto dos fundadores (800x800 renderizando 527x800). */
+img[width][height]:not([class]) { height: auto; }
+
 /* ======================= BOTÕES ======================= */
 /* Pilula com gradiente, brilho e seta era a receita de botao de landing
    gerada. Agora e um retangulo de cantos quase retos, cor chapada, sem seta.
@@ -298,7 +303,6 @@ html.js :is(.section-header, .processo-passo, .diferencial-card, .dossie-row, .s
 .dossie-row:nth-child(3) { grid-template-columns: 1.2fr 0.8fr; grid-auto-rows: 560px; }
 .dossie-row:nth-child(4) { grid-template-columns: 0.95fr 1.05fr; grid-auto-rows: 470px; }
 .dossie-row:nth-child(5) { grid-template-columns: 1.05fr 0.95fr; grid-auto-rows: 420px; }
-.dossie-row:nth-child(6) { grid-template-columns: 0.88fr 1.12fr; grid-auto-rows: 500px; }
 .de-sub { color: var(--bone-dim); font-size: 1.05rem; max-width: 46ch; margin-top: 14px; }
 .dossie-regiao { font-family: var(--serif); font-style: normal; font-size: 0.95rem; color: rgba(236, 229, 212, 0.58); }
 .dossie-media { display: block; }
@@ -373,22 +377,30 @@ html.js :is(.section-header, .processo-passo, .diferencial-card, .dossie-row, .s
 
 /* Faixa de foto em tela cheia entre duas secoes de texto. Serve para quebrar
    a cadencia de blocos centralizados de mesma altura. */
-.faixa-foto { position: relative; isolation: isolate; min-height: 62vh; display: flex; align-items: flex-end; }
+.faixa-foto { position: relative; isolation: isolate; min-height: 66vh; display: flex; align-items: center; }
 .faixa-foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+/* O texto estava empurrado para o canto de baixo a esquerda e quebrava em
+   pedacos curtos. Centralizado, com medida maior, ele respira e as linhas
+   fecham inteiras. O escurecimento acompanhou: mancha no meio, nao no pe. */
 .faixa-foto::after {
     content: ''; position: absolute; inset: 0; z-index: -1;
-    background: linear-gradient(180deg, rgba(13, 24, 32, 0.12) 0%, rgba(13, 24, 32, 0) 34%, rgba(13, 24, 32, 0.72) 82%, rgba(13, 24, 32, 0.9) 100%);
+    background:
+        radial-gradient(75% 95% at 50% 50%, rgba(13, 24, 32, 0.74) 0%, rgba(13, 24, 32, 0.40) 52%, rgba(13, 24, 32, 0.06) 84%),
+        linear-gradient(180deg, rgba(13, 24, 32, 0.28) 0%, rgba(13, 24, 32, 0) 24%, rgba(13, 24, 32, 0) 72%, rgba(26, 38, 33, 0.86) 100%);
 }
-.faixa-foto-texto { width: 100%; padding: 0 0 64px; color: var(--bone); }
-.faixa-foto-texto h2 { font-family: var(--serif); font-weight: 400; color: #fff; font-size: clamp(1.8rem, 3.6vw, 3rem); max-width: 20ch; }
-.faixa-foto-texto p { margin-top: 16px; max-width: 48ch; color: rgba(242, 238, 229, 0.94); font-size: 1.08rem; }
+.faixa-foto-texto { width: 100%; padding: 56px 0; color: var(--bone); text-align: center; }
+.faixa-foto-texto h2 {
+    font-family: var(--serif); font-weight: 400; color: #fff;
+    font-size: clamp(1.85rem, 3.8vw, 3.1rem); max-width: 30ch; margin: 0 auto;
+}
+.faixa-foto-texto p { margin: 18px auto 0; max-width: 56ch; color: rgba(242, 238, 229, 0.94); font-size: 1.08rem; text-wrap: pretty; }
 
 /* ======================= QUEM SOMOS ======================= */
 .quem-somos { padding: 120px 0; background: var(--cream-deep); }
 .quem-somos-wrapper { display: grid; grid-template-columns: 1fr 1.1fr; gap: 70px; align-items: center; }
 .quem-somos-img { position: relative; z-index: 1; }
 .quem-somos-img::before { content: ''; position: absolute; inset: 0; transform: translate(20px, 20px); border: 2px solid var(--terra); border-radius: 24px; z-index: -1; transition: transform 0.5s var(--ease); }
-.quem-somos-img img { width: 100%; border-radius: 24px; box-shadow: var(--shadow); }
+.quem-somos-img img { width: 100%; height: auto; border-radius: 24px; box-shadow: var(--shadow); }
 .quem-somos-img:hover::before { transform: translate(12px, 12px); }
 .quem-somos-content .section-title { text-align: left; }
 .quem-somos-content .lead-text { font-family: var(--serif); font-size: 1.4rem; color: var(--terra-texto); margin: 14px 0 20px; line-height: 1.4; }
@@ -546,7 +558,11 @@ html.js :is(.section-header, .processo-passo, .diferencial-card, .dossie-row, .s
 }
 @media (max-width: 768px) {
     .wrap, .container, .hero-content { padding: 0 20px; }
-    .dossie-row { grid-template-columns: 1fr; grid-auto-rows: auto; }
+    .dossie-row,
+    .dossie-row:nth-child(2), .dossie-row:nth-child(3),
+    .dossie-row:nth-child(4), .dossie-row:nth-child(5) {
+        grid-template-columns: 1fr; grid-auto-rows: auto;
+    }
     .dossie-row.flip .dossie-media { order: 0; }
     .dossie-media { height: 240px; }
     .dossie-body { padding: 34px 22px; }
@@ -1747,9 +1763,15 @@ p, li, .hero-subtitle, .section-desc, .lead, .lead-text, .testimonial-text, .sto
 @media (max-width: 640px) {
     .faixa-prova-grid { grid-template-columns: 1fr; gap: 20px; }
     .testimonials-grid { grid-template-columns: 1fr; }
-    .comunidade-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 132px; }
-    .comunidade-item:nth-child(1), .comunidade-item:nth-child(5), .comunidade-item:nth-child(6) { grid-column: span 2; grid-row: span 2; }
-    .comunidade-item:nth-child(2) { grid-column: span 1; grid-row: span 1; }
+    /* Em duas colunas os spans 2x2 nao fecham e sobram buracos. No celular as
+       seis fotos viram seis quadrados iguais, tres linhas cheias. */
+    .comunidade-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: auto; }
+    .comunidade-item,
+    .comunidade-item:nth-child(1), .comunidade-item:nth-child(2),
+    .comunidade-item:nth-child(3), .comunidade-item:nth-child(4),
+    .comunidade-item:nth-child(5), .comunidade-item:nth-child(6) {
+        grid-column: span 1; grid-row: span 1; aspect-ratio: 1 / 1;
+    }
     .prints-grid { grid-template-columns: 1fr; }
 }
 
@@ -1776,11 +1798,17 @@ p, li, .hero-subtitle, .section-desc, .lead, .lead-text, .testimonial-text, .sto
 .briefing { padding: 118px 0; background: var(--ink); color: var(--bone); }
 .briefing .section-title { color: #fff; }
 .briefing .section-desc { color: var(--bone-dim); }
-.briefing-intro { max-width: 46ch; margin-bottom: 46px; }
+/* A caixa tinha 720px dentro de um container de 1240 e sobrava meia tela
+   vazia a direita, que era o "nao encaixa". Duas colunas: o texto a esquerda,
+   o formulario a direita, ocupando a altura toda. */
+.briefing .container { display: grid; grid-template-columns: 0.82fr 1.18fr; gap: 56px; align-items: start; }
+.briefing-intro { max-width: 34ch; margin-bottom: 0; grid-column: 1; grid-row: 1; }
 .briefing-intro .section-title, .briefing-intro .section-desc { text-align: left; }
+.briefing-caixa { grid-column: 2; grid-row: 1 / span 2; }
+.briefing-alternativa { grid-column: 1; grid-row: 2; }
 
 .briefing-caixa {
-    max-width: 720px; border: 1px solid var(--line-dark); border-radius: 10px;
+    width: 100%; border: 1px solid var(--line-dark); border-radius: 10px;
     padding: 40px; background: rgba(255, 255, 255, 0.03);
 }
 .briefing-progresso { height: 3px; background: rgba(236, 229, 212, 0.16); border-radius: 2px; overflow: hidden; }
@@ -1832,7 +1860,7 @@ p, li, .hero-subtitle, .section-desc, .lead, .lead-text, .testimonial-text, .sto
 .briefing-voltar:hover { color: #fff; border-color: #fff; }
 .briefing-voltar[hidden], .btn-primary[hidden] { display: none; }
 
-.briefing-alternativa { margin-top: 28px; max-width: 720px; font-size: 0.92rem; color: var(--bone-dim); }
+.briefing-alternativa { margin-top: 30px; max-width: 38ch; font-size: 0.92rem; color: var(--bone-dim); text-wrap: pretty; }
 .briefing-alternativa a { color: var(--bone); border-bottom: 1px solid rgba(236, 229, 212, 0.4); }
 .briefing-alternativa a:hover { border-color: var(--terra); }
 
@@ -1922,4 +1950,46 @@ p, li, .hero-subtitle, .section-desc, .lead, .lead-text, .testimonial-text, .sto
 }
 @media (max-width: 640px) {
     .testimonial-card { padding: 24px; }
+}
+
+
+/* ======================= AJUSTES: BRIEFING E FAIXA NO CELULAR ======================= */
+@media (max-width: 1000px) {
+    .briefing .container { grid-template-columns: 1fr; gap: 34px; }
+    .briefing-intro, .briefing-caixa, .briefing-alternativa { grid-column: 1; grid-row: auto; }
+    .briefing-intro { max-width: none; }
+    .briefing-alternativa { max-width: none; }
+    .faixa-foto { min-height: 58vh; }
+    .faixa-foto-texto { padding: 44px 0; }
+}
+
+
+/* ======================= ALVO DE TOQUE NO CELULAR ======================= */
+/* Link de texto solto (fora de paragrafo) e um botao disfarcado: precisa de
+   altura de dedo. Link dentro de frase fica como esta, que e o certo. */
+@media (max-width: 1000px) {
+    .hero-cta .link-plain,
+    .incl-cta .link-plain,
+    .quem-somos-content .link-plain,
+    .comunidade-cta a,
+    .footer-links li a,
+    .detail-item a,
+    .footer-social a {
+        display: inline-flex; align-items: center; min-height: 44px;
+    }
+    .footer-links li { margin-bottom: 2px; }
+}
+
+
+/* ======================= ABERTURA DE /CRUZEIROS ======================= */
+/* O escurecimento padrao da page-hero e chapado e forte, feito para foto de
+   paisagem com muito contraste. Na foto do conves ele apagava o navio, que e
+   justamente o que a pagina precisa mostrar. Aqui a mancha fica atras do
+   texto, centralizada, e as bordas da foto aparecem. */
+/* a abertura e baixa: centralizado, o cover mostrava o teto do conves */
+.hero-cruzeiros .page-hero-bg img { object-position: 50% 66%; }
+.hero-cruzeiros::after {
+    background:
+        radial-gradient(60% 80% at 50% 48%, rgba(13, 24, 32, 0.62) 0%, rgba(13, 24, 32, 0.26) 56%, rgba(13, 24, 32, 0.02) 90%),
+        linear-gradient(180deg, rgba(13, 24, 32, 0.42) 0%, rgba(13, 24, 32, 0.05) 30%, rgba(13, 24, 32, 0.05) 70%, rgba(26, 38, 33, 0.48) 100%);
 }
