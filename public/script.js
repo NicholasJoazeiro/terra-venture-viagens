@@ -57,65 +57,69 @@ document.addEventListener('DOMContentLoaded', () => {
     /* =========================================================================
        3. SCROLL REVEAL (INTERSECTION OBSERVER)
        ========================================================================= */
-    const revealElements = document.querySelectorAll('.scroll-reveal');
+    // Lista unica de alvos. Ela tambem existe no terra.css, nas duas regras que
+    // escondem e revelam; se mudar aqui, mudar la.
+    const ALVOS_REVEAL = '.section-header, .processo-passo, .diferencial-card, .dossie-row, .serv-card, .serv-passo, .epoca-card, .testimonial-card, .depo-destaque, .comunidade-item, .faq-item, .blog-card, .dest-card, .cruz-temporada, .quem-somos-img, .quem-somos-text';
+    const LEGADO = '.scroll-reveal';
+    const semMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    const revealCallback = (entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-                observer.unobserve(entry.target);
-            }
+    function revelar(el) {
+        el.classList.add(el.matches(LEGADO) ? 'active' : 'revelado');
+    }
+    function aindaEscondidos() {
+        return [
+            ...document.querySelectorAll(ALVOS_REVEAL + ':not(.revelado)'),
+            ...document.querySelectorAll(LEGADO + ':not(.active)'),
+        ];
+    }
+
+    if (semMovimento) {
+        // quem pediu menos movimento ve a pagina inteira de uma vez
+        aindaEscondidos().forEach(revelar);
+    } else {
+        // escalona o atraso dentro de cada grupo, para os cards entrarem em cascata
+        document.querySelectorAll(ALVOS_REVEAL).forEach(el => {
+            const irmaos = el.parentElement
+                ? [...el.parentElement.children].filter(x => x.matches(ALVOS_REVEAL)) : [];
+            const i = irmaos.indexOf(el);
+            if (i > 0) el.style.transitionDelay = Math.min(i, 5) * 80 + 'ms';
         });
-    };
 
-    const revealOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.15 // Trigger when 15% visible
-    };
+        const observador = new IntersectionObserver((entradas, o) => {
+            entradas.forEach(e => {
+                if (!e.isIntersecting) return;
+                revelar(e.target);
+                o.unobserve(e.target);
+            });
+        }, { root: null, rootMargin: '0px 0px -6% 0px', threshold: 0 });
+        aindaEscondidos().forEach(el => observador.observe(el));
 
-    const revealObserver = new IntersectionObserver(revealCallback, revealOptions);
-
-    revealElements.forEach(el => {
-        revealObserver.observe(el);
-    });
-
-    // Mesma lista do terra.css: as paginas novas nao marcam .scroll-reveal no
-    // HTML, entao o observer pega esses elementos por seletor. Escalonar o
-    // atraso dentro de cada grupo faz os cards entrarem em cascata.
-    const ALVOS_REVEAL = '.section-header, .como-card, .diferencial-card, .dossie-row, .serv-card, .serv-passo, .epoca-card, .testimonial-card, .comunidade-item, .faq-item, .blog-card, .dest-card, .quem-somos-img, .quem-somos-text';
-    // Observer proprio, que marca .revelado em vez de .active. A .active ja tem
-    // dono em outros componentes: o acordeao do FAQ a usa para "pergunta aberta"
-    // e remove de todos os itens ao fechar, o que apagava os itens da tela.
-    const autoObserver = new IntersectionObserver((entries, o) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('revelado');
-                o.unobserve(entry.target);
+        // Varredura: revela tudo que ja cruzou a linha de baixo da tela. E ela
+        // que garante que rolagem rapida nao deixe buraco, porque nao depende
+        // do lote do observer chegar a tempo.
+        let agendado = false;
+        function varrer() {
+            agendado = false;
+            const limite = window.innerHeight + 120;
+            for (const el of aindaEscondidos()) {
+                if (el.getBoundingClientRect().top < limite) revelar(el);
             }
-        });
-    }, revealOptions);
-
-    document.querySelectorAll(ALVOS_REVEAL).forEach(el => {
-        const irmaos = el.parentElement ? [...el.parentElement.children].filter(x => x.matches(ALVOS_REVEAL)) : [];
-        const i = irmaos.indexOf(el);
-        if (i > 0) el.style.transitionDelay = Math.min(i, 5) * 80 + 'ms';
-        autoObserver.observe(el);
-    });
-
-    // Rede de seguranca: esconder conteudo e depender do observer para mostra-lo
-    // significa que uma falha dele deixaria a pagina em branco. Se em 2,5s nada
-    // tiver sido revelado, revela tudo. Perde-se a animacao, nunca o conteudo.
-    const redeDeSeguranca = setTimeout(() => {
-        const auto = document.querySelectorAll(ALVOS_REVEAL);
-        const legado = document.querySelectorAll('.scroll-reveal');
-        const algumRevelado = [...auto].some(el => el.classList.contains('revelado'))
-            || [...legado].some(el => el.classList.contains('active'));
-        if (!algumRevelado) {
-            auto.forEach(el => el.classList.add('revelado'));
-            legado.forEach(el => el.classList.add('active'));
         }
-    }, 2500);
+        function agendarVarredura() {
+            if (agendado) return;
+            agendado = true;
+            requestAnimationFrame(varrer);
+        }
+        window.addEventListener('scroll', agendarVarredura, { passive: true });
+        window.addEventListener('resize', agendarVarredura, { passive: true });
+        varrer();
+
+        // Rede de seguranca: se em 2,5s ainda houver algo escondido acima do fim
+        // da pagina, revela. Perde-se a animacao, nunca o conteudo.
+        setTimeout(() => {
+            if (aindaEscondidos().length) varrer();
+        }, 2500);
+    }
 
     /* =========================================================================
        4. PARALLAX EFFECT
@@ -154,11 +158,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const mensagem = document.getElementById('message').value.trim();
 
             // Monta a mensagem formatada para WhatsApp
-            const texto = `🌍 *Nova Solicitação — Terra Venture*\n\n` +
-                `👤 *Nome:* ${nome}\n` +
-                `📱 *WhatsApp:* ${telefone}\n` +
-                `✈️ *Destino desejado:* ${destino}\n` +
-                `💬 *Sobre a ocasião:*\n${mensagem}`;
+            const texto = [
+                'Olá! Mandei uma mensagem pelo formulário do site.',
+                '',
+                'Nome: ' + nome,
+                'WhatsApp: ' + telefone,
+                'Destino desejado: ' + destino,
+                'Sobre a ocasião: ' + mensagem,
+            ].join('\n');
 
             // Número da Terra Venture (já cadastrado no site)
             const numero = '5551994596233';
@@ -388,13 +395,22 @@ document.addEventListener('DOMContentLoaded', () => {
         // Ícone Customizado (Círculo Minimalista)
         const customIcon = L.divIcon({
             className: 'custom-marker',
-            iconSize: [14, 14],
+            iconSize: [26, 26],
             iconAnchor: [7, 7]
         });
 
         // Adiciona Marcadores
         destinations.forEach(dest => {
-            const marker = L.marker(dest.coords, { icon: customIcon }).addTo(map);
+            // o marcador e clicavel e navegavel por teclado, entao precisa de nome.
+            // Sem isso o leitor de tela anuncia 25 botoes chamados "botao".
+            const marker = L.marker(dest.coords, {
+                icon: customIcon,
+                alt: dest.name,
+                keyboard: true,
+                title: dest.name,
+            }).addTo(map);
+            const el = marker.getElement();
+            if (el) el.setAttribute('aria-label', 'Abrir o dossiê de ' + dest.name);
 
             marker.on('mouseover', (e) => showPreview(dest, e.originalEvent));
             marker.on('mousemove', (e) => movePreview(e.originalEvent));
@@ -510,7 +526,11 @@ document.addEventListener('DOMContentLoaded', () => {
             chip.addEventListener('click', () => {
                 const vibe = chip.dataset.vibe;
 
-                vibeChips.forEach(c => c.classList.remove('active'));
+                vibeChips.forEach(c => {
+                    c.classList.remove('active');
+                    c.setAttribute('aria-pressed', 'false');
+                });
+                chip.setAttribute('aria-pressed', 'true');
                 chip.classList.add('active');
 
                 vibeCards.forEach(card => {
@@ -534,158 +554,116 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* =========================================================================
-       11. QUIZ "DESCUBRA SEU DESTINO"
+       11. BRIEFING "CONTE O BÁSICO EM 30 SEGUNDOS"
+       =========================================================================
+       Cinco perguntas, uma por tela, sem backend. No fim monta a mensagem e
+       abre o wa.me com ela pronta.
+
+       TODO(nicholas): hoje as respostas so viajam dentro da mensagem do
+       WhatsApp. O site nao tem backend nem destino de formulario funcionando,
+       entao nao ha onde gravar uma copia. Se um dia existir (uma planilha, um
+       CRM, um endpoint), e aqui que entra o envio paralelo.
        ========================================================================= */
-    const quizBox = document.querySelector('.quiz-box');
-    if (quizBox) {
-        // Curadoria de destinos. vibes: sossego|aventura|cultura|romance|praia
-        const QUIZ_DESTINOS = [
-            { name: 'Patagônia', tag: 'Argentina & Chile', url: '/patagonia', img: 'patagonia-torres-del-paine.webp', cont: 'america', vibes: ['aventura'], ritmo: 'intenso' },
-            { name: 'Machu Picchu', tag: 'Peru', url: '/machu-picchu', img: 'machu_picchu.webp', cont: 'america', vibes: ['aventura', 'cultura'], ritmo: 'intenso' },
-            { name: 'Deserto do Atacama', tag: 'Chile', url: '/atacama', img: 'blog_atacama.webp', cont: 'america', vibes: ['aventura'], ritmo: 'intenso' },
-            { name: 'Santiago', tag: 'Chile', url: '/santiago', img: 'dest_santiago_skycostanera.webp', cont: 'america', vibes: ['cultura'], ritmo: 'equilibrado' },
-            { name: 'Fernando de Noronha', tag: 'Brasil', url: '/noronha', img: 'blog_noronha.webp', cont: 'america', vibes: ['praia', 'sossego'], ritmo: 'relax' },
-            { name: 'Paris Secreta', tag: 'França', url: '/paris', img: 'https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg?auto=compress&cs=tinysrgb&w=800', cont: 'europa', vibes: ['cultura', 'romance'], ritmo: 'equilibrado' },
-            { name: 'Costa Amalfitana', tag: 'Itália', url: '/costa-amalfitana', img: 'costa_amalfitana.webp', cont: 'europa', vibes: ['praia', 'romance'], ritmo: 'relax' },
-            { name: 'Santorini', tag: 'Grécia', url: '/santorini', img: 'blog_santorini.webp', cont: 'europa', vibes: ['praia', 'romance', 'sossego'], ritmo: 'relax' },
-            { name: 'Islândia', tag: 'Terra do Gelo e Fogo', url: '/islandia', img: 'islandia.webp', cont: 'europa', vibes: ['aventura'], ritmo: 'intenso' },
-            { name: 'Japão Clássico', tag: 'Japão', url: '/japao', img: 'https://images.pexels.com/photos/3408353/pexels-photo-3408353.jpeg?auto=compress&cs=tinysrgb&w=800', cont: 'asia', vibes: ['cultura'], ritmo: 'equilibrado' },
-            { name: 'Bali', tag: 'Indonésia', url: '/bali', img: 'blog_bali.webp', cont: 'asia', vibes: ['praia', 'sossego', 'romance'], ritmo: 'relax' },
-            { name: 'Ilhas Maldivas', tag: 'Maldivas', url: '/maldivas', img: 'blog_maldivas.webp', cont: 'asia', vibes: ['praia', 'sossego', 'romance'], ritmo: 'relax' },
-            { name: 'Capadócia', tag: 'Turquia', url: '/capadocia', img: 'blog_capadocia.webp', cont: 'asia', vibes: ['aventura', 'cultura', 'romance'], ritmo: 'equilibrado' },
-            { name: 'Safari na Tanzânia', tag: 'Tanzânia', url: '/tanzania', img: 'tanzania.webp', cont: 'africa', vibes: ['aventura'], ritmo: 'intenso' },
-            { name: 'Egito Histórico', tag: 'Egito', url: '/egito', img: 'egito.webp', cont: 'africa', vibes: ['cultura'], ritmo: 'equilibrado' },
-            { name: 'Nova Zelândia', tag: 'Nova Zelândia', url: '/nova-zelandia', img: 'nova_zelandia.webp', cont: 'oceania', vibes: ['aventura'], ritmo: 'intenso' },
-            { name: 'Bora Bora', tag: 'Polinésia Francesa', url: '/bora-bora', img: 'blog_bora_bora.webp', cont: 'oceania', vibes: ['praia', 'sossego', 'romance'], ritmo: 'relax' },
-            { name: 'Seychelles', tag: 'Seychelles', url: '/seychelles', img: 'dest_seychelles.webp', cont: 'africa', vibes: ['praia', 'sossego', 'romance'], ritmo: 'relax' },
-            { name: 'Cidade do Cabo', tag: 'África do Sul', url: '/cidade-do-cabo', img: 'dest_capetown.webp', cont: 'africa', vibes: ['cultura', 'aventura'], ritmo: 'equilibrado' },
-            { name: 'Ruanda', tag: 'Ruanda', url: '/ruanda', img: 'dest_ruanda.webp', cont: 'africa', vibes: ['aventura'], ritmo: 'intenso' },
-            { name: 'Namíbia', tag: 'Namíbia', url: '/namibia', img: 'dest_namibia.webp', cont: 'africa', vibes: ['aventura', 'sossego'], ritmo: 'intenso' },
-            { name: 'Vietnã', tag: 'Vietnã', url: '/vietna', img: 'dest_halong.webp', cont: 'asia', vibes: ['romance', 'cultura', 'sossego'], ritmo: 'equilibrado' },
-            { name: 'Índia', tag: 'Índia', url: '/india', img: 'dest_india.webp', cont: 'asia', vibes: ['cultura'], ritmo: 'intenso' },
-            { name: 'Sri Lanka', tag: 'Sri Lanka', url: '/sri-lanka', img: 'dest_srilanka.webp', cont: 'asia', vibes: ['aventura', 'sossego'], ritmo: 'equilibrado' },
-            { name: 'Lapônia Finlandesa', tag: 'Finlândia', url: '/laponia', img: 'dest_laponia.webp', cont: 'europa', vibes: ['aventura', 'sossego', 'romance'], ritmo: 'equilibrado' },
-            { name: 'Antártida', tag: 'Antártida', url: '/antartida', img: 'dest_antartida.webp', cont: 'oceania', vibes: ['aventura'], ritmo: 'intenso' },
-            { name: 'Grande Barreira de Coral', tag: 'Austrália', url: '/grande-barreira-de-coral', img: 'dest_australia.webp', cont: 'oceania', vibes: ['praia', 'sossego', 'aventura'], ritmo: 'relax' }
-        ];
+    const briefingCaixa = document.getElementById('briefing-caixa');
+    if (briefingCaixa) {
+        const WHATS = '5551994596233';
+        const passos = [...briefingCaixa.querySelectorAll('.briefing-passo')];
+        const barra = document.getElementById('briefing-barra');
+        const contador = document.getElementById('briefing-contador');
+        const btnVoltar = document.getElementById('briefing-voltar');
+        const btnAvancar = document.getElementById('briefing-avancar');
+        const linkEnviar = document.getElementById('briefing-enviar');
+        let atual = 0;
 
-        const answers = { vibe: null, cont: null, ritmo: null };
-        const steps = quizBox.querySelectorAll('.quiz-step');
-        const bar = document.getElementById('quiz-bar');
-        const backBtn = document.getElementById('quiz-back');
-        const curEl = document.getElementById('quiz-cur');
-        const nav = quizBox.querySelector('.quiz-nav');
-        let current = 1; // 1..3, depois "result"
+        // meses e anos sao gerados na hora: lista fixa de anos envelhece sozinha
+        const MESES = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+            'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+        const selMes = document.getElementById('brief-mes');
+        const selAno = document.getElementById('brief-ano');
+        MESES.forEach((m, k) => selMes.add(new Option(m, m, false, false)));
+        const anoAtual = new Date().getFullYear();
+        for (let a = anoAtual; a <= anoAtual + 3; a++) selAno.add(new Option(a, a, false, false));
 
-        const showStep = (stepId) => {
-            steps.forEach(s => s.classList.toggle('active', s.dataset.step === String(stepId)));
-            if (stepId === 'result') {
-                bar.style.width = '100%';
-                nav.style.display = 'none';
-            } else {
-                nav.style.display = 'flex';
-                bar.style.width = (stepId / 3 * 100) + '%';
-                curEl.textContent = stepId;
-                backBtn.style.visibility = stepId > 1 ? 'visible' : 'hidden';
+        function mostrar(n, mexerNoFoco) {
+            atual = Math.max(0, Math.min(n, passos.length - 1));
+            passos.forEach((p, k) => { p.hidden = k !== atual; });
+            const pct = ((atual + 1) / passos.length) * 100;
+            barra.style.width = pct + '%';
+            contador.textContent = 'Pergunta ' + (atual + 1) + ' de ' + passos.length;
+            btnVoltar.hidden = atual === 0;
+            const ultimo = atual === passos.length - 1;
+            btnAvancar.hidden = ultimo;
+            linkEnviar.hidden = !ultimo;
+            if (ultimo) linkEnviar.href = montarLink();
+            // Leva o foco para a pergunta, senao quem usa teclado fica para tras.
+            // Nao na primeira chamada: focar um elemento no meio da pagina faz o
+            // navegador rolar ate ele, e a home abria direto no briefing.
+            if (mexerNoFoco) {
+                const legenda = passos[atual].querySelector('.briefing-pergunta');
+                if (legenda) legenda.focus();
             }
-        };
+        }
 
-        // Relevância dentro da vibe: continente exato pesa mais, depois ritmo
-        const rankDestino = (d) => {
-            let s = 0;
-            if (answers.cont && answers.cont !== 'qualquer' && d.cont === answers.cont) s += 2;
-            if (answers.ritmo && d.ritmo === answers.ritmo) s += 1;
-            return s;
-        };
+        function respostaDe(nome) {
+            const marcado = briefingCaixa.querySelector('input[name="' + nome + '"]:checked');
+            return marcado ? marcado.value : '';
+        }
 
-        const renderResult = () => {
-            const wantCont = answers.cont && answers.cont !== 'qualquer';
+        function quando() {
+            const flex = document.getElementById('brief-flexivel').checked;
+            const mes = selMes.value, ano = selAno.value;
+            if (mes && ano) return mes + ' de ' + ano + (flex ? ', com flexibilidade' : '');
+            if (mes) return mes + (flex ? ', com flexibilidade' : '');
+            if (ano) return ano + (flex ? ', com flexibilidade' : '');
+            return flex ? 'Ainda flexível' : '';
+        }
 
-            // 1) Filtra pela VIBE escolhida (intenção principal), ranqueia por continente/ritmo
-            let pool = QUIZ_DESTINOS.filter(d => d.vibes.includes(answers.vibe));
-            pool.sort((a, b) => rankDestino(b) - rankDestino(a));
+        function montarLink() {
+            const essenciais = [...briefingCaixa.querySelectorAll('input[name="essencial"]:checked')]
+                .map(c => c.value).join(', ');
+            const livre = document.getElementById('brief-livre').value.trim();
+            // o filter so vale para os campos: a linha em branco da saudacao
+            // e falsy e sumiria junto
+            const campos = [
+                campo('Quem viaja', respostaDe('quem')),
+                campo('Quando', quando()),
+                campo('Quantos dias', respostaDe('dias')),
+                campo('Investimento por pessoa', respostaDe('investimento')),
+                campo('Não pode faltar', essenciais),
+                campo('Observação', livre),
+            ].filter(Boolean);
+            const linhas = ['Olá! Preenchi o briefing no site da Terra Venture.', ''].concat(campos);
+            return 'https://wa.me/' + WHATS + '?text=' + encodeURIComponent(linhas.join('\n'));
+        }
+        function campo(rotulo, valor) { return valor ? rotulo + ': ' + valor : ''; }
 
-            // 2) Garante pelo menos 1 do continente escolhido (se existir algum)
-            if (wantCont && !pool.some(d => d.cont === answers.cont)) {
-                const doCont = QUIZ_DESTINOS
-                    .filter(d => d.cont === answers.cont && !pool.includes(d))
-                    .sort((a, b) => (b.ritmo === answers.ritmo) - (a.ritmo === answers.ritmo));
-                if (doCont.length) pool.unshift(doCont[0]);
-            }
+        btnAvancar.addEventListener('click', () => mostrar(atual + 1, true));
+        btnVoltar.addEventListener('click', () => mostrar(atual - 1, true));
 
-            // 3) Completa até 3 com os mais próximos (prioriza mesmo continente/ritmo)
-            if (pool.length < 3) {
-                const extra = QUIZ_DESTINOS
-                    .filter(d => !pool.includes(d))
-                    .sort((a, b) => rankDestino(b) - rankDestino(a));
-                pool = pool.concat(extra);
-            }
-
-            const top = pool.slice(0, 3);
-
-            const matchesEl = document.getElementById('quiz-matches');
-            matchesEl.innerHTML = top.map((d, i) => `
-                <a class="quiz-match" href="${d.url}" style="animation-delay:${i * 0.12}s">
-                    <img loading="lazy" decoding="async" src="${d.img}" alt="${d.name}">
-                    <span class="quiz-match-ov">
-                        <span class="quiz-match-name">${d.name}</span>
-                        <span class="quiz-match-tag">${d.tag}</span>
-                    </span>
-                </a>`).join('');
-
-            const cta = document.getElementById('quiz-cta');
-            const first = top[0] ? top[0].name : 'uma viagem';
-            const msg = `Olá! Fiz o quiz no site e curti ${first}. Quero um roteiro com vibe ${answers.vibe}, ritmo ${answers.ritmo}. Podem me ajudar a montar?`;
-            cta.href = `https://wa.me/5551994596233?text=${encodeURIComponent(msg)}`;
-
-            showStep('result');
-            if (typeof fbq === 'function') {
-                fbq('trackCustom', 'QuizConcluido', { vibe: answers.vibe, continente: answers.cont, ritmo: answers.ritmo });
-            }
-        };
-
-        // Clique nas opções -> grava resposta e avança
-        quizBox.querySelectorAll('.quiz-opt').forEach(opt => {
-            opt.addEventListener('click', () => {
-                const key = opt.dataset.key;
-                answers[key] = opt.dataset.value;
-
-                // marca selecionado no passo
-                const parentStep = opt.closest('.quiz-step');
-                parentStep.querySelectorAll('.quiz-opt').forEach(o => o.classList.remove('selected'));
-                opt.classList.add('selected');
-
-                setTimeout(() => {
-                    if (current < 3) {
-                        current++;
-                        showStep(current);
-                    } else {
-                        renderResult();
-                    }
-                }, 220);
-            });
-        });
-
-        backBtn.addEventListener('click', () => {
-            if (current > 1) {
-                current--;
-                showStep(current);
+        // Escolher uma opcao de radio ja avanca: um clique a menos por pergunta.
+        // O gatilho e o click, nao o change, de proposito. As setas do teclado
+        // marcam o radio e disparam change: quem navega de teclado seria jogado
+        // para a pergunta seguinte antes de ouvir as outras opcoes. O click so
+        // acontece no mouse, no toque e no Espaco, que sao escolhas de verdade.
+        briefingCaixa.addEventListener('click', (e) => {
+            if (e.target.matches('input[type="radio"]') && atual < passos.length - 1) {
+                setTimeout(() => mostrar(atual + 1, true), 220);
             }
         });
+        briefingCaixa.addEventListener('change', () => {
+            if (atual === passos.length - 1) linkEnviar.href = montarLink();
+        });
+        briefingCaixa.addEventListener('input', () => {
+            if (atual === passos.length - 1) linkEnviar.href = montarLink();
+        });
+        // Enter dentro do campo de texto nao deve recarregar a pagina
+        briefingCaixa.addEventListener('submit', (e) => e.preventDefault());
 
-        // Lead no clique do CTA do quiz (href setado dinamicamente)
-        document.getElementById('quiz-cta').addEventListener('click', () => {
-            if (typeof fbq === 'function') {
-                fbq('track', 'Lead');
-            }
+        linkEnviar.addEventListener('click', () => {
+            if (typeof fbq === 'function') fbq('track', 'Lead');
         });
 
-        document.getElementById('quiz-restart').addEventListener('click', () => {
-            answers.vibe = answers.cont = answers.ritmo = null;
-            current = 1;
-            quizBox.querySelectorAll('.quiz-opt.selected').forEach(o => o.classList.remove('selected'));
-            showStep(1);
-        });
+        mostrar(0, false);   // sem foco: so montar o primeiro passo
     }
 
     /* =========================================================================

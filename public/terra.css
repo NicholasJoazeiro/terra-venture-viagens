@@ -13,6 +13,9 @@
     --espresso-soft: #6A6055;
     --terra: #D9744E;
     --terra-deep: #BC5A38;
+    /* so para TEXTO sobre fundo claro: o --terra da 2,53:1 sobre o creme e o
+       --terra-deep da 3,61. Este da 4,8, que passa em texto pequeno. */
+    --terra-texto: #A04A2E;
     --moss: #3E5A44;
     --sage: #8B9A82;
     --gold: #C9A24B;
@@ -53,7 +56,7 @@ ul { list-style: none; }
     letter-spacing: 0.26em;
     text-transform: uppercase;
     font-weight: 600;
-    color: var(--terra);
+    color: var(--terra-texto);
 }
 .serif { font-family: var(--serif); }
 h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; letter-spacing: -0.02em; line-height: 1.05; text-wrap: balance; }
@@ -62,46 +65,56 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; letter-spacing: -0
 /* Revelação no scroll. Sem JS a classe .js nunca entra e nada fica escondido. */
 .scroll-reveal { opacity: 1; visibility: visible; transform: none; }
 html.js .scroll-reveal,
-html.js :is(.section-header, .como-card, .diferencial-card, .dossie-row, .serv-card, .serv-passo, .epoca-card, .testimonial-card, .comunidade-item, .faq-item, .blog-card, .dest-card, .quem-somos-img, .quem-somos-text) {
+html.js :is(.section-header, .processo-passo, .diferencial-card, .dossie-row, .serv-card, .serv-passo, .epoca-card, .testimonial-card, .depo-destaque, .comunidade-item, .faq-item, .blog-card, .dest-card, .cruz-temporada, .quem-somos-img, .quem-somos-text) {
     opacity: 0;
     transform: translateY(26px);
     transition: opacity 0.75s var(--ease), transform 0.75s var(--ease);
 }
 html.js .scroll-reveal.active,
-html.js :is(.section-header, .como-card, .diferencial-card, .dossie-row, .serv-card, .serv-passo, .epoca-card, .testimonial-card, .comunidade-item, .faq-item, .blog-card, .dest-card, .quem-somos-img, .quem-somos-text).revelado { opacity: 1; transform: none; }
+html.js :is(.section-header, .processo-passo, .diferencial-card, .dossie-row, .serv-card, .serv-passo, .epoca-card, .testimonial-card, .depo-destaque, .comunidade-item, .faq-item, .blog-card, .dest-card, .cruz-temporada, .quem-somos-img, .quem-somos-text).revelado { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
     html.js .scroll-reveal,
-    html.js :is(.section-header, .como-card, .diferencial-card, .dossie-row, .serv-card, .serv-passo, .epoca-card, .testimonial-card, .comunidade-item, .faq-item, .blog-card, .dest-card, .quem-somos-img, .quem-somos-text) { opacity: 1; transform: none; transition: none; }
+    html.js :is(.section-header, .processo-passo, .diferencial-card, .dossie-row, .serv-card, .serv-passo, .epoca-card, .testimonial-card, .depo-destaque, .comunidade-item, .faq-item, .blog-card, .dest-card, .cruz-temporada, .quem-somos-img, .quem-somos-text) { opacity: 1; transform: none; transition: none; }
 }
 
 /* ======================= BOTÕES ======================= */
+/* Pilula com gradiente, brilho e seta era a receita de botao de landing
+   gerada. Agora e um retangulo de cantos quase retos, cor chapada, sem seta.
+   O tom e o --terra-deep: o claro nao batia 4,5:1 com texto branco. */
 .btn-primary, .btn-ghost, .btn-outline, .btn-outline-white {
     display: inline-flex; align-items: center; justify-content: center; gap: 11px;
     font-family: var(--sans); font-weight: 600; font-size: 0.95rem; letter-spacing: 0.01em;
-    border-radius: 100px; cursor: pointer; border: none;
-    transition: transform 0.4s var(--ease), box-shadow 0.4s ease, background 0.35s ease, color 0.35s ease;
+    border-radius: 6px; cursor: pointer; border: none;
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 .btn-primary {
-    background: linear-gradient(135deg, #DE7B52, var(--terra-deep));
-    color: #fff; padding: 16px 32px;
-    box-shadow: 0 12px 30px rgba(217, 116, 78, 0.32);
+    background: var(--terra-deep);
+    color: #fff; padding: 17px 30px;
 }
-.btn-primary::after { content: '\2192'; font-size: 1.05em; line-height: 1; transition: transform 0.4s var(--ease); }
-.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 20px 44px rgba(217, 116, 78, 0.46); }
-.btn-primary:hover::after { transform: translateX(5px); }
-.btn-primary.btn-large { padding: 19px 40px; font-size: 1.05rem; }
+.btn-primary:hover { background: #A64B2C; }
+.btn-primary.btn-large { padding: 20px 38px; font-size: 1.02rem; }
+
+/* foco visivel em tudo que e clicavel, nos dois fundos */
+:is(a, button, input, textarea, select, [tabindex]):focus-visible {
+    outline: 2px solid var(--terra);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+.destinos-editorial :is(a, button):focus-visible,
+.navbar :is(a, button):focus-visible,
+.hero :is(a, button):focus-visible { outline-color: #F0A98B; }
 
 .btn-outline {
-    background: transparent; color: var(--espresso); padding: 15px 30px;
-    border: 1.5px solid var(--espresso);
+    background: transparent; color: var(--espresso); padding: 16px 28px;
+    border: 1.5px solid rgba(42, 35, 27, 0.4);
 }
-.btn-outline:hover { background: var(--espresso); color: var(--cream); transform: translateY(-3px); }
+.btn-outline:hover { background: var(--espresso); color: var(--cream); border-color: var(--espresso); }
 
 .btn-outline-white {
-    background: rgba(255, 255, 255, 0.06); color: var(--bone); padding: 15px 30px;
-    border: 1.5px solid rgba(236, 229, 212, 0.4); backdrop-filter: blur(4px);
+    background: transparent; color: var(--bone); padding: 16px 28px;
+    border: 1.5px solid rgba(236, 229, 212, 0.42);
 }
-.btn-outline-white:hover { background: var(--bone); color: var(--ink); transform: translateY(-3px); }
+.btn-outline-white:hover { background: var(--bone); color: var(--ink); border-color: var(--bone); }
 
 /* ======================= NAVBAR ======================= */
 .navbar {
@@ -114,13 +127,20 @@ html.js :is(.section-header, .como-card, .diferencial-card, .dossie-row, .serv-c
 }
 .nav-container { display: flex; align-items: center; justify-content: space-between; }
 .logo { font-family: var(--serif); font-size: 1.6rem; font-weight: 500; color: #fff; letter-spacing: 0.01em; }
-.nav-links { display: flex; align-items: center; gap: 34px; }
+.nav-links { display: flex; align-items: center; gap: 26px; }
 .nav-links li { display: flex; align-items: center; }
 .nav-links a { font-size: 0.98rem; letter-spacing: 0.04em; color: rgba(255, 255, 255, 0.82); transition: color 0.3s; position: relative; }
 .nav-links a::after { content: ''; position: absolute; left: 0; bottom: -6px; width: 0; height: 1.5px; background: var(--terra); transition: width 0.3s var(--ease); }
 .nav-links a:hover { color: #fff; }
 .nav-links a:hover::after { width: 100%; }
-.nav-btn { color: #fff !important; padding: 11px 24px !important; font-size: 0.92rem !important; }
+/* na primeira tela so pode haver um botao de destaque, e ele e o do hero */
+.nav-btn {
+    background: transparent !important; color: #fff !important;
+    border: 1px solid rgba(255, 255, 255, 0.42) !important;
+    padding: 10px 20px !important; font-size: 0.92rem !important; font-weight: 500 !important;
+}
+.nav-btn:hover { background: rgba(255, 255, 255, 0.12) !important; border-color: #fff !important; }
+.nav-links .nav-btn::after { display: none; }
 .menu-toggle { display: none; font-size: 1.4rem; color: #fff; cursor: pointer; }
 
 /* ======================= HERO ======================= */
@@ -131,31 +151,39 @@ html.js :is(.section-header, .como-card, .diferencial-card, .dossie-row, .serv-c
 .hero-bg-image { position: absolute; inset: 0; z-index: -2; }
 .hero-bg-image img { width: 100%; height: 100%; object-fit: cover; animation: kenBurns 46s ease-in-out infinite alternate; }
 @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.05); } }
-/* dois eixos: escurece embaixo e à esquerda, onde o texto vive, e deixa a
-   foto respirar à direita. É isso que dispensa sombra em cada elemento. */
+/* O escurecimento nao cobre mais a foto inteira. Sao tres camadas: uma mancha
+   no canto de baixo a esquerda, onde o texto vive; um fio no topo, so para a
+   navbar ter contraste; e um pe, para emendar sem degrau com a faixa escura
+   logo abaixo. O miolo e a direita da foto ficam limpos. */
 .hero-overlay, .hero::after {
     content: ''; position: absolute; inset: 0; z-index: -1;
     background:
-        /* o scrim horizontal e azulado de proposito: em verde ele reforcava o
-           tom que a foto nova veio justamente equilibrar */
-        linear-gradient(100deg, rgba(13, 24, 32, 0.74) 0%, rgba(13, 24, 32, 0.40) 38%, rgba(13, 24, 32, 0.04) 70%),
-        /* o vertical segue no verde da marca, para emendar sem degrau com a
-           faixa escura logo abaixo do hero */
-        linear-gradient(180deg, rgba(20, 30, 26, 0.38) 0%, rgba(20, 30, 26, 0) 30%, rgba(20, 30, 26, 0.55) 78%, rgba(26, 38, 33, 0.95) 100%);
+        /* a mancha cobre o canto de baixo a esquerda com forca suficiente para o
+           texto branco bater AA sobre o paredao claro da foto, e zera antes dos
+           80% do raio, deixando o miolo e a direita da imagem sem veu */
+        radial-gradient(118% 150% at -10% 108%,
+            rgba(13, 24, 32, 0.90) 0%,
+            rgba(13, 24, 32, 0.62) 35%,
+            rgba(13, 24, 32, 0.30) 70%,
+            rgba(13, 24, 32, 0) 92%),
+        linear-gradient(180deg,
+            rgba(13, 24, 32, 0.30) 0%,
+            rgba(13, 24, 32, 0) 22%,
+            rgba(13, 24, 32, 0) 58%,
+            rgba(20, 30, 26, 0.34) 84%,
+            rgba(26, 38, 33, 0.92) 100%);
 }
 .hero-content { position: relative; width: 100%; max-width: var(--wrap); margin: 0 auto; padding: 0 32px; color: var(--bone); }
-.hero-content .eyebrow { color: var(--gold); opacity: 0; animation: rise 0.9s 0.15s var(--ease) forwards; }
+.hero-content .eyebrow { color: var(--gold); }
 .hero-title {
     font-family: var(--serif); font-weight: 400; color: #fff;
-    font-size: clamp(2.9rem, 7.4vw, 6.6rem); line-height: 1.0; letter-spacing: -0.025em;
-    margin: 20px 0 22px; max-width: 16ch; opacity: 0; animation: rise 1s 0.3s var(--ease) forwards;
+    font-size: clamp(2.05rem, 4.5vw, 3.9rem); line-height: 1.1; letter-spacing: -0.02em;
+    margin: 0 0 22px; max-width: 19ch;
 }
-.hero-title em { font-style: italic; color: inherit; }  /* a palavra colorida em itálico era a assinatura mais tipica de landing gerada */
 .hero-subtitle {
     font-size: 1.14rem; color: var(--bone-dim); max-width: 48ch; margin-bottom: 34px;
-    opacity: 0; animation: rise 1s 0.5s var(--ease) forwards;
 }
-.hero-cta { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; opacity: 0; animation: rise 1s 0.7s var(--ease) forwards; }
+.hero-cta { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; opacity: 0; animation: rise 0.7s 0.1s var(--ease) forwards; }
 .hero-cta .link-plain { color: var(--bone); font-size: 0.9rem; letter-spacing: 0.03em; border-bottom: 1px solid var(--line-dark); padding-bottom: 4px; transition: border-color 0.3s; }
 .hero-cta .link-plain:hover { border-color: var(--terra); }
 @keyframes rise { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
@@ -164,7 +192,7 @@ html.js :is(.section-header, .como-card, .diferencial-card, .dossie-row, .serv-c
 .hero-rodape {
     position: relative; width: 100%; max-width: var(--wrap); margin: 44px auto 0;
     padding: 0 32px; display: flex; justify-content: space-between; align-items: center;
-    opacity: 0; animation: rise 1s 0.9s var(--ease) forwards;
+    opacity: 0; animation: rise 0.7s 0.35s var(--ease) forwards;
 }
 .hero-role, .hero-credito {
     font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase;
@@ -177,6 +205,13 @@ html.js :is(.section-header, .como-card, .diferencial-card, .dossie-row, .serv-c
 }
 @keyframes desce { 0%,100% { opacity: 0.25; transform: scaleY(0.6); } 50% { opacity: 0.8; transform: scaleY(1); } }
 @keyframes wheel { 0% { opacity: 1; top: 7px; } 100% { opacity: 0; top: 18px; } }
+
+/* Normalizacao de cor das fotos de destino: elas vem de bancos diferentes,
+   cada uma com sua saturacao. Um filtro unico faz o conjunto parecer uma
+   curadoria so, sem reprocessar arquivo nenhum. */
+.dossie-media img, .dest-card img, .comunidade-item img {
+    filter: saturate(0.93) contrast(1.05) brightness(0.99);
+}
 
 /* ======================= FAIXA DIFERENCIAL ======================= */
 .diferencial-banner { background: var(--ink-soft); color: var(--bone); padding: 30px 0; }
@@ -196,16 +231,35 @@ html.js :is(.section-header, .como-card, .diferencial-card, .dossie-row, .serv-c
 /* Os três passos como percurso, não como três caixas soltas: paradas
    numeradas ligadas por uma linha. Antes eram cartões brancos com muito
    vazio, a seção mais chapada da home. */
-.como-funciona { padding: 124px 0; background: var(--cream); }
-.como-funciona-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;
-    counter-reset: passo; position: relative;
+/* Tres circulos numerados, centralizados, de altura igual: era a ilustracao
+   mais reconhecivel de secao "como funciona" gerada. No lugar, tres blocos
+   alinhados a esquerda, em alturas diferentes, com o numero em tipografia
+   grande em vez de dentro de uma bolinha. */
+.processo { padding: 118px 0 124px; background: var(--cream); }
+.processo-intro { max-width: 52ch; margin-bottom: 64px; }
+.processo-intro .section-title { max-width: 18ch; }
+.processo-intro .section-desc { max-width: 44ch; }
+.processo-intro .section-title { text-align: left; }
+.processo-intro .section-desc { text-align: left; margin: 14px 0 0; }
+.processo-lista {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px;
+    list-style: none; margin: 0; padding: 0; align-items: start;
 }
-.como-funciona-grid::before {
-    content: ''; position: absolute; top: 43px; left: 16%; right: 16%; height: 1px;
-    background: linear-gradient(90deg, transparent, var(--terra) 18%, var(--terra) 82%, transparent);
-    opacity: 0.35;
+.processo-passo { border-top: 1px solid rgba(42, 35, 27, 0.18); padding-top: 22px; }
+/* O desnivel entre os tres passos lia como defeito de alinhamento, nao como
+   escolha. Os tres partem da mesma linha; o que varia e o conteudo. */
+.passo-num {
+    display: block; font-family: var(--serif); font-weight: 400;
+    font-size: clamp(2.6rem, 5vw, 4.1rem); line-height: 1;
+    color: rgba(188, 90, 56, 0.34); margin-bottom: 14px;
 }
+.processo-passo h3 { font-family: var(--serif); font-weight: 400; font-size: 1.5rem; color: var(--moss); margin-bottom: 12px; }
+.processo-passo p { color: var(--espresso-soft); font-size: 1rem; line-height: 1.7; text-wrap: pretty; }
+
+/* assinatura discreta: uma rota tracejada a mao. No maximo tres na pagina. */
+.rota { display: flex; justify-content: center; color: rgba(188, 90, 56, 0.5); margin: 0 0 58px; }
+.rota svg { width: 320px; max-width: 64%; height: auto; }
+
 .como-card {
     position: relative; counter-increment: passo; text-align: center;
     background: none; border: 0; padding: 0;
@@ -237,7 +291,21 @@ html.js :is(.section-header, .como-card, .diferencial-card, .dossie-row, .serv-c
 .de-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 30px; margin-bottom: 56px; flex-wrap: wrap; }
 .de-title { color: #fff; font-size: clamp(1.9rem, 4vw, 3.2rem); margin-top: 12px; }
 .dossie-list { display: flex; flex-direction: column; }
-.dossie-row { display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: 460px; align-items: stretch; border-top: 1px solid var(--line-dark); color: inherit; }
+/* colunas e alturas variam de linha para linha: quatro cards identicos
+   empilhados sao a marca registrada de grade gerada */
+.dossie-row { display: grid; grid-template-columns: 1.12fr 0.88fr; grid-auto-rows: 520px; align-items: stretch; border-top: 1px solid var(--line-dark); color: inherit; }
+.dossie-row:nth-child(2) { grid-template-columns: 0.9fr 1.1fr; grid-auto-rows: 430px; }
+.dossie-row:nth-child(3) { grid-template-columns: 1.2fr 0.8fr; grid-auto-rows: 560px; }
+.dossie-row:nth-child(4) { grid-template-columns: 0.95fr 1.05fr; grid-auto-rows: 470px; }
+.dossie-row:nth-child(5) { grid-template-columns: 1.05fr 0.95fr; grid-auto-rows: 420px; }
+.de-sub { color: var(--bone-dim); font-size: 1.05rem; max-width: 46ch; margin-top: 14px; }
+.dossie-regiao { font-family: var(--serif); font-style: normal; font-size: 0.95rem; color: rgba(236, 229, 212, 0.58); }
+.dossie-media { display: block; }
+.dossie-legenda {
+    position: absolute; left: 18px; bottom: 16px; z-index: 2;
+    font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.82); text-shadow: 0 1px 10px rgba(0, 0, 0, 0.7);
+}
 .dossie-row:last-child { border-bottom: 1px solid var(--line-dark); }
 .dossie-row.flip .dossie-media { order: 2; }
 /* imagem do dossiê era o maior bloco quadrado da home: arredonda e dá respiro */
@@ -257,51 +325,12 @@ html.js :is(.section-header, .como-card, .diferencial-card, .dossie-row, .serv-c
 /* filtro vibe */
 .vibe-filter { display: flex; flex-wrap: wrap; gap: 12px; }
 .vibe-chip {
-    min-height: 46px; padding: 0 22px; border-radius: 100px; cursor: pointer;
+    min-height: 46px; padding: 0 22px; border-radius: 6px; cursor: pointer;
     border: 1.5px solid rgba(255, 255, 255, 0.25); background: transparent; color: rgba(255, 255, 255, 0.85);
     font-family: var(--sans); font-weight: 500; font-size: 0.88rem; letter-spacing: 0.02em; transition: all 0.3s ease;
 }
 .vibe-chip:hover { background: rgba(255, 255, 255, 0.08); }
-.vibe-chip.active { background: var(--terra); border-color: var(--terra); color: #fff; }
-
-/* ======================= QUIZ (dark, cinematográfico) ======================= */
-.quiz-section { position: relative; padding: 120px 0; color: #fff; overflow: hidden; isolation: isolate;
-    background: linear-gradient(rgba(22, 33, 28, 0.86), rgba(22, 33, 28, 0.95)), url('patagonia-torres-del-paine.webp') center/cover no-repeat; }
-.quiz-section .section-title { color: #fff; }
-.quiz-section .section-desc { color: rgba(255, 255, 255, 0.72); }
-.quiz-glow { position: absolute; top: -8%; right: -4%; width: 480px; height: 480px; z-index: -1; pointer-events: none;
-    background: radial-gradient(circle, rgba(217, 116, 78, 0.22) 0%, transparent 68%); filter: blur(30px); }
-.quiz-box { max-width: 760px; margin: 50px auto 0; background: rgba(26, 38, 33, 0.55); border: 1px solid rgba(236, 229, 212, 0.16);
-    border-radius: 28px; padding: 44px; box-shadow: 0 40px 90px rgba(0, 0, 0, 0.5); min-height: 360px; backdrop-filter: blur(6px); }
-.quiz-progress { height: 4px; width: 100%; background: rgba(255, 255, 255, 0.13); border-radius: 4px; overflow: hidden; margin-bottom: 32px; }
-.quiz-bar { display: block; height: 100%; width: 33%; background: linear-gradient(90deg, var(--terra), #e8a684); border-radius: 4px; transition: width 0.5s var(--ease); }
-.quiz-step { display: none; animation: rise 0.5s var(--ease); }
-.quiz-step.active { display: block; }
-.quiz-q { font-family: var(--serif); font-weight: 500; font-size: clamp(1.5rem, 3vw, 2.1rem); color: #fff; text-align: center; margin-bottom: 28px; }
-.quiz-options { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
-.quiz-opt { flex: 0 1 calc(33.333% - 10px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; min-height: 112px;
-    padding: 20px 14px; border-radius: 22px; border: 1.5px solid rgba(255, 255, 255, 0.14); background: rgba(255, 255, 255, 0.03);
-    color: #fff; font-family: var(--sans); font-size: 0.95rem; font-weight: 500; cursor: pointer; transition: all 0.28s var(--ease); }
-.quiz-opt i { font-size: 1.6rem; color: var(--gold); transition: all 0.28s ease; }
-.quiz-opt:hover { transform: translateY(-4px); border-color: var(--terra); background: rgba(217, 116, 78, 0.14); box-shadow: 0 14px 32px rgba(0, 0, 0, 0.35); }
-.quiz-opt:hover i { color: var(--terra); transform: scale(1.12); }
-.quiz-opt.selected { border-color: var(--terra); background: rgba(217, 116, 78, 0.2); }
-.quiz-nav { display: flex; align-items: center; justify-content: space-between; margin-top: 30px; }
-.quiz-back { background: none; border: none; color: rgba(255, 255, 255, 0.7); font-family: var(--sans); font-size: 0.9rem; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; }
-.quiz-back:hover { color: #fff; }
-.quiz-count { font-size: 0.82rem; letter-spacing: 0.1em; color: rgba(255, 255, 255, 0.5); text-transform: uppercase; }
-.quiz-matches { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; margin-bottom: 30px; }
-.quiz-match { position: relative; height: 210px; border-radius: 22px; overflow: hidden; box-shadow: 0 14px 34px rgba(0, 0, 0, 0.4); animation: rise 0.5s var(--ease) both; }
-.quiz-match img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
-.quiz-match:hover img { transform: scale(1.1); }
-.quiz-match-ov { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 16px; background: linear-gradient(to top, rgba(22, 33, 28, 0.94), transparent 65%); }
-.quiz-match-name { font-family: var(--serif); font-size: 1.2rem; color: #fff; line-height: 1.1; }
-.quiz-match-tag { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); margin-top: 4px; }
-.quiz-result-cta { text-align: center; }
-.quiz-restart { margin: 20px auto 0; background: transparent; border: 1.5px solid rgba(255, 255, 255, 0.22); border-radius: 100px; padding: 11px 24px; color: rgba(255, 255, 255, 0.75); font-family: var(--sans); font-weight: 500; font-size: 0.85rem; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; transition: all 0.3s ease; }
-.quiz-restart:hover { color: #fff; border-color: var(--terra); background: rgba(217, 116, 78, 0.14); transform: translateY(-2px); }
-.quiz-restart i { transition: transform 0.4s ease; }
-.quiz-restart:hover i { transform: rotate(-180deg); }
+.vibe-chip.active { background: var(--terra-deep); border-color: var(--terra-deep); color: #fff; }
 
 /* ======================= MAPA ======================= */
 .map-explorer-section { padding: 120px 0; background: var(--cream-deep); }
@@ -310,69 +339,133 @@ html.js :is(.section-header, .como-card, .diferencial-card, .dossie-row, .serv-c
 .map-controls { position: absolute; bottom: 24px; right: 24px; z-index: 500; display: flex; flex-direction: column; gap: 8px; }
 .map-controls button { width: 44px; height: 44px; border: none; border-radius: 12px; background: rgba(26, 38, 33, 0.85); color: #fff; font-size: 1rem; cursor: pointer; transition: background 0.3s; }
 .map-controls button:hover { background: var(--terra); }
-.custom-marker { width: 14px; height: 14px; background: var(--terra); border: 2px solid #fff; border-radius: 50%; box-shadow: 0 0 0 rgba(217, 116, 78, 0.6); animation: ping 2.4s infinite; }
+/* O alvo clicavel passou de 14x14 para 26x26, que e o minimo recomendado
+   para toque. O ponto visivel continua com 14px, centralizado dentro dele. */
+.custom-marker { width: 26px; height: 26px; background: none; border: 0; display: grid; place-items: center; }
+.custom-marker::after {
+    content: ""; width: 14px; height: 14px; border-radius: 50%;
+    background: var(--terra); border: 2px solid #fff;
+    box-shadow: 0 0 0 rgba(217, 116, 78, 0.6); animation: ping 2.4s infinite;
+}
 @keyframes ping { 0% { box-shadow: 0 0 0 0 rgba(217, 116, 78, 0.5); } 70% { box-shadow: 0 0 0 14px rgba(217, 116, 78, 0); } 100% { box-shadow: 0 0 0 0 rgba(217, 116, 78, 0); } }
 .map-preview-card { position: fixed; width: 300px; height: 180px; border-radius: 22px; background-size: cover; background-position: center; pointer-events: none; opacity: 0; transform: scale(0.9); transition: opacity 0.3s, transform 0.3s; z-index: 2000; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4); overflow: hidden; }
 .map-preview-card.active { opacity: 1; transform: scale(1); }
 .map-preview-card .preview-title { position: absolute; bottom: 0; left: 0; width: 100%; padding: 16px; color: #fff; font-family: var(--serif); font-size: 1.3rem; background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent); margin: 0; }
 
 /* ======================= O QUE INCLUÍMOS ======================= */
-.sectionenciais { padding: 120px 0; background: var(--cream); }
-.diferenciais-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 56px; counter-reset: incl; }
-.diferencial-card { position: relative; counter-increment: incl; background: #fff; border: 1px solid var(--line-light); border-radius: 24px; padding: 38px 30px; overflow: hidden; transition: transform 0.45s var(--ease), box-shadow 0.45s ease; }
-.diferencial-card::before { content: counter(incl, decimal-leading-zero); position: absolute; top: 18px; right: 24px; font-family: var(--serif); font-weight: 500; font-size: 2.6rem; color: rgba(217, 116, 78, 0.16); }
-.diferencial-card::after { content: ''; position: absolute; left: 0; top: 0; width: 4px; height: 100%; background: linear-gradient(var(--terra), var(--terra-deep)); transform: scaleY(0); transform-origin: top; transition: transform 0.45s var(--ease); }
-.diferencial-card:hover { transform: translateY(-8px); box-shadow: var(--shadow); }
-.diferencial-card:hover::after { transform: scaleY(1); }
-.diferencial-card h3 { color: var(--moss); font-size: 1.3rem; margin-bottom: 18px; padding-right: 40px; }
-.diferencial-card ul li { padding: 7px 0; color: var(--espresso-soft); font-size: 0.92rem; }
+/* Quatro cartoes brancos iguais com listas de check e numero d'agua no canto
+   era o bloco mais generico da pagina. Agora sao tres, cada um com a frase de
+   um cliente como prova do que esta escrito logo acima. */
+.diferenciais { padding: 118px 0; background: var(--cream); }
+.diferenciais-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 54px; }
+.diferencial-card {
+    display: flex; flex-direction: column; gap: 14px;
+    background: none; border: 0; border-top: 1px solid rgba(42, 35, 27, 0.2);
+    border-radius: 0; padding: 26px 0 0;
+}
+.diferencial-card h3 { color: var(--moss); font-size: 1.3rem; font-weight: 400; }
+.diferencial-card > p { color: var(--espresso-soft); font-size: 1rem; line-height: 1.7; text-wrap: pretty; }
+.prova { margin: 6px 0 0; padding: 20px 22px; background: var(--bone); border-left: 3px solid var(--terra-deep); border-radius: 0 8px 8px 0; }
+.prova p { font-family: var(--serif); font-size: 1rem; line-height: 1.55; color: var(--espresso); text-wrap: pretty; }
+.prova cite { display: block; margin-top: 10px; font-style: normal; font-size: 0.8rem; letter-spacing: 0.04em; color: var(--espresso-soft); }
+.incl-cta { margin-top: 48px; }
+
+/* Faixa de foto em tela cheia entre duas secoes de texto. Serve para quebrar
+   a cadencia de blocos centralizados de mesma altura. */
+.faixa-foto { position: relative; isolation: isolate; min-height: 66vh; display: flex; align-items: center; }
+.faixa-foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+/* O texto estava empurrado para o canto de baixo a esquerda e quebrava em
+   pedacos curtos. Centralizado, com medida maior, ele respira e as linhas
+   fecham inteiras. O escurecimento acompanhou: mancha no meio, nao no pe. */
+.faixa-foto::after {
+    content: ''; position: absolute; inset: 0; z-index: -1;
+    background:
+        radial-gradient(75% 95% at 50% 50%, rgba(13, 24, 32, 0.74) 0%, rgba(13, 24, 32, 0.40) 52%, rgba(13, 24, 32, 0.06) 84%),
+        linear-gradient(180deg, rgba(13, 24, 32, 0.28) 0%, rgba(13, 24, 32, 0) 24%, rgba(13, 24, 32, 0) 72%, rgba(26, 38, 33, 0.86) 100%);
+}
+.faixa-foto-texto { width: 100%; padding: 56px 0; color: var(--bone); text-align: center; }
+.faixa-foto-texto h2 {
+    font-family: var(--serif); font-weight: 400; color: #fff;
+    font-size: clamp(1.85rem, 3.8vw, 3.1rem); max-width: 30ch; margin: 0 auto;
+}
+.faixa-foto-texto p { margin: 18px auto 0; max-width: 56ch; color: rgba(242, 238, 229, 0.94); font-size: 1.08rem; text-wrap: pretty; }
 
 /* ======================= QUEM SOMOS ======================= */
 .quem-somos { padding: 120px 0; background: var(--cream-deep); }
 .quem-somos-wrapper { display: grid; grid-template-columns: 1fr 1.1fr; gap: 70px; align-items: center; }
 .quem-somos-img { position: relative; z-index: 1; }
 .quem-somos-img::before { content: ''; position: absolute; inset: 0; transform: translate(20px, 20px); border: 2px solid var(--terra); border-radius: 24px; z-index: -1; transition: transform 0.5s var(--ease); }
-.quem-somos-img img { width: 100%; border-radius: 24px; box-shadow: var(--shadow); }
+.quem-somos-img img { width: 100%; height: auto; border-radius: 24px; box-shadow: var(--shadow); }
 .quem-somos-img:hover::before { transform: translate(12px, 12px); }
 .quem-somos-content .section-title { text-align: left; }
-.quem-somos-content .lead-text { font-family: var(--serif); font-size: 1.4rem; font-style: italic; color: var(--terra); margin: 14px 0 20px; line-height: 1.4; }
+.quem-somos-content .lead-text { font-family: var(--serif); font-size: 1.4rem; color: var(--terra-texto); margin: 14px 0 20px; line-height: 1.4; }
 .quem-somos-content p { color: var(--espresso-soft); margin-bottom: 1rem; }
-.quem-somos-content .signature { font-family: var(--serif); font-style: italic; font-size: 1.15rem; color: var(--moss); margin-top: 18px; }
+.quem-somos-content .signature { font-family: var(--serif); font-size: 1.15rem; color: var(--moss); margin-top: 18px; }
 
 /* ======================= DEPOIMENTOS ======================= */
 .testimonials { padding: 120px 0; background: var(--ink); color: var(--bone); }
 .testimonials .section-title { color: #fff; }
 .testimonials .section-desc { color: var(--bone-dim); }
-/* 6 colunas com cada card ocupando 2: da a mesma largura que 3 colunas, mas
-   permite deslocar o par da ultima linha para o meio em vez de deixa-lo
-   encostado na esquerda com a terceira coluna vazia. */
-.testimonials-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 24px; margin-top: 50px; }
-.testimonial-card { grid-column: span 2; }
-/* so vale quando ha exatamente 6 cards: o 5o tambem sendo o penultimo. Se um
-   depoimento for adicionado, a regra para de valer sozinha. */
-.testimonial-card:nth-child(5):nth-last-child(2) { grid-column: 2 / span 2; }
-.testimonial-card { background: rgba(255, 255, 255, 0.04); border: 1px solid var(--line-dark); border-radius: 26px; padding: 38px; transition: transform 0.4s var(--ease), border-color 0.4s; }
-.testimonial-card:hover { transform: translateY(-6px); border-color: rgba(217, 116, 78, 0.4); }
-.testimonial-featured { grid-column: 1 / -1; background: linear-gradient(135deg, rgba(62, 90, 68, 0.25), rgba(217, 116, 78, 0.14)); border-color: rgba(236, 229, 212, 0.2); }
-.testimonial-quote i { color: var(--terra); font-size: 1.4rem; margin-bottom: 14px; }
-.testimonial-text { font-family: var(--serif); font-size: 1.1rem; line-height: 1.55; color: var(--bone); margin-bottom: 24px; font-style: italic; }
-.testimonial-author { display: flex; align-items: center; gap: 14px; }
-.author-img img { width: 54px; height: 54px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(236, 229, 212, 0.3); }
+/* O depoimento em destaque saiu de dentro da grade e virou um bloco proprio,
+   em largura total, com a foto grande ao lado. Os cinco restantes ficam numa
+   grade de 6 colunas com span 2: mesma largura de 3 colunas, mas permite
+   centralizar o par da ultima linha em vez de deixa-lo encostado na esquerda. */
+.depo-destaque {
+    display: grid; grid-template-columns: 0.78fr 1.22fr; gap: 52px; align-items: center;
+    margin: 54px 0 64px; padding-bottom: 60px; border-bottom: 1px solid var(--line-dark);
+}
+.depo-destaque-foto { margin: 0; border-radius: 10px; overflow: hidden; }
+.depo-destaque-foto img { display: block; width: 100%; height: auto; }
+.depo-destaque-texto blockquote { margin: 0; }
+.depo-destaque-texto blockquote p {
+    font-family: var(--serif); font-weight: 400; font-size: clamp(1.25rem, 2.3vw, 1.85rem);
+    line-height: 1.45; color: #fff; text-wrap: pretty;
+}
+.depo-assinatura { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 18px; margin-top: 28px; }
+.depo-nome { font-family: var(--serif); font-size: 1.12rem; color: #fff; }
+.depo-destino { font-size: 0.9rem; color: var(--gold); }
+
+.testimonials-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 22px; }
+/* Sem caixa, os cards ficavam soltos no verde e o nome do cliente flutuava
+   longe do texto, porque cada depoimento tem um comprimento. A caixa volta, o
+   texto ocupa o espaco que sobra e a assinatura encosta no pe de todos. */
+.testimonial-card {
+    grid-column: span 2; display: flex; flex-direction: column; gap: 22px;
+    background: rgba(255, 255, 255, 0.045);
+    border: 1px solid var(--line-dark);
+    border-radius: 10px;
+    padding: 30px;
+}
+/* vale com exatamente 5 cards: o 4o tambem sendo o penultimo. Se um depoimento
+   entrar ou sair, a regra para de valer sozinha. */
+.testimonial-card:nth-child(4):nth-last-child(2) { grid-column: 2 / span 2; }
+.testimonial-text { margin: 0; flex: 1; }
+.testimonial-text p {
+    font-family: var(--serif); font-size: 1.04rem; line-height: 1.6; color: var(--bone); text-wrap: pretty;
+}
+.testimonial-author {
+    display: flex; align-items: center; gap: 14px;
+    margin-top: auto; padding-top: 20px; border-top: 1px solid var(--line-dark);
+}
+/* quadrado de 60px, foto inteira, no lugar do disquinho de 54 */
+.author-img { width: 60px; height: 60px; border-radius: 8px; object-fit: cover; flex: none; }
+.author-info { display: flex; flex-direction: column; gap: 2px; }
 .author-name { font-family: var(--serif); font-size: 1.05rem; color: #fff; }
 .author-destination { font-size: 0.82rem; color: var(--gold); }
-.author-rating { color: var(--gold); font-size: 0.75rem; margin-top: 3px; }
 
 /* ======================= COMUNIDADE ======================= */
 .comunidade { padding: 120px 0; background: var(--ink-soft); color: var(--bone); }
 .comunidade .section-title { color: #fff; }
 .comunidade .section-desc { color: var(--bone-dim); }
+/* Colagem de proporcoes diferentes. Antes eram seis quadrados iguais com a
+   frase do cliente por cima, repetindo o que a secao de depoimentos ja diz. */
+/* Celas de formatos diferentes cortavam cabeca: as fotos de cliente sao todas
+   quadradas e ja enquadradas no rosto, entao qualquer cela que nao fosse
+   quadrada comia alguem. Cela quadrada e foto quadrada: nada a cortar. */
 .comunidade-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 50px; }
-.comunidade-item { position: relative; aspect-ratio: 1/1; border-radius: 22px; overflow: hidden; }
+.comunidade-item { position: relative; margin: 0; border-radius: 10px; overflow: hidden; aspect-ratio: 1 / 1; }
 .comunidade-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease); }
-.comunidade-item:hover img { transform: scale(1.08); }
-.com-quote { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 22px; color: #fff; background: linear-gradient(to top, rgba(22, 33, 28, 0.92) 0%, rgba(22, 33, 28, 0.5) 50%, transparent 100%); }
-.com-text { font-family: var(--serif); font-style: italic; font-size: 1rem; line-height: 1.45; margin-bottom: 10px; text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5); }
-.com-name { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 600; color: var(--gold); }
+.comunidade-item:hover img { transform: scale(1.06); }
 .comunidade-cta { text-align: center; margin-top: 40px; }
 
 /* ======================= FAQ ======================= */
@@ -410,15 +503,15 @@ html.js :is(.section-header, .como-card, .diferencial-card, .dossie-row, .serv-c
 /* ======================= FOOTER ======================= */
 .footer { background: #0A110D; color: var(--bone); }
 .footer-main { padding: 80px 0 40px; }
-.footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 40px; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 0.9fr 0.8fr 1.1fr; gap: 40px; }
 .footer-brand .logo-text { font-family: var(--serif); font-size: 1.7rem; color: #fff; margin-bottom: 14px; }
 .footer-brand p { color: var(--bone-dim); font-size: 0.95rem; max-width: 32ch; }
 .footer-links h4, .footer-legal h4 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--sage); margin-bottom: 18px; font-family: var(--sans); font-weight: 600; }
 .footer-links li, .footer-legal li { margin-bottom: 10px; }
 .footer-links a, .footer-legal a { color: var(--bone-dim); font-size: 0.92rem; transition: color 0.3s; }
 .footer-links a:hover, .footer-legal a:hover { color: var(--terra); }
-.footer-bottom { border-top: 1px solid var(--line-dark); padding: 24px 0; }
-.footer-bottom p { color: rgba(236, 229, 212, 0.5); font-size: 0.82rem; text-align: center; }
+.footer-bottom { border-top: 1px solid var(--line-dark); padding: 24px 0;  color: rgba(236, 229, 212, 0.62); }
+.footer-bottom p { color: rgba(236, 229, 212, 0.68); font-size: 0.82rem; text-align: center; }
 
 /* ======================= WHATSAPP FLOAT ======================= */
 .whatsapp-float { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; border-radius: 50%; background: #25D366; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.9rem; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); z-index: 1500; transition: transform 0.3s; }
@@ -436,11 +529,12 @@ html.js :is(.section-header, .como-card, .diferencial-card, .dossie-row, .serv-c
     .quem-somos-wrapper, .contato-wrapper { grid-template-columns: 1fr; gap: 40px; }
     .footer-grid { grid-template-columns: 1fr 1fr; }
     .testimonials-grid { grid-template-columns: 1fr; }
-    .testimonial-card, .testimonial-featured,
-    .testimonial-card:nth-child(5):nth-last-child(2) { grid-column: 1 / -1; }
+    .testimonial-card,
+    .testimonial-card:nth-child(4):nth-last-child(2) { grid-column: 1 / -1; }
 }
-/* nav vira hamburguer antes do menu desktop apertar (precisa de ~995px) */
-@media (max-width: 1000px) {
+/* nav vira hamburguer antes do menu desktop apertar. Com "Cruzeiros" no menu
+   ele passou a precisar de ~1130px, entao o corte subiu de 1000 para 1180. */
+@media (max-width: 1180px) {
     /* align-items: center estava só na versão .subpage; sem ele, na home os itens
        esticavam e ficavam à esquerda, diferente do resto do site */
     /* sai de cena por transform, nao por "right" negativo: posicao fora da tela
@@ -456,23 +550,34 @@ html.js :is(.section-header, .como-card, .diferencial-card, .dossie-row, .serv-c
 }
 @media (max-width: 768px) {
     .wrap, .container, .hero-content { padding: 0 20px; }
-    .dossie-row { grid-template-columns: 1fr; grid-auto-rows: auto; }
+    .dossie-row,
+    .dossie-row:nth-child(2), .dossie-row:nth-child(3),
+    .dossie-row:nth-child(4), .dossie-row:nth-child(5) {
+        grid-template-columns: 1fr; grid-auto-rows: auto;
+    }
     .dossie-row.flip .dossie-media { order: 0; }
     .dossie-media { height: 240px; }
     .dossie-body { padding: 34px 22px; }
     .de-head { margin-bottom: 40px; }
-    .quiz-opt { flex: 0 1 calc(50% - 7px); }
-    .quiz-box { padding: 28px 20px; }
     .comunidade-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
     .contato-wrapper { padding: 34px 22px; }
     #map-main { height: 420px; }
-    .como-funciona, .destinos-editorial, .quiz-section, .map-explorer-section, .sectionenciais, .quem-somos, .testimonials, .comunidade, .faq-section, .contato { padding: 70px 0; }
+    .processo, .destinos-editorial, .briefing, .map-explorer-section, .diferenciais, .quem-somos, .testimonials, .comunidade, .faq-section, .contato { padding: 70px 0; }
     .whatsapp-float::after { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
+    /* duracao quase zero em vez de "animation: none": a regra que anima comeca
+       em opacity 0, entao desligar a animacao deixaria o elemento invisivel.
+       Com duracao de 0,01ms a animacao roda e chega ao estado final na hora. */
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
     .hero-bg-image img { animation: none; }
-    .hero-content .eyebrow, .hero-title, .hero-subtitle, .hero-cta { animation: none; opacity: 1; }
-    .custom-marker { animation: none; }
+    .hero-content .eyebrow, .hero-title, .hero-subtitle, .hero-cta, .hero-rodape { opacity: 1; }
+    .custom-marker::after { animation: none; }
 }
 
 /* ======================= AJUSTE DE CONTRASTE (hero sobre foto clara) ======================= */
@@ -484,52 +589,20 @@ html.js :is(.section-header, .como-card, .diferencial-card, .dossie-row, .serv-c
 .hero-content .eyebrow::before {
     content: ''; width: 44px; height: 1px; background: var(--terra); flex: none;
 }
-.hero-title { text-shadow: 0 2px 24px rgba(12, 20, 16, 0.4); }  /* uma só, discreta; o scrim faz o resto */
-.hero-subtitle { color: rgba(238, 233, 222, 0.92); text-shadow: none; }
+.hero-title { text-shadow: 0 2px 22px rgba(10, 18, 15, 0.62); }  /* o scrim encolheu, a sombra compensa */
+.hero-subtitle { color: rgba(242, 238, 229, 0.95); text-shadow: 0 1px 14px rgba(10, 18, 15, 0.55); }
 .hero-cta .link-plain { text-shadow: none; }
 .navbar:not(.scrolled) .logo,
 .navbar:not(.scrolled) .nav-links a { text-shadow: 0 1px 10px rgba(0, 0, 0, 0.45); }
 
-/* ======================= DEPOIMENTOS: destaque editorial ======================= */
-.testimonial-featured {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: 44px;
-    align-items: center;
-    padding: 48px;
-}
-.testimonial-featured .testimonial-quote { grid-column: 1; }
-.testimonial-featured .testimonial-quote i { font-size: 2rem; }
-.testimonial-featured .testimonial-text { grid-column: 1; font-size: 1.5rem; line-height: 1.5; margin-bottom: 0; }
-.testimonial-featured .testimonial-author {
-    grid-column: 2; grid-row: 1 / 4; flex-direction: column; text-align: center; gap: 14px;
-    border-left: 1px solid var(--line-dark); padding-left: 44px; justify-content: center;
-}
-.testimonial-featured .author-img img { width: 92px; height: 92px; }
-.testimonial-featured .author-name { font-size: 1.3rem; }
-.testimonial-card:not(.testimonial-featured) .testimonial-text { font-size: 1.02rem; }
-
-@media (max-width: 768px) {
-    .testimonial-featured { grid-template-columns: 1fr; gap: 24px; padding: 34px; }
-    .testimonial-featured .testimonial-quote,
-    .testimonial-featured .testimonial-text { grid-column: 1; }
-    .testimonial-featured .testimonial-text { font-size: 1.25rem; }
-    .testimonial-featured .testimonial-author {
-        grid-column: 1; grid-row: auto; flex-direction: row; text-align: left;
-        border-left: none; border-top: 1px solid var(--line-dark); padding-left: 0; padding-top: 22px;
-    }
-    .testimonial-featured .author-img img { width: 54px; height: 54px; }
-    .testimonial-featured .author-name { font-size: 1.05rem; }
-}
-
 /* ======================= SEM ÓRFÃOS (nunca 1 palavra sozinha na última linha) ======================= */
 p, li, figcaption, blockquote,
 .hero-subtitle, .section-desc, .dossie-line, .diferencial-banner p,
-.testimonial-text, .com-text, .faq-content p, .quem-somos-content p,
+.testimonial-text p, .depo-destaque-texto blockquote p, .faq-content p, .quem-somos-content p,
 .contato-info p, .detail-item p, .footer-brand p {
     text-wrap: pretty;
 }
-h1, h2, h3, h4, .hero-title, .section-title, .de-title, .quiz-q, .faq-title, .quem-somos-content .lead-text {
+h1, h2, h3, h4, .hero-title, .section-title, .de-title, .faq-title, .quem-somos-content .lead-text {
     text-wrap: balance;
 }
 
@@ -595,7 +668,7 @@ h1, h2, h3, h4, .hero-title, .section-title, .de-title, .quiz-q, .faq-title, .qu
 .transfer-story { padding: 110px 0; background: var(--cream); }
 .transfer-story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
 .transfer-story-text .section-title { text-align: left; }
-.transfer-story-text .lead-text { font-family: var(--serif); font-size: 1.4rem; font-style: italic; color: var(--terra); margin: 14px 0 18px; line-height: 1.4; }
+.transfer-story-text .lead-text { font-family: var(--serif); font-size: 1.4rem; color: var(--terra-texto); margin: 14px 0 18px; line-height: 1.4; }
 .transfer-story-text p { color: var(--espresso-soft); margin-bottom: 1rem; }
 .transfer-img { border-radius: 24px; overflow: hidden; box-shadow: var(--shadow); aspect-ratio: 4/3; }
 .transfer-img img { width: 100%; height: 100%; object-fit: cover; }
@@ -634,7 +707,7 @@ body:not(.home) .navbar:not(.scrolled) .nav-links a { text-shadow: none; }
 .article-hero-content .article-meta i { color: var(--terra); }
 
 /* ======================= MENU MOBILE NAS INTERNAS (vence o style.css antigo) ======================= */
-@media (max-width: 1000px) {
+@media (max-width: 1180px) {
     .subpage .nav-links {
         position: fixed !important; top: 0 !important; right: 0 !important; left: auto !important; bottom: auto !important;
         transform: translateX(100%) !important;
@@ -650,13 +723,8 @@ body:not(.home) .navbar:not(.scrolled) .nav-links a { text-shadow: none; }
     .subpage .menu-toggle { display: block !important; z-index: 1010 !important; position: relative; }
 }
 
-/* ======================= COMUNIDADE NO MOBILE (texto cabe sem estourar) ======================= */
-@media (max-width: 768px) {
-    .comunidade-item { aspect-ratio: 3 / 4; }
-    .com-quote { padding: 14px; }
-    .com-text { font-size: 0.82rem; line-height: 1.38; margin-bottom: 8px; }
-    .com-name { font-size: 0.78rem; letter-spacing: 0.08em; }  /* era 0.62rem = 9.9px, pequeno demais para ler */
-}
+/* A colagem nao tem mais texto por cima das fotos, entao as regras que
+   acertavam o tamanho daquele texto no celular foram embora com ele. */
 
 /* =========================================================================
    PÁGINAS DE DESTINO — TRATAMENTO EDITORIAL
@@ -799,7 +867,6 @@ body:not(.home) .navbar:not(.scrolled) .nav-links a { text-shadow: none; }
 }
 .subpage .storytelling .lead {
     font-family: var(--serif);
-    font-style: italic;
     font-weight: 400;
     font-size: clamp(1.24rem, 2.1vw, 1.6rem);
     line-height: 1.45;
@@ -946,12 +1013,22 @@ button:focus-visible {
    MELHOR ÉPOCA PARA VIAJAR (guia mês a mês)
    ========================================================================= */
 .epoca-hero {
+    position: relative; isolation: isolate; overflow: hidden;
     background: var(--ink);
     color: var(--bone);
     padding: 170px 0 70px;
     text-align: center;
 }
-.epoca-hero .eyebrow { color: var(--gold); }
+.epoca-hero-bg { position: absolute; inset: 0; z-index: -2; }
+.epoca-hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 58%; }
+.epoca-hero::after {
+    content: ''; position: absolute; inset: 0; z-index: -1;
+    background:
+        radial-gradient(64% 82% at 50% 46%, rgba(13, 24, 32, 0.72) 0%, rgba(13, 24, 32, 0.34) 56%, rgba(13, 24, 32, 0.06) 90%),
+        linear-gradient(180deg, rgba(13, 24, 32, 0.46) 0%, rgba(13, 24, 32, 0.08) 30%, rgba(13, 24, 32, 0.08) 68%, rgba(26, 38, 33, 0.72) 100%);
+}
+/* o --gold dava 2,61:1 sobre a foto nova; este tom claro da 4,6 */
+.epoca-hero .eyebrow { color: #F3E3B8; }
 .epoca-hero h1 {
     font-family: var(--serif);
     font-weight: 400;
@@ -1226,7 +1303,6 @@ button:focus-visible {
 .historia-lead {
     font-family: var(--serif);
     font-size: 1.45rem;
-    font-style: italic;
     color: var(--terra);
     line-height: 1.6;
     margin-bottom: 0.75rem;
@@ -1308,7 +1384,6 @@ button:focus-visible {
 .historia-fecho p {
     font-family: var(--serif);
     font-size: 1.35rem;
-    font-style: italic;
     color: var(--moss);
     line-height: 1.8;
 }
@@ -1404,7 +1479,6 @@ button:focus-visible {
 .article-content .lead-text {
     font-family: var(--serif);
     font-size: 1.3rem;
-    font-style: italic;
     color: var(--terra);
     line-height: 1.7;
     margin-bottom: 1.5rem;
@@ -1637,4 +1711,281 @@ p, li, .hero-subtitle, .section-desc, .lead, .lead-text, .testimonial-text, .sto
 @media (max-width: 620px) {
     .serv-cotacao { padding: 0 0 70px; }
     .cotacao-caixa .btn-primary { width: 100%; }
+}
+
+
+/* ======================= FASE 2: RESPONSIVO DO QUE ENTROU ======================= */
+@media (max-width: 1000px) {
+    .processo-lista { grid-template-columns: 1fr; gap: 34px; }
+    .processo-passo:nth-child(2), .processo-passo:nth-child(3) { margin-top: 0; }
+    .diferenciais-grid { grid-template-columns: 1fr; gap: 26px; }
+    .faixa-foto { min-height: 54vh; }
+}
+@media (max-width: 760px) {
+    .rota svg { width: 220px; }
+    .rota { margin-bottom: 40px; }
+    .faixa-foto-texto { padding-bottom: 44px; }
+    .dossie-legenda { left: 14px; bottom: 12px; }
+}
+
+
+/* ======================= FASE 3: FAIXA DE PROVA ======================= */
+/* Logo abaixo do hero. Os numeros ficam como marcador visivel ate o Nicholas
+   preencher: inventar nota de Google seria exatamente o que nao se pode fazer. */
+.faixa-prova { background: var(--bone); border-bottom: 1px solid var(--line-light); padding: 40px 0; }
+/* Eram quatro colunas desiguais, duas delas so com colchete vazio no lugar de
+   numero. Agora sao tres clientes de verdade, em colunas iguais. */
+.faixa-prova-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 44px; align-items: start; }
+.prova-mini { display: flex; align-items: flex-start; gap: 16px; margin: 0; }
+.prova-mini img { width: 60px; height: 60px; border-radius: 8px; object-fit: cover; flex: none; }
+.prova-mini figcaption { display: flex; flex-direction: column; gap: 7px; }
+.prova-mini q { font-family: var(--serif); font-size: 1.02rem; line-height: 1.45; color: var(--espresso); text-wrap: pretty; }
+.prova-mini-nome { font-size: 0.78rem; letter-spacing: 0.04em; color: var(--espresso-soft); }
+
+/* ======================= FASE 3: BLOCOS OPCIONAIS ======================= */
+/* Ficam comentados no HTML ate existir arquivo. Ver README-prova-social.md. */
+.prints { padding: 110px 0; background: var(--cream); }
+.prints-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 44px; }
+.print-item { margin: 0; border-radius: 10px; overflow: hidden; border: 1px solid var(--line-light); background: #fff; }
+.print-item img { display: block; width: 100%; height: auto; }
+.video-cliente { padding: 110px 0; background: var(--bone); text-align: center; }
+.video-cliente-player { width: 100%; max-width: 420px; height: auto; margin-top: 34px; border-radius: 10px; background: #000; }
+.video-cliente-legenda { margin-top: 16px; font-size: 0.85rem; color: var(--espresso-soft); }
+
+/* ======================= FASE 3: RESPONSIVO ======================= */
+@media (max-width: 1000px) {
+    .faixa-prova-grid { grid-template-columns: repeat(2, 1fr); gap: 26px; }
+    .depo-destaque { grid-template-columns: 1fr; gap: 28px; }
+    .depo-destaque-foto { max-width: 420px; }
+    .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+    .testimonial-card { grid-column: span 1; }
+    .testimonial-card:nth-child(4):nth-last-child(2) { grid-column: auto; }
+    .prints-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+    .faixa-prova-grid { grid-template-columns: 1fr; gap: 20px; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .comunidade-grid { grid-template-columns: repeat(2, 1fr); }
+    .prints-grid { grid-template-columns: 1fr; }
+}
+
+
+/* ======================= DEPOIMENTO NA PAGINA DE DESTINO ======================= */
+/* Serve para qualquer pagina de destino. Como colar em outra: ver
+   README-prova-social.md, item 4. */
+.depoimento-do-destino { padding: 90px 0; background: var(--bone); }
+.depoimento-do-destino blockquote { max-width: 760px; margin: 0 auto; }
+.depoimento-do-destino blockquote p {
+    font-family: var(--serif); font-weight: 400; font-size: clamp(1.15rem, 2.2vw, 1.6rem);
+    line-height: 1.5; color: var(--espresso); text-wrap: pretty;
+}
+.depoimento-do-destino footer { display: flex; align-items: center; gap: 16px; margin-top: 26px; }
+.depoimento-do-destino footer img { width: 72px; height: 72px; border-radius: 8px; object-fit: cover; flex: none; }
+.depoimento-do-destino-quem { display: flex; flex-direction: column; gap: 2px; }
+.depoimento-do-destino-quem strong { font-family: var(--serif); font-weight: 400; font-size: 1.05rem; color: var(--espresso); }
+.depoimento-do-destino-quem span { font-size: 0.85rem; color: var(--terra-deep); }
+
+
+/* ======================= BRIEFING ======================= */
+/* Cinco perguntas, uma por tela. Fundo chapado de proposito: a faixa de foto
+   vem logo antes, e duas imagens grandes seguidas cansam. */
+.briefing { padding: 118px 0; background: var(--ink); color: var(--bone); }
+.briefing .section-title { color: #fff; }
+.briefing .section-desc { color: var(--bone-dim); }
+/* A caixa tinha 720px dentro de um container de 1240 e sobrava meia tela
+   vazia a direita, que era o "nao encaixa". Duas colunas: o texto a esquerda,
+   o formulario a direita, ocupando a altura toda. */
+.briefing .container { display: grid; grid-template-columns: 0.82fr 1.18fr; gap: 56px; align-items: start; }
+.briefing-intro { max-width: 34ch; margin-bottom: 0; grid-column: 1; grid-row: 1; }
+.briefing-intro .section-title, .briefing-intro .section-desc { text-align: left; }
+.briefing-caixa { grid-column: 2; grid-row: 1 / span 2; }
+.briefing-alternativa { grid-column: 1; grid-row: 2; }
+
+.briefing-caixa {
+    width: 100%; border: 1px solid var(--line-dark); border-radius: 10px;
+    padding: 40px; background: rgba(255, 255, 255, 0.03);
+}
+.briefing-progresso { height: 3px; background: rgba(236, 229, 212, 0.16); border-radius: 2px; overflow: hidden; }
+.briefing-barra { display: block; height: 100%; width: 20%; background: var(--terra); transition: width 0.4s var(--ease); }
+.briefing-contador { margin-top: 12px; font-size: 0.76rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(236, 229, 212, 0.78); }
+
+.briefing-passo { border: 0; padding: 0; margin: 28px 0 0; min-height: 200px; }
+.briefing-passo[hidden] { display: none; }
+.briefing-pergunta {
+    font-family: var(--serif); font-weight: 400; font-size: clamp(1.3rem, 2.6vw, 1.85rem);
+    color: #fff; padding: 0; margin-bottom: 22px;
+}
+.briefing-pergunta:focus { outline: none; }
+.briefing-pergunta:focus-visible { outline: 2px solid var(--terra); outline-offset: 4px; }
+
+.briefing-opcoes { display: flex; flex-wrap: wrap; gap: 10px; }
+.briefing-opcao {
+    display: inline-flex; align-items: center; gap: 10px; cursor: pointer;
+    min-height: 48px; padding: 0 18px; border-radius: 6px;
+    border: 1px solid rgba(236, 229, 212, 0.26); background: transparent;
+    color: var(--bone); font-size: 0.95rem;
+    transition: border-color 0.25s ease, background 0.25s ease;
+}
+.briefing-opcao-larga { margin-top: 16px; }
+.briefing-opcao:hover { border-color: rgba(236, 229, 212, 0.6); background: rgba(255, 255, 255, 0.05); }
+/* o input continua no fluxo e focavel: esconde-lo com display:none tiraria o
+   elemento da navegacao por teclado e do leitor de tela */
+.briefing-opcao input { width: 16px; height: 16px; accent-color: var(--terra); flex: none; }
+.briefing-opcao:has(input:checked) { border-color: var(--terra); background: rgba(188, 90, 56, 0.2); }
+.briefing-opcao:has(input:focus-visible) { outline: 2px solid var(--terra); outline-offset: 3px; }
+
+.briefing-quando { display: flex; flex-wrap: wrap; gap: 18px; }
+.briefing-campo { display: flex; flex-direction: column; gap: 7px; flex: 1 1 190px; }
+.briefing-campo label { font-size: 0.82rem; letter-spacing: 0.04em; color: rgba(236, 229, 212, 0.72); }
+.briefing-campo select, .briefing-campo input {
+    min-height: 48px; padding: 0 14px; border-radius: 6px;
+    border: 1px solid rgba(236, 229, 212, 0.26); background: rgba(13, 24, 32, 0.4);
+    color: var(--bone); font-family: var(--sans); font-size: 0.95rem;
+}
+.briefing-campo select option { color: #15201c; background: #fff; }
+.briefing-campo-livre { margin-top: 22px; flex-basis: 100%; }
+
+.briefing-nav { display: flex; align-items: center; gap: 16px; margin-top: 30px; flex-wrap: wrap; }
+.briefing-voltar {
+    background: none; border: 0; cursor: pointer; min-height: 44px; padding: 0 4px;
+    color: rgba(236, 229, 212, 0.74); font-family: var(--sans); font-size: 0.9rem;
+    border-bottom: 1px solid rgba(236, 229, 212, 0.3);
+}
+.briefing-voltar:hover { color: #fff; border-color: #fff; }
+.briefing-voltar[hidden], .btn-primary[hidden] { display: none; }
+
+.briefing-alternativa { margin-top: 30px; max-width: 38ch; font-size: 0.92rem; color: var(--bone-dim); text-wrap: pretty; }
+.briefing-alternativa a { color: var(--bone); border-bottom: 1px solid rgba(236, 229, 212, 0.4); }
+.briefing-alternativa a:hover { border-color: var(--terra); }
+
+@media (max-width: 640px) {
+    .briefing-caixa { padding: 26px 20px; }
+    .briefing-opcao { width: 100%; }
+    .briefing-nav { gap: 12px; }
+    .briefing-nav .btn-primary { width: 100%; }
+}
+
+/* ======================= CARTAO DE CRUZEIROS ======================= */
+.cartao-cruzeiros {
+    display: flex; align-items: center; justify-content: space-between; gap: 30px; flex-wrap: wrap;
+    margin-top: 40px; padding: 32px 34px; background: var(--ink); color: var(--bone);
+    border-radius: 10px;
+}
+.cartao-cruzeiros h3 { font-family: var(--serif); font-weight: 400; font-size: 1.5rem; color: #fff; margin-bottom: 8px; }
+.cartao-cruzeiros p { color: var(--bone-dim); max-width: 60ch; line-height: 1.6; }
+.cartao-cruzeiros-link {
+    flex: none; font-size: 0.86rem; font-weight: 600; letter-spacing: 0.04em;
+    color: var(--bone); border-bottom: 1px solid rgba(236, 229, 212, 0.45); padding-bottom: 4px;
+}
+.cartao-cruzeiros:hover .cartao-cruzeiros-link { border-color: var(--terra); }
+
+/* ======================= PAGINA DE CRUZEIROS ======================= */
+.cruz-quando { padding: 100px 0 20px; background: var(--cream); }
+.cruz-quando .section-title, .cruz-resolve .section-title { text-align: left; }
+.cruz-temporadas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 40px; }
+.cruz-temporada { border-top: 1px solid rgba(42, 35, 27, 0.2); padding-top: 22px; }
+.cruz-temporada h3 { font-family: var(--serif); font-weight: 400; font-size: 1.4rem; color: var(--moss); margin-bottom: 12px; }
+.cruz-temporada p { color: var(--espresso-soft); line-height: 1.7; }
+
+.cruz-resolve { padding: 80px 0; background: var(--cream); }
+.cruz-lista { list-style: none; margin: 36px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px 40px; }
+.cruz-lista li { border-top: 1px solid rgba(42, 35, 27, 0.16); padding-top: 16px; color: var(--espresso-soft); line-height: 1.65; }
+.cruz-lista strong { display: block; font-family: var(--serif); font-weight: 400; font-size: 1.12rem; color: var(--espresso); margin-bottom: 6px; }
+
+@media (max-width: 1000px) {
+.cruz-temporadas{ grid-template-columns: 1fr; }
+    .cruz-lista { grid-template-columns: 1fr; }
+    .cartao-cruzeiros { flex-direction: column; align-items: flex-start; gap: 18px; }.cruz-quando, .cruz-resolve{ padding-left: 0; padding-right: 0; }
+}
+@media (max-width: 640px) {
+
+}
+
+
+/* ======================= BLOCO DE CONFIANCA NO RODAPE ======================= */
+/* So aparece o que esta preenchido. O resto fica comentado no HTML, nao vira
+   marcador: marcador no rodape de 76 paginas pega pior do que linha nenhuma. */
+.footer-confianca h4 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--sage); margin-bottom: 18px; font-family: var(--sans); font-weight: 600; }
+.footer-confianca li { margin-bottom: 10px; color: var(--bone-dim); font-size: 0.92rem; line-height: 1.5; }
+.footer-confianca li span { display: block; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(236, 229, 212, 0.66); }
+
+@media (max-width: 900px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+    .footer-grid { grid-template-columns: 1fr; }
+}
+
+
+/* ======================= A EMPRESA, POR ESCRITO ======================= */
+.confianca-pagina { padding: 80px 0 100px; background: var(--bone); }
+.confianca-pagina h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(1.5rem, 3vw, 2.2rem); color: var(--moss); margin-bottom: 28px; }
+.confianca-lista { display: grid; grid-template-columns: auto 1fr; gap: 14px 28px; max-width: 760px; }
+.confianca-lista dt { font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--espresso-soft); padding-top: 4px; }
+.confianca-lista dd { margin: 0; color: var(--espresso); line-height: 1.6; }
+
+/* os medalhoes de icone sairam; o espaco que eles ocupavam vai junto */
+.historia-icon, .timeline-icon, .benefit-icon { display: none; }
+
+@media (max-width: 560px) {
+    .confianca-lista { grid-template-columns: 1fr; gap: 4px 0; }
+    .confianca-lista dd { margin-bottom: 14px; }
+}
+
+
+/* o <h5> dos contatos virou <h3> para nao pular nivel de titulo; o tamanho
+   continua o mesmo de antes */
+.detail-titulo { font-family: var(--sans); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sage); margin-bottom: 4px; }
+
+
+/* ======================= AJUSTES DA REVISAO ======================= */
+@media (max-width: 1000px) {
+    .faixa-prova-grid { grid-template-columns: 1fr; gap: 26px; }
+}
+@media (max-width: 640px) {
+    .testimonial-card { padding: 24px; }
+}
+
+
+/* ======================= AJUSTES: BRIEFING E FAIXA NO CELULAR ======================= */
+@media (max-width: 1000px) {
+    .briefing .container { grid-template-columns: 1fr; gap: 34px; }
+    .briefing-intro, .briefing-caixa, .briefing-alternativa { grid-column: 1; grid-row: auto; }
+    .briefing-intro { max-width: none; }
+    .briefing-alternativa { max-width: none; }
+    .faixa-foto { min-height: 58vh; }
+    .faixa-foto-texto { padding: 44px 0; }
+}
+
+
+/* ======================= ALVO DE TOQUE NO CELULAR ======================= */
+/* Link de texto solto (fora de paragrafo) e um botao disfarcado: precisa de
+   altura de dedo. Link dentro de frase fica como esta, que e o certo. */
+@media (max-width: 1000px) {
+    .hero-cta .link-plain,
+    .incl-cta .link-plain,
+    .quem-somos-content .link-plain,
+    .comunidade-cta a,
+    .footer-links li a,
+    .detail-item a,
+    .footer-social a {
+        display: inline-flex; align-items: center; min-height: 44px;
+    }
+    .footer-links li { margin-bottom: 2px; }
+}
+
+
+/* ======================= ABERTURA DE /CRUZEIROS ======================= */
+/* O escurecimento padrao da page-hero e chapado e forte, feito para foto de
+   paisagem com muito contraste. Na foto do conves ele apagava o navio, que e
+   justamente o que a pagina precisa mostrar. Aqui a mancha fica atras do
+   texto, centralizada, e as bordas da foto aparecem. */
+/* a abertura e baixa: centralizado, o cover mostrava o teto do conves */
+/* o texto e centralizado e caia em cima do casco branco: 2,8:1. Descendo o
+   enquadramento, ele fica sobre a agua e o navio continua a vista. */
+.hero-cruzeiros .page-hero-bg img { object-position: 50% 74%; }
+.hero-cruzeiros::after {
+    background:
+        radial-gradient(62% 82% at 50% 48%, rgba(13, 24, 32, 0.72) 0%, rgba(13, 24, 32, 0.38) 56%, rgba(13, 24, 32, 0.06) 90%),
+        linear-gradient(180deg, rgba(13, 24, 32, 0.44) 0%, rgba(13, 24, 32, 0.08) 30%, rgba(13, 24, 32, 0.08) 70%, rgba(26, 38, 33, 0.52) 100%);
 }
