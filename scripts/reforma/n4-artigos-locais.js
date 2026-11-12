@@ -20,7 +20,7 @@ const NOVOS = [
         h1: 'Gramado e Canela: Como Planejar Sem Cair nas Filas',
         desc: 'Quando ir a Gramado e Canela, quantos dias ficar, onde se hospedar e como fugir da multidão na Serra Gaúcha.',
         card: 'Quando ir, quantos dias ficar e como fugir da multidão na Serra Gaúcha.',
-        img: 'gramado-serra-gaucha.webp', imgW: 1200, imgH: 800, alt: 'Rua de Gramado, na Serra Gaúcha, com casas de estilo europeu e flores',
+        img: 'gramado-serra-gaucha.webp', imgW: 1200, imgH: 800, alt: 'Portal de entrada de Gramado, na Serra Gaúcha, com torres de telhado pontiagudo e canteiros de flores',
         local: 'Serra Gaúcha', tag: 'Rio Grande do Sul', categoria: 'brasil',
         lead: 'Gramado e Canela cabem em um fim de semana, mas só rendem de verdade quando a data e a hospedagem são escolhidas com cuidado.',
         corpo: [
@@ -46,7 +46,7 @@ const NOVOS = [
         h1: 'Vale dos Vinhedos: Como Visitar Vinícolas Sem Pressa',
         desc: 'Quantas vinícolas visitar por dia, a época da vindima, transporte e o que reservar no Vale dos Vinhedos, em Bento Gonçalves.',
         card: 'Quantas vinícolas por dia, quando é a vindima e quem dirige.',
-        img: 'vale-dos-vinhedos.webp', imgW: 1200, imgH: 800, alt: 'Parreirais do Vale dos Vinhedos, em Bento Gonçalves, com colinas ao fundo',
+        img: 'vale-dos-vinhedos.webp', imgW: 1200, imgH: 800, alt: 'Parreirais e ciprestes no Vale dos Vinhedos, em Bento Gonçalves, com um hotel ao fundo',
         local: 'Vale dos Vinhedos', tag: 'Rio Grande do Sul', categoria: 'brasil',
         lead: 'O Vale dos Vinhedos é pequeno no mapa e generoso em vinícolas. O erro é tentar encaixar muitas no mesmo dia.',
         corpo: [
@@ -72,7 +72,7 @@ const NOVOS = [
         h1: 'Cânions de Aparados da Serra: Itaimbezinho e Fortaleza',
         desc: 'Como visitar os cânions Itaimbezinho e Fortaleza: época, neblina, estrada, entrada nos parques e quantos dias reservar.',
         card: 'Itaimbezinho e Fortaleza: neblina, estrada, entrada nos parques e como dividir os dias.',
-        img: 'canions-aparados-da-serra.webp', imgW: 1200, imgH: 800, alt: 'Paredão do cânion Itaimbezinho, nos Aparados da Serra, com vegetação e neblina',
+        img: 'canions-aparados-da-serra.webp', imgW: 1200, imgH: 800, alt: 'Cânion na região dos Aparados da Serra, com paredões de rocha e campos de altitude no topo',
         local: 'Aparados da Serra', tag: 'Rio Grande do Sul', categoria: 'brasil',
         lead: 'Poucos lugares do Sul entregam uma paisagem tão grande quanto os cânions de Aparados da Serra. Também poucos dependem tanto do clima.',
         corpo: [
@@ -100,7 +100,7 @@ const NOVOS = [
         h1: 'Rota Romântica: Um Fim de Semana Entre o Vale dos Sinos e a Serra',
         desc: 'O caminho de influência alemã que liga o Vale dos Sinos à Serra Gaúcha, com cafés coloniais e cidades pequenas.',
         card: 'O caminho de influência alemã entre o Vale dos Sinos e a Serra, com café colonial.',
-        img: 'rota-romantica-rs.webp', imgW: 1200, imgH: 800, alt: 'Casa de arquitetura enxaimel numa cidade da Rota Romântica, no Rio Grande do Sul',
+        img: 'rota-romantica-rs.webp', imgW: 1200, imgH: 800, alt: 'Praça florida em Nova Petrópolis, na Rota Romântica, com casas de estilo alemão ao fundo',
         local: 'Rota Romântica', tag: 'Rio Grande do Sul', categoria: 'brasil',
         lead: 'A Rota Romântica liga o Vale dos Sinos à Serra e é um dos roteiros mais fáceis de fazer de carro no Rio Grande do Sul.',
         corpo: [
@@ -128,7 +128,7 @@ const NOVOS = [
         h1: 'Serra Catarinense: Urubici, São Joaquim e a Chance de Ver Neve',
         desc: 'Frio, geada e, algumas vezes, neve: como planejar uma viagem à Serra Catarinense, entre Urubici e São Joaquim.',
         card: 'Frio, geada, cânions e a chance de neve. Como planejar a serra de Santa Catarina.',
-        img: 'serra-catarinense-urubici.webp', imgW: 1200, imgH: 800, alt: 'Paisagem de campos de altitude e neblina na Serra Catarinense, perto de Urubici',
+        img: 'serra-catarinense-urubici.webp', imgW: 1200, imgH: 800, alt: 'Pedra Furada, arco natural de rocha na serra, perto de Urubici, em Santa Catarina',
         local: 'Serra Catarinense', tag: 'Santa Catarina', categoria: 'brasil',
         lead: 'A Serra Catarinense tem as temperaturas mais baixas do Brasil e uma paisagem de cânions e campos de altitude. A neve é possível, nunca garantida.',
         corpo: [
@@ -156,7 +156,7 @@ const NOVOS = [
         h1: 'Florianópolis: Como Escolher a Praia Certa',
         desc: 'Norte, leste ou sul da ilha: como escolher a região de Florianópolis pelo tipo de viagem e pela época.',
         card: 'Norte, leste ou sul: escolher o lado da ilha vale mais que escolher a praia.',
-        img: 'florianopolis-praia.webp', imgW: 1200, imgH: 800, alt: 'Praia de Florianópolis com faixa de areia, mar azul e morros ao fundo',
+        img: 'florianopolis-praia.webp', imgW: 1200, imgH: 800, alt: 'Praia de Florianópolis com ondas, faixa de areia e morros ao fundo',
         local: 'Florianópolis', tag: 'Santa Catarina', categoria: 'brasil',
         lead: 'Florianópolis não é uma praia, é uma ilha com dezenas delas e personalidades diferentes. Escolher o lado certo vale mais do que escolher a praia.',
         corpo: [
@@ -184,7 +184,7 @@ const NOVOS = [
         h1: 'Bonito, MS: Como Montar os Passeios Sem Perder Vaga',
         desc: 'Passeios com vagas limitadas, época de água cristalina e quantos dias ficar em Bonito, no Mato Grosso do Sul.',
         card: 'Passeios com vaga limitada, época da água clara e quantos dias ficar.',
-        img: 'bonito-ms.webp', imgW: 1200, imgH: 800, alt: 'Rio de água cristalina em Bonito, no Mato Grosso do Sul, cercado de vegetação',
+        img: 'bonito-ms.webp', imgW: 1200, imgH: 800, alt: 'Visitantes diante do lago azul de uma gruta em Bonito, no Mato Grosso do Sul',
         local: 'Bonito, MS', tag: 'Pelo Brasil', categoria: 'brasil',
         lead: 'Em Bonito, quase tudo tem vaga limitada e agenda fechada. Quem chega sem reserva descobre que os melhores passeios já esgotaram.',
         corpo: [
