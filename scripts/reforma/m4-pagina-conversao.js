@@ -86,7 +86,7 @@ const CORPO = `
                 <strong>5,0 no Google</strong>
                 <span>Ver as avaliações da agência</span>
             </a>
-            <a class="prova-item" href="https://cadastur.turismo.gov.br" target="_blank" rel="noopener">
+            <a class="prova-item" href="https://cadastur.turismo.gov.br/cadastur/#!/public/qrcode/63865418000181" target="_blank" rel="noopener">
                 <strong>Cadastrada no Cadastur</strong>
                 <span>Agência de turismo registrada no Ministério do Turismo</span>
             </a>
