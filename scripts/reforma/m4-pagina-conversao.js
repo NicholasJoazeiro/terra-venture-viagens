@@ -1,4 +1,4 @@
-// Pagina de conversao: /fale-com-a-gente
+// Pagina de conversao: /contato
 //
 // O site nao tinha uma pagina cujo unico trabalho fosse converter. O briefing
 // morava dentro da home, no meio de doze secoes. Esta pagina tem uma meta so.
@@ -27,7 +27,7 @@ const TITULO = 'Fale com a Terra Venture | Consultoria de Viagem Sob Medida';
 const DESC = 'Conte a sua ideia de viagem e a gente volta com um roteiro. Sem custo e sem compromisso. Consultoria de Ivoti, RS, para clientes do Brasil inteiro.';
 head = head
     .split('Serviços | Consultoria de Viagem Sob Medida | Terra Venture').join(TITULO)
-    .split('https://terraventureviagens.com.br/servicos').join('https://terraventureviagens.com.br/fale-com-a-gente');
+    .split('https://terraventureviagens.com.br/servicos').join('https://terraventureviagens.com.br/contato');
 head = head.replace(/<meta name="description"[\s\S]{0,400}?>/, '<meta name="description" content="' + DESC + '">');
 head = head.replace(/(og:description" content=")[^"]*"/, '$1' + DESC + '"');
 head = head.replace(/(twitter:description" content=")[^"]*"/, '$1' + DESC + '"');
@@ -159,8 +159,8 @@ ${faqs.map(f => '                ' + f).join('\n')}
 
 `;
 
-l.gravar('fale-com-a-gente.html', head + navbar + cr(CORPO) + rodape);
-console.log('fale-com-a-gente.html criado');
+l.gravar('contato.html', head + navbar + cr(CORPO) + rodape);
+console.log('contato.html criado');
 
 /* ---------- link no rodape de todas as paginas ---------- */
 {
@@ -169,18 +169,18 @@ console.log('fale-com-a-gente.html criado');
     for (const f of fs.readdirSync(l.DIR).filter(x => x.endsWith('.html'))) {
         const fp = path.join(l.DIR, f);
         let h = fs.readFileSync(fp, 'utf8');
-        if (h.includes('/fale-com-a-gente')) continue;
+        if (h.includes('/contato')) continue;
         const q = h.indexOf('\r\n') !== -1 ? '\r\n' : '\n';
         const iRod = h.indexOf('footer-links');
         if (iRod === -1) continue;
         const cab = h.slice(0, iRod), cauda = h.slice(iRod);
         if (!cauda.includes(ITEM)) continue;
         h = cab + cauda.replace(ITEM,
-            '<li><a href="/fale-com-a-gente">Fale com a gente</a></li>' + q + '                    ' + ITEM);
+            '<li><a href="/contato">Fale com a gente</a></li>' + q + '                    ' + ITEM);
         fs.writeFileSync(fp, h, 'utf8');
         n++;
     }
     console.log('rodapes com o link da pagina de conversao:', n);
 }
 
-l.conferir('fale-com-a-gente.html');
+l.conferir('contato.html');
