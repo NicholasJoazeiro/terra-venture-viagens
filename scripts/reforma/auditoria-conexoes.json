@@ -1,0 +1,466 @@
+{
+ "linhas": [
+  {
+   "s": "blog-amalfitana-de-barco",
+   "art": 4,
+   "dos": 1,
+   "hub": 2,
+   "entra": 3,
+   "entraFora": 2
+  },
+  {
+   "s": "blog-arrumar-mala-inverno",
+   "art": 4,
+   "dos": 2,
+   "hub": 1,
+   "entra": 5,
+   "entraFora": 3
+  },
+  {
+   "s": "blog-aurora-boreal-islandia",
+   "art": 4,
+   "dos": 2,
+   "hub": 1,
+   "entra": 8,
+   "entraFora": 4
+  },
+  {
+   "s": "blog-balao-capadocia",
+   "art": 4,
+   "dos": 1,
+   "hub": 2,
+   "entra": 5,
+   "entraFora": 2
+  },
+  {
+   "s": "blog-banff-quando-ir",
+   "art": 4,
+   "dos": 1,
+   "hub": 3,
+   "entra": 9,
+   "entraFora": 3
+  },
+  {
+   "s": "blog-bonito-ms-como-planejar",
+   "art": 6,
+   "dos": 0,
+   "hub": 2,
+   "entra": 5,
+   "entraFora": 2
+  },
+  {
+   "s": "blog-canions-aparados-da-serra",
+   "art": 6,
+   "dos": 0,
+   "hub": 2,
+   "entra": 8,
+   "entraFora": 2
+  },
+  {
+   "s": "blog-chapada-dos-veadeiros",
+   "art": 4,
+   "dos": 0,
+   "hub": 3,
+   "entra": 6,
+   "entraFora": 2
+  },
+  {
+   "s": "blog-dinheiro-na-viagem",
+   "art": 5,
+   "dos": 0,
+   "hub": 3,
+   "entra": 8,
+   "entraFora": 3
+  },
+  {
+   "s": "blog-documentos-para-viajar",
+   "art": 5,
+   "dos": 0,
+   "hub": 3,
+   "entra": 9,
+   "entraFora": 4
+  },
+  {
+   "s": "blog-esqui-courchevel",
+   "art": 5,
+   "dos": 1,
+   "hub": 1,
+   "entra": 6,
+   "entraFora": 2
+  },
+  {
+   "s": "blog-expresso-do-oriente",
+   "art": 4,
+   "dos": 0,
+   "hub": 3,
+   "entra": 7,
+   "entraFora": 1
+  },
+  {
+   "s": "blog-florianopolis-qual-praia",
+   "art": 5,
+   "dos": 0,
+   "hub": 3,
+   "entra": 8,
+   "entraFora": 2
+  },
+  {
+   "s": "blog-foz-do-iguacu-cataratas",
+   "art": 6,
+   "dos": 0,
+   "hub": 2,
+   "entra": 3,
+   "entraFora": 2
+  },
+  {
+   "s": "blog-gastronomia-san-sebastian",
+   "art": 4,
+   "dos": 0,
+   "hub": 3,
+   "entra": 5,
+   "entraFora": 1
+  },
+  {
+   "s": "blog-glamping-atacama",
+   "art": 4,
+   "dos": 1,
+   "hub": 2,
+   "entra": 5,
+   "entraFora": 2
+  },
+  {
+   "s": "blog-gramado-canela-como-planejar",
+   "art": 6,
+   "dos": 0,
+   "hub": 2,
+   "entra": 6,
+   "entraFora": 3
+  },
+  {
+   "s": "blog-italia-10-dias-roteiro",
+   "art": 5,
+   "dos": 1,
+   "hub": 3,
+   "entra": 3,
+   "entraFora": 2
+  },
+  {
+   "s": "blog-japao-tradicao-futuro",
+   "art": 4,
+   "dos": 1,
+   "hub": 2,
+   "entra": 2,
+   "entraFora": 2
+  },
+  {
+   "s": "blog-lencois-maranhenses-quando-ir",
+   "art": 5,
+   "dos": 0,
+   "hub": 3,
+   "entra": 6,
+   "entraFora": 3
+  },
+  {
+   "s": "blog-lua-de-mel-exclusiva",
+   "art": 4,
+   "dos": 2,
+   "hub": 1,
+   "entra": 1,
+   "entraFora": 3
+  },
+  {
+   "s": "blog-mala-viagem-internacional",
+   "art": 5,
+   "dos": 0,
+   "hub": 2,
+   "entra": 2,
+   "entraFora": 1
+  },
+  {
+   "s": "blog-malas-safari",
+   "art": 4,
+   "dos": 2,
+   "hub": 1,
+   "entra": 2,
+   "entraFora": 3
+  },
+  {
+   "s": "blog-maldivas-vs-seychelles",
+   "art": 4,
+   "dos": 2,
+   "hub": 1,
+   "entra": 1,
+   "entraFora": 3
+  },
+  {
+   "s": "blog-marrocos-alem-marrakech",
+   "art": 4,
+   "dos": 1,
+   "hub": 2,
+   "entra": 3,
+   "entraFora": 2
+  },
+  {
+   "s": "blog-melhor-epoca-viajar",
+   "art": 4,
+   "dos": 0,
+   "hub": 3,
+   "entra": 1,
+   "entraFora": 3
+  },
+  {
+   "s": "blog-noronha-como-planejar",
+   "art": 4,
+   "dos": 1,
+   "hub": 3,
+   "entra": 6,
+   "entraFora": 4
+  },
+  {
+   "s": "blog-passagem-aerea-o-que-conferir",
+   "art": 6,
+   "dos": 0,
+   "hub": 3,
+   "entra": 3,
+   "entraFora": 2
+  },
+  {
+   "s": "blog-patagonia-quando-ir",
+   "art": 4,
+   "dos": 1,
+   "hub": 2,
+   "entra": 8,
+   "entraFora": 3
+  },
+  {
+   "s": "blog-petra-amanhecer",
+   "art": 4,
+   "dos": 2,
+   "hub": 1,
+   "entra": 3,
+   "entraFora": 3
+  },
+  {
+   "s": "blog-primeira-trilha",
+   "art": 4,
+   "dos": 2,
+   "hub": 1,
+   "entra": 4,
+   "entraFora": 3
+  },
+  {
+   "s": "blog-quando-algo-da-errado",
+   "art": 5,
+   "dos": 0,
+   "hub": 3,
+   "entra": 7,
+   "entraFora": 2
+  },
+  {
+   "s": "blog-retiros-wellness-suica",
+   "art": 4,
+   "dos": 1,
+   "hub": 2,
+   "entra": 1,
+   "entraFora": 2
+  },
+  {
+   "s": "blog-rota-da-seda-uzbequistao",
+   "art": 4,
+   "dos": 1,
+   "hub": 2,
+   "entra": 4,
+   "entraFora": 2
+  },
+  {
+   "s": "blog-rota-do-vinho-mendocina",
+   "art": 4,
+   "dos": 1,
+   "hub": 2,
+   "entra": 2,
+   "entraFora": 2
+  },
+  {
+   "s": "blog-rota-romantica-vale-dos-sinos",
+   "art": 6,
+   "dos": 0,
+   "hub": 2,
+   "entra": 4,
+   "entraFora": 2
+  },
+  {
+   "s": "blog-safari-fotografico",
+   "art": 4,
+   "dos": 2,
+   "hub": 1,
+   "entra": 1,
+   "entraFora": 3
+  },
+  {
+   "s": "blog-seguro-viagem",
+   "art": 5,
+   "dos": 0,
+   "hub": 2,
+   "entra": 6,
+   "entraFora": 3
+  },
+  {
+   "s": "blog-serra-catarinense-urubici-sao-joaquim",
+   "art": 6,
+   "dos": 0,
+   "hub": 2,
+   "entra": 8,
+   "entraFora": 2
+  },
+  {
+   "s": "blog-slow-travel-europa",
+   "art": 4,
+   "dos": 2,
+   "hub": 1,
+   "entra": 3,
+   "entraFora": 3
+  },
+  {
+   "s": "blog-turismo-sustentavel",
+   "art": 4,
+   "dos": 1,
+   "hub": 2,
+   "entra": 2,
+   "entraFora": 2
+  },
+  {
+   "s": "blog-vale-dos-vinhedos-bento-goncalves",
+   "art": 6,
+   "dos": 0,
+   "hub": 2,
+   "entra": 4,
+   "entraFora": 2
+  },
+  {
+   "s": "blog-viagem-multigeracional",
+   "art": 5,
+   "dos": 0,
+   "hub": 2,
+   "entra": 4,
+   "entraFora": 1
+  },
+  {
+   "s": "blog-viajar-com-criancas-pequenas",
+   "art": 5,
+   "dos": 0,
+   "hub": 3,
+   "entra": 6,
+   "entraFora": 2
+  },
+  {
+   "s": "blog-viajar-sozinho",
+   "art": 5,
+   "dos": 0,
+   "hub": 3,
+   "entra": 3,
+   "entraFora": 1
+  },
+  {
+   "s": "blog-voos-longos",
+   "art": 4,
+   "dos": 1,
+   "hub": 3,
+   "entra": 6,
+   "entraFora": 2
+  }
+ ],
+ "dossieDe": {
+  "alpes-suicos": [
+   "blog-arrumar-mala-inverno",
+   "blog-retiros-wellness-suica"
+  ],
+  "antartida": [],
+  "atacama": [
+   "blog-glamping-atacama"
+  ],
+  "bali": [],
+  "banff": [
+   "blog-banff-quando-ir"
+  ],
+  "bora-bora": [
+   "blog-lua-de-mel-exclusiva"
+  ],
+  "capadocia": [
+   "blog-balao-capadocia"
+  ],
+  "cidade-do-cabo": [],
+  "costa-amalfitana": [
+   "blog-amalfitana-de-barco",
+   "blog-italia-10-dias-roteiro",
+   "blog-slow-travel-europa"
+  ],
+  "courchevel": [
+   "blog-arrumar-mala-inverno",
+   "blog-esqui-courchevel"
+  ],
+  "dolomitas": [
+   "blog-primeira-trilha"
+  ],
+  "egito": [
+   "blog-petra-amanhecer"
+  ],
+  "grande-barreira-de-coral": [],
+  "ilha-de-pascoa": [],
+  "india": [],
+  "islandia": [
+   "blog-aurora-boreal-islandia"
+  ],
+  "japao": [
+   "blog-japao-tradicao-futuro",
+   "blog-voos-longos"
+  ],
+  "laponia": [
+   "blog-aurora-boreal-islandia"
+  ],
+  "machu-picchu": [],
+  "maldivas": [
+   "blog-lua-de-mel-exclusiva",
+   "blog-maldivas-vs-seychelles"
+  ],
+  "marrakech": [
+   "blog-marrocos-alem-marrakech"
+  ],
+  "namibia": [
+   "blog-malas-safari"
+  ],
+  "noronha": [
+   "blog-noronha-como-planejar"
+  ],
+  "nova-zelandia": [],
+  "paris": [
+   "blog-slow-travel-europa"
+  ],
+  "patagonia": [
+   "blog-patagonia-quando-ir",
+   "blog-primeira-trilha"
+  ],
+  "petra": [
+   "blog-petra-amanhecer"
+  ],
+  "ruanda": [
+   "blog-safari-fotografico",
+   "blog-turismo-sustentavel"
+  ],
+  "santiago": [
+   "blog-rota-do-vinho-mendocina"
+  ],
+  "santorini": [],
+  "seychelles": [
+   "blog-maldivas-vs-seychelles"
+  ],
+  "sri-lanka": [],
+  "tanzania": [
+   "blog-malas-safari",
+   "blog-safari-fotografico"
+  ],
+  "uzbequistao": [
+   "blog-rota-da-seda-uzbequistao"
+  ],
+  "vietna": []
+ }
+}
