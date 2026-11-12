@@ -57,7 +57,7 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all';this.onload=null">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
-    <link rel="stylesheet" href="terra.css?v=193c2bda">
+    <link rel="stylesheet" href="terra.css?v=08c4752b">
     <!-- Meta Pixel Code -->
     <script>
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
@@ -247,15 +247,24 @@
         </div>
     </section>
 
-    <section class="serv-cotacao">
+    <section class="serv-cotacao" id="compra-avulsa">
         <div class="container">
-            <div class="cotacao-caixa">
+            <div class="cotacao-caixa cotacao-passos">
                 <div class="cotacao-texto">
-                    <span class="eyebrow">Prefere começar sozinho</span>
-                    <h2>Monte sua cotação</h2>
-                    <p>Às vezes o que você precisa é só uma passagem, uma diária ou um seguro. No nosso portal você pesquisa e monta tudo no seu tempo. Dependendo da compra, você fecha ali mesmo; em outras, a cotação chega para a gente autorizar antes. Qualquer dúvida no caminho, é só chamar.</p>
+                    <span class="eyebrow">Compra avulsa</span>
+                    <h2>Só precisa de uma passagem, uma diária ou um seguro?</h2>
+                    <p>Nem toda compra precisa de consultoria. Para um aéreo simples, uma reserva de hotel ou um seguro, você pode pesquisar e montar sozinho no nosso portal, no seu tempo.</p>
+                    <p class="cotacao-aviso"><strong>Importante:</strong> o portal é uma ferramenta de compra, não de planejamento. Roteiro, escolha de hospedagem, ritmo da viagem e acompanhamento acontecem na consultoria.</p>
                 </div>
-                <a class="btn-primary btn-large" href="https://app.onertravel.com/terraventureviagens/home" target="_blank" rel="noopener">Abrir o portal</a>
+                <ol class="cotacao-lista">
+                    <li><strong>Abra o portal.</strong> Ele abre em outra aba, no ambiente da Terra Venture.</li>
+                    <li><strong>Pesquise e monte.</strong> Escolha voo, hotel ou seguro e monte a sua seleção com calma.</li>
+                    <li><strong>Finalize.</strong> Dependendo da compra, você fecha ali mesmo; em outras, a cotação chega para a gente autorizar antes e retornamos com você.</li>
+                </ol>
+                <div class="cotacao-acoes">
+                    <a class="btn-primary btn-large" href="https://app.onertravel.com/terraventureviagens/home" target="_blank" rel="noopener">Abrir o portal</a>
+                    <a class="cotacao-alt" href="/contato">Prefere que a gente monte? Fale com a gente</a>
+                </div>
             </div>
         </div>
     </section>
@@ -300,7 +309,7 @@
                     <li><a href="/contato">Contato</a></li>
                     <li><a href="/servicos">Serviços</a></li>
                     <li><a href="/cruzeiros">Cruzeiros</a></li>
-                    <li><a href="https://app.onertravel.com/terraventureviagens/home" target="_blank" rel="noopener">Monte sua cotação</a></li>
+                    <li><a href="/servicos#compra-avulsa">Compra avulsa</a></li>
                     <li><a href="/destinos">Destinos</a></li>
                     <li><a href="/melhor-epoca">Melhor época para viajar</a></li>
                     <li><a href="/blog">Diário de Bordo</a></li>

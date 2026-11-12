@@ -2105,3 +2105,16 @@ a.prova-item:hover strong { border-color: var(--terra-deep); }
 .diario-todos a { color: var(--espresso); border-bottom: 1px solid rgba(42, 35, 27, 0.35); padding-bottom: 3px; font-size: 0.95rem; }
 .diario-todos a:hover { border-color: var(--terra-deep); }
 @media (max-width: 760px) { .no-diario { padding: 56px 0; } }
+
+/* Compra avulsa (servicos) */
+.cotacao-passos { grid-template-columns: 1fr; gap: 28px; }
+.cotacao-texto p + p { margin-top: 14px; }
+.cotacao-aviso { border-left: 3px solid var(--sage); padding-left: 16px; }
+.cotacao-lista { list-style: none; counter-reset: passo; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 0; padding: 0; }
+.cotacao-lista li { counter-increment: passo; position: relative; padding: 18px 18px 18px 56px; background: rgba(255,255,255,.55); border-radius: 12px; color: var(--espresso-soft); line-height: 1.6; }
+.cotacao-lista li::before { content: counter(passo); position: absolute; left: 18px; top: 16px; width: 28px; height: 28px; border-radius: 50%; background: var(--sage); color: #fff; font-weight: 600; display: grid; place-items: center; font-size: .9rem; }
+.cotacao-lista strong { color: var(--espresso); display: block; margin-bottom: 4px; }
+.cotacao-acoes { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; }
+.cotacao-alt { color: var(--espresso); text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 860px) { .cotacao-lista { grid-template-columns: 1fr; } }
+@media (max-width: 600px) { .cotacao-acoes .btn-primary { width: 100%; text-align: center; } }
