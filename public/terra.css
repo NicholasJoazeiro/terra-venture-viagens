@@ -2072,3 +2072,8 @@ a.prova-item:hover strong { border-color: var(--terra-deep); }
     border-bottom: 1px solid transparent; transition: border-color 0.3s;
 }
 .leia-tambem a:hover { border-color: var(--moss); }
+
+
+/* o mapa carrega sob demanda; se o Leaflet nao vier, fica a saida em texto */
+.map-erro { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; padding: 24px; color: var(--bone-dim); }
+.map-erro a { color: var(--bone); border-bottom: 1px solid var(--line-dark); }

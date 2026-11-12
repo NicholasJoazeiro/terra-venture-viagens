@@ -266,7 +266,28 @@ document.addEventListener('DOMContentLoaded', () => {
        7. EXPLORADOR GLOBAL INTERATIVO (MAPA)
        ========================================================================= */
     const mapContainer = document.getElementById('map-main');
-    if (mapContainer) {
+    // Leaflet e o GeoJSON de fronteiras pesam ~274KB e vem de terceiros. Nada
+    // disso precisa existir antes de a pessoa chegar perto do mapa.
+    function carregarLeaflet() {
+        if (window.L) return Promise.resolve();
+        if (window.__leafletCarregando) return window.__leafletCarregando;
+        window.__leafletCarregando = new Promise((ok, falhou) => {
+            const css = document.createElement('link');
+            css.rel = 'stylesheet';
+            css.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+            css.crossOrigin = '';
+            document.head.appendChild(css);
+            const js = document.createElement('script');
+            js.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+            js.crossOrigin = '';
+            js.onload = ok;
+            js.onerror = falhou;
+            document.head.appendChild(js);
+        });
+        return window.__leafletCarregando;
+    }
+
+    function montarMapa() {
         // Inicializa o Mapa
         const map = L.map('map-main', {
             center: [20, 10],
@@ -567,7 +588,37 @@ document.addEventListener('DOMContentLoaded', () => {
         function hidePreview() {
             previewCard.classList.remove('active');
         }
+        }
+
+    if (mapContainer) {
+        // Tres gatilhos para a mesma carga, porque depender so do
+        // IntersectionObserver ja deixou secao em branco neste site: ele
+        // entrega em lote e em rolagem rapida o elemento ja passou.
+        let pedido = false;
+        function talvezCarregar() {
+            if (pedido) return;
+            const r = mapContainer.getBoundingClientRect();
+            if (r.top > window.innerHeight + 500) return;   // ainda longe
+            pedido = true;
+            window.removeEventListener('scroll', talvezCarregar);
+            carregarLeaflet().then(montarMapa).catch(() => {
+                mapContainer.insertAdjacentHTML('beforeend',
+                    '<p class="map-erro">Não foi possível carregar o mapa agora. ' +
+                    '<a href="/destinos">Ver a lista de destinos</a>.</p>');
+            });
+        }
+        if ('IntersectionObserver' in window) {
+            const vigia = new IntersectionObserver((entradas, o) => {
+                if (!entradas.some(e => e.isIntersecting)) return;
+                o.disconnect();
+                talvezCarregar();
+            }, { rootMargin: '500px 0px' });
+            vigia.observe(mapContainer);
+        }
+        window.addEventListener('scroll', talvezCarregar, { passive: true });
+        talvezCarregar();   // mapa ja visivel em tela alta ou com ancora #explorador
     }
+
 
     /* =========================================================================
        8. FAQ ACCORDION
