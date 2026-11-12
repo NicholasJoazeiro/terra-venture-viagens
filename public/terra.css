@@ -2118,3 +2118,8 @@ a.prova-item:hover strong { border-color: var(--terra-deep); }
 .cotacao-alt { color: var(--espresso); text-decoration: underline; text-underline-offset: 4px; }
 @media (max-width: 860px) { .cotacao-lista { grid-template-columns: 1fr; } }
 @media (max-width: 600px) { .cotacao-acoes .btn-primary { width: 100%; text-align: center; } }
+
+/* Selo SuperTur: o SVG ja traz fundo escuro e cantos arredondados */
+.supertur-selo { display: block; flex: none; line-height: 0; transition: transform 0.3s var(--ease); }
+.supertur-selo:hover { transform: translateY(-2px); }
+.supertur-selo img { display: block; width: 220px; height: 56px; }
