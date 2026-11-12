@@ -27,9 +27,7 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all';this.onload=null">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
-    <!-- Leaflet -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" media="print" onload="this.media='all';this.onload=null" />
-    <noscript><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" /></noscript>
+    <noscript></noscript>
     <!-- O hero e o LCP da home. Dois preloads com media, para o navegador pedir
          o recorte certo antes de descobrir a tag <picture>. -->
     <link rel="preload" as="image" media="(max-width: 700px)" href="hero-lago-molveno-vertical.webp" fetchpriority="high">
@@ -38,21 +36,49 @@
           imagesizes="100vw" href="hero-lago-molveno-1600.webp" fetchpriority="high">
 
     <!-- Estilo Terra Venture -->
-    <link rel="stylesheet" href="terra.css?v=0cd21640">
+    <link rel="stylesheet" href="terra.css?v=0197e125">
 
-    <meta name="description" content="Terra Venture Viagens: consultoria de viagem sob medida e roteiros exclusivos desenhados à mão, do primeiro sonho ao retorno pra casa.">
+    <meta name="description" content="Consultoria de viagem sob medida, de Ivoti, RS, para clientes de todo o Brasil. Roteiros desenhados um por vez, cruzeiros e suporte no WhatsApp durante a viagem.">
 
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org", "@type": "TravelAgency",
-      "name": "Terra Venture Viagens", "image": "icon.webp",
-      "@id": "https://www.terraventureviagens.com.br/", "url": "https://www.terraventureviagens.com.br/",
+      "@context": "https://schema.org",
+      "@type": "TravelAgency",
+      "@id": "https://terraventureviagens.com.br/#organizacao",
+      "name": "Terra Venture Viagens",
+      "legalName": "Terra Venture Agência de Viagens Ltda",
+      "url": "https://terraventureviagens.com.br/",
+      "logo": "https://terraventureviagens.com.br/icon.webp",
+      "image": "https://terraventureviagens.com.br/og-image.jpg",
       "telephone": "+5551994596233",
+      "email": "contato@terraventureviagens.com.br",
       "foundingDate": "2025-11",
-      "address": { "@type": "PostalAddress", "addressLocality": "Ivoti", "addressRegion": "RS", "addressCountry": "BR" },
-      "areaServed": "BR",
+      "taxID": "63.865.418/0001-81",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Ivoti",
+        "addressRegion": "RS",
+        "addressCountry": "BR"
+      },
+      "areaServed": { "@type": "Country", "name": "Brasil" },
       "description": "Consultoria de viagem sob medida e cruzeiros, de Ivoti, RS, para clientes de todo o Brasil.",
-      "sameAs": ["https://www.instagram.com/terraventureviagens/"]
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:00", "closes": "18:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "08:30", "closes": "12:00"
+        }
+      ],
+      "sameAs": [
+        "https://www.instagram.com/terraventureviagens/",
+        "https://www.facebook.com/terraventureviagens",
+        "https://maps.app.goo.gl/fRx9mZDwVB4Kp1466"
+      ]
     }
     </script>
     <!-- Meta Pixel Code -->
@@ -87,7 +113,7 @@
                     <li><a href="/melhor-epoca">Melhor Época</a></li>
                     <li><a href="/blog">Diário</a></li>
                     <li><a href="/historia">A Terra Venture</a></li>
-                    <li><a href="https://wa.me/5551994596233?text=Olá! Gostaria de uma consultoria de viagem." class="btn-primary nav-btn" target="_blank" rel="noopener">Falar no WhatsApp</a></li>
+                    <li><a href="https://wa.me/5551994596233?text=Ol%C3%A1%2C%20Nicholas%20e%20Giovana!%20Gostaria%20de%20conversar%20sobre%20minha%20pr%C3%B3xima%20viagem." class="btn-primary nav-btn" target="_blank" rel="noopener">Falar no WhatsApp</a></li>
                 </ul>
             </nav>
             <div class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></div>
@@ -111,7 +137,7 @@
             <h1 class="hero-title">Tem lugar no mundo que muda quem volta.</h1>
             <p class="hero-subtitle">Roteiros sob medida e cruzeiros, desenhados um por vez. A gente cuida das reservas, dos documentos e do suporte enquanto você está fora.</p>
             <div class="hero-cta">
-                <a class="btn-primary btn-large" href="https://wa.me/5551994596233?text=Olá Nicholas e Giovana! Quero conversar sobre uma viagem." target="_blank" rel="noopener">Falar com Nicholas e Giovana</a>
+                <a class="btn-primary btn-large" href="https://wa.me/5551994596233?text=Ol%C3%A1%2C%20Nicholas%20e%20Giovana!%20Gostaria%20de%20conversar%20sobre%20minha%20pr%C3%B3xima%20viagem." target="_blank" rel="noopener">Falar com Nicholas e Giovana</a>
                 <a class="link-plain" href="#briefing">Prefiro contar o básico primeiro</a>
             </div>
         </div>
@@ -121,29 +147,23 @@
         </div>
     </section>
 
-    <section class="faixa-prova" aria-label="O que os clientes dizem">
+    <section class="faixa-prova" aria-label="Credenciais da Terra Venture">
         <div class="container faixa-prova-grid">
-            <figure class="prova-mini">
-                <img width="200" height="200" loading="lazy" decoding="async" src="michele-e-daniel-clientes-paris-londres-avatar.webp" alt="Michele e Daniel, clientes da Terra Venture">
-                <figcaption>
-                    <q>Paris e Londres foram mais do que esperávamos.</q>
-                    <span class="prova-mini-nome">Michele e Daniel, Paris e Londres</span>
-                </figcaption>
-            </figure>
-            <figure class="prova-mini">
-                <img width="200" height="200" loading="lazy" decoding="async" src="joice-e-rui-clientes-bonito-ms-avatar.webp" alt="Joice &amp; Rui, cliente da Terra Venture">
-                <figcaption>
-                    <q>Atendimento acolhedor e eficiente, do início ao pós-venda.</q>
-                    <span class="prova-mini-nome">Joice &amp; Rui, Bonito / MS</span>
-                </figcaption>
-            </figure>
-            <figure class="prova-mini">
-                <img width="200" height="200" loading="lazy" decoding="async" src="julia-e-manuela-clientes-buenos-aires-avatar.webp" alt="Júlia &amp; Manuela, cliente da Terra Venture">
-                <figcaption>
-                    <q>Nossa experiência foi ótima!</q>
-                    <span class="prova-mini-nome">Júlia &amp; Manuela, Buenos Aires</span>
-                </figcaption>
-            </figure>
+            <!-- TODO(nicholas): quando tiver o numero de avaliacoes do Google na
+                 data da publicacao, acrescente aqui, por exemplo
+                 "em 12 avaliações". Deixei de fora porque nao invento numero. -->
+            <a class="prova-item" href="https://maps.app.goo.gl/fRx9mZDwVB4Kp1466" target="_blank" rel="noopener">
+                <strong>5,0 no Google</strong>
+                <span>Ver as avaliações da agência</span>
+            </a>
+            <a class="prova-item" href="https://cadastur.turismo.gov.br/cadastur/#!/public/qrcode/63865418000181" target="_blank" rel="noopener">
+                <strong>Cadastrada no Cadastur</strong>
+                <span>Agência de turismo registrada no Ministério do Turismo</span>
+            </a>
+            <div class="prova-item prova-item-estatico">
+                <strong>Desde novembro de 2025</strong>
+                <span>Consultoria de Ivoti, RS, para clientes do Brasil inteiro</span>
+            </div>
         </div>
     </section>
 
@@ -187,7 +207,7 @@
         <div class="container">
             <div class="de-head">
                 <div>
-                    <h2 class="de-title">Cinco destinos com dossiê pronto</h2>
+                    <h2 class="de-title">Quatro destinos com dossiê pronto</h2>
                     <p class="de-sub">Cada um tem página própria, com melhor época, o que ver e quanto tempo faz sentido ficar.</p>
                 </div>
                 <div class="vibe-filter" role="group" aria-label="Filtrar os destinos por vibe">
@@ -208,8 +228,8 @@
                      coloca-los aqui na frente. Vale criar as tres paginas. -->
                 <a class="dossie-row" href="/paris" data-vibe="cultura romance">
                     <figure class="dossie-media">
-                        <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg?auto=compress&cs=tinysrgb&w=800" alt="A Torre Eiffel vista dos jardins do Trocadéro, num dia de céu azul com nuvens altas">
-                        <figcaption class="dossie-legenda">Torre Eiffel, Paris <!-- TODO(nicholas): ano da foto, se souber --></figcaption>
+                        <img width="800" height="533" loading="lazy" decoding="async" src="https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg?auto=compress&cs=tinysrgb&w=800" alt="A Torre Eiffel vista dos jardins do Trocadéro, num dia de céu azul com nuvens altas">
+                        <figcaption class="dossie-legenda">Torre Eiffel, Paris</figcaption>
                     </figure>
                     <div class="dossie-body">
                         <span class="dossie-regiao">Europa</span>
@@ -270,22 +290,10 @@
                         <span class="dossie-link">Ver o dossiê <i class="fas fa-arrow-right"></i></span>
                     </div>
                 </a>
-                <a class="dossie-row" href="/japao" data-vibe="cultura">
-                    <figure class="dossie-media">
-                        <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/3408353/pexels-photo-3408353.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Pagode vermelho de cinco andares em primeiro plano e o monte Fuji coberto de neve ao fundo">
-                        <figcaption class="dossie-legenda">Monte Fuji, Japão <!-- TODO(nicholas): ano da foto, se souber --></figcaption>
-                    </figure>
-                    <div class="dossie-body">
-                        <span class="dossie-regiao">Ásia</span>
-                        <h3>Japão Clássico</h3>
-                        <p class="dossie-line">Tradição milenar e hospitalidade que beira o sagrado, do templo ao trem-bala.</p>
-                        <div class="dossie-meta">
-                            <span>Vibe<b>Cultura & tradição</b></span>
-                            <span>Melhor época<b>Mar, Mai</b></span>
-                        </div>
-                        <span class="dossie-link">Ver o dossiê <i class="fas fa-arrow-right"></i></span>
-                    </div>
-                </a>
+                <!-- TODO(nicholas): a linha do Japão saiu daqui porque a foto era de
+                     banco de imagem, e o brief pede nada de banco em destaque. A
+                     página /japao continua no ar. Me manda uma foto sua ou de
+                     cliente no Japão e eu devolvo a linha. -->
             </div>
             <div class="de-cta">
                 <a href="/destinos" class="btn-primary">Ver todos os destinos</a>
@@ -400,7 +408,7 @@
                     <p>Acreditamos que planejar uma viagem deveria ser tão prazeroso quanto vivê-la. Por isso assumimos toda a complexidade, a logística, as reservas, os imprevistos, pra que no dia você só precise acordar e ir.</p>
                     <p>Cada roteiro nasce de uma conversa, não de um catálogo. É desenhado à mão, com a precisão de um arquiteto e a alma de quem também ama partir.</p>
                     <p class="signature">Nicholas &amp; Giovana, Terra Venture</p>
-                    <a href="https://wa.me/5551994596233?text=Olá Nicholas e Giovana! Gostaria de conversar sobre minha próxima viagem." class="btn-primary" target="_blank" rel="noopener" style="margin-top:20px;">Mandar mensagem no WhatsApp</a>
+                    <a href="https://wa.me/5551994596233?text=Ol%C3%A1%2C%20Nicholas%20e%20Giovana!%20Gostaria%20de%20conversar%20sobre%20minha%20pr%C3%B3xima%20viagem." class="btn-primary" target="_blank" rel="noopener" style="margin-top:20px;">Mandar mensagem no WhatsApp</a>
                     <a class="link-plain" href="/historia" style="margin-left:18px;">Conheça nossa história</a>
                 </div>
             </div>
@@ -512,9 +520,14 @@
                 </div>
             </form>
 
+            <noscript>
+                <p class="briefing-alternativa">
+                    O briefing precisa de JavaScript para funcionar. <a href="https://wa.me/5551994596233?text=Ol%C3%A1%2C%20Nicholas%20e%20Giovana!%20Gostaria%20de%20conversar%20sobre%20minha%20pr%C3%B3xima%20viagem." target="_blank" rel="noopener">Fale direto no WhatsApp</a> ou use o formulário no fim da página.
+                </p>
+            </noscript>
             <p class="briefing-alternativa">
                 Prefere escrever com calma? <a href="#contato">Use o formulário no fim da página</a>.
-                Prefere falar agora? <a href="https://wa.me/5551994596233?text=Olá Nicholas e Giovana! Quero conversar sobre uma viagem." target="_blank" rel="noopener">Chame no WhatsApp</a>.
+                Prefere falar agora? <a href="https://wa.me/5551994596233?text=Ol%C3%A1%2C%20Nicholas%20e%20Giovana!%20Gostaria%20de%20conversar%20sobre%20minha%20pr%C3%B3xima%20viagem." target="_blank" rel="noopener">Chame no WhatsApp</a>.
             </p>
         </div>
     </section>
@@ -692,7 +705,7 @@
                     <div class="contact-details">
                         <div class="detail-item">
                             <i class="fab fa-whatsapp"></i>
-                            <div><h3 class="detail-titulo">WhatsApp</h3><a href="https://wa.me/5551994596233" target="_blank">+55 51 99459-6233</a></div>
+                            <div><h3 class="detail-titulo">WhatsApp</h3><a href="https://wa.me/5551994596233?text=Ol%C3%A1%2C%20Nicholas%20e%20Giovana!%20Gostaria%20de%20conversar%20sobre%20minha%20pr%C3%B3xima%20viagem." target="_blank">+55 51 99459-6233</a></div>
                         </div>
                         <div class="detail-item">
                             <i class="far fa-envelope"></i>
@@ -701,24 +714,27 @@
                     </div>
                 </div>
                 <div class="contato-form">
-                    <form id="briefingForm">
+                    <!-- action e method de verdade: sem JS o envio abre a conversa no WhatsApp
+                         com o texto escrito, em vez de recarregar a home. Os campos nao
+                         tinham name, entao nada era enviado. -->
+                    <form id="briefingForm" action="https://wa.me/5551994596233" method="get" target="_blank">
                         <div class="form-group">
                             <label for="name">Nome completo</label>
-                            <input type="text" id="name" placeholder="Como gosta de ser chamado" required>
+                            <input type="text" id="name" name="nome" autocomplete="name" placeholder="Como gosta de ser chamado" required>
                         </div>
                         <div class="form-group">
                             <label for="phone">WhatsApp</label>
-                            <input type="tel" id="phone" placeholder="(00) 00000-0000" required>
+                            <input type="tel" id="phone" name="whatsapp" autocomplete="tel" placeholder="(00) 00000-0000" required>
                         </div>
                         <div class="form-group">
                             <label for="destination">Destino dos sonhos (ou deixe a gente sugerir)</label>
-                            <input type="text" id="destination" placeholder="Ex: Safári na África, Costa Amalfitana...">
+                            <input type="text" id="destination" name="destino" placeholder="Ex: Safári na África, Costa Amalfitana...">
                         </div>
                         <div class="form-group">
                             <label for="message">Conte um pouco sobre a ocasião</label>
-                            <textarea id="message" rows="4" placeholder="Ex: Lua de mel, aniversário, viagem em família..." required></textarea>
+                            <textarea id="message" name="text" rows="4" placeholder="Ex: Lua de mel, aniversário, viagem em família..." required></textarea>
                         </div>
-                        <button type="submit" class="btn-primary w-100 mt-2">Enviar solicitação</button>
+                        <button type="submit" class="btn-primary w-100 mt-2">Enviar pelo WhatsApp</button>
                     </form>
                 </div>
             </div>
@@ -741,19 +757,20 @@
                     <h4>Navegação</h4>
                     <ul>
                         <li><a href="/historia">A Terra Venture</a></li>
-                        <li><a href="/servicos">Serviços</a></li>
+                        <li><a href="/contato">Contato</a></li>
+                    <li><a href="/servicos">Serviços</a></li>
                     <li><a href="/cruzeiros">Cruzeiros</a></li>
                     <li><a href="https://app.onertravel.com/terraventureviagens/home" target="_blank" rel="noopener">Monte sua cotação</a></li>
                     <li><a href="/destinos">Destinos</a></li>
                     <li><a href="/melhor-epoca">Melhor época para viajar</a></li>
-                        <li><a href="#contato">Contato</a></li>
+                        <li><a href="#contato">Formulário de contato</a></li>
                         <li><a href="/transfer-executivo">Transfer Executivo</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
                     <h4>Contato</h4>
                     <ul>
-                        <li><a href="https://wa.me/5551994596233" target="_blank">WhatsApp</a></li>
+                        <li><a href="https://wa.me/5551994596233?text=Ol%C3%A1%2C%20Nicholas%20e%20Giovana!%20Gostaria%20de%20conversar%20sobre%20minha%20pr%C3%B3xima%20viagem." target="_blank">WhatsApp</a></li>
                         <li><a href="mailto:contato@terraventureviagens.com.br">Email</a></li>
                         <li><a href="https://www.instagram.com/terraventureviagens/" target="_blank">Instagram</a></li>
                     </ul>
@@ -762,17 +779,25 @@
                     <h4>A empresa</h4>
                     <ul>
                         <li><span>Sede</span> Ivoti, RS, no Vale dos Sinos</li>
-                        <!-- TODO(nicholas): descomente cada linha abaixo assim que
-                             tiver o dado. Deixei comentado de proposito: marcador
-                             no rodape de 76 paginas pega pior do que linha nenhuma.
-                        <li><span>Cadastur</span> [numero]</li>
-                        <li><span>CNPJ</span> [numero]</li>
-                        <li><span>Atuacao</span> desde novembro de 2025</li>
-                        <li><span>Parcerias</span> [operadoras e representacoes]</li>
-                        -->
+                        <li><span>Atuação</span> desde novembro de 2025</li>
                     </ul>
                 </div>
 </div>
+        </div>
+        <div class="footer-selo-faixa">
+            <div class="container">
+            <div class="footer-selo">
+                <a class="cadastur-selo" href="https://cadastur.turismo.gov.br/cadastur/#!/public/qrcode/63865418000181" target="_blank" rel="noopener"
+                   aria-label="Consultar o cadastro da Terra Venture no Cadastur, site do Ministério do Turismo">
+                    <img width="420" height="85" loading="lazy" decoding="async" src="cadastur.webp" alt="Cadastur, fazendo o turismo legal">
+                </a>
+                <p class="cadastur-texto">
+                    <strong>Agência de turismo cadastrada no Ministério do Turismo</strong>
+                    <span>Terra Venture Agência de Viagens Ltda &middot; CNPJ 63.865.418/0001-81</span>
+                    <span>Cadastur: Agência de Turismo, mesmo número do CNPJ &middot; válido até 12/01/2028 &middot; Ivoti, RS</span>
+                </p>
+            </div>
+            </div>
         </div>
         <div class="footer-bottom">
             <div class="container"><p>&copy; 2026 Terra Venture Viagens. Todos os direitos reservados.</p></div>
@@ -780,7 +805,7 @@
     </footer>
 
     <!-- WhatsApp Float -->
-    <a href="https://wa.me/5551994596233" class="whatsapp-float pulse" target="_blank" aria-label="Falar com um Guia Especialista" data-tooltip="Falar com um Guia Especialista">
+    <a href="https://wa.me/5551994596233?text=Ol%C3%A1%2C%20Nicholas%20e%20Giovana!%20Gostaria%20de%20conversar%20sobre%20minha%20pr%C3%B3xima%20viagem." class="whatsapp-float pulse" target="_blank" aria-label="Falar com um Guia Especialista" data-tooltip="Falar com um Guia Especialista">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -790,8 +815,7 @@
     </div>
 
     <!-- Scripts -->
-    <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
-    <script src="script.js?v=ff305395"></script>
+    <script src="script.js?v=18e2aec0"></script>
 </body>
 
 </html>
