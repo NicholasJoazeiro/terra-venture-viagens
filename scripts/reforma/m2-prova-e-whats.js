@@ -7,7 +7,7 @@ const fs = require('fs');
 const path = require('path');
 const l = require('./lib.js');
 
-const MAPS = 'https://www.google.com/maps/place/Terra+Venture+Viagens/';
+const MAPS = 'https://maps.app.goo.gl/fRx9mZDwVB4Kp1466';
 
 /* =======================================================================
    1. faixa de prova

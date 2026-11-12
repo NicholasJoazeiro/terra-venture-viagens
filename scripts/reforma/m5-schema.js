@@ -57,7 +57,7 @@ const BASE = 'https://terraventureviagens.com.br';
       "sameAs": [
         "https://www.instagram.com/terraventureviagens/",
         "https://www.facebook.com/terraventureviagens",
-        "https://www.google.com/maps/place/Terra+Venture+Viagens/"
+        "https://maps.app.goo.gl/fRx9mZDwVB4Kp1466"
       ]
     }
     </script>`;
