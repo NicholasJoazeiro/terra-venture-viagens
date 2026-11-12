@@ -1736,11 +1736,14 @@ p, li, .hero-subtitle, .section-desc, .lead, .lead-text, .testimonial-text, .sto
 /* Eram quatro colunas desiguais, duas delas so com colchete vazio no lugar de
    numero. Agora sao tres clientes de verdade, em colunas iguais. */
 .faixa-prova-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 44px; align-items: start; }
-.prova-mini { display: flex; align-items: flex-start; gap: 16px; margin: 0; }
-.prova-mini img { width: 60px; height: 60px; border-radius: 8px; object-fit: cover; flex: none; }
-.prova-mini figcaption { display: flex; flex-direction: column; gap: 7px; }
-.prova-mini q { font-family: var(--serif); font-size: 1.02rem; line-height: 1.45; color: var(--espresso); text-wrap: pretty; }
-.prova-mini-nome { font-size: 0.78rem; letter-spacing: 0.04em; color: var(--espresso-soft); }
+/* A faixa repetia tres clientes que ja aparecem inteiros na secao de
+   depoimentos. Agora traz credencial, que e outra natureza de prova:
+   nota do Google, registro no Cadastur e o primeiro ano da agencia. */
+.prova-item { display: flex; flex-direction: column; gap: 5px; color: inherit; }
+.prova-item strong { font-family: var(--serif); font-weight: 400; font-size: 1.32rem; color: var(--moss); }
+.prova-item span { font-size: 0.88rem; color: var(--espresso-soft); line-height: 1.5; text-wrap: pretty; }
+a.prova-item strong { border-bottom: 1px solid rgba(62, 90, 68, 0.3); padding-bottom: 2px; align-self: flex-start; transition: border-color 0.3s; }
+a.prova-item:hover strong { border-color: var(--terra-deep); }
 
 /* ======================= FASE 3: BLOCOS OPCIONAIS ======================= */
 /* Ficam comentados no HTML ate existir arquivo. Ver README-prova-social.md. */
@@ -1989,3 +1992,83 @@ p, li, .hero-subtitle, .section-desc, .lead, .lead-text, .testimonial-text, .sto
         radial-gradient(62% 82% at 50% 48%, rgba(13, 24, 32, 0.72) 0%, rgba(13, 24, 32, 0.38) 56%, rgba(13, 24, 32, 0.06) 90%),
         linear-gradient(180deg, rgba(13, 24, 32, 0.44) 0%, rgba(13, 24, 32, 0.08) 30%, rgba(13, 24, 32, 0.08) 70%, rgba(26, 38, 33, 0.52) 100%);
 }
+
+
+/* ======================= SELO DO CADASTUR ======================= */
+/* O logo oficial tem letra azul-escura, entao precisa de caixa branca sobre o
+   rodape escuro. O arquivo ja vem recortado, sem margem: nada de object-fit. */
+.footer-selo-faixa { border-top: 1px solid var(--line-dark); padding: 26px 0; }
+.footer-selo { display: flex; align-items: center; justify-content: center; gap: 22px; flex-wrap: wrap; }
+.cadastur-selo {
+    display: block; flex: none; background: #fff; border-radius: 10px; padding: 10px 16px;
+    transition: transform 0.3s var(--ease);
+}
+.cadastur-selo:hover { transform: translateY(-2px); }
+.cadastur-selo img { display: block; width: 180px; height: auto; }
+.cadastur-texto { display: grid; gap: 3px; margin: 0; font-size: 0.82rem; color: rgba(236, 229, 212, 0.68); line-height: 1.5; }
+.cadastur-texto strong { color: var(--bone); font-size: 0.9rem; font-weight: 600; }
+
+@media (max-width: 620px) {
+    .footer-selo { flex-direction: column; gap: 16px; text-align: center; }
+    .cadastur-texto { justify-items: center; }
+}
+
+
+/* ======================= PAGINA DE CONVERSAO ======================= */
+/* Abertura sem foto de paisagem de proposito: numa pagina cuja unica meta e
+   a conversa, a foto que ajuda e a das pessoas que vao atender, nao a de um
+   lugar. E carrega 32KB em vez de 200. */
+.conversao-hero { background: var(--cream-deep); padding: 170px 0 90px; }
+.conversao-hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 60px; align-items: center; }
+.conversao-hero-texto h1 {
+    font-family: var(--serif); font-weight: 400; color: var(--moss);
+    font-size: clamp(2rem, 4.4vw, 3.4rem); line-height: 1.1; max-width: 18ch;
+}
+.conversao-hero-texto > p { margin-top: 20px; max-width: 46ch; font-size: 1.12rem; color: var(--espresso-soft); line-height: 1.65; text-wrap: pretty; }
+.conversao-cta { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 32px; }
+.conversao-cta .link-plain { font-size: 0.92rem; color: var(--espresso); border-bottom: 1px solid rgba(42, 35, 27, 0.3); padding-bottom: 3px; }
+.conversao-cta .link-plain:hover { border-color: var(--terra-deep); }
+.conversao-hero-foto { margin: 0; }
+.conversao-hero-foto img { display: block; width: 100%; height: auto; border-radius: 12px; box-shadow: var(--shadow); }
+.conversao-hero-foto figcaption { margin-top: 12px; font-size: 0.82rem; letter-spacing: 0.04em; color: var(--espresso-soft); text-align: center; }
+
+.conversao-passos { padding: 100px 0; background: var(--cream); }
+.conversao-passos .section-title { text-align: left; max-width: 20ch; }
+.conversao-lista { list-style: none; margin: 46px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 42px; }
+.conversao-lista li { border-top: 1px solid rgba(42, 35, 27, 0.18); padding-top: 22px; }
+.conversao-lista h3 { font-family: var(--serif); font-weight: 400; font-size: 1.35rem; color: var(--moss); margin-bottom: 10px; }
+.conversao-lista p { color: var(--espresso-soft); line-height: 1.7; text-wrap: pretty; }
+
+@media (max-width: 1000px) {
+    .conversao-hero { padding: 130px 0 64px; }
+    .conversao-hero-grid { grid-template-columns: 1fr; gap: 36px; }
+    .conversao-hero-foto { max-width: 360px; }
+    .conversao-lista { grid-template-columns: 1fr; gap: 30px; }
+    .conversao-passos { padding: 70px 0; }
+}
+
+
+/* ======================= ARTIGO: ASSINATURA, LINKS E LEIA TAMBEM ======================= */
+.article-byline { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 22px; font-size: 0.88rem; }
+.article-byline strong { font-weight: 600; }
+
+/* dois links internos, com ancora que diz para onde vai */
+.artigo-links {
+    margin: 26px 0 0; padding: 16px 20px; border-left: 3px solid var(--terra-deep);
+    background: var(--bone); border-radius: 0 8px 8px 0;
+    font-size: 0.95rem; color: var(--espresso-soft);
+}
+.artigo-links a { color: var(--terra-texto); border-bottom: 1px solid rgba(160, 74, 46, 0.35); }
+.artigo-links a:hover { border-color: var(--terra-texto); }
+
+.leia-tambem { margin-top: 44px; padding-top: 26px; border-top: 1px solid var(--line-light); }
+.leia-tambem h3 {
+    font-family: var(--sans); font-size: 0.74rem; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--espresso-soft); margin-bottom: 16px;
+}
+.leia-tambem ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.leia-tambem a {
+    font-family: var(--serif); font-size: 1.08rem; color: var(--moss); line-height: 1.4;
+    border-bottom: 1px solid transparent; transition: border-color 0.3s;
+}
+.leia-tambem a:hover { border-color: var(--moss); }

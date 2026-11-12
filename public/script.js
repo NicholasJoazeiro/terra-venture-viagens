@@ -3,6 +3,78 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+    /* =========================================================================
+       0. EVENTOS DE CONVERSÃO
+       =========================================================================
+       A conversao do site e o clique no WhatsApp. Tudo aqui escreve em
+       dataLayer (serve ao GTM) e tambem chama gtag() direto, se existir, para
+       funcionar com GA4 sem GTM. Se nenhum dos dois estiver instalado, nada
+       quebra: as funcoes somem sozinhas.
+
+       TODO(nicholas): falta o ID do GA4 (G-XXXXXXX) ou do GTM (GTM-XXXXXXX)
+       no <head> das paginas. Os eventos abaixo ja estao prontos para ele.
+       ========================================================================= */
+    window.dataLayer = window.dataLayer || [];
+
+    function evento(nome, dados) {
+        const carga = Object.assign({
+            page_path: location.pathname,
+            page_location: location.href,
+        }, dados || {});
+        window.dataLayer.push(Object.assign({ event: nome }, carga));
+        if (typeof window.gtag === 'function') window.gtag('event', nome, carga);
+    }
+
+    // de onde na pagina o clique saiu, para separar o que converte do que nao
+    function ondeEstou(el) {
+        if (el.closest('.whatsapp-float')) return 'botao-flutuante';
+        if (el.closest('.navbar')) return 'menu';
+        if (el.closest('footer')) return 'rodape';
+        if (el.closest('.hero, .page-hero, .epoca-hero')) return 'hero';
+        if (el.closest('#briefing')) return 'briefing';
+        if (el.closest('.contato')) return 'formulario';
+        if (el.closest('.article-content, .artigo-cta')) return 'artigo';
+        const sec = el.closest('section');
+        if (sec) return (sec.id || sec.className.split(' ')[0] || 'secao');
+        return 'outro';
+    }
+
+    // um ouvinte so, na captura, pega todo link wa.me que existir ou vier a
+    // existir na pagina. Nao precisa religar nada quando o DOM muda.
+    document.addEventListener('click', function (e) {
+        const a = e.target.closest && e.target.closest('a[href*="wa.me"]');
+        if (!a) return;
+        evento('whatsapp_click', {
+            link_location: ondeEstou(a),
+            destination: document.body.dataset.destino || undefined,
+            link_url: a.getAttribute('href'),
+        });
+        if (typeof fbq === 'function') fbq('track', 'Contact');
+    }, true);
+
+    // UTM e fbclid: sem isso a origem da visita morre no primeiro clique
+    // interno, e a campanha aparece no relatorio como trafego direto.
+    (function propagarOrigem() {
+        const CHAVES = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'fbclid', 'gclid'];
+        const atual = new URLSearchParams(location.search);
+        let guardado = {};
+        try { guardado = JSON.parse(sessionStorage.getItem('tv_origem') || '{}'); } catch (err) { guardado = {}; }
+        let mudou = false;
+        CHAVES.forEach(k => { if (atual.has(k)) { guardado[k] = atual.get(k); mudou = true; } });
+        if (mudou) { try { sessionStorage.setItem('tv_origem', JSON.stringify(guardado)); } catch (err) { /* modo privado */ } }
+        const chaves = Object.keys(guardado);
+        if (!chaves.length) return;
+        document.querySelectorAll('a[href]').forEach(a => {
+            const href = a.getAttribute('href');
+            if (!href || /^(#|mailto:|tel:)/.test(href)) return;
+            let u;
+            try { u = new URL(href, location.href); } catch (err) { return; }
+            if (u.origin !== location.origin) return;          // so link interno
+            chaves.forEach(k => { if (!u.searchParams.has(k)) u.searchParams.set(k, guardado[k]); });
+            a.setAttribute('href', u.pathname + u.search + u.hash);
+        });
+    })();
+
 
     /* =========================================================================
        1. STICKY NAVBAR & GLASSMORPHISM
@@ -174,6 +246,9 @@ document.addEventListener('DOMContentLoaded', () => {
             // Feedback visual antes de redirecionar
             btn.innerHTML = '<i class="fas fa-check"></i> Redirecionando ao WhatsApp...';
             btn.style.opacity = '0.8';
+
+            evento('formulario_enviado', { link_location: 'formulario' });
+            if (typeof fbq === 'function') fbq('track', 'Lead');
 
             setTimeout(() => {
                 window.open(url, '_blank');
@@ -543,15 +618,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* =========================================================================
-       10. META PIXEL — evento Lead no clique dos botões WhatsApp
+       10. (removido) Lead em todo clique de WhatsApp
+       =========================================================================
+       Havia aqui um segundo ouvinte que disparava Lead em cada link wa.me.
+       Somado ao Contact do ouvinte delegado la em cima, o mesmo clique
+       contava duas vezes e toda conversa iniciada virava lead fechado no
+       relatorio. Lead agora so sai do briefing e do formulario longo.
        ========================================================================= */
-    document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
-        link.addEventListener('click', () => {
-            if (typeof fbq === 'function') {
-                fbq('track', 'Lead');
-            }
-        });
-    });
 
     /* =========================================================================
        11. BRIEFING "CONTE O BÁSICO EM 30 SEGUNDOS"
@@ -660,6 +733,10 @@ document.addEventListener('DOMContentLoaded', () => {
         briefingCaixa.addEventListener('submit', (e) => e.preventDefault());
 
         linkEnviar.addEventListener('click', () => {
+            evento('briefing_enviado', {
+                link_location: 'briefing',
+                respostas: passos.length,
+            });
             if (typeof fbq === 'function') fbq('track', 'Lead');
         });
 
