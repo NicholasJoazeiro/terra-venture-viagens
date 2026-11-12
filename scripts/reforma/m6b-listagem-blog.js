@@ -11,7 +11,7 @@ const l = require('./lib.js');
 let t = l.ler('blog.html');
 const q = l.quebra(t);
 
-const ABRE = /<a href="\/(blog-[a-z-]+)" class="blog-card/g;
+const ABRE = /<a href="\/(blog-[a-z0-9-]+)" class="blog-card/g;
 const achados = [...t.matchAll(ABRE)];
 if (achados.length < 5) { console.error('FALHA: achei so', achados.length, 'cards; nao vou gravar'); process.exit(1); }
 

@@ -25,7 +25,13 @@ const files = fs.readdirSync(publicDir)
 
 const entries = files.map(f => {
     const c = classify(f);
-    const mtime = fs.statSync(path.join(publicDir, f)).mtime.toISOString().slice(0, 10);
+    let mtime = fs.statSync(path.join(publicDir, f)).mtime.toISOString().slice(0, 10);
+    // artigo: a data que o proprio artigo declara, nao a do ultimo build. Senao
+    // todo o diario aparece como "modificado hoje" a cada deploy.
+    if (f.startsWith('blog-')) {
+        const m = fs.readFileSync(path.join(publicDir, f), 'utf8').match(/"dateModified":\s*"(\d{4}-\d{2}-\d{2})"/);
+        if (m) mtime = m[1];
+    }
     return `  <url>\n    <loc>${base}${c.loc}</loc>\n    <lastmod>${mtime}</lastmod>\n    <changefreq>${c.freq}</changefreq>\n    <priority>${c.priority}</priority>\n  </url>`;
 });
 
